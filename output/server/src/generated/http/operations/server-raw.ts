@@ -17,10 +17,36 @@ export async function users_list(
   __ctx_2: HttpContext,
   __operations_4: Users,
 ): Promise<void> {
+  const __queryParams_5 = new URLSearchParams(
+    __ctx_2.request.url!.split("?", 2)[1] ?? "",
+  );
+
+  const offset = __queryParams_5.get("offset") ?? undefined;
+  if (!offset) {
+    return __ctx_2.errorHandlers.onInvalidRequest(
+      __ctx_2,
+      "/users",
+      "missing required query parameter 'offset'",
+    );
+  }
+
+  const limit = __queryParams_5.get("limit") ?? undefined;
+  if (!limit) {
+    return __ctx_2.errorHandlers.onInvalidRequest(
+      __ctx_2,
+      "/users",
+      "missing required query parameter 'limit'",
+    );
+  }
+
   let __result_3: UserList | Error;
 
   try {
-    __result_3 = await __operations_4.list(__ctx_2);
+    __result_3 = await __operations_4.list(
+      __ctx_2,
+      globalThis.Number(offset),
+      globalThis.Number(limit),
+    );
   } catch (e) {
     if (__isHttpResponder_0(e)) {
       return e[__httpResponderSymbol_1](__ctx_2);

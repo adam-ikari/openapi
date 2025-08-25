@@ -30,7 +30,7 @@ headingLevel: 2
 > Code samples
 
 ```http
-GET /users HTTP/1.1
+GET /users?offset=0&limit=10 HTTP/1.1
 
 Accept: application/json
 
@@ -41,7 +41,7 @@ const headers = {
   Accept: "application/json",
 }
 
-fetch("/users", {
+fetch("/users?offset=0&limit=10", {
   method: "GET",
 
   headers: headers,
@@ -60,7 +60,9 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.get('/users', headers = headers)
+r = requests.get('/users', params={
+  'offset': '0',  'limit': '10'
+}, headers = headers)
 
 print(r.json())
 
@@ -69,6 +71,13 @@ print(r.json())
 `GET /users`
 
 List users
+
+<h3 id="users_list-parameters">Parameters</h3>
+
+| Name   | In    | Type            | Required | Description                                             |
+| ------ | ----- | --------------- | -------- | ------------------------------------------------------- |
+| offset | query | integer(uint32) | true     | The offset of the list, 0 means no offset, default is 0 |
+| limit  | query | integer(uint32) | true     | The limit of the list, 0 means no limit, default is 10  |
 
 > Example responses
 
@@ -438,7 +447,7 @@ Delete a users
 
 ```json
 {
-  "code": 10000,
+  "code": 100000,
   "msg": "string"
 }
 ```
@@ -465,7 +474,7 @@ BearerAuth
 <a id="tocserror"></a>
 
 ```yaml
-code: 10000
+code: 100000
 msg: string
 ```
 
@@ -511,7 +520,7 @@ The enum of the gender
 <a id="tocsstatuscode"></a>
 
 ```yaml
-10000
+100000
 ```
 
 ### Properties
@@ -522,10 +531,10 @@ The enum of the gender
 
 #### Enumerated Values
 
-| Property    | Value |
-| ----------- | ----- |
-| _anonymous_ | 10000 |
-| _anonymous_ | 10001 |
+| Property    | Value  |
+| ----------- | ------ |
+| _anonymous_ | 100000 |
+| _anonymous_ | 100001 |
 
 <h2 id="tocS_User">User</h2>
 <!-- backwards compatibility -->

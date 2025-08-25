@@ -57,8 +57,8 @@ export interface User {
 }
 
 export enum StatusCode {
-  Success = 10000,
-  Failure = 10001,
+  Success = 100000,
+  Failure = 100001,
 }
 
 /**

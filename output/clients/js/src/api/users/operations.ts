@@ -214,10 +214,22 @@ export async function read(
 
 export function _listSend(
   context: Client,
+  offset: number,
+  limit: number,
   options: UsersListOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
+  const path = expandUrlTemplate(
+    "/users{?offset,limit}",
+    {
+      offset: offset,
+      limit: limit,
+    },
+    {
+      allowReserved: options?.requestOptions?.skipUrlEncoding,
+    },
+  );
   return context
-    .path("/users")
+    .path(path)
     .get({
       ...operationOptionsToRequestParameters(options),
       headers: {
@@ -243,8 +255,10 @@ export async function _listDeserialize(
 /** List users */
 export async function list(
   context: Client,
+  offset: number,
+  limit: number,
   options: UsersListOptionalParams = { requestOptions: {} },
 ): Promise<UserList> {
-  const result = await _listSend(context, options);
+  const result = await _listSend(context, offset, limit, options);
   return _listDeserialize(result);
 }

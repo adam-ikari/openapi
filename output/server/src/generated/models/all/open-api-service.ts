@@ -6,7 +6,7 @@ export interface Users<Context = unknown> {
   /**
    * List users
    */
-  list(ctx: Context): Promise<UserList | Error>;
+  list(ctx: Context, offset: number, limit: number): Promise<UserList | Error>;
 
   /**
    * Read users

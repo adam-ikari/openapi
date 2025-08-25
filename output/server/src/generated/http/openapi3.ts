@@ -9,7 +9,26 @@ export const openApiDocument = {
       get: {
         operationId: "Users_list",
         description: "List users",
-        parameters: [],
+        parameters: [
+          {
+            name: "offset",
+            in: "query",
+            required: true,
+            description:
+              "The offset of the list, 0 means no offset, default is 0",
+            schema: { type: "integer", format: "uint32", default: 0 },
+            explode: false,
+          },
+          {
+            name: "limit",
+            in: "query",
+            required: true,
+            description:
+              "The limit of the list, 0 means no limit, default is 10",
+            schema: { type: "integer", format: "uint32", default: 10 },
+            explode: false,
+          },
+        ],
         responses: {
           "200": {
             description: "The request has succeeded.",
@@ -231,7 +250,7 @@ export const openApiDocument = {
           },
         },
       },
-      StatusCode: { type: "number", enum: [10000, 10001] },
+      StatusCode: { type: "number", enum: [100000, 100001] },
       Error: {
         type: "object",
         required: ["code", "msg"],

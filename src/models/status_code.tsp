@@ -1,4 +1,4 @@
 enum StatusCode {
-    SUCCESS: 10000,
-    FAILURE: 10001,
+    SUCCESS: 100000, // 成功
+    FAILURE: 100001,
 }

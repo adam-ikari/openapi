@@ -14,7 +14,15 @@ interface Users {
   /** List users */
   @get
   @useAuth(BearerAuth)
-  list(): UserList | Error;
+  list(
+    @doc("The offset of the list, 0 means no offset, default is 0")
+    @query
+    offset: uint32 = 0,
+
+    @doc("The limit of the list, 0 means no limit, default is 10")
+    @query
+    limit: uint32 = 10,
+  ): UserList | Error;
 
   /** Read users */
   @get
