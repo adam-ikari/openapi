@@ -9,7 +9,7 @@ import {
 
 import { Users } from "../../models/all/open-api-service.js";
 
-import { User, Error } from "../../models/all/index.js";
+import { UserList, Error, User } from "../../models/all/index.js";
 
 import { parseHeaderValueParameters } from "../../helpers/header.js";
 
@@ -17,7 +17,7 @@ export async function users_list(
   __ctx_2: HttpContext,
   __operations_4: Users,
 ): Promise<void> {
-  let __result_3: User[] | Error;
+  let __result_3: UserList | Error;
 
   try {
     __result_3 = await __operations_4.list(__ctx_2);
@@ -27,7 +27,7 @@ export async function users_list(
     } else throw e;
   }
 
-  if (globalThis.Array.isArray(__result_3)) {
+  if ("items" in __result_3) {
     __ctx_2.response.setHeader("content-type", "application/json");
     __ctx_2.response.end(globalThis.JSON.stringify(__result_3));
   } else if ("code" in __result_3) {

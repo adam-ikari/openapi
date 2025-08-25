@@ -15,10 +15,7 @@ export const openApiDocument = {
             description: "The request has succeeded.",
             content: {
               "application/json": {
-                schema: {
-                  type: "array",
-                  items: { $ref: "#/components/schemas/User" },
-                },
+                schema: { $ref: "#/components/schemas/UserList" },
               },
             },
           },
@@ -205,6 +202,17 @@ export const openApiDocument = {
           gender: {
             allOf: [{ $ref: "#/components/schemas/Gender" }],
             description: "The gender of the user",
+          },
+        },
+      },
+      UserList: {
+        type: "object",
+        required: ["items"],
+        properties: {
+          items: {
+            type: "array",
+            items: { $ref: "#/components/schemas/User" },
+            description: "The list of users",
           },
         },
       },

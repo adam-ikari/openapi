@@ -75,42 +75,24 @@ List users
 > 200 Response
 
 ```json
-[
-  {
-    "id": "string",
-    "name": "string",
-    "age": 1,
-    "gender": "secret"
-  }
-]
+{
+  "items": [
+    {
+      "id": "string",
+      "name": "string",
+      "age": 1,
+      "gender": "secret"
+    }
+  ]
+}
 ```
 
 <h3 id="users_list-responses">Responses</h3>
 
-| Status  | Meaning                                                 | Description                   | Schema                |
-| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
-| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | Inline                |
-| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
-
-<h3 id="users_list-responseschema">Response Schema</h3>
-
-Status Code **200**
-
-| Name        | Type                    | Required | Restrictions | Description                       |
-| ----------- | ----------------------- | -------- | ------------ | --------------------------------- |
-| _anonymous_ | [[User](#schemauser)]   | false    | none         | none                              |
-| » id        | string                  | true     | none         | The unique identifier of the user |
-| » name      | string                  | true     | none         | The name of the user              |
-| » age       | integer(uint8)          | true     | none         | The age of the user               |
-| » gender    | [Gender](#schemagender) | true     | none         | The gender of the user            |
-
-#### Enumerated Values
-
-| Property | Value  |
-| -------- | ------ |
-| gender   | secret |
-| gender   | male   |
-| gender   | female |
+| Status  | Meaning                                                 | Description                   | Schema                      |
+| ------- | ------------------------------------------------------- | ----------------------------- | --------------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [UserList](#schemauserlist) |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror)       |
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -540,3 +522,24 @@ gender: secret
 | name   | string                  | true     | none         | The name of the user              |
 | age    | integer(uint8)          | true     | none         | The age of the user               |
 | gender | [Gender](#schemagender) | true     | none         | The gender of the user            |
+
+<h2 id="tocS_UserList">UserList</h2>
+<!-- backwards compatibility -->
+<a id="schemauserlist"></a>
+<a id="schema_UserList"></a>
+<a id="tocSuserlist"></a>
+<a id="tocsuserlist"></a>
+
+```yaml
+items:
+  - id: string
+    name: string
+    age: 1
+    gender: secret
+```
+
+### Properties
+
+| Name  | Type                  | Required | Restrictions | Description       |
+| ----- | --------------------- | -------- | ------------ | ----------------- |
+| items | [[User](#schemauser)] | true     | none         | The list of users |

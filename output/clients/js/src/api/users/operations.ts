@@ -2,11 +2,12 @@
 
 import { OpenApiServiceContext as Client } from "../index.js";
 import {
+  UserList,
+  userListDeserializer,
   User,
   userSerializer,
   userDeserializer,
   errorDeserializer,
-  userArrayDeserializer,
 } from "../../models/models.js";
 import { expandUrlTemplate } from "../../static-helpers/urlTemplate.js";
 import {
@@ -228,7 +229,7 @@ export function _listSend(
 
 export async function _listDeserialize(
   result: PathUncheckedResponse,
-): Promise<User[]> {
+): Promise<UserList> {
   const expectedStatuses = ["200"];
   if (!expectedStatuses.includes(result.status)) {
     const error = createRestError(result);
@@ -236,14 +237,14 @@ export async function _listDeserialize(
     throw error;
   }
 
-  return userArrayDeserializer(result.body);
+  return userListDeserializer(result.body);
 }
 
 /** List users */
 export async function list(
   context: Client,
   options: UsersListOptionalParams = { requestOptions: {} },
-): Promise<User[]> {
+): Promise<UserList> {
   const result = await _listSend(context, options);
   return _listDeserialize(result);
 }

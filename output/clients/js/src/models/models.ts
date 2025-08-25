@@ -1,5 +1,29 @@
 // Licensed under the MIT License.
 
+/** model interface UserList */
+export interface UserList {
+  /** The list of users */
+  items: User[];
+}
+
+export function userListDeserializer(item: any): UserList {
+  return {
+    items: userArrayDeserializer(item["items"]),
+  };
+}
+
+export function userArraySerializer(result: Array<User>): any[] {
+  return result.map((item) => {
+    return userSerializer(item);
+  });
+}
+
+export function userArrayDeserializer(result: Array<User>): any[] {
+  return result.map((item) => {
+    return userDeserializer(item);
+  });
+}
+
 /** model interface User */
 export interface User {
   /** The unique identifier of the user */
@@ -46,16 +70,4 @@ export function errorDeserializer(item: any): ErrorModel {
     code: item["code"],
     msg: item["msg"],
   };
-}
-
-export function userArraySerializer(result: Array<User>): any[] {
-  return result.map((item) => {
-    return userSerializer(item);
-  });
-}
-
-export function userArrayDeserializer(result: Array<User>): any[] {
-  return result.map((item) => {
-    return userDeserializer(item);
-  });
 }

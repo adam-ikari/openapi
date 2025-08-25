@@ -1,5 +1,6 @@
 import "@typespec/http";
 import "./models/user.tsp";
+import "./models/user_list.tsp";
 import "./models/error.tsp";
 
 using TypeSpec.Http;
@@ -13,7 +14,7 @@ interface Users {
   /** List users */
   @get
   @useAuth(BearerAuth)
-  list(): User[] | Error;
+  list(): UserList | Error;
 
   /** Read users */
   @get

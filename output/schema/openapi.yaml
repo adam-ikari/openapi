@@ -16,9 +16,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/UserList'
         default:
           description: An unexpected error response.
           content:
@@ -188,6 +186,16 @@ components:
           allOf:
             - $ref: '#/components/schemas/Gender'
           description: The gender of the user
+    UserList:
+      type: object
+      required:
+        - items
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+          description: The list of users
   securitySchemes:
     BearerAuth:
       type: http
