@@ -36,14 +36,14 @@ model Error {
 @route("/users")
 @tag("Users")
 interface Users {
-  /** List widgets */
+  /** List users */
   @get list(): UserList | Error;
-  /** Read widgets */
+  /** Read users */
   @get read(@path id: string): User | Error;
-  /** Create a widget */
+  /** Create a users */
   @post create(@body body: User): User | Error;
-  /** Update a widget */
+  /** Update a users */
   @put update(@path id: string, @body body: User): User | Error;
-  /** Delete a widget */
+  /** Delete a users */
   @delete delete(@path id: string): void | Error;
 }
