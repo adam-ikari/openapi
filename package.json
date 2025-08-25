@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "build": "bash scripts/build.sh"
+    "build": "npm run build:tsp && npm run build:doc",
+    "build:tsp": "tsp compile src/main.tsp",
+    "build:doc": "widdershins --search false --language_tabs 'javascript:Javascript' 'python:Python' --summary tsp-output/schema/openapi.yaml -o doc/openapi.md"
   },
   "peerDependencies": {
     "@azure-tools/typespec-ts": "latest",
