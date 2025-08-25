@@ -5,7 +5,7 @@
   "scripts": {
     "build": "npm run build:tsp && npm run build:doc",
     "build:tsp": "tsp compile src/main.tsp",
-    "build:doc": "node build_doc.js"
+    "build:doc": "node scripts/build_doc.js"
   },
   "peerDependencies": {
     "@azure-tools/typespec-ts": "latest",
