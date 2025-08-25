@@ -5,6 +5,21 @@ export interface UserList {
    * The list of users
    */
   items: User[];
+
+  /**
+   * The total number of users
+   */
+  total: number;
+
+  /**
+   * The offset to fetch the list
+   */
+  offset: number;
+
+  /**
+   * The limit to fetch the list
+   */
+  limit: number;
 }
 
 export interface Error {

@@ -83,7 +83,10 @@ List users
       "age": 1,
       "gender": "secret"
     }
-  ]
+  ],
+  "total": 0,
+  "offset": 0,
+  "limit": 0
 }
 ```
 
@@ -536,10 +539,16 @@ items:
     name: string
     age: 1
     gender: secret
+total: 0
+offset: 0
+limit: 0
 ```
 
 ### Properties
 
-| Name  | Type                  | Required | Restrictions | Description       |
-| ----- | --------------------- | -------- | ------------ | ----------------- |
-| items | [[User](#schemauser)] | true     | none         | The list of users |
+| Name   | Type                  | Required | Restrictions | Description                  |
+| ------ | --------------------- | -------- | ------------ | ---------------------------- |
+| items  | [[User](#schemauser)] | true     | none         | The list of users            |
+| total  | integer(uint32)       | true     | none         | The total number of users    |
+| offset | integer(uint32)       | true     | none         | The offset to fetch the list |
+| limit  | integer(uint32)       | true     | none         | The limit to fetch the list  |

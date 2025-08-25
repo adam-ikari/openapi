@@ -207,12 +207,27 @@ export const openApiDocument = {
       },
       UserList: {
         type: "object",
-        required: ["items"],
+        required: ["items", "total", "offset", "limit"],
         properties: {
           items: {
             type: "array",
             items: { $ref: "#/components/schemas/User" },
             description: "The list of users",
+          },
+          total: {
+            type: "integer",
+            format: "uint32",
+            description: "The total number of users",
+          },
+          offset: {
+            type: "integer",
+            format: "uint32",
+            description: "The offset to fetch the list",
+          },
+          limit: {
+            type: "integer",
+            format: "uint32",
+            description: "The limit to fetch the list",
           },
         },
       },
