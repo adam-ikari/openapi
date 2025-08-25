@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "build": "tsp compile src/main.tsp"
+    "build": "bash scripts/build.sh"
   },
   "peerDependencies": {
     "@azure-tools/typespec-ts": "latest",
@@ -26,7 +26,8 @@
     "@typespec/rest": "latest",
     "@typespec/streams": "^0.73.0",
     "@typespec/versioning": "^0.73.0",
-    "@typespec/xml": "^0.73.0"
+    "@typespec/xml": "^0.73.0",
+    "widdershins": "^4.0.1"
   },
   "private": true
 }
