@@ -10,9 +10,6 @@ export interface Error {
   msg: string;
 }
 
-/**
- *
- */
 export interface User {
   id: string;
 

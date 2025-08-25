@@ -164,7 +164,6 @@ components:
           maximum: 120
         gender:
           $ref: '#/components/schemas/Gender'
-      description: ''
     UserList:
       type: object
       required:

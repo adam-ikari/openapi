@@ -1,6 +1,6 @@
 // Licensed under the MIT License.
 
-import { DemoServiceContext as Client } from "../index.js";
+import { OpenApiServiceContext as Client } from "../index.js";
 import {
   UserList,
   userListDeserializer,

@@ -1,7 +1,7 @@
 // Licensed under the MIT License.
 
 export {
-  createDemoService,
-  DemoServiceContext,
-  DemoServiceClientOptionalParams,
-} from "./demoServiceContext.js";
+  createOpenApiService,
+  OpenApiServiceContext,
+  OpenApiServiceClientOptionalParams,
+} from "./openApiServiceContext.js";

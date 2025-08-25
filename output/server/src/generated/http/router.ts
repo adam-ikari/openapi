@@ -6,7 +6,7 @@ import * as serverRaw from "./operations/server-raw.js";
 
 import { parseHeaderValueParameters } from "../helpers/header.js";
 
-import { Users } from "../models/all/demo-service.js";
+import { Users } from "../models/all/open-api-service.js";
 
 import {
   RouterOptions,
@@ -15,7 +15,7 @@ import {
   HttpContext,
 } from "../helpers/router.js";
 
-export interface DemoServiceRouter {
+export interface OpenApiServiceRouter {
   /**
    * Dispatches the request to the appropriate service based on the request path.
    *
@@ -27,12 +27,12 @@ export interface DemoServiceRouter {
   dispatch(request: http.IncomingMessage, response: http.ServerResponse): void;
 }
 
-export function createDemoServiceRouter(
+export function createOpenApiServiceRouter(
   users: Users,
   options: RouterOptions<{
     users: Users<HttpContext>;
   }> = {},
-): DemoServiceRouter {
+): OpenApiServiceRouter {
   const __onRequestNotFound_26 =
     options.onRequestNotFound ??
     ((ctx) => {
@@ -98,7 +98,7 @@ export function createDemoServiceRouter(
   } as const;
 
   const dispatch = createPolicyChain(
-    "DemoServiceRouterDispatch",
+    "OpenApiServiceRouterDispatch",
     options.policies ?? [],
     async function (ctx, request, response) {
       const url = new URL(request.url!, `http://${request.headers.host}`);

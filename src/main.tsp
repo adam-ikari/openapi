@@ -2,9 +2,8 @@ import "@typespec/http";
 
 using TypeSpec.Http;
 @service(#{ title: "OpenAPI" })
-namespace DemoService;
+namespace OpenApiService;
 
-@doc("")
 model User {
   id: string;
 

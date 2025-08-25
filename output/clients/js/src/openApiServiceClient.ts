@@ -1,29 +1,29 @@
 // Licensed under the MIT License.
 
 import {
-  createDemoService,
-  DemoServiceContext,
-  DemoServiceClientOptionalParams,
+  createOpenApiService,
+  OpenApiServiceContext,
+  OpenApiServiceClientOptionalParams,
 } from "./api/index.js";
 import { UsersOperations, _getUsersOperations } from "./classic/users/index.js";
 import { Pipeline } from "@typespec/ts-http-runtime";
 
-export { DemoServiceClientOptionalParams } from "./api/demoServiceContext.js";
+export { OpenApiServiceClientOptionalParams } from "./api/openApiServiceContext.js";
 
-export class DemoServiceClient {
-  private _client: DemoServiceContext;
+export class OpenApiServiceClient {
+  private _client: OpenApiServiceContext;
   /** The pipeline used by this client to make requests */
   public readonly pipeline: Pipeline;
 
   constructor(
     endpointParam: string,
-    options: DemoServiceClientOptionalParams = {},
+    options: OpenApiServiceClientOptionalParams = {},
   ) {
     const prefixFromOptions = options?.userAgentOptions?.userAgentPrefix;
     const userAgentPrefix = prefixFromOptions
       ? `${prefixFromOptions} azsdk-js-client`
       : `azsdk-js-client`;
-    this._client = createDemoService(endpointParam, {
+    this._client = createOpenApiService(endpointParam, {
       ...options,
       userAgentOptions: { userAgentPrefix },
     });

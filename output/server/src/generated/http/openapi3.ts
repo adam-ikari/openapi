@@ -175,7 +175,6 @@ export const openApiDocument = {
           age: { type: "integer", format: "uint32", minimum: 1, maximum: 120 },
           gender: { $ref: "#/components/schemas/Gender" },
         },
-        description: "",
       },
       UserList: {
         type: "object",

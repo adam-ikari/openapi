@@ -23,7 +23,7 @@ export function userArrayDeserializer(result: Array<User>): any[] {
   });
 }
 
-/** */
+/** model interface User */
 export interface User {
   id: string;
   name: string;
