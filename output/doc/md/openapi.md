@@ -81,7 +81,7 @@ List users
       "id": "string",
       "name": "string",
       "age": 1,
-      "gender": "male"
+      "gender": "secret"
     }
   ]
 }
@@ -118,7 +118,7 @@ const inputBody = '{
   "id": "string",
   "name": "string",
   "age": 1,
-  "gender": "male"
+  "gender": "secret"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -163,7 +163,7 @@ Create a users
   "id": "string",
   "name": "string",
   "age": 1,
-  "gender": "male"
+  "gender": "secret"
 }
 ```
 
@@ -182,7 +182,7 @@ Create a users
   "id": "string",
   "name": "string",
   "age": 1,
-  "gender": "male"
+  "gender": "secret"
 }
 ```
 
@@ -260,7 +260,7 @@ Read users
   "id": "string",
   "name": "string",
   "age": 1,
-  "gender": "male"
+  "gender": "secret"
 }
 ```
 
@@ -295,7 +295,7 @@ const inputBody = '{
   "id": "string",
   "name": "string",
   "age": 1,
-  "gender": "male"
+  "gender": "secret"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -340,7 +340,7 @@ Update a users
   "id": "string",
   "name": "string",
   "age": 1,
-  "gender": "male"
+  "gender": "secret"
 }
 ```
 
@@ -360,7 +360,7 @@ Update a users
   "id": "string",
   "name": "string",
   "age": 1,
-  "gender": "male"
+  "gender": "secret"
 }
 ```
 
@@ -481,7 +481,7 @@ msg: string
 <a id="tocsgender"></a>
 
 ```yaml
-male
+secret
 ```
 
 The enum of the gender
@@ -496,6 +496,7 @@ The enum of the gender
 
 | Property    | Value  |
 | ----------- | ------ |
+| _anonymous_ | secret |
 | _anonymous_ | male   |
 | _anonymous_ | female |
 
@@ -510,7 +511,7 @@ The enum of the gender
 id: string
 name: string
 age: 1
-gender: male
+gender: secret
 ```
 
 ### Properties
@@ -534,7 +535,7 @@ items:
   - id: string
     name: string
     age: 1
-    gender: male
+    gender: secret
 ```
 
 ### Properties

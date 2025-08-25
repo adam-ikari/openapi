@@ -153,6 +153,7 @@ components:
     Gender:
       type: string
       enum:
+        - secret
         - male
         - female
       description: The enum of the gender

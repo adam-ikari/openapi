@@ -172,7 +172,7 @@ export const openApiDocument = {
     schemas: {
       Gender: {
         type: "string",
-        enum: ["male", "female"],
+        enum: ["secret", "male", "female"],
         description: "The enum of the gender",
       },
       User: {

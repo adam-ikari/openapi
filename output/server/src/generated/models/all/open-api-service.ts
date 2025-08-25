@@ -45,6 +45,7 @@ export interface User {
  * The enum of the gender
  */
 export enum Gender {
+  Secret = "secret",
   Male = "male",
   Female = "female",
 }
