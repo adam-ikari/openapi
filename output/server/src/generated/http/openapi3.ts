@@ -168,12 +168,12 @@ export const openApiDocument = {
       Gender: { type: "string", enum: ["male", "female"] },
       User: {
         type: "object",
-        required: ["id", "name", "age", "gaender"],
+        required: ["id", "name", "age", "gender"],
         properties: {
           id: { type: "string" },
-          name: { type: "string" },
-          age: { type: "integer", format: "int32" },
-          gaender: { $ref: "#/components/schemas/Gender" },
+          name: { type: "string", minLength: 3, maxLength: 32 },
+          age: { type: "integer", format: "uint32", minimum: 1, maximum: 120 },
+          gender: { $ref: "#/components/schemas/Gender" },
         },
         description: "",
       },

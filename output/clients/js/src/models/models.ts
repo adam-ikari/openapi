@@ -28,7 +28,7 @@ export interface User {
   id: string;
   name: string;
   age: number;
-  gaender: Gender;
+  gender: Gender;
 }
 
 export function userSerializer(item: User): any {
@@ -36,7 +36,7 @@ export function userSerializer(item: User): any {
     id: item["id"],
     name: item["name"],
     age: item["age"],
-    gaender: item["gaender"],
+    gender: item["gender"],
   };
 }
 
@@ -45,7 +45,7 @@ export function userDeserializer(item: any): User {
     id: item["id"],
     name: item["name"],
     age: item["age"],
-    gaender: item["gaender"],
+    gender: item["gender"],
   };
 }
 

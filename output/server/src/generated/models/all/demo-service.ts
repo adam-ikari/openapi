@@ -20,7 +20,7 @@ export interface User {
 
   age: number;
 
-  gaender: Gender;
+  gender: Gender;
 }
 
 export enum Gender {

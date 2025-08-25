@@ -76,8 +76,8 @@ List widgets
     {
       "id": "string",
       "name": "string",
-      "age": 0,
-      "gaender": "male"
+      "age": 1,
+      "gender": "male"
     }
   ]
 }
@@ -112,8 +112,8 @@ Accept: application/json
 const inputBody = '{
   "id": "string",
   "name": "string",
-  "age": 0,
-  "gaender": "male"
+  "age": 1,
+  "gender": "male"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -157,8 +157,8 @@ Create a widget
 {
   "id": "string",
   "name": "string",
-  "age": 0,
-  "gaender": "male"
+  "age": 1,
+  "gender": "male"
 }
 ```
 
@@ -176,8 +176,8 @@ Create a widget
 {
   "id": "string",
   "name": "string",
-  "age": 0,
-  "gaender": "male"
+  "age": 1,
+  "gender": "male"
 }
 ```
 
@@ -253,8 +253,8 @@ Read widgets
 {
   "id": "string",
   "name": "string",
-  "age": 0,
-  "gaender": "male"
+  "age": 1,
+  "gender": "male"
 }
 ```
 
@@ -287,8 +287,8 @@ Accept: application/json
 const inputBody = '{
   "id": "string",
   "name": "string",
-  "age": 0,
-  "gaender": "male"
+  "age": 1,
+  "gender": "male"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -332,8 +332,8 @@ Update a widget
 {
   "id": "string",
   "name": "string",
-  "age": 0,
-  "gaender": "male"
+  "age": 1,
+  "gender": "male"
 }
 ```
 
@@ -352,8 +352,8 @@ Update a widget
 {
   "id": "string",
   "name": "string",
-  "age": 0,
-  "gaender": "male"
+  "age": 1,
+  "gender": "male"
 }
 ```
 
@@ -498,18 +498,18 @@ male
 ```yaml
 id: string
 name: string
-age: 0
-gaender: male
+age: 1
+gender: male
 ```
 
 ### Properties
 
-| Name    | Type                    | Required | Restrictions | Description |
-| ------- | ----------------------- | -------- | ------------ | ----------- |
-| id      | string                  | true     | none         | none        |
-| name    | string                  | true     | none         | none        |
-| age     | integer(int32)          | true     | none         | none        |
-| gaender | [Gender](#schemagender) | true     | none         | none        |
+| Name   | Type                    | Required | Restrictions | Description |
+| ------ | ----------------------- | -------- | ------------ | ----------- |
+| id     | string                  | true     | none         | none        |
+| name   | string                  | true     | none         | none        |
+| age    | integer(uint32)         | true     | none         | none        |
+| gender | [Gender](#schemagender) | true     | none         | none        |
 
 <h2 id="tocS_UserList">UserList</h2>
 <!-- backwards compatibility -->
@@ -522,8 +522,8 @@ gaender: male
 items:
   - id: string
     name: string
-    age: 0
-    gaender: male
+    age: 1
+    gender: male
 ```
 
 ### Properties

@@ -7,9 +7,16 @@ namespace DemoService;
 @doc("")
 model User {
   id: string;
+
+  @minLength(3)
+  @maxLength(32)
   name: string;
-  age: int32;
-  gaender: Gender;
+
+  @minValue(1)
+  @maxValue(120)
+  age: uint32;
+
+  gender: Gender;
 }
 
 enum Gender {
