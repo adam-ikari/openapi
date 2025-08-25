@@ -484,11 +484,13 @@ msg: string
 male
 ```
 
+The enum of the gender
+
 ### Properties
 
-| Name        | Type   | Required | Restrictions | Description |
-| ----------- | ------ | -------- | ------------ | ----------- |
-| _anonymous_ | string | false    | none         | none        |
+| Name        | Type   | Required | Restrictions | Description            |
+| ----------- | ------ | -------- | ------------ | ---------------------- |
+| _anonymous_ | string | false    | none         | The enum of the gender |
 
 #### Enumerated Values
 

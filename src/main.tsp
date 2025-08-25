@@ -22,6 +22,7 @@ model User {
   gender: Gender;
 }
 
+@doc("The enum of the gender")
 enum Gender {
   male,
   female,

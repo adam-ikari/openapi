@@ -153,6 +153,7 @@ components:
       enum:
         - male
         - female
+      description: The enum of the gender
     User:
       type: object
       required:
