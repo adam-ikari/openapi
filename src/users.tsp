@@ -4,21 +4,13 @@ import "./models/error.tsp";
 
 using TypeSpec.Http;
 
-@service(#{ title: "OpenAPI" })
-namespace OpenApiService;
-
-model UserList {
-  @doc("The list of users")
-  items: User[];
-}
-
 @route("/users")
 @tag("Users")
 interface Users {
   /** List users */
   @get
   @useAuth(BearerAuth)
-  list(): UserList | Error;
+  list(): User[] | Error;
 
   /** Read users */
   @get

@@ -6,8 +6,6 @@ import * as serverRaw from "./operations/server-raw.js";
 
 import { parseHeaderValueParameters } from "../helpers/header.js";
 
-import { Users } from "../models/all/open-api-service.js";
-
 import {
   RouterOptions,
   createPolicyChain,
@@ -28,12 +26,9 @@ export interface OpenApiServiceRouter {
 }
 
 export function createOpenApiServiceRouter(
-  users: Users,
-  options: RouterOptions<{
-    users: Users<HttpContext>;
-  }> = {},
+  options: RouterOptions<{}> = {},
 ): OpenApiServiceRouter {
-  const __onRequestNotFound_26 =
+  const __onRequestNotFound_2 =
     options.onRequestNotFound ??
     ((ctx) => {
       ctx.response.statusCode = 404;
@@ -41,7 +36,7 @@ export function createOpenApiServiceRouter(
       ctx.response.end("Not Found");
     });
 
-  const __onInvalidRequest_27 =
+  const __onInvalidRequest_3 =
     options.onInvalidRequest ??
     ((ctx, route, error) => {
       ctx.response.statusCode = 400;
@@ -49,7 +44,7 @@ export function createOpenApiServiceRouter(
       ctx.response.end(JSON.stringify({ error }));
     });
 
-  const __onInternalError_28 =
+  const __onInternalError_4 =
     options.onInternalError ??
     ((ctx, error) => {
       ctx.response.statusCode = 500;
@@ -57,45 +52,9 @@ export function createOpenApiServiceRouter(
       ctx.response.end("Internal server error.");
     });
 
-  const __routePolicies_29 = options.routePolicies ?? {};
+  const __routePolicies_5 = options.routePolicies ?? {};
 
-  const __routeHandlers_30 = {
-    users_list: createPolicyChainForRoute(
-      "usersListDispatch",
-      __routePolicies_29,
-      "users",
-      "list",
-      serverRaw.users_list,
-    ),
-    users_read: createPolicyChainForRoute(
-      "usersReadDispatch",
-      __routePolicies_29,
-      "users",
-      "read",
-      serverRaw.users_read,
-    ),
-    users_create: createPolicyChainForRoute(
-      "usersCreateDispatch",
-      __routePolicies_29,
-      "users",
-      "create",
-      serverRaw.users_create,
-    ),
-    users_update: createPolicyChainForRoute(
-      "usersUpdateDispatch",
-      __routePolicies_29,
-      "users",
-      "update",
-      serverRaw.users_update,
-    ),
-    users_delete: createPolicyChainForRoute(
-      "usersDeleteDispatch",
-      __routePolicies_29,
-      "users",
-      "delete",
-      serverRaw.users_delete,
-    ),
-  } as const;
+  const __routeHandlers_6 = {} as const;
 
   const dispatch = createPolicyChain(
     "OpenApiServiceRouterDispatch",
@@ -106,58 +65,24 @@ export function createOpenApiServiceRouter(
 
       if (path.length === 0) {
         return ctx.errorHandlers.onRequestNotFound(ctx);
-      } else if (path.startsWith("/users")) {
-        path = path.slice(6);
-        if (path.length === 0) {
-          switch (request.method) {
-            case "GET":
-              return __routeHandlers_30.users_list(ctx, users);
-            case "POST":
-              return __routeHandlers_30.users_create(ctx, users);
-            default:
-              return ctx.errorHandlers.onRequestNotFound(ctx);
-          }
-        } else if (path.startsWith("/")) {
-          path = path.slice(1);
-          if (path.length === 0) {
-            return ctx.errorHandlers.onRequestNotFound(ctx);
-          } else {
-            let __id_idx = path.indexOf("/");
-            __id_idx = __id_idx === -1 ? path.length : __id_idx;
-            const id = path.slice(0, __id_idx);
-            path = path.slice(__id_idx);
-            if (path.length === 0) {
-              switch (request.method) {
-                case "GET":
-                  return __routeHandlers_30.users_read(ctx, users, id);
-                case "PUT":
-                  return __routeHandlers_30.users_update(ctx, users, id);
-                case "DELETE":
-                  return __routeHandlers_30.users_delete(ctx, users, id);
-                default:
-                  return ctx.errorHandlers.onRequestNotFound(ctx);
-              }
-            } else {
-              return ctx.errorHandlers.onRequestNotFound(ctx);
-            }
-          }
-        }
+      } else {
+        return ctx.errorHandlers.onRequestNotFound(ctx);
       }
 
       return ctx.errorHandlers.onRequestNotFound(ctx);
     },
   );
 
-  const __errorHandlers_31 = {
-    onRequestNotFound: __onRequestNotFound_26,
-    onInvalidRequest: __onInvalidRequest_27,
-    onInternalError: __onInternalError_28,
+  const __errorHandlers_7 = {
+    onRequestNotFound: __onRequestNotFound_2,
+    onInvalidRequest: __onInvalidRequest_3,
+    onInternalError: __onInternalError_4,
   };
   return {
     dispatch(request, response) {
-      const ctx = { request, response, errorHandlers: __errorHandlers_31 };
+      const ctx = { request, response, errorHandlers: __errorHandlers_7 };
       return dispatch(ctx, request, response).catch((e) =>
-        __onInternalError_28(ctx, e),
+        __onInternalError_4(ctx, e),
       );
     },
   };
