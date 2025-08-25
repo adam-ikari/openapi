@@ -222,12 +222,12 @@ export const openApiDocument = {
           offset: {
             type: "integer",
             format: "uint32",
-            description: "The offset to fetch the list",
+            description: "The offset to fetch the list, 0 means no offset",
           },
           limit: {
             type: "integer",
             format: "uint32",
-            description: "The limit to fetch the list",
+            description: "The limit to fetch the list, 0 means no limit",
           },
         },
       },

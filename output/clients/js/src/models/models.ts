@@ -6,9 +6,9 @@ export interface UserList {
   items: User[];
   /** The total number of users */
   total: number;
-  /** The offset to fetch the list */
+  /** The offset to fetch the list, 0 means no offset */
   offset: number;
-  /** The limit to fetch the list */
+  /** The limit to fetch the list, 0 means no limit */
   limit: number;
 }
 
