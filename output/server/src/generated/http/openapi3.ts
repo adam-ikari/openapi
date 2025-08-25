@@ -209,6 +209,7 @@ export const openApiDocument = {
           items: {
             type: "array",
             items: { $ref: "#/components/schemas/User" },
+            description: "The list of users",
           },
         },
       },

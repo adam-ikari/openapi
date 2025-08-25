@@ -2,6 +2,7 @@
 
 /** model interface UserList */
 export interface UserList {
+  /** The list of users */
   items: User[];
 }
 

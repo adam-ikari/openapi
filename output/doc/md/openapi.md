@@ -539,6 +539,6 @@ items:
 
 ### Properties
 
-| Name  | Type                  | Required | Restrictions | Description |
-| ----- | --------------------- | -------- | ------------ | ----------- |
-| items | [[User](#schemauser)] | true     | none         | none        |
+| Name  | Type                  | Required | Restrictions | Description       |
+| ----- | --------------------- | -------- | ------------ | ----------------- |
+| items | [[User](#schemauser)] | true     | none         | The list of users |

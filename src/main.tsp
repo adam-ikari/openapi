@@ -29,12 +29,16 @@ enum Gender {
 }
 
 model UserList {
+  @doc("The list of users")
   items: User[];
 }
 
 @error
 model Error {
+  @doc("The error code")
   code: int32;
+
+  @doc("The error message")
   msg: string;
 }
 
