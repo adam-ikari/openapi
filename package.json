@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "npm run build:tsp && npm run build:doc",
-    "build:tsp": "tsp compile src/main.tsp",
+    "build:tsp": "tsp compile src/main.tsp --output-dir output",
     "build:doc": "node scripts/build_doc.js"
   },
   "peerDependencies": {

@@ -1,8 +1,10 @@
 import converter from "widdershins";
 import yaml from "js-yaml";
 import fs from "fs";
+import path from "path";
 
-const OPENAPI_PATH = "tsp-output/schema/openapi.yaml";
+const OPENAPI_PATH = "output/schema/openapi.yaml";
+const OUTPUT_PATH = "output/doc/md/openapi.md";
 
 const apiObj = yaml.load(fs.readFileSync(OPENAPI_PATH, "utf8"));
 
@@ -35,7 +37,8 @@ converter
   .convert(apiObj, options)
   .then((str) => {
     // str contains the converted markdown
-    fs.writeFileSync("doc/openapi.md", str);
+    fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
+    fs.writeFileSync(OUTPUT_PATH, str);
   })
   .catch((err) => {
     console.error(err);
