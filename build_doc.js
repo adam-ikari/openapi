@@ -1,0 +1,42 @@
+import converter from "widdershins";
+import yaml from "js-yaml";
+import fs from "fs";
+
+const OPENAPI_PATH = "tsp-output/schema/openapi.yaml";
+
+const apiObj = yaml.load(fs.readFileSync(OPENAPI_PATH, "utf8"));
+
+let options = {}; // defaults shown
+options.codeSamples = true;
+options.httpsnippet = false;
+options.language_tabs = [
+  { http: "HTTP" },
+  { javascript: "JavaScript" },
+  { python: "Python" },
+];
+//options.language_clients = [];
+//options.loadedFrom = sourceUrl; // only needed if input document is relative
+//options.user_templates = './user_templates';
+options.templateCallback = function (templateName, stage, data) {
+  return data;
+};
+options.theme = "darkula";
+options.search = true;
+options.sample = true; // set false by --raw
+options.discovery = false;
+options.includes = [];
+options.shallowSchemas = false;
+options.tocSummary = false;
+options.headings = 2;
+options.yaml = true;
+//options.resolve = false;
+//options.source = sourceUrl; // if resolve is true, must be set to full path or URL of the input document
+converter
+  .convert(apiObj, options)
+  .then((str) => {
+    // str contains the converted markdown
+    fs.writeFileSync("doc/openapi.md", str);
+  })
+  .catch((err) => {
+    console.error(err);
+  });

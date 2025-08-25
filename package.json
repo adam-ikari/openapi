@@ -5,7 +5,7 @@
   "scripts": {
     "build": "npm run build:tsp && npm run build:doc",
     "build:tsp": "tsp compile src/main.tsp",
-    "build:doc": "widdershins --search false --language_tabs 'javascript:Javascript' 'python:Python' --summary tsp-output/schema/openapi.yaml -o doc/openapi.md"
+    "build:doc": "node build_doc.js"
   },
   "peerDependencies": {
     "@azure-tools/typespec-ts": "latest",
@@ -29,6 +29,7 @@
     "@typespec/streams": "^0.73.0",
     "@typespec/versioning": "^0.73.0",
     "@typespec/xml": "^0.73.0",
+    "js-yaml": "^4.1.0",
     "widdershins": "^4.0.1"
   },
   "private": true

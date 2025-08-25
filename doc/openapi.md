@@ -1,14 +1,12 @@
 ---
 title: OpenAPI v0.0.0
 language_tabs:
-  - javascript: Javascript
+  - http: HTTP
+  - javascript: JavaScript
   - python: Python
-language_clients:
-  - javascript: ""
-  - python: ""
 toc_footers: []
 includes: []
-search: false
+search: true
 highlight_theme: darkula
 headingLevel: 2
 
@@ -27,6 +25,13 @@ headingLevel: 2
 <a id="opIdWidgets_list"></a>
 
 > Code samples
+
+```http
+GET /widgets HTTP/1.1
+
+Accept: application/json
+
+```
 
 ```javascript
 
@@ -96,6 +101,14 @@ This operation does not require authentication
 <a id="opIdWidgets_create"></a>
 
 > Code samples
+
+```http
+POST /widgets HTTP/1.1
+
+Content-Type: application/json
+Accept: application/json
+
+```
 
 ```javascript
 const inputBody = '{
@@ -184,6 +197,13 @@ This operation does not require authentication
 
 > Code samples
 
+```http
+GET /widgets/{id} HTTP/1.1
+
+Accept: application/json
+
+```
+
 ```javascript
 
 const headers = {
@@ -254,6 +274,14 @@ This operation does not require authentication
 <a id="opIdWidgets_update"></a>
 
 > Code samples
+
+```http
+PATCH /widgets/{id} HTTP/1.1
+
+Content-Type: application/json
+Accept: application/json
+
+```
 
 ```javascript
 const inputBody = '{
@@ -343,6 +371,13 @@ This operation does not require authentication
 
 > Code samples
 
+```http
+DELETE /widgets/{id} HTTP/1.1
+
+Accept: application/json
+
+```
+
 ```javascript
 
 const headers = {
@@ -416,11 +451,9 @@ This operation does not require authentication
 <a id="tocSerror"></a>
 <a id="tocserror"></a>
 
-```json
-{
-  "code": 0,
-  "message": "string"
-}
+```yaml
+code: 0
+message: string
 
 ```
 
@@ -438,12 +471,10 @@ This operation does not require authentication
 <a id="tocSwidget"></a>
 <a id="tocswidget"></a>
 
-```json
-{
-  "id": "string",
-  "weight": 0,
-  "color": "red"
-}
+```yaml
+id: string
+weight: 0
+color: red
 
 ```
 
@@ -469,16 +500,11 @@ This operation does not require authentication
 <a id="tocSwidgetlist"></a>
 <a id="tocswidgetlist"></a>
 
-```json
-{
-  "items": [
-    {
-      "id": "string",
-      "weight": 0,
-      "color": "red"
-    }
-  ]
-}
+```yaml
+items:
+  - id: string
+    weight: 0
+    color: red
 
 ```
 
