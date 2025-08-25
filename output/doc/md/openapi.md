@@ -513,12 +513,12 @@ gender: male
 
 ### Properties
 
-| Name   | Type                    | Required | Restrictions | Description |
-| ------ | ----------------------- | -------- | ------------ | ----------- |
-| id     | string                  | true     | none         | none        |
-| name   | string                  | true     | none         | none        |
-| age    | integer(uint32)         | true     | none         | none        |
-| gender | [Gender](#schemagender) | true     | none         | none        |
+| Name   | Type                    | Required | Restrictions | Description                       |
+| ------ | ----------------------- | -------- | ------------ | --------------------------------- |
+| id     | string                  | true     | none         | The unique identifier of the user |
+| name   | string                  | true     | none         | The name of the user              |
+| age    | integer(uint8)          | true     | none         | The age of the user               |
+| gender | [Gender](#schemagender) | true     | none         | The gender of the user            |
 
 <h2 id="tocS_UserList">UserList</h2>
 <!-- backwards compatibility -->

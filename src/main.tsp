@@ -5,16 +5,20 @@ using TypeSpec.Http;
 namespace OpenApiService;
 
 model User {
+  @doc("The unique identifier of the user")
   id: string;
 
+  @doc("The name of the user")
   @minLength(3)
   @maxLength(32)
   name: string;
 
+  @doc("The age of the user")
   @minValue(1)
   @maxValue(120)
-  age: uint32;
+  age: uint8;
 
+  @doc("The gender of the user")
   gender: Gender;
 }
 
@@ -55,7 +59,7 @@ interface Users {
   @put
   @useAuth(BearerAuth)
   update(@path id: string, @body body: User): User | Error;
-  
+
   /** Delete a users */
   @delete
   @useAuth(BearerAuth)

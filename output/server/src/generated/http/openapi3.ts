@@ -175,10 +175,27 @@ export const openApiDocument = {
         type: "object",
         required: ["id", "name", "age", "gender"],
         properties: {
-          id: { type: "string" },
-          name: { type: "string", minLength: 3, maxLength: 32 },
-          age: { type: "integer", format: "uint32", minimum: 1, maximum: 120 },
-          gender: { $ref: "#/components/schemas/Gender" },
+          id: {
+            type: "string",
+            description: "The unique identifier of the user",
+          },
+          name: {
+            type: "string",
+            minLength: 3,
+            maxLength: 32,
+            description: "The name of the user",
+          },
+          age: {
+            type: "integer",
+            format: "uint8",
+            minimum: 1,
+            maximum: 120,
+            description: "The age of the user",
+          },
+          gender: {
+            allOf: [{ $ref: "#/components/schemas/Gender" }],
+            description: "The gender of the user",
+          },
         },
       },
       UserList: {

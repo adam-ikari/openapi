@@ -25,9 +25,13 @@ export function userArrayDeserializer(result: Array<User>): any[] {
 
 /** model interface User */
 export interface User {
+  /** The unique identifier of the user */
   id: string;
+  /** The name of the user */
   name: string;
+  /** The age of the user */
   age: number;
+  /** The gender of the user */
   gender: Gender;
 }
 
