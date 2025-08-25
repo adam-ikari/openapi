@@ -217,8 +217,12 @@ export const openApiDocument = {
         type: "object",
         required: ["code", "msg"],
         properties: {
-          code: { type: "integer", format: "int32" },
-          msg: { type: "string" },
+          code: {
+            type: "integer",
+            format: "int32",
+            description: "The error code",
+          },
+          msg: { type: "string", description: "The error message" },
         },
       },
     },

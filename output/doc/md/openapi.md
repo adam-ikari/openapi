@@ -468,10 +468,10 @@ msg: string
 
 ### Properties
 
-| Name | Type           | Required | Restrictions | Description |
-| ---- | -------------- | -------- | ------------ | ----------- |
-| code | integer(int32) | true     | none         | none        |
-| msg  | string         | true     | none         | none        |
+| Name | Type           | Required | Restrictions | Description       |
+| ---- | -------------- | -------- | ------------ | ----------------- |
+| code | integer(int32) | true     | none         | The error code    |
+| msg  | string         | true     | none         | The error message |
 
 <h2 id="tocS_Gender">Gender</h2>
 <!-- backwards compatibility -->

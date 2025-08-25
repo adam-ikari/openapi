@@ -8,8 +8,14 @@ export interface UserList {
 }
 
 export interface Error {
+  /**
+   * The error code
+   */
   code: number;
 
+  /**
+   * The error message
+   */
   msg: string;
 }
 
