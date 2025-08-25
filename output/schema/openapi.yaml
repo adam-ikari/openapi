@@ -147,8 +147,8 @@ components:
         - msg
       properties:
         code:
-          type: integer
-          format: int32
+          allOf:
+            - $ref: '#/components/schemas/StatusCode'
           description: The error code
         msg:
           type: string
@@ -160,6 +160,11 @@ components:
         - male
         - female
       description: The enum of the gender
+    StatusCode:
+      type: number
+      enum:
+        - 10000
+        - 10001
     User:
       type: object
       required:

@@ -69,7 +69,7 @@ export type Gender = "secret" | "male" | "female";
 /** model interface ErrorModel */
 export interface ErrorModel {
   /** The error code */
-  code: number;
+  code: StatusCode;
   /** The error message */
   msg: string;
 }
@@ -80,3 +80,6 @@ export function errorDeserializer(item: any): ErrorModel {
     msg: item["msg"],
   };
 }
+
+/** Type of StatusCode */
+export type StatusCode = 10000 | 10001;

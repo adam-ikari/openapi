@@ -1,7 +1,13 @@
 // Licensed under the MIT License.
 
 export { OpenApiServiceClient } from "./openApiServiceClient.js";
-export { UserList, User, Gender, ErrorModel } from "./models/index.js";
+export {
+  UserList,
+  User,
+  Gender,
+  ErrorModel,
+  StatusCode,
+} from "./models/index.js";
 export { OpenApiServiceClientOptionalParams } from "./api/index.js";
 export {
   UsersDeleteOptionalParams,

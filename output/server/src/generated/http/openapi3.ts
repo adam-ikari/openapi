@@ -231,13 +231,13 @@ export const openApiDocument = {
           },
         },
       },
+      StatusCode: { type: "number", enum: [10000, 10001] },
       Error: {
         type: "object",
         required: ["code", "msg"],
         properties: {
           code: {
-            type: "integer",
-            format: "int32",
+            allOf: [{ $ref: "#/components/schemas/StatusCode" }],
             description: "The error code",
           },
           msg: { type: "string", description: "The error message" },

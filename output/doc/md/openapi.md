@@ -438,7 +438,7 @@ Delete a users
 
 ```json
 {
-  "code": 0,
+  "code": 10000,
   "msg": "string"
 }
 ```
@@ -465,16 +465,16 @@ BearerAuth
 <a id="tocserror"></a>
 
 ```yaml
-code: 0
+code: 10000
 msg: string
 ```
 
 ### Properties
 
-| Name | Type           | Required | Restrictions | Description       |
-| ---- | -------------- | -------- | ------------ | ----------------- |
-| code | integer(int32) | true     | none         | The error code    |
-| msg  | string         | true     | none         | The error message |
+| Name | Type                            | Required | Restrictions | Description       |
+| ---- | ------------------------------- | -------- | ------------ | ----------------- |
+| code | [StatusCode](#schemastatuscode) | true     | none         | The error code    |
+| msg  | string                          | true     | none         | The error message |
 
 <h2 id="tocS_Gender">Gender</h2>
 <!-- backwards compatibility -->
@@ -502,6 +502,30 @@ The enum of the gender
 | _anonymous_ | secret |
 | _anonymous_ | male   |
 | _anonymous_ | female |
+
+<h2 id="tocS_StatusCode">StatusCode</h2>
+<!-- backwards compatibility -->
+<a id="schemastatuscode"></a>
+<a id="schema_StatusCode"></a>
+<a id="tocSstatuscode"></a>
+<a id="tocsstatuscode"></a>
+
+```yaml
+10000
+```
+
+### Properties
+
+| Name        | Type   | Required | Restrictions | Description |
+| ----------- | ------ | -------- | ------------ | ----------- |
+| _anonymous_ | number | false    | none         | none        |
+
+#### Enumerated Values
+
+| Property    | Value |
+| ----------- | ----- |
+| _anonymous_ | 10000 |
+| _anonymous_ | 10001 |
 
 <h2 id="tocS_User">User</h2>
 <!-- backwards compatibility -->

@@ -26,7 +26,7 @@ export interface Error {
   /**
    * The error code
    */
-  code: number;
+  code: StatusCode;
 
   /**
    * The error message
@@ -54,6 +54,11 @@ export interface User {
    * The gender of the user
    */
   gender: Gender;
+}
+
+export enum StatusCode {
+  Success = 10000,
+  Failure = 10001,
 }
 
 /**
