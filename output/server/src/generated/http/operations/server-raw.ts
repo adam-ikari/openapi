@@ -7,12 +7,9 @@ import {
   HTTP_RESPONDER as __httpResponderSymbol_1,
 } from "../../helpers/http.js";
 
-import {
-  Users,
-  UserList,
-  Error,
-  User,
-} from "../../models/all/open-api-service.js";
+import { Users, UserList } from "../../models/all/open-api-service.js";
+
+import { Error, User } from "../../models/all/index.js";
 
 import { parseHeaderValueParameters } from "../../helpers/header.js";
 
