@@ -134,31 +134,38 @@ components:
         - msg
       properties:
         code:
-          type: integer
-          format: int32
+          $ref: '#/components/schemas/StatusCode'
         msg:
           type: string
     Gender:
       type: string
       enum:
+        - secret
         - male
         - female
+    StatusCode:
+      type: number
+      enum:
+        - 100000
     User:
       type: object
       required:
         - id
         - name
         - age
-        - gaender
+        - gender
       properties:
         id:
           type: string
         name:
           type: string
+          minLength: 1
         age:
           type: integer
-          format: int32
-        gaender:
+          format: uint32
+          minimum: 0
+          maximum: 120
+        gender:
           $ref: '#/components/schemas/Gender'
       description: ''
     UserList:
