@@ -1,56 +1,66 @@
 // Licensed under the MIT License.
 
-/** model interface WidgetList */
-export interface WidgetList {
-  items: Widget[];
+/** model interface UserList */
+export interface UserList {
+  items: User[];
 }
 
-export function widgetListDeserializer(item: any): WidgetList {
+export function userListDeserializer(item: any): UserList {
   return {
-    items: widgetArrayDeserializer(item["items"]),
+    items: userArrayDeserializer(item["items"]),
   };
 }
 
-export function widgetArraySerializer(result: Array<Widget>): any[] {
+export function userArraySerializer(result: Array<User>): any[] {
   return result.map((item) => {
-    return widgetSerializer(item);
+    return userSerializer(item);
   });
 }
 
-export function widgetArrayDeserializer(result: Array<Widget>): any[] {
+export function userArrayDeserializer(result: Array<User>): any[] {
   return result.map((item) => {
-    return widgetDeserializer(item);
+    return userDeserializer(item);
   });
 }
 
-/** model interface Widget */
-export interface Widget {
+/** */
+export interface User {
   id: string;
-  weight: number;
-  color: "red" | "blue";
+  name: string;
+  age: number;
+  gaender: Gender;
 }
 
-export function widgetSerializer(item: Widget): any {
-  return { id: item["id"], weight: item["weight"], color: item["color"] };
-}
-
-export function widgetDeserializer(item: any): Widget {
+export function userSerializer(item: User): any {
   return {
     id: item["id"],
-    weight: item["weight"],
-    color: item["color"],
+    name: item["name"],
+    age: item["age"],
+    gaender: item["gaender"],
   };
 }
+
+export function userDeserializer(item: any): User {
+  return {
+    id: item["id"],
+    name: item["name"],
+    age: item["age"],
+    gaender: item["gaender"],
+  };
+}
+
+/** Type of Gender */
+export type Gender = "male" | "female";
 
 /** model interface ErrorModel */
 export interface ErrorModel {
   code: number;
-  message: string;
+  msg: string;
 }
 
 export function errorDeserializer(item: any): ErrorModel {
   return {
     code: item["code"],
-    message: item["message"],
+    msg: item["msg"],
   };
 }

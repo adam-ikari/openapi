@@ -6,7 +6,7 @@ import * as serverRaw from "./operations/server-raw.js";
 
 import { parseHeaderValueParameters } from "../helpers/header.js";
 
-import { Widgets } from "../models/all/demo-service.js";
+import { Users } from "../models/all/demo-service.js";
 
 import {
   RouterOptions,
@@ -28,9 +28,9 @@ export interface DemoServiceRouter {
 }
 
 export function createDemoServiceRouter(
-  widgets: Widgets,
+  users: Users,
   options: RouterOptions<{
-    widgets: Widgets<HttpContext>;
+    users: Users<HttpContext>;
   }> = {},
 ): DemoServiceRouter {
   const __onRequestNotFound_26 =
@@ -60,40 +60,40 @@ export function createDemoServiceRouter(
   const __routePolicies_29 = options.routePolicies ?? {};
 
   const __routeHandlers_30 = {
-    widgets_list: createPolicyChainForRoute(
-      "widgetsListDispatch",
+    users_list: createPolicyChainForRoute(
+      "usersListDispatch",
       __routePolicies_29,
-      "widgets",
+      "users",
       "list",
-      serverRaw.widgets_list,
+      serverRaw.users_list,
     ),
-    widgets_read: createPolicyChainForRoute(
-      "widgetsReadDispatch",
+    users_read: createPolicyChainForRoute(
+      "usersReadDispatch",
       __routePolicies_29,
-      "widgets",
+      "users",
       "read",
-      serverRaw.widgets_read,
+      serverRaw.users_read,
     ),
-    widgets_create: createPolicyChainForRoute(
-      "widgetsCreateDispatch",
+    users_create: createPolicyChainForRoute(
+      "usersCreateDispatch",
       __routePolicies_29,
-      "widgets",
+      "users",
       "create",
-      serverRaw.widgets_create,
+      serverRaw.users_create,
     ),
-    widgets_update: createPolicyChainForRoute(
-      "widgetsUpdateDispatch",
+    users_update: createPolicyChainForRoute(
+      "usersUpdateDispatch",
       __routePolicies_29,
-      "widgets",
+      "users",
       "update",
-      serverRaw.widgets_update,
+      serverRaw.users_update,
     ),
-    widgets_delete: createPolicyChainForRoute(
-      "widgetsDeleteDispatch",
+    users_delete: createPolicyChainForRoute(
+      "usersDeleteDispatch",
       __routePolicies_29,
-      "widgets",
+      "users",
       "delete",
-      serverRaw.widgets_delete,
+      serverRaw.users_delete,
     ),
   } as const;
 
@@ -106,14 +106,14 @@ export function createDemoServiceRouter(
 
       if (path.length === 0) {
         return ctx.errorHandlers.onRequestNotFound(ctx);
-      } else if (path.startsWith("/widgets")) {
-        path = path.slice(8);
+      } else if (path.startsWith("/users")) {
+        path = path.slice(6);
         if (path.length === 0) {
           switch (request.method) {
             case "GET":
-              return __routeHandlers_30.widgets_list(ctx, widgets);
+              return __routeHandlers_30.users_list(ctx, users);
             case "POST":
-              return __routeHandlers_30.widgets_create(ctx, widgets);
+              return __routeHandlers_30.users_create(ctx, users);
             default:
               return ctx.errorHandlers.onRequestNotFound(ctx);
           }
@@ -129,11 +129,11 @@ export function createDemoServiceRouter(
             if (path.length === 0) {
               switch (request.method) {
                 case "GET":
-                  return __routeHandlers_30.widgets_read(ctx, widgets, id);
-                case "PATCH":
-                  return __routeHandlers_30.widgets_update(ctx, widgets, id);
+                  return __routeHandlers_30.users_read(ctx, users, id);
+                case "PUT":
+                  return __routeHandlers_30.users_update(ctx, users, id);
                 case "DELETE":
-                  return __routeHandlers_30.widgets_delete(ctx, widgets, id);
+                  return __routeHandlers_30.users_delete(ctx, users, id);
                 default:
                   return ctx.errorHandlers.onRequestNotFound(ctx);
               }

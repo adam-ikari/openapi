@@ -3,11 +3,11 @@ info:
   title: OpenAPI
   version: 0.0.0
 tags:
-  - name: Widgets
+  - name: Users
 paths:
-  /widgets:
+  /users:
     get:
-      operationId: Widgets_list
+      operationId: Users_list
       description: List widgets
       parameters: []
       responses:
@@ -16,7 +16,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/WidgetList'
+                $ref: '#/components/schemas/UserList'
         default:
           description: An unexpected error response.
           content:
@@ -24,9 +24,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       tags:
-        - Widgets
+        - Users
     post:
-      operationId: Widgets_create
+      operationId: Users_create
       description: Create a widget
       parameters: []
       responses:
@@ -35,7 +35,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Widget'
+                $ref: '#/components/schemas/User'
         default:
           description: An unexpected error response.
           content:
@@ -43,16 +43,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       tags:
-        - Widgets
+        - Users
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Widget'
-  /widgets/{id}:
+              $ref: '#/components/schemas/User'
+  /users/{id}:
     get:
-      operationId: Widgets_read
+      operationId: Users_read
       description: Read widgets
       parameters:
         - name: id
@@ -66,7 +66,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Widget'
+                $ref: '#/components/schemas/User'
         default:
           description: An unexpected error response.
           content:
@@ -74,9 +74,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       tags:
-        - Widgets
-    patch:
-      operationId: Widgets_update
+        - Users
+    put:
+      operationId: Users_update
       description: Update a widget
       parameters:
         - name: id
@@ -90,7 +90,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Widget'
+                $ref: '#/components/schemas/User'
         default:
           description: An unexpected error response.
           content:
@@ -98,15 +98,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       tags:
-        - Widgets
+        - Users
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Widget'
+              $ref: '#/components/schemas/User'
     delete:
-      operationId: Widgets_delete
+      operationId: Users_delete
       description: Delete a widget
       parameters:
         - name: id
@@ -124,38 +124,44 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       tags:
-        - Widgets
+        - Users
 components:
   schemas:
     Error:
       type: object
       required:
         - code
-        - message
+        - msg
       properties:
         code:
           type: integer
           format: int32
-        message:
+        msg:
           type: string
-    Widget:
+    Gender:
+      type: string
+      enum:
+        - male
+        - female
+    User:
       type: object
       required:
         - id
-        - weight
-        - color
+        - name
+        - age
+        - gaender
       properties:
         id:
           type: string
-        weight:
+        name:
+          type: string
+        age:
           type: integer
           format: int32
-        color:
-          type: string
-          enum:
-            - red
-            - blue
-    WidgetList:
+        gaender:
+          $ref: '#/components/schemas/Gender'
+      description: ''
+    UserList:
       type: object
       required:
         - items
@@ -163,4 +169,4 @@ components:
         items:
           type: array
           items:
-            $ref: '#/components/schemas/Widget'
+            $ref: '#/components/schemas/User'

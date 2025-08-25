@@ -3,11 +3,11 @@
 export const openApiDocument = {
   openapi: "3.0.0",
   info: { title: "OpenAPI", version: "0.0.0" },
-  tags: [{ name: "Widgets" }],
+  tags: [{ name: "Users" }],
   paths: {
-    "/widgets": {
+    "/users": {
       get: {
-        operationId: "Widgets_list",
+        operationId: "Users_list",
         description: "List widgets",
         parameters: [],
         responses: {
@@ -15,7 +15,7 @@ export const openApiDocument = {
             description: "The request has succeeded.",
             content: {
               "application/json": {
-                schema: { $ref: "#/components/schemas/WidgetList" },
+                schema: { $ref: "#/components/schemas/UserList" },
               },
             },
           },
@@ -28,10 +28,10 @@ export const openApiDocument = {
             },
           },
         },
-        tags: ["Widgets"],
+        tags: ["Users"],
       },
       post: {
-        operationId: "Widgets_create",
+        operationId: "Users_create",
         description: "Create a widget",
         parameters: [],
         responses: {
@@ -39,7 +39,7 @@ export const openApiDocument = {
             description: "The request has succeeded.",
             content: {
               "application/json": {
-                schema: { $ref: "#/components/schemas/Widget" },
+                schema: { $ref: "#/components/schemas/User" },
               },
             },
           },
@@ -52,20 +52,20 @@ export const openApiDocument = {
             },
           },
         },
-        tags: ["Widgets"],
+        tags: ["Users"],
         requestBody: {
           required: true,
           content: {
             "application/json": {
-              schema: { $ref: "#/components/schemas/Widget" },
+              schema: { $ref: "#/components/schemas/User" },
             },
           },
         },
       },
     },
-    "/widgets/{id}": {
+    "/users/{id}": {
       get: {
-        operationId: "Widgets_read",
+        operationId: "Users_read",
         description: "Read widgets",
         parameters: [
           {
@@ -80,7 +80,7 @@ export const openApiDocument = {
             description: "The request has succeeded.",
             content: {
               "application/json": {
-                schema: { $ref: "#/components/schemas/Widget" },
+                schema: { $ref: "#/components/schemas/User" },
               },
             },
           },
@@ -93,10 +93,10 @@ export const openApiDocument = {
             },
           },
         },
-        tags: ["Widgets"],
+        tags: ["Users"],
       },
-      patch: {
-        operationId: "Widgets_update",
+      put: {
+        operationId: "Users_update",
         description: "Update a widget",
         parameters: [
           {
@@ -111,7 +111,7 @@ export const openApiDocument = {
             description: "The request has succeeded.",
             content: {
               "application/json": {
-                schema: { $ref: "#/components/schemas/Widget" },
+                schema: { $ref: "#/components/schemas/User" },
               },
             },
           },
@@ -124,18 +124,18 @@ export const openApiDocument = {
             },
           },
         },
-        tags: ["Widgets"],
+        tags: ["Users"],
         requestBody: {
           required: true,
           content: {
             "application/json": {
-              schema: { $ref: "#/components/schemas/Widget" },
+              schema: { $ref: "#/components/schemas/User" },
             },
           },
         },
       },
       delete: {
-        operationId: "Widgets_delete",
+        operationId: "Users_delete",
         description: "Delete a widget",
         parameters: [
           {
@@ -159,37 +159,40 @@ export const openApiDocument = {
             },
           },
         },
-        tags: ["Widgets"],
+        tags: ["Users"],
       },
     },
   },
   components: {
     schemas: {
-      Widget: {
+      Gender: { type: "string", enum: ["male", "female"] },
+      User: {
         type: "object",
-        required: ["id", "weight", "color"],
+        required: ["id", "name", "age", "gaender"],
         properties: {
           id: { type: "string" },
-          weight: { type: "integer", format: "int32" },
-          color: { type: "string", enum: ["red", "blue"] },
+          name: { type: "string" },
+          age: { type: "integer", format: "int32" },
+          gaender: { $ref: "#/components/schemas/Gender" },
         },
+        description: "",
       },
-      WidgetList: {
+      UserList: {
         type: "object",
         required: ["items"],
         properties: {
           items: {
             type: "array",
-            items: { $ref: "#/components/schemas/Widget" },
+            items: { $ref: "#/components/schemas/User" },
           },
         },
       },
       Error: {
         type: "object",
-        required: ["code", "message"],
+        required: ["code", "msg"],
         properties: {
           code: { type: "integer", format: "int32" },
-          message: { type: "string" },
+          msg: { type: "string" },
         },
       },
     },

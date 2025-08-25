@@ -2,6 +2,7 @@ import converter from "widdershins";
 import yaml from "js-yaml";
 import fs from "fs";
 import path from "path";
+import * as prettier from "prettier";
 
 const OPENAPI_PATH = "output/schema/openapi.yaml";
 const OUTPUT_PATH = "output/doc/md/openapi.md";
@@ -35,10 +36,13 @@ options.yaml = true;
 //options.source = sourceUrl; // if resolve is true, must be set to full path or URL of the input document
 converter
   .convert(apiObj, options)
-  .then((str) => {
+  .then(async (str) => {
     // str contains the converted markdown
     fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
-    fs.writeFileSync(OUTPUT_PATH, str);
+    fs.writeFileSync(
+      OUTPUT_PATH,
+      await prettier.format(str, { semi: false, parser: "markdown" })
+    );
   })
   .catch((err) => {
     console.error(err);

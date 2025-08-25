@@ -5,10 +5,7 @@ import {
   DemoServiceContext,
   DemoServiceClientOptionalParams,
 } from "./api/index.js";
-import {
-  WidgetsOperations,
-  _getWidgetsOperations,
-} from "./classic/widgets/index.js";
+import { UsersOperations, _getUsersOperations } from "./classic/users/index.js";
 import { Pipeline } from "@typespec/ts-http-runtime";
 
 export { DemoServiceClientOptionalParams } from "./api/demoServiceContext.js";
@@ -31,9 +28,9 @@ export class DemoServiceClient {
       userAgentOptions: { userAgentPrefix },
     });
     this.pipeline = this._client.pipeline;
-    this.widgets = _getWidgetsOperations(this._client);
+    this.users = _getUsersOperations(this._client);
   }
 
-  /** The operation groups for widgets */
-  public readonly widgets: WidgetsOperations;
+  /** The operation groups for users */
+  public readonly users: UsersOperations;
 }

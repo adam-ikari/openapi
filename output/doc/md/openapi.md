@@ -9,7 +9,6 @@ includes: []
 search: true
 highlight_theme: darkula
 headingLevel: 2
-
 ---
 
 <!-- Generator: Widdershins v4.0.1 -->
@@ -18,39 +17,37 @@ headingLevel: 2
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
-<h1 id="openapi-widgets">Widgets</h1>
+<h1 id="openapi-users">Users</h1>
 
-## Widgets_list
+## Users_list
 
-<a id="opIdWidgets_list"></a>
+<a id="opIdUsers_list"></a>
 
 > Code samples
 
 ```http
-GET /widgets HTTP/1.1
+GET /users HTTP/1.1
 
 Accept: application/json
 
 ```
 
 ```javascript
-
 const headers = {
-  'Accept':'application/json'
-};
+  Accept: "application/json",
+}
 
-fetch('/widgets',
-{
-  method: 'GET',
+fetch("/users", {
+  method: "GET",
 
-  headers: headers
+  headers: headers,
 })
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
+  .then(function (res) {
+    return res.json()
+  })
+  .then(function (body) {
+    console.log(body)
+  })
 ```
 
 ```python
@@ -59,13 +56,13 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.get('/widgets', headers = headers)
+r = requests.get('/users', headers = headers)
 
 print(r.json())
 
 ```
 
-`GET /widgets`
+`GET /users`
 
 List widgets
 
@@ -78,32 +75,33 @@ List widgets
   "items": [
     {
       "id": "string",
-      "weight": 0,
-      "color": "red"
+      "name": "string",
+      "age": 0,
+      "gaender": "male"
     }
   ]
 }
 ```
 
-<h3 id="widgets_list-responses">Responses</h3>
+<h3 id="users_list-responses">Responses</h3>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|The request has succeeded.|[WidgetList](#schemawidgetlist)|
-|default|Default|An unexpected error response.|[Error](#schemaerror)|
+| Status  | Meaning                                                 | Description                   | Schema                      |
+| ------- | ------------------------------------------------------- | ----------------------------- | --------------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [UserList](#schemauserlist) |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror)       |
 
 <aside class="success">
 This operation does not require authentication
 </aside>
 
-## Widgets_create
+## Users_create
 
-<a id="opIdWidgets_create"></a>
+<a id="opIdUsers_create"></a>
 
 > Code samples
 
 ```http
-POST /widgets HTTP/1.1
+POST /users HTTP/1.1
 
 Content-Type: application/json
 Accept: application/json
@@ -113,15 +111,16 @@ Accept: application/json
 ```javascript
 const inputBody = '{
   "id": "string",
-  "weight": 0,
-  "color": "red"
+  "name": "string",
+  "age": 0,
+  "gaender": "male"
 }';
 const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json'
 };
 
-fetch('/widgets',
+fetch('/users',
 {
   method: 'POST',
   body: inputBody,
@@ -142,13 +141,13 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.post('/widgets', headers = headers)
+r = requests.post('/users', headers = headers)
 
 print(r.json())
 
 ```
 
-`POST /widgets`
+`POST /users`
 
 Create a widget
 
@@ -157,16 +156,17 @@ Create a widget
 ```json
 {
   "id": "string",
-  "weight": 0,
-  "color": "red"
+  "name": "string",
+  "age": 0,
+  "gaender": "male"
 }
 ```
 
-<h3 id="widgets_create-parameters">Parameters</h3>
+<h3 id="users_create-parameters">Parameters</h3>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|[Widget](#schemawidget)|true|none|
+| Name | In   | Type                | Required | Description |
+| ---- | ---- | ------------------- | -------- | ----------- |
+| body | body | [User](#schemauser) | true     | none        |
 
 > Example responses
 
@@ -175,53 +175,52 @@ Create a widget
 ```json
 {
   "id": "string",
-  "weight": 0,
-  "color": "red"
+  "name": "string",
+  "age": 0,
+  "gaender": "male"
 }
 ```
 
-<h3 id="widgets_create-responses">Responses</h3>
+<h3 id="users_create-responses">Responses</h3>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|The request has succeeded.|[Widget](#schemawidget)|
-|default|Default|An unexpected error response.|[Error](#schemaerror)|
+| Status  | Meaning                                                 | Description                   | Schema                |
+| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [User](#schemauser)   |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
 
 <aside class="success">
 This operation does not require authentication
 </aside>
 
-## Widgets_read
+## Users_read
 
-<a id="opIdWidgets_read"></a>
+<a id="opIdUsers_read"></a>
 
 > Code samples
 
 ```http
-GET /widgets/{id} HTTP/1.1
+GET /users/{id} HTTP/1.1
 
 Accept: application/json
 
 ```
 
 ```javascript
-
 const headers = {
-  'Accept':'application/json'
-};
+  Accept: "application/json",
+}
 
-fetch('/widgets/{id}',
-{
-  method: 'GET',
+fetch("/users/{id}", {
+  method: "GET",
 
-  headers: headers
+  headers: headers,
 })
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
+  .then(function (res) {
+    return res.json()
+  })
+  .then(function (body) {
+    console.log(body)
+  })
 ```
 
 ```python
@@ -230,21 +229,21 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.get('/widgets/{id}', headers = headers)
+r = requests.get('/users/{id}', headers = headers)
 
 print(r.json())
 
 ```
 
-`GET /widgets/{id}`
+`GET /users/{id}`
 
 Read widgets
 
-<h3 id="widgets_read-parameters">Parameters</h3>
+<h3 id="users_read-parameters">Parameters</h3>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|none|
+| Name | In   | Type   | Required | Description |
+| ---- | ---- | ------ | -------- | ----------- |
+| id   | path | string | true     | none        |
 
 > Example responses
 
@@ -253,30 +252,31 @@ Read widgets
 ```json
 {
   "id": "string",
-  "weight": 0,
-  "color": "red"
+  "name": "string",
+  "age": 0,
+  "gaender": "male"
 }
 ```
 
-<h3 id="widgets_read-responses">Responses</h3>
+<h3 id="users_read-responses">Responses</h3>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|The request has succeeded.|[Widget](#schemawidget)|
-|default|Default|An unexpected error response.|[Error](#schemaerror)|
+| Status  | Meaning                                                 | Description                   | Schema                |
+| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [User](#schemauser)   |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
 
 <aside class="success">
 This operation does not require authentication
 </aside>
 
-## Widgets_update
+## Users_update
 
-<a id="opIdWidgets_update"></a>
+<a id="opIdUsers_update"></a>
 
 > Code samples
 
 ```http
-PATCH /widgets/{id} HTTP/1.1
+PUT /users/{id} HTTP/1.1
 
 Content-Type: application/json
 Accept: application/json
@@ -286,17 +286,18 @@ Accept: application/json
 ```javascript
 const inputBody = '{
   "id": "string",
-  "weight": 0,
-  "color": "red"
+  "name": "string",
+  "age": 0,
+  "gaender": "male"
 }';
 const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json'
 };
 
-fetch('/widgets/{id}',
+fetch('/users/{id}',
 {
-  method: 'PATCH',
+  method: 'PUT',
   body: inputBody,
   headers: headers
 })
@@ -315,13 +316,13 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.patch('/widgets/{id}', headers = headers)
+r = requests.put('/users/{id}', headers = headers)
 
 print(r.json())
 
 ```
 
-`PATCH /widgets/{id}`
+`PUT /users/{id}`
 
 Update a widget
 
@@ -330,17 +331,18 @@ Update a widget
 ```json
 {
   "id": "string",
-  "weight": 0,
-  "color": "red"
+  "name": "string",
+  "age": 0,
+  "gaender": "male"
 }
 ```
 
-<h3 id="widgets_update-parameters">Parameters</h3>
+<h3 id="users_update-parameters">Parameters</h3>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|none|
-|body|body|[Widget](#schemawidget)|true|none|
+| Name | In   | Type                | Required | Description |
+| ---- | ---- | ------------------- | -------- | ----------- |
+| id   | path | string              | true     | none        |
+| body | body | [User](#schemauser) | true     | none        |
 
 > Example responses
 
@@ -349,53 +351,52 @@ Update a widget
 ```json
 {
   "id": "string",
-  "weight": 0,
-  "color": "red"
+  "name": "string",
+  "age": 0,
+  "gaender": "male"
 }
 ```
 
-<h3 id="widgets_update-responses">Responses</h3>
+<h3 id="users_update-responses">Responses</h3>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|The request has succeeded.|[Widget](#schemawidget)|
-|default|Default|An unexpected error response.|[Error](#schemaerror)|
+| Status  | Meaning                                                 | Description                   | Schema                |
+| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [User](#schemauser)   |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
 
 <aside class="success">
 This operation does not require authentication
 </aside>
 
-## Widgets_delete
+## Users_delete
 
-<a id="opIdWidgets_delete"></a>
+<a id="opIdUsers_delete"></a>
 
 > Code samples
 
 ```http
-DELETE /widgets/{id} HTTP/1.1
+DELETE /users/{id} HTTP/1.1
 
 Accept: application/json
 
 ```
 
 ```javascript
-
 const headers = {
-  'Accept':'application/json'
-};
+  Accept: "application/json",
+}
 
-fetch('/widgets/{id}',
-{
-  method: 'DELETE',
+fetch("/users/{id}", {
+  method: "DELETE",
 
-  headers: headers
+  headers: headers,
 })
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
+  .then(function (res) {
+    return res.json()
+  })
+  .then(function (body) {
+    console.log(body)
+  })
 ```
 
 ```python
@@ -404,21 +405,21 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.delete('/widgets/{id}', headers = headers)
+r = requests.delete('/users/{id}', headers = headers)
 
 print(r.json())
 
 ```
 
-`DELETE /widgets/{id}`
+`DELETE /users/{id}`
 
 Delete a widget
 
-<h3 id="widgets_delete-parameters">Parameters</h3>
+<h3 id="users_delete-parameters">Parameters</h3>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|none|
+| Name | In   | Type   | Required | Description |
+| ---- | ---- | ------ | -------- | ----------- |
+| id   | path | string | true     | none        |
 
 > Example responses
 
@@ -427,16 +428,16 @@ Delete a widget
 ```json
 {
   "code": 0,
-  "message": "string"
+  "msg": "string"
 }
 ```
 
-<h3 id="widgets_delete-responses">Responses</h3>
+<h3 id="users_delete-responses">Responses</h3>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|There is no content to send for this request, but the headers may be useful.|None|
-|default|Default|An unexpected error response.|[Error](#schemaerror)|
+| Status  | Meaning                                                         | Description                                                                  | Schema                |
+| ------- | --------------------------------------------------------------- | ---------------------------------------------------------------------------- | --------------------- |
+| 204     | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | There is no content to send for this request, but the headers may be useful. | None                  |
+| default | Default                                                         | An unexpected error response.                                                | [Error](#schemaerror) |
 
 <aside class="success">
 This operation does not require authentication
@@ -453,64 +454,80 @@ This operation does not require authentication
 
 ```yaml
 code: 0
-message: string
-
+msg: string
 ```
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|code|integer(int32)|true|none|none|
-|message|string|true|none|none|
+| Name | Type           | Required | Restrictions | Description |
+| ---- | -------------- | -------- | ------------ | ----------- |
+| code | integer(int32) | true     | none         | none        |
+| msg  | string         | true     | none         | none        |
 
-<h2 id="tocS_Widget">Widget</h2>
+<h2 id="tocS_Gender">Gender</h2>
 <!-- backwards compatibility -->
-<a id="schemawidget"></a>
-<a id="schema_Widget"></a>
-<a id="tocSwidget"></a>
-<a id="tocswidget"></a>
+<a id="schemagender"></a>
+<a id="schema_Gender"></a>
+<a id="tocSgender"></a>
+<a id="tocsgender"></a>
 
 ```yaml
-id: string
-weight: 0
-color: red
-
+male
 ```
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|id|string|true|none|none|
-|weight|integer(int32)|true|none|none|
-|color|string|true|none|none|
+| Name        | Type   | Required | Restrictions | Description |
+| ----------- | ------ | -------- | ------------ | ----------- |
+| _anonymous_ | string | false    | none         | none        |
 
 #### Enumerated Values
 
-|Property|Value|
-|---|---|
-|color|red|
-|color|blue|
+| Property    | Value  |
+| ----------- | ------ |
+| _anonymous_ | male   |
+| _anonymous_ | female |
 
-<h2 id="tocS_WidgetList">WidgetList</h2>
+<h2 id="tocS_User">User</h2>
 <!-- backwards compatibility -->
-<a id="schemawidgetlist"></a>
-<a id="schema_WidgetList"></a>
-<a id="tocSwidgetlist"></a>
-<a id="tocswidgetlist"></a>
+<a id="schemauser"></a>
+<a id="schema_User"></a>
+<a id="tocSuser"></a>
+<a id="tocsuser"></a>
+
+```yaml
+id: string
+name: string
+age: 0
+gaender: male
+```
+
+### Properties
+
+| Name    | Type                    | Required | Restrictions | Description |
+| ------- | ----------------------- | -------- | ------------ | ----------- |
+| id      | string                  | true     | none         | none        |
+| name    | string                  | true     | none         | none        |
+| age     | integer(int32)          | true     | none         | none        |
+| gaender | [Gender](#schemagender) | true     | none         | none        |
+
+<h2 id="tocS_UserList">UserList</h2>
+<!-- backwards compatibility -->
+<a id="schemauserlist"></a>
+<a id="schema_UserList"></a>
+<a id="tocSuserlist"></a>
+<a id="tocsuserlist"></a>
 
 ```yaml
 items:
   - id: string
-    weight: 0
-    color: red
-
+    name: string
+    age: 0
+    gaender: male
 ```
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|items|[[Widget](#schemawidget)]|true|none|none|
-
+| Name  | Type                  | Required | Restrictions | Description |
+| ----- | --------------------- | -------- | ------------ | ----------- |
+| items | [[User](#schemauser)] | true     | none         | none        |

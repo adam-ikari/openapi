@@ -4,33 +4,40 @@ using TypeSpec.Http;
 @service(#{ title: "OpenAPI" })
 namespace DemoService;
 
-model Widget {
+@doc("")
+model User {
   id: string;
-  weight: int32;
-  color: "red" | "blue";
+  name: string;
+  age: int32;
+  gaender: Gender;
 }
 
-model WidgetList {
-  items: Widget[];
+enum Gender {
+  male,
+  female,
+}
+
+model UserList {
+  items: User[];
 }
 
 @error
 model Error {
   code: int32;
-  message: string;
+  msg: string;
 }
 
-@route("/widgets")
-@tag("Widgets")
-interface Widgets {
+@route("/users")
+@tag("Users")
+interface Users {
   /** List widgets */
-  @get list(): WidgetList | Error;
+  @get list(): UserList | Error;
   /** Read widgets */
-  @get read(@path id: string): Widget | Error;
+  @get read(@path id: string): User | Error;
   /** Create a widget */
-  @post create(@body body: Widget): Widget | Error;
+  @post create(@body body: User): User | Error;
   /** Update a widget */
-  @patch update(@path id: string, @body body: Widget): Widget | Error;
+  @put update(@path id: string, @body body: User): User | Error;
   /** Delete a widget */
   @delete delete(@path id: string): void | Error;
 }

@@ -1,3 +1,3 @@
 // Licensed under the MIT License.
 
-export { WidgetList, Widget, ErrorModel } from "./models.js";
+export { UserList, User, Gender, ErrorModel } from "./models.js";

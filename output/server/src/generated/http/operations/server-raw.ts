@@ -7,20 +7,15 @@ import {
   HTTP_RESPONDER as __httpResponderSymbol_1,
 } from "../../helpers/http.js";
 
-import {
-  Widgets,
-  WidgetList,
-  Error,
-  Widget,
-} from "../../models/all/demo-service.js";
+import { Users, UserList, Error, User } from "../../models/all/demo-service.js";
 
 import { parseHeaderValueParameters } from "../../helpers/header.js";
 
-export async function widgets_list(
+export async function users_list(
   __ctx_2: HttpContext,
-  __operations_4: Widgets,
+  __operations_4: Users,
 ): Promise<void> {
-  let __result_3: WidgetList | Error;
+  let __result_3: UserList | Error;
 
   try {
     __result_3 = await __operations_4.list(__ctx_2);
@@ -39,12 +34,12 @@ export async function widgets_list(
   }
 }
 
-export async function widgets_read(
+export async function users_read(
   __ctx_6: HttpContext,
-  __operations_8: Widgets,
+  __operations_8: Users,
   id: string,
 ): Promise<void> {
-  let __result_7: Widget | Error;
+  let __result_7: User | Error;
 
   try {
     __result_7 = await __operations_8.read(__ctx_6, id);
@@ -63,9 +58,9 @@ export async function widgets_read(
   }
 }
 
-export async function widgets_create(
+export async function users_create(
   __ctx_10: HttpContext,
-  __operations_12: Widgets,
+  __operations_12: Users,
 ): Promise<void> {
   const __contentType_15 = parseHeaderValueParameters(
     __ctx_10.request.headers["content-type"] as string | undefined,
@@ -73,7 +68,7 @@ export async function widgets_create(
   if (__contentType_15?.value !== "application/json") {
     return __ctx_10.errorHandlers.onInvalidRequest(
       __ctx_10,
-      "/widgets",
+      "/users",
       `unexpected "content-type": '${__contentType_15?.value}', expected '"application/json"'`,
     );
   }
@@ -90,16 +85,16 @@ export async function widgets_create(
       } catch {
         __ctx_10.errorHandlers.onInvalidRequest(
           __ctx_10,
-          "/widgets",
+          "/users",
           "invalid JSON in request body",
         );
         reject();
       }
     });
     __ctx_10.request.on("error", reject);
-  })) as Widget;
+  })) as User;
 
-  let __result_11: Widget | Error;
+  let __result_11: User | Error;
 
   try {
     __result_11 = await __operations_12.create(__ctx_10, __body_14);
@@ -118,9 +113,9 @@ export async function widgets_create(
   }
 }
 
-export async function widgets_update(
+export async function users_update(
   __ctx_16: HttpContext,
-  __operations_18: Widgets,
+  __operations_18: Users,
   id: string,
 ): Promise<void> {
   const __contentType_21 = parseHeaderValueParameters(
@@ -129,7 +124,7 @@ export async function widgets_update(
   if (__contentType_21?.value !== "application/json") {
     return __ctx_16.errorHandlers.onInvalidRequest(
       __ctx_16,
-      "/widgets/{id}",
+      "/users/{id}",
       `unexpected "content-type": '${__contentType_21?.value}', expected '"application/json"'`,
     );
   }
@@ -146,16 +141,16 @@ export async function widgets_update(
       } catch {
         __ctx_16.errorHandlers.onInvalidRequest(
           __ctx_16,
-          "/widgets/{id}",
+          "/users/{id}",
           "invalid JSON in request body",
         );
         reject();
       }
     });
     __ctx_16.request.on("error", reject);
-  })) as Widget;
+  })) as User;
 
-  let __result_17: Widget | Error;
+  let __result_17: User | Error;
 
   try {
     __result_17 = await __operations_18.update(__ctx_16, id, __body_20);
@@ -174,9 +169,9 @@ export async function widgets_update(
   }
 }
 
-export async function widgets_delete(
+export async function users_delete(
   __ctx_22: HttpContext,
-  __operations_24: Widgets,
+  __operations_24: Users,
   id: string,
 ): Promise<void> {
   let __result_23: void | Error;
