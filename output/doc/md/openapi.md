@@ -17,6 +17,10 @@ headingLevel: 2
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
+# Authentication
+
+- HTTP Authentication, scheme: Bearer
+
 <h1 id="openapi-users">Users</h1>
 
 ## Users_list
@@ -64,7 +68,7 @@ print(r.json())
 
 `GET /users`
 
-List widgets
+List users
 
 > Example responses
 
@@ -90,8 +94,9 @@ List widgets
 | 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [UserList](#schemauserlist) |
 | default | Default                                                 | An unexpected error response. | [Error](#schemaerror)       |
 
-<aside class="success">
-This operation does not require authentication
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+BearerAuth
 </aside>
 
 ## Users_create
@@ -149,7 +154,7 @@ print(r.json())
 
 `POST /users`
 
-Create a widget
+Create a users
 
 > Body parameter
 
@@ -188,8 +193,9 @@ Create a widget
 | 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [User](#schemauser)   |
 | default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
 
-<aside class="success">
-This operation does not require authentication
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+BearerAuth
 </aside>
 
 ## Users_read
@@ -237,7 +243,7 @@ print(r.json())
 
 `GET /users/{id}`
 
-Read widgets
+Read users
 
 <h3 id="users_read-parameters">Parameters</h3>
 
@@ -265,8 +271,9 @@ Read widgets
 | 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [User](#schemauser)   |
 | default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
 
-<aside class="success">
-This operation does not require authentication
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+BearerAuth
 </aside>
 
 ## Users_update
@@ -324,7 +331,7 @@ print(r.json())
 
 `PUT /users/{id}`
 
-Update a widget
+Update a users
 
 > Body parameter
 
@@ -364,8 +371,9 @@ Update a widget
 | 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [User](#schemauser)   |
 | default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
 
-<aside class="success">
-This operation does not require authentication
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+BearerAuth
 </aside>
 
 ## Users_delete
@@ -413,7 +421,7 @@ print(r.json())
 
 `DELETE /users/{id}`
 
-Delete a widget
+Delete a users
 
 <h3 id="users_delete-parameters">Parameters</h3>
 
@@ -439,8 +447,9 @@ Delete a widget
 | 204     | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | There is no content to send for this request, but the headers may be useful. | None                  |
 | default | Default                                                         | An unexpected error response.                                                | [Error](#schemaerror) |
 
-<aside class="success">
-This operation does not require authentication
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+BearerAuth
 </aside>
 
 # Schemas

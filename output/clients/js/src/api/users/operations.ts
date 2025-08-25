@@ -56,7 +56,7 @@ export async function _$deleteDeserialize(
   return;
 }
 
-/** Delete a widget */
+/** Delete a users */
 /**
  *  @fixme delete is a reserved word that cannot be used as an operation name.
  *         Please add @clientName("clientName") or @clientName("<JS-Specific-Name>", "javascript")
@@ -112,7 +112,7 @@ export async function _updateDeserialize(
   return userDeserializer(result.body);
 }
 
-/** Update a widget */
+/** Update a users */
 export async function update(
   context: Client,
   id: string,
@@ -154,7 +154,7 @@ export async function _createDeserialize(
   return userDeserializer(result.body);
 }
 
-/** Create a widget */
+/** Create a users */
 export async function create(
   context: Client,
   body: User,
@@ -202,7 +202,7 @@ export async function _readDeserialize(
   return userDeserializer(result.body);
 }
 
-/** Read widgets */
+/** Read users */
 export async function read(
   context: Client,
   id: string,
@@ -240,7 +240,7 @@ export async function _listDeserialize(
   return userListDeserializer(result.body);
 }
 
-/** List widgets */
+/** List users */
 export async function list(
   context: Client,
   options: UsersListOptionalParams = { requestOptions: {} },

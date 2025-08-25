@@ -19,24 +19,24 @@ import { UserList, User } from "../../models/models.js";
 
 /** Interface representing a Users operations. */
 export interface UsersOperations {
-  /** Delete a widget */
+  /** Delete a users */
   /**
    *  @fixme delete is a reserved word that cannot be used as an operation name.
    *         Please add @clientName("clientName") or @clientName("<JS-Specific-Name>", "javascript")
    *         to the operation to override the generated name.
    */
   delete: (id: string, options?: UsersDeleteOptionalParams) => Promise<void>;
-  /** Update a widget */
+  /** Update a users */
   update: (
     id: string,
     body: User,
     options?: UsersUpdateOptionalParams,
   ) => Promise<User>;
-  /** Create a widget */
+  /** Create a users */
   create: (body: User, options?: UsersCreateOptionalParams) => Promise<User>;
-  /** Read widgets */
+  /** Read users */
   read: (id: string, options?: UsersReadOptionalParams) => Promise<User>;
-  /** List widgets */
+  /** List users */
   list: (options?: UsersListOptionalParams) => Promise<UserList>;
 }
 

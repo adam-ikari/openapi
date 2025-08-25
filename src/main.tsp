@@ -37,13 +37,27 @@ model Error {
 @tag("Users")
 interface Users {
   /** List users */
-  @get list(): UserList | Error;
+  @get
+  @useAuth(BearerAuth)
+  list(): UserList | Error;
+
   /** Read users */
-  @get read(@path id: string): User | Error;
+  @get
+  @useAuth(BearerAuth)
+  read(@path id: string): User | Error;
+
   /** Create a users */
-  @post create(@body body: User): User | Error;
+  @post
+  @useAuth(BearerAuth)
+  create(@body body: User): User | Error;
+
   /** Update a users */
-  @put update(@path id: string, @body body: User): User | Error;
+  @put
+  @useAuth(BearerAuth)
+  update(@path id: string, @body body: User): User | Error;
+  
   /** Delete a users */
-  @delete delete(@path id: string): void | Error;
+  @delete
+  @useAuth(BearerAuth)
+  delete(@path id: string): void | Error;
 }

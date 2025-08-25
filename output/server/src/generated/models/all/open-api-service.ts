@@ -27,27 +27,27 @@ export enum Gender {
 
 export interface Users<Context = unknown> {
   /**
-   * List widgets
+   * List users
    */
   list(ctx: Context): Promise<UserList | Error>;
 
   /**
-   * Read widgets
+   * Read users
    */
   read(ctx: Context, id: string): Promise<User | Error>;
 
   /**
-   * Create a widget
+   * Create a users
    */
   create(ctx: Context, body: User): Promise<User | Error>;
 
   /**
-   * Update a widget
+   * Update a users
    */
   update(ctx: Context, id: string, body: User): Promise<User | Error>;
 
   /**
-   * Delete a widget
+   * Delete a users
    */
   delete(ctx: Context, id: string): Promise<void | Error>;
 }

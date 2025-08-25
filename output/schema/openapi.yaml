@@ -8,7 +8,7 @@ paths:
   /users:
     get:
       operationId: Users_list
-      description: List widgets
+      description: List users
       parameters: []
       responses:
         '200':
@@ -25,9 +25,11 @@ paths:
                 $ref: '#/components/schemas/Error'
       tags:
         - Users
+      security:
+        - BearerAuth: []
     post:
       operationId: Users_create
-      description: Create a widget
+      description: Create a users
       parameters: []
       responses:
         '200':
@@ -50,10 +52,12 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/User'
+      security:
+        - BearerAuth: []
   /users/{id}:
     get:
       operationId: Users_read
-      description: Read widgets
+      description: Read users
       parameters:
         - name: id
           in: path
@@ -75,9 +79,11 @@ paths:
                 $ref: '#/components/schemas/Error'
       tags:
         - Users
+      security:
+        - BearerAuth: []
     put:
       operationId: Users_update
-      description: Update a widget
+      description: Update a users
       parameters:
         - name: id
           in: path
@@ -105,9 +111,11 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/User'
+      security:
+        - BearerAuth: []
     delete:
       operationId: Users_delete
-      description: Delete a widget
+      description: Delete a users
       parameters:
         - name: id
           in: path
@@ -125,6 +133,8 @@ paths:
                 $ref: '#/components/schemas/Error'
       tags:
         - Users
+      security:
+        - BearerAuth: []
 components:
   schemas:
     Error:
@@ -173,3 +183,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/User'
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: Bearer

@@ -8,7 +8,7 @@ export const openApiDocument = {
     "/users": {
       get: {
         operationId: "Users_list",
-        description: "List widgets",
+        description: "List users",
         parameters: [],
         responses: {
           "200": {
@@ -29,10 +29,11 @@ export const openApiDocument = {
           },
         },
         tags: ["Users"],
+        security: [{ BearerAuth: [] }],
       },
       post: {
         operationId: "Users_create",
-        description: "Create a widget",
+        description: "Create a users",
         parameters: [],
         responses: {
           "200": {
@@ -61,12 +62,13 @@ export const openApiDocument = {
             },
           },
         },
+        security: [{ BearerAuth: [] }],
       },
     },
     "/users/{id}": {
       get: {
         operationId: "Users_read",
-        description: "Read widgets",
+        description: "Read users",
         parameters: [
           {
             name: "id",
@@ -94,10 +96,11 @@ export const openApiDocument = {
           },
         },
         tags: ["Users"],
+        security: [{ BearerAuth: [] }],
       },
       put: {
         operationId: "Users_update",
-        description: "Update a widget",
+        description: "Update a users",
         parameters: [
           {
             name: "id",
@@ -133,10 +136,11 @@ export const openApiDocument = {
             },
           },
         },
+        security: [{ BearerAuth: [] }],
       },
       delete: {
         operationId: "Users_delete",
-        description: "Delete a widget",
+        description: "Delete a users",
         parameters: [
           {
             name: "id",
@@ -160,6 +164,7 @@ export const openApiDocument = {
           },
         },
         tags: ["Users"],
+        security: [{ BearerAuth: [] }],
       },
     },
   },
@@ -195,5 +200,6 @@ export const openApiDocument = {
         },
       },
     },
+    securitySchemes: { BearerAuth: { type: "http", scheme: "Bearer" } },
   },
 };
