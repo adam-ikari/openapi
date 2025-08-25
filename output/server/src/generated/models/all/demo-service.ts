@@ -5,7 +5,7 @@ export interface UserList {
 }
 
 export interface Error {
-  code: StatusCode;
+  code: number;
 
   msg: string;
 }
@@ -20,15 +20,10 @@ export interface User {
 
   age: number;
 
-  gender: Gender;
-}
-
-export enum StatusCode {
-  Success = 100000,
+  gaender: Gender;
 }
 
 export enum Gender {
-  Secret = "secret",
   Male = "male",
   Female = "female",
 }

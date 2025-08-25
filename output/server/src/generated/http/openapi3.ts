@@ -165,15 +165,15 @@ export const openApiDocument = {
   },
   components: {
     schemas: {
-      Gender: { type: "string", enum: ["secret", "male", "female"] },
+      Gender: { type: "string", enum: ["male", "female"] },
       User: {
         type: "object",
-        required: ["id", "name", "age", "gender"],
+        required: ["id", "name", "age", "gaender"],
         properties: {
           id: { type: "string" },
-          name: { type: "string", minLength: 1 },
-          age: { type: "integer", format: "uint32", minimum: 0, maximum: 120 },
-          gender: { $ref: "#/components/schemas/Gender" },
+          name: { type: "string" },
+          age: { type: "integer", format: "int32" },
+          gaender: { $ref: "#/components/schemas/Gender" },
         },
         description: "",
       },
@@ -187,12 +187,11 @@ export const openApiDocument = {
           },
         },
       },
-      StatusCode: { type: "number", enum: [100000] },
       Error: {
         type: "object",
         required: ["code", "msg"],
         properties: {
-          code: { $ref: "#/components/schemas/StatusCode" },
+          code: { type: "integer", format: "int32" },
           msg: { type: "string" },
         },
       },

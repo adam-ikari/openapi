@@ -76,8 +76,8 @@ List widgets
     {
       "id": "string",
       "name": "string",
-      "age": 120,
-      "gender": "secret"
+      "age": 0,
+      "gaender": "male"
     }
   ]
 }
@@ -112,8 +112,8 @@ Accept: application/json
 const inputBody = '{
   "id": "string",
   "name": "string",
-  "age": 120,
-  "gender": "secret"
+  "age": 0,
+  "gaender": "male"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -157,8 +157,8 @@ Create a widget
 {
   "id": "string",
   "name": "string",
-  "age": 120,
-  "gender": "secret"
+  "age": 0,
+  "gaender": "male"
 }
 ```
 
@@ -176,8 +176,8 @@ Create a widget
 {
   "id": "string",
   "name": "string",
-  "age": 120,
-  "gender": "secret"
+  "age": 0,
+  "gaender": "male"
 }
 ```
 
@@ -253,8 +253,8 @@ Read widgets
 {
   "id": "string",
   "name": "string",
-  "age": 120,
-  "gender": "secret"
+  "age": 0,
+  "gaender": "male"
 }
 ```
 
@@ -287,8 +287,8 @@ Accept: application/json
 const inputBody = '{
   "id": "string",
   "name": "string",
-  "age": 120,
-  "gender": "secret"
+  "age": 0,
+  "gaender": "male"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -332,8 +332,8 @@ Update a widget
 {
   "id": "string",
   "name": "string",
-  "age": 120,
-  "gender": "secret"
+  "age": 0,
+  "gaender": "male"
 }
 ```
 
@@ -352,8 +352,8 @@ Update a widget
 {
   "id": "string",
   "name": "string",
-  "age": 120,
-  "gender": "secret"
+  "age": 0,
+  "gaender": "male"
 }
 ```
 
@@ -427,7 +427,7 @@ Delete a widget
 
 ```json
 {
-  "code": 100000,
+  "code": 0,
   "msg": "string"
 }
 ```
@@ -453,16 +453,16 @@ This operation does not require authentication
 <a id="tocserror"></a>
 
 ```yaml
-code: 100000
+code: 0
 msg: string
 ```
 
 ### Properties
 
-| Name | Type                            | Required | Restrictions | Description |
-| ---- | ------------------------------- | -------- | ------------ | ----------- |
-| code | [StatusCode](#schemastatuscode) | true     | none         | none        |
-| msg  | string                          | true     | none         | none        |
+| Name | Type           | Required | Restrictions | Description |
+| ---- | -------------- | -------- | ------------ | ----------- |
+| code | integer(int32) | true     | none         | none        |
+| msg  | string         | true     | none         | none        |
 
 <h2 id="tocS_Gender">Gender</h2>
 <!-- backwards compatibility -->
@@ -472,7 +472,7 @@ msg: string
 <a id="tocsgender"></a>
 
 ```yaml
-secret
+male
 ```
 
 ### Properties
@@ -485,32 +485,8 @@ secret
 
 | Property    | Value  |
 | ----------- | ------ |
-| _anonymous_ | secret |
 | _anonymous_ | male   |
 | _anonymous_ | female |
-
-<h2 id="tocS_StatusCode">StatusCode</h2>
-<!-- backwards compatibility -->
-<a id="schemastatuscode"></a>
-<a id="schema_StatusCode"></a>
-<a id="tocSstatuscode"></a>
-<a id="tocsstatuscode"></a>
-
-```yaml
-100000
-```
-
-### Properties
-
-| Name        | Type   | Required | Restrictions | Description |
-| ----------- | ------ | -------- | ------------ | ----------- |
-| _anonymous_ | number | false    | none         | none        |
-
-#### Enumerated Values
-
-| Property    | Value  |
-| ----------- | ------ |
-| _anonymous_ | 100000 |
 
 <h2 id="tocS_User">User</h2>
 <!-- backwards compatibility -->
@@ -522,18 +498,18 @@ secret
 ```yaml
 id: string
 name: string
-age: 120
-gender: secret
+age: 0
+gaender: male
 ```
 
 ### Properties
 
-| Name   | Type                    | Required | Restrictions | Description |
-| ------ | ----------------------- | -------- | ------------ | ----------- |
-| id     | string                  | true     | none         | none        |
-| name   | string                  | true     | none         | none        |
-| age    | integer(uint32)         | true     | none         | none        |
-| gender | [Gender](#schemagender) | true     | none         | none        |
+| Name    | Type                    | Required | Restrictions | Description |
+| ------- | ----------------------- | -------- | ------------ | ----------- |
+| id      | string                  | true     | none         | none        |
+| name    | string                  | true     | none         | none        |
+| age     | integer(int32)          | true     | none         | none        |
+| gaender | [Gender](#schemagender) | true     | none         | none        |
 
 <h2 id="tocS_UserList">UserList</h2>
 <!-- backwards compatibility -->
@@ -546,8 +522,8 @@ gender: secret
 items:
   - id: string
     name: string
-    age: 120
-    gender: secret
+    age: 0
+    gaender: male
 ```
 
 ### Properties

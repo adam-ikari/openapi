@@ -28,7 +28,7 @@ export interface User {
   id: string;
   name: string;
   age: number;
-  gender: Gender;
+  gaender: Gender;
 }
 
 export function userSerializer(item: User): any {
@@ -36,7 +36,7 @@ export function userSerializer(item: User): any {
     id: item["id"],
     name: item["name"],
     age: item["age"],
-    gender: item["gender"],
+    gaender: item["gaender"],
   };
 }
 
@@ -45,16 +45,16 @@ export function userDeserializer(item: any): User {
     id: item["id"],
     name: item["name"],
     age: item["age"],
-    gender: item["gender"],
+    gaender: item["gaender"],
   };
 }
 
 /** Type of Gender */
-export type Gender = "secret" | "male" | "female";
+export type Gender = "male" | "female";
 
 /** model interface ErrorModel */
 export interface ErrorModel {
-  code: StatusCode;
+  code: number;
   msg: string;
 }
 
@@ -64,6 +64,3 @@ export function errorDeserializer(item: any): ErrorModel {
     msg: item["msg"],
   };
 }
-
-/** Type of StatusCode */
-export type StatusCode = 100000;

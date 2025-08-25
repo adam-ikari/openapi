@@ -49,7 +49,7 @@ export async function users_read(
     } else throw e;
   }
 
-  if ("age" in __result_7 && __result_7.age >= 0 && __result_7.age <= 120) {
+  if ("id" in __result_7) {
     __ctx_6.response.setHeader("content-type", "application/json");
     __ctx_6.response.end(globalThis.JSON.stringify(__result_7));
   } else if ("code" in __result_7) {
@@ -104,7 +104,7 @@ export async function users_create(
     } else throw e;
   }
 
-  if ("age" in __result_11 && __result_11.age >= 0 && __result_11.age <= 120) {
+  if ("id" in __result_11) {
     __ctx_10.response.setHeader("content-type", "application/json");
     __ctx_10.response.end(globalThis.JSON.stringify(__result_11));
   } else if ("code" in __result_11) {
@@ -160,7 +160,7 @@ export async function users_update(
     } else throw e;
   }
 
-  if ("age" in __result_17 && __result_17.age >= 0 && __result_17.age <= 120) {
+  if ("id" in __result_17) {
     __ctx_16.response.setHeader("content-type", "application/json");
     __ctx_16.response.end(globalThis.JSON.stringify(__result_17));
   } else if ("code" in __result_17) {
