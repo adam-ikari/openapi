@@ -4,6 +4,9 @@ import "./models/error.tsp";
 
 using TypeSpec.Http;
 
+@service(#{ title: "OpenAPI" })
+namespace OpenApiService;
+
 @route("/users")
 @tag("Users")
 interface Users {
