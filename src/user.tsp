@@ -1,6 +1,7 @@
 import "@typespec/http";
 
 using TypeSpec.Http;
+
 @service(#{ title: "OpenAPI" })
 namespace OpenApiService;
 
@@ -54,7 +55,11 @@ interface Users {
   /** Read users */
   @get
   @useAuth(BearerAuth)
-  read(@path id: string): User | Error;
+  read(
+    @doc("The id of the user to read")
+    @path
+    id: string,
+  ): User | Error;
 
   /** Create a users */
   @post
@@ -64,10 +69,20 @@ interface Users {
   /** Update a users */
   @put
   @useAuth(BearerAuth)
-  update(@path id: string, @body body: User): User | Error;
+  update(
+    @doc("The id of the user to update")
+    @path
+    id: string,
+
+    @body body: User,
+  ): User | Error;
 
   /** Delete a users */
   @delete
   @useAuth(BearerAuth)
-  delete(@path id: string): void | Error;
+  delete(
+    @doc("The id of the user to delete")
+    @path
+    id: string,
+  ): void | Error;
 }

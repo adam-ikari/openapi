@@ -62,6 +62,7 @@ paths:
         - name: id
           in: path
           required: true
+          description: The id of the user to read
           schema:
             type: string
       responses:
@@ -88,6 +89,7 @@ paths:
         - name: id
           in: path
           required: true
+          description: The id of the user to update
           schema:
             type: string
       responses:
@@ -120,6 +122,7 @@ paths:
         - name: id
           in: path
           required: true
+          description: The id of the user to delete
           schema:
             type: string
       responses:

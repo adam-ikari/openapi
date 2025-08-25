@@ -247,9 +247,9 @@ Read users
 
 <h3 id="users_read-parameters">Parameters</h3>
 
-| Name | In   | Type   | Required | Description |
-| ---- | ---- | ------ | -------- | ----------- |
-| id   | path | string | true     | none        |
+| Name | In   | Type   | Required | Description                |
+| ---- | ---- | ------ | -------- | -------------------------- |
+| id   | path | string | true     | The id of the user to read |
 
 > Example responses
 
@@ -346,10 +346,10 @@ Update a users
 
 <h3 id="users_update-parameters">Parameters</h3>
 
-| Name | In   | Type                | Required | Description |
-| ---- | ---- | ------------------- | -------- | ----------- |
-| id   | path | string              | true     | none        |
-| body | body | [User](#schemauser) | true     | none        |
+| Name | In   | Type                | Required | Description                  |
+| ---- | ---- | ------------------- | -------- | ---------------------------- |
+| id   | path | string              | true     | The id of the user to update |
+| body | body | [User](#schemauser) | true     | none                         |
 
 > Example responses
 
@@ -425,9 +425,9 @@ Delete a users
 
 <h3 id="users_delete-parameters">Parameters</h3>
 
-| Name | In   | Type   | Required | Description |
-| ---- | ---- | ------ | -------- | ----------- |
-| id   | path | string | true     | none        |
+| Name | In   | Type   | Required | Description                  |
+| ---- | ---- | ------ | -------- | ---------------------------- |
+| id   | path | string | true     | The id of the user to delete |
 
 > Example responses
 
