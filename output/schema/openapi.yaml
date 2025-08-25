@@ -146,8 +146,10 @@ components:
         code:
           type: integer
           format: int32
+          description: The error code
         msg:
           type: string
+          description: The error message
     Gender:
       type: string
       enum:

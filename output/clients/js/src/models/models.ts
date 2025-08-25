@@ -59,7 +59,9 @@ export type Gender = "male" | "female";
 
 /** model interface ErrorModel */
 export interface ErrorModel {
+  /** The error code */
   code: number;
+  /** The error message */
   msg: string;
 }
 
