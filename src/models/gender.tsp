@@ -13,6 +13,7 @@ using TypeSpec.OpenAPI;
         ],
     }
 )
+@extension("x-enum-varnames", #["secret", "male", "female"])
 enum Gender {
     secret: 0,
     male: 1,

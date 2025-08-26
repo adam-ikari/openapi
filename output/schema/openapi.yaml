@@ -178,26 +178,35 @@ components:
         - 1
         - 2
       description: Gender enum values
+      x-enum-varnames:
+        - secret
+        - male
+        - female
       x-ms-enum:
         values:
           - name: secret
             value: 0
-            description: secret
+            description: unpublic gender
           - name: male
             value: 1
-            description: male
+            description: male gender
           - name: female
             value: 2
-            description: female
+            description: female gender
     StatusCode:
       type: number
       enum:
         - 100000
         - 100001
       description: Status Code
-      x-enum-descriptions:
-        SUCCESS: 100000
-        FAILURE: 100001
+      x-ms-enum:
+        values:
+          - name: SUCCESS
+            value: 100000
+            description: success
+          - name: FAILURE
+            value: 100001
+            description: failure
     User:
       type: object
       required:

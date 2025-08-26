@@ -196,11 +196,12 @@ export const openApiDocument = {
         type: "number",
         enum: [0, 1, 2],
         description: "Gender enum values",
+        "x-enum-varnames": ["secret", "male", "female"],
         "x-ms-enum": {
           values: [
-            { name: "secret", value: 0, description: "secret" },
-            { name: "male", value: 1, description: "male" },
-            { name: "female", value: 2, description: "female" },
+            { name: "secret", value: 0, description: "unpublic gender" },
+            { name: "male", value: 1, description: "male gender" },
+            { name: "female", value: 2, description: "female gender" },
           ],
         },
       },
@@ -261,7 +262,12 @@ export const openApiDocument = {
         type: "number",
         enum: [100000, 100001],
         description: "Status Code",
-        "x-enum-descriptions": { SUCCESS: 100000, FAILURE: 100001 },
+        "x-ms-enum": {
+          values: [
+            { name: "SUCCESS", value: 100000, description: "success" },
+            { name: "FAILURE", value: 100001, description: "failure" },
+          ],
+        },
       },
       Error: {
         type: "object",

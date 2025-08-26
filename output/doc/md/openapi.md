@@ -504,11 +504,11 @@ Gender enum values
 
 #### Enumerated Values
 
-| Property | Value | Description |
-| -------- | ----- | ----------- |
-| secret   | 0     | secret      |
-| male     | 1     | male        |
-| female   | 2     | female      |
+| Property | Value | Description     |
+| -------- | ----- | --------------- |
+| secret   | 0     | unpublic gender |
+| male     | 1     | male gender     |
+| female   | 2     | female gender   |
 
 <h2 id="tocS_StatusCode">StatusCode</h2>
 <!-- backwards compatibility -->
@@ -531,10 +531,10 @@ Status Code
 
 #### Enumerated Values
 
-| Property    | Value  | Description |
-| ----------- | ------ | ----------- |
-| _anonymous_ | 100000 | undefined   |
-| _anonymous_ | 100001 | undefined   |
+| Property | Value  | Description |
+| -------- | ------ | ----------- |
+| SUCCESS  | 100000 | success     |
+| FAILURE  | 100001 | failure     |
 
 <h2 id="tocS_User">User</h2>
 <!-- backwards compatibility -->
