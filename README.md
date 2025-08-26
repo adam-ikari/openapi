@@ -1,9 +1,7 @@
-# API Toolchain face to generate OpenAPI spec and docs
+# openapi
 
-## Usage
+## Install
 
 ```bash
-npm run build
+npm install openapi
 ```
-
-This will generate OpenAPI spec and docs in `output` folder.

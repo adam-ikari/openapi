@@ -17,12 +17,12 @@ options.language_tabs = [
   { javascript: "JavaScript" },
   { python: "Python" },
 ];
-//options.language_clients = [];
-//options.loadedFrom = sourceUrl; // only needed if input document is relative
-//options.user_templates = './user_templates';
-options.templateCallback = function (templateName, stage, data) {
-  return data;
-};
+// options.language_clients = [];
+// options.loadedFrom = sourceUrl; // only needed if input document is relative
+// options.user_templates = './user_templates';
+// options.templateCallback = function (templateName, stage, data) {
+//   return data;
+// };
 options.theme = "darkula";
 options.search = true;
 options.sample = true; // set false by --raw

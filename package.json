@@ -29,8 +29,6 @@
     "@typespec/streams": "^0.73.0",
     "@typespec/versioning": "^0.73.0",
     "@typespec/xml": "^0.73.0",
-    "js-yaml": "^4.1.0",
-    "prettier": "^3.6.2",
     "widdershins": "^4.0.1"
   },
   "private": true

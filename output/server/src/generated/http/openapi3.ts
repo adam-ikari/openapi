@@ -193,9 +193,9 @@ export const openApiDocument = {
   components: {
     schemas: {
       Gender: {
-        type: "string",
-        enum: ["secret", "male", "female"],
-        description: "The enum of the gender",
+        type: "number",
+        enum: [0, 1, 2],
+        "x-enum-descriptions": { secret: 0, male: 1, female: 2 },
       },
       User: {
         type: "object",

@@ -90,7 +90,7 @@ List users
       "id": "string",
       "name": "string",
       "age": 1,
-      "gender": "secret"
+      "gender": 0
     }
   ],
   "total": 0,
@@ -130,7 +130,7 @@ const inputBody = '{
   "id": "string",
   "name": "string",
   "age": 1,
-  "gender": "secret"
+  "gender": 0
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -175,7 +175,7 @@ Create a users
   "id": "string",
   "name": "string",
   "age": 1,
-  "gender": "secret"
+  "gender": 0
 }
 ```
 
@@ -194,7 +194,7 @@ Create a users
   "id": "string",
   "name": "string",
   "age": 1,
-  "gender": "secret"
+  "gender": 0
 }
 ```
 
@@ -272,7 +272,7 @@ Read users
   "id": "string",
   "name": "string",
   "age": 1,
-  "gender": "secret"
+  "gender": 0
 }
 ```
 
@@ -307,7 +307,7 @@ const inputBody = '{
   "id": "string",
   "name": "string",
   "age": 1,
-  "gender": "secret"
+  "gender": 0
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -352,7 +352,7 @@ Update a users
   "id": "string",
   "name": "string",
   "age": 1,
-  "gender": "secret"
+  "gender": 0
 }
 ```
 
@@ -372,7 +372,7 @@ Update a users
   "id": "string",
   "name": "string",
   "age": 1,
-  "gender": "secret"
+  "gender": 0
 }
 ```
 
@@ -493,24 +493,22 @@ msg: string
 <a id="tocsgender"></a>
 
 ```yaml
-secret
+0
 ```
-
-The enum of the gender
 
 ### Properties
 
-| Name        | Type   | Required | Restrictions | Description            |
-| ----------- | ------ | -------- | ------------ | ---------------------- |
-| _anonymous_ | string | false    | none         | The enum of the gender |
+| Name        | Type   | Required | Restrictions | Description |
+| ----------- | ------ | -------- | ------------ | ----------- |
+| _anonymous_ | number | false    | none         | none        |
 
 #### Enumerated Values
 
-| Property    | Value  |
-| ----------- | ------ |
-| _anonymous_ | secret |
-| _anonymous_ | male   |
-| _anonymous_ | female |
+| Property    | Value |
+| ----------- | ----- |
+| _anonymous_ | 0     |
+| _anonymous_ | 1     |
+| _anonymous_ | 2     |
 
 <h2 id="tocS_StatusCode">StatusCode</h2>
 <!-- backwards compatibility -->
@@ -547,7 +545,7 @@ The enum of the gender
 id: string
 name: string
 age: 1
-gender: secret
+gender: 0
 ```
 
 ### Properties
@@ -571,7 +569,7 @@ items:
   - id: string
     name: string
     age: 1
-    gender: secret
+    gender: 0
 total: 0
 offset: 0
 limit: 0

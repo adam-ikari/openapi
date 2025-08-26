@@ -172,12 +172,15 @@ components:
           type: string
           description: The error message
     Gender:
-      type: string
+      type: number
       enum:
-        - secret
-        - male
-        - female
-      description: The enum of the gender
+        - 0
+        - 1
+        - 2
+      x-enum-descriptions:
+        secret: 0
+        male: 1
+        female: 2
     StatusCode:
       type: number
       enum:

@@ -63,8 +63,8 @@ export function userDeserializer(item: any): User {
   };
 }
 
-/** The enum of the gender */
-export type Gender = "secret" | "male" | "female";
+/** Type of Gender */
+export type Gender = 0 | 1 | 2;
 
 /** model interface ErrorModel */
 export interface ErrorModel {
