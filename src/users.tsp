@@ -16,10 +16,10 @@ namespace OpenApiService;
 
 @route("/users")
 @tag("Users")
-@useAuth(BearerAuth)
 interface Users {
   /** List users */
   @get
+  @useAuth(BearerAuth)
   list(
     @doc("The offset of the list, 0 means no offset, default is 0")
     @query
@@ -32,6 +32,7 @@ interface Users {
 
   /** Read users */
   @get
+  @useAuth(BearerAuth)
   read(
     @doc("The id of the user to read")
     @path
@@ -40,10 +41,12 @@ interface Users {
 
   /** Create a users */
   @post
+  @useAuth(BearerAuth)
   create(@body body: User): User | Error;
 
   /** Update a users */
   @put
+  @useAuth(BearerAuth)
   update(
     @doc("The id of the user to update")
     @path
@@ -54,6 +57,7 @@ interface Users {
 
   /** Delete a users */
   @delete
+  @useAuth(BearerAuth)
   delete(
     @doc("The id of the user to delete")
     @path
