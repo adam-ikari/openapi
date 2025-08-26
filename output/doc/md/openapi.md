@@ -17,7 +17,9 @@ headingLevel: 2
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
-undefined
+# Authentication
+
+- HTTP Authentication, scheme: Bearer
 
 <h1 id="openapi-users">Users</h1>
 
@@ -585,5 +587,3 @@ limit: 0
 | total  | integer(uint32)       | true     | none         | The total number of users                       |
 | offset | integer(uint32)       | true     | none         | The offset to fetch the list, 0 means no offset |
 | limit  | integer(uint32)       | true     | none         | The limit to fetch the list, 0 means no limit   |
-
-undefined
