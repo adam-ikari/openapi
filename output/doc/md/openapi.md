@@ -84,6 +84,8 @@ axios.request(config)
 ```
 
 ```python
+# python
+
 import requests
 headers = {
   'Accept': 'application/json'
@@ -215,6 +217,8 @@ axios.request(config)
 ```
 
 ```python
+# python
+
 import requests
 headers = {
   'Content-Type': 'application/json',
@@ -333,6 +337,8 @@ axios.request(config)
 ```
 
 ```python
+# python
+
 import requests
 headers = {
   'Accept': 'application/json'
@@ -454,6 +460,8 @@ axios.request(config)
 ```
 
 ```python
+# python
+
 import requests
 headers = {
   'Content-Type': 'application/json',
@@ -573,6 +581,8 @@ axios.request(config)
 ```
 
 ```python
+# python
+
 import requests
 headers = {
   'Accept': 'application/json'
