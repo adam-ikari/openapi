@@ -494,19 +494,21 @@ msg: string
 0
 ```
 
+Gender enum values
+
 ### Properties
 
-| Name        | Type   | Required | Restrictions | Description |
-| ----------- | ------ | -------- | ------------ | ----------- |
-| _anonymous_ | number | false    | none         | none        |
+| Name        | Type   | Required | Restrictions | Description        |
+| ----------- | ------ | -------- | ------------ | ------------------ |
+| _anonymous_ | number | false    | none         | Gender enum values |
 
 #### Enumerated Values
 
-| Property | Value |
-| -------- | ----- |
-| secret   | 0     |
-| male     | 1     |
-| female   | 2     |
+| Property | Value | Description |
+| -------- | ----- | ----------- |
+| secret   | 0     | secret      |
+| male     | 1     | male        |
+| female   | 2     | female      |
 
 <h2 id="tocS_StatusCode">StatusCode</h2>
 <!-- backwards compatibility -->
@@ -529,10 +531,10 @@ Status Code
 
 #### Enumerated Values
 
-| Property | Value  |
-| -------- | ------ |
-| SUCCESS  | 100000 |
-| FAILURE  | 100001 |
+| Property    | Value  | Description |
+| ----------- | ------ | ----------- |
+| _anonymous_ | 100000 | undefined   |
+| _anonymous_ | 100001 | undefined   |
 
 <h2 id="tocS_User">User</h2>
 <!-- backwards compatibility -->

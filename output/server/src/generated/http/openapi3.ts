@@ -195,7 +195,14 @@ export const openApiDocument = {
       Gender: {
         type: "number",
         enum: [0, 1, 2],
-        "x-enum-descriptions": { secret: 0, male: 1, female: 2 },
+        description: "Gender enum values",
+        "x-ms-enum": {
+          values: [
+            { name: "secret", value: 0, description: "secret" },
+            { name: "male", value: 1, description: "male" },
+            { name: "female", value: 2, description: "female" },
+          ],
+        },
       },
       User: {
         type: "object",

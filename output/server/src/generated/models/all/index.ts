@@ -64,6 +64,9 @@ export enum StatusCode {
   Failure = 100001,
 }
 
+/**
+ * Gender enum values
+ */
 export enum Gender {
   Secret = 0,
   Male = 1,

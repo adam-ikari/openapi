@@ -84,9 +84,9 @@ Base URLs:
 {{ var blocks = data.utils.schemaToArray(origSchema,-1,{trim:true,join:true},data); }}
 {{ for (var block of blocks) {
      for (var p of block.rows) {
-       if (p.schema && p.schema['x-enum-descriptions']) {
-         for (var key in p.schema['x-enum-descriptions']) {
-           enums.push({name:key,value:p.schema['x-enum-descriptions'][key]});
+       if (p.schema && p.schema['x-ms-enum']) {
+         for (var e of p.schema['x-ms-enum'].values) {
+           enums.push({name:e.name,value:e.value, description:e.description});
          }
        }
        else if (p.schema && p.schema.enum) {
@@ -124,9 +124,9 @@ Base URLs:
 
 #### Enumerated Values
 
-|Property|Value|
-|---|---|
-{{~ enums :e}}|{{=e.name}}|{{=data.utils.toPrimitive(e.value)}}|
+|Property|Value|Description|
+|---|---|---|
+{{~ enums :e}}|{{=e.name}}|{{=data.utils.toPrimitive(e.value)}}|{{=e.description}}
 {{~}}
 
 {{= data.tags.endSection }}
