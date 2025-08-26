@@ -17,9 +17,7 @@ headingLevel: 2
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
-# Authentication
-
-- HTTP Authentication, scheme: Bearer
+undefined
 
 <h1 id="openapi-users">Users</h1>
 
@@ -504,11 +502,11 @@ msg: string
 
 #### Enumerated Values
 
-| Property    | Value |
-| ----------- | ----- |
-| _anonymous_ | 0     |
-| _anonymous_ | 1     |
-| _anonymous_ | 2     |
+| Property | Value |
+| -------- | ----- |
+| secret   | 0     |
+| male     | 1     |
+| female   | 2     |
 
 <h2 id="tocS_StatusCode">StatusCode</h2>
 <!-- backwards compatibility -->
@@ -521,18 +519,20 @@ msg: string
 100000
 ```
 
+Status Code
+
 ### Properties
 
 | Name        | Type   | Required | Restrictions | Description |
 | ----------- | ------ | -------- | ------------ | ----------- |
-| _anonymous_ | number | false    | none         | none        |
+| _anonymous_ | number | false    | none         | Status Code |
 
 #### Enumerated Values
 
-| Property    | Value  |
-| ----------- | ------ |
-| _anonymous_ | 100000 |
-| _anonymous_ | 100001 |
+| Property | Value  |
+| -------- | ------ |
+| SUCCESS  | 100000 |
+| FAILURE  | 100001 |
 
 <h2 id="tocS_User">User</h2>
 <!-- backwards compatibility -->
@@ -583,3 +583,5 @@ limit: 0
 | total  | integer(uint32)       | true     | none         | The total number of users                       |
 | offset | integer(uint32)       | true     | none         | The offset to fetch the list, 0 means no offset |
 | limit  | integer(uint32)       | true     | none         | The limit to fetch the list, 0 means no limit   |
+
+undefined

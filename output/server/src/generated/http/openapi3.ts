@@ -250,7 +250,12 @@ export const openApiDocument = {
           },
         },
       },
-      StatusCode: { type: "number", enum: [100000, 100001] },
+      StatusCode: {
+        type: "number",
+        enum: [100000, 100001],
+        description: "Status Code",
+        "x-enum-descriptions": { SUCCESS: 100000, FAILURE: 100001 },
+      },
       Error: {
         type: "object",
         required: ["code", "msg"],

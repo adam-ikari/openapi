@@ -81,5 +81,5 @@ export function errorDeserializer(item: any): ErrorModel {
   };
 }
 
-/** Type of StatusCode */
+/** Status Code */
 export type StatusCode = 100000 | 100001;

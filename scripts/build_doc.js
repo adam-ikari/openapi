@@ -19,7 +19,7 @@ options.language_tabs = [
 ];
 // options.language_clients = [];
 // options.loadedFrom = sourceUrl; // only needed if input document is relative
-// options.user_templates = './user_templates';
+options.user_templates = './templates/openapi3';
 // options.templateCallback = function (templateName, stage, data) {
 //   return data;
 // };

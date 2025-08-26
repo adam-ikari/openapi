@@ -186,6 +186,10 @@ components:
       enum:
         - 100000
         - 100001
+      description: Status Code
+      x-enum-descriptions:
+        SUCCESS: 100000
+        FAILURE: 100001
     User:
       type: object
       required:

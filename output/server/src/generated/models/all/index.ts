@@ -56,6 +56,9 @@ export interface User {
   gender: Gender;
 }
 
+/**
+ * Status Code
+ */
 export enum StatusCode {
   Success = 100000,
   Failure = 100001,
