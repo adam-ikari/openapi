@@ -1,4 +1,4 @@
-# DemoService client library for JavaScript
+# OpenApiService client library for JavaScript
 
 
 
@@ -14,7 +14,7 @@ Key links:
 
 ### Install the `OpenAPI` package
 
-Install the DemoService client library for JavaScript with `npm`:
+Install the OpenApiService client library for JavaScript with `npm`:
 
 ```bash
 npm install OpenAPI

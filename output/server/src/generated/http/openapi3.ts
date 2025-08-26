@@ -2,7 +2,7 @@
 
 export const openApiDocument = {
   openapi: "3.0.0",
-  info: { title: "OpenAPI", version: "0.0.0" },
+  info: { title: "OpenAPI", version: "1.0.0" },
   tags: [{ name: "Users" }],
   paths: {
     "/users": {
@@ -216,7 +216,7 @@ export const openApiDocument = {
             format: "uint8",
             minimum: 1,
             maximum: 120,
-            description: "The age of the user",
+            description: "The age of the user, min 1, max 120",
           },
           gender: {
             allOf: [{ $ref: "#/components/schemas/Gender" }],

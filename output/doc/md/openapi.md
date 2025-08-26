@@ -1,5 +1,5 @@
 ---
-title: OpenAPI v0.0.0
+title: OpenAPI v1.0.0
 language_tabs:
   - http: HTTP
   - javascript: JavaScript
@@ -13,7 +13,7 @@ headingLevel: 2
 
 <!-- Generator: Widdershins v4.0.1 -->
 
-<h1 id="openapi">OpenAPI v0.0.0</h1>
+<h1 id="openapi">OpenAPI v1.0.0</h1>
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
@@ -552,12 +552,12 @@ gender: secret
 
 ### Properties
 
-| Name   | Type                    | Required | Restrictions | Description                       |
-| ------ | ----------------------- | -------- | ------------ | --------------------------------- |
-| id     | string                  | true     | none         | The unique identifier of the user |
-| name   | string                  | true     | none         | The name of the user              |
-| age    | integer(uint8)          | true     | none         | The age of the user               |
-| gender | [Gender](#schemagender) | true     | none         | The gender of the user            |
+| Name   | Type                    | Required | Restrictions | Description                         |
+| ------ | ----------------------- | -------- | ------------ | ----------------------------------- |
+| id     | string                  | true     | none         | The unique identifier of the user   |
+| name   | string                  | true     | none         | The name of the user                |
+| age    | integer(uint8)          | true     | none         | The age of the user, min 1, max 120 |
+| gender | [Gender](#schemagender) | true     | none         | The gender of the user              |
 
 <h2 id="tocS_UserList">UserList</h2>
 <!-- backwards compatibility -->

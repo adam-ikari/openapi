@@ -1,11 +1,17 @@
+// Import TypeSpec
 import "@typespec/http";
+import "@typespec/openapi";
+
+// Import Models
 import "./models/user.tsp";
 import "./models/user_list.tsp";
 import "./models/error.tsp";
 
 using TypeSpec.Http;
+using TypeSpec.OpenAPI;
 
 @service(#{ title: "OpenAPI" })
+@info(#{ version: "1.0.0" })
 namespace OpenApiService;
 
 @route("/users")

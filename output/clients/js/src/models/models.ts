@@ -39,7 +39,7 @@ export interface User {
   id: string;
   /** The name of the user */
   name: string;
-  /** The age of the user */
+  /** The age of the user, min 1, max 120 */
   age: number;
   /** The gender of the user */
   gender: Gender;

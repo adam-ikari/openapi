@@ -11,12 +11,7 @@ model User {
   @maxLength(32)
   name: string;
 
-  /**
-   * The age of the user
-   * @minValue(1)
-   * @maxValue(120)
-   */
-  @doc("The age of the user")
+  @doc("The age of the user, min 1, max 120")
   @minValue(1)
   @maxValue(120)
   age: uint8;

@@ -46,7 +46,7 @@ export interface User {
   name: string;
 
   /**
-   * The age of the user
+   * The age of the user, min 1, max 120
    */
   age: number;
 
