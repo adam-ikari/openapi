@@ -15,11 +15,12 @@ options.httpsnippet = false;
 options.language_tabs = [
   { http: "HTTP" },
   { javascript: "JavaScript" },
+  { "javascript-axios": "Axios" },
   { python: "Python" },
 ];
 // options.language_clients = [];
 // options.loadedFrom = sourceUrl; // only needed if input document is relative
-options.user_templates = './templates/openapi3';
+options.user_templates = "./templates/openapi3";
 // options.templateCallback = function (templateName, stage, data) {
 //   return data;
 // };

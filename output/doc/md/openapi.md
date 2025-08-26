@@ -3,6 +3,7 @@ title: OpenAPI v1.0.0
 language_tabs:
   - http: HTTP
   - javascript: JavaScript
+  - javascript-axios: Axios
   - python: Python
 toc_footers: []
 includes: []
@@ -37,6 +38,8 @@ Accept: application/json
 ```
 
 ```javascript
+// javascript
+
 const headers = {
   Accept: "application/json",
 }
@@ -52,6 +55,32 @@ fetch("/users?offset=0&limit=10", {
   .then(function (body) {
     console.log(body)
   })
+```
+
+```javascript-axios
+// axios.js
+
+const headers = {
+  'Accept':'application/json'
+};
+
+let config = {
+  method: 'GET',
+  maxBodyLength: Infinity,
+  url: '/users',
+  headers: headers
+};
+
+// 使用 axios 发送请求
+import axios from 'axios';
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
 ```
 
 ```python
@@ -126,6 +155,7 @@ Accept: application/json
 ```
 
 ```javascript
+// javascript
 const inputBody = '{
   "id": "string",
   "name": "string",
@@ -149,6 +179,39 @@ fetch('/users',
     console.log(body);
 });
 
+```
+
+```javascript-axios
+// axios.js
+const inputBody = '{
+  "id": "string",
+  "name": "string",
+  "age": 1,
+  "gender": 0
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json'
+};
+
+let config = {
+  method: 'POST',
+  maxBodyLength: Infinity,
+  url: '/users',
+  headers: headers,
+  data : inputBody
+};
+
+// 使用 axios 发送请求
+import axios from 'axios';
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
 ```
 
 ```python
@@ -224,6 +287,8 @@ Accept: application/json
 ```
 
 ```javascript
+// javascript
+
 const headers = {
   Accept: "application/json",
 }
@@ -239,6 +304,32 @@ fetch("/users/{id}", {
   .then(function (body) {
     console.log(body)
   })
+```
+
+```javascript-axios
+// axios.js
+
+const headers = {
+  'Accept':'application/json'
+};
+
+let config = {
+  method: 'GET',
+  maxBodyLength: Infinity,
+  url: '/users/{id}',
+  headers: headers
+};
+
+// 使用 axios 发送请求
+import axios from 'axios';
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
 ```
 
 ```python
@@ -303,6 +394,7 @@ Accept: application/json
 ```
 
 ```javascript
+// javascript
 const inputBody = '{
   "id": "string",
   "name": "string",
@@ -326,6 +418,39 @@ fetch('/users/{id}',
     console.log(body);
 });
 
+```
+
+```javascript-axios
+// axios.js
+const inputBody = '{
+  "id": "string",
+  "name": "string",
+  "age": 1,
+  "gender": 0
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json'
+};
+
+let config = {
+  method: 'PUT',
+  maxBodyLength: Infinity,
+  url: '/users/{id}',
+  headers: headers,
+  data : inputBody
+};
+
+// 使用 axios 发送请求
+import axios from 'axios';
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
 ```
 
 ```python
@@ -402,6 +527,8 @@ Accept: application/json
 ```
 
 ```javascript
+// javascript
+
 const headers = {
   Accept: "application/json",
 }
@@ -417,6 +544,32 @@ fetch("/users/{id}", {
   .then(function (body) {
     console.log(body)
   })
+```
+
+```javascript-axios
+// axios.js
+
+const headers = {
+  'Accept':'application/json'
+};
+
+let config = {
+  method: 'DELETE',
+  maxBodyLength: Infinity,
+  url: '/users/{id}',
+  headers: headers
+};
+
+// 使用 axios 发送请求
+import axios from 'axios';
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
 ```
 
 ```python
