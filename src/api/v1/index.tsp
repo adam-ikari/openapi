@@ -7,6 +7,6 @@ using TypeSpec.Http;
 using TypeSpec.OpenAPI;
 
 @service(#{ title: "OpenAPI" })
-@info(#{ version: "1.0.0" })
-@route("/api/v1")
+@info(#{ version: "2.0.0" })
+@route("/api/v2")
 namespace OpenApiV1;

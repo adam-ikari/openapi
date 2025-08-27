@@ -1,5 +1,5 @@
 ---
-title: OpenAPI v1.0.0
+title: OpenAPI v2.0.0
 language_tabs:
   - http: HTTP
   - javascript: JavaScript
@@ -13,7 +13,7 @@ headingLevel: 2
 
 <!-- Generator: Widdershins v4.0.1 -->
 
-<h1 id="openapi">OpenAPI v1.0.0</h1>
+<h1 id="openapi">OpenAPI v2.0.0</h1>
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
@@ -30,7 +30,7 @@ headingLevel: 2
 > Code samples
 
 ```http
-GET /api/v1/users?offset=0&limit=10 HTTP/1.1
+GET /api/v2/users?offset=0&limit=10 HTTP/1.1
 
 Accept: application/json
 
@@ -43,7 +43,7 @@ const headers = {
   Accept: "application/json",
 }
 
-fetch("/api/v1/users?offset=0&limit=10", {
+fetch("/api/v2/users?offset=0&limit=10", {
   method: "GET",
 
   headers: headers,
@@ -64,7 +64,7 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.get('/api/v1/users', params={
+r = requests.get('/api/v2/users', params={
   'offset': '0',  'limit': '10'
 }, headers = headers)
 
@@ -72,7 +72,7 @@ print(r.json())
 
 ```
 
-`GET /api/v1/users`
+`GET /api/v2/users`
 
 List users
 
@@ -132,7 +132,7 @@ BearerAuth
 > Code samples
 
 ```http
-POST /api/v1/users HTTP/1.1
+POST /api/v2/users HTTP/1.1
 
 Content-Type: application/json
 Accept: application/json
@@ -162,7 +162,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('/api/v1/users',
+fetch('/api/v2/users',
 {
   method: 'POST',
   body: inputBody,
@@ -185,13 +185,13 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.post('/api/v1/users', headers = headers)
+r = requests.post('/api/v2/users', headers = headers)
 
 print(r.json())
 
 ```
 
-`POST /api/v1/users`
+`POST /api/v2/users`
 
 Create a users
 
@@ -264,7 +264,7 @@ BearerAuth
 > Code samples
 
 ```http
-GET /api/v1/users/{id} HTTP/1.1
+GET /api/v2/users/{id} HTTP/1.1
 
 Accept: application/json
 
@@ -277,7 +277,7 @@ const headers = {
   Accept: "application/json",
 }
 
-fetch("/api/v1/users/{id}", {
+fetch("/api/v2/users/{id}", {
   method: "GET",
 
   headers: headers,
@@ -298,13 +298,13 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.get('/api/v1/users/{id}', headers = headers)
+r = requests.get('/api/v2/users/{id}', headers = headers)
 
 print(r.json())
 
 ```
 
-`GET /api/v1/users/{id}`
+`GET /api/v2/users/{id}`
 
 Read users
 
@@ -356,7 +356,7 @@ BearerAuth
 > Code samples
 
 ```http
-PUT /api/v1/users/{id} HTTP/1.1
+PUT /api/v2/users/{id} HTTP/1.1
 
 Content-Type: application/json
 Accept: application/json
@@ -386,7 +386,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('/api/v1/users/{id}',
+fetch('/api/v2/users/{id}',
 {
   method: 'PUT',
   body: inputBody,
@@ -409,13 +409,13 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.put('/api/v1/users/{id}', headers = headers)
+r = requests.put('/api/v2/users/{id}', headers = headers)
 
 print(r.json())
 
 ```
 
-`PUT /api/v1/users/{id}`
+`PUT /api/v2/users/{id}`
 
 Update a users
 
@@ -489,7 +489,7 @@ BearerAuth
 > Code samples
 
 ```http
-DELETE /api/v1/users/{id} HTTP/1.1
+DELETE /api/v2/users/{id} HTTP/1.1
 
 Accept: application/json
 
@@ -502,7 +502,7 @@ const headers = {
   Accept: "application/json",
 }
 
-fetch("/api/v1/users/{id}", {
+fetch("/api/v2/users/{id}", {
   method: "DELETE",
 
   headers: headers,
@@ -523,13 +523,13 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.delete('/api/v1/users/{id}', headers = headers)
+r = requests.delete('/api/v2/users/{id}', headers = headers)
 
 print(r.json())
 
 ```
 
-`DELETE /api/v1/users/{id}`
+`DELETE /api/v2/users/{id}`
 
 Delete a users
 
