@@ -3,7 +3,8 @@ info:
   title: OpenAPI
   version: 2.0.0
 tags:
-  - name: Users
+  - name: Users API
+  - name: Emails API
 paths:
   /api/v2/emails:
     get:
@@ -42,7 +43,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       tags:
-        - Users
+        - Emails API
       security:
         - BearerAuth: []
     post:
@@ -63,7 +64,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       tags:
-        - Users
+        - Emails API
       requestBody:
         required: true
         content:
@@ -97,7 +98,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       tags:
-        - Users
+        - Emails API
       security:
         - BearerAuth: []
     put:
@@ -124,7 +125,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       tags:
-        - Users
+        - Emails API
       requestBody:
         required: true
         content:
@@ -153,7 +154,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       tags:
-        - Users
+        - Emails API
       security:
         - BearerAuth: []
   /api/v2/users:
@@ -193,7 +194,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       tags:
-        - Users
+        - Users API
       security:
         - BearerAuth: []
     post:
@@ -214,7 +215,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       tags:
-        - Users
+        - Users API
       requestBody:
         required: true
         content:
@@ -248,7 +249,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       tags:
-        - Users
+        - Users API
       security:
         - BearerAuth: []
     put:
@@ -275,7 +276,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       tags:
-        - Users
+        - Users API
       requestBody:
         required: true
         content:
@@ -304,7 +305,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       tags:
-        - Users
+        - Users API
       security:
         - BearerAuth: []
 components:

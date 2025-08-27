@@ -10,7 +10,7 @@ using TypeSpec.Http;
 namespace OpenApiV2;
 
 @route("/emails")
-@tag("Users")
+@tag("Emails API")
 @useAuth(BearerAuth)
 interface EmailsApi {
     /** List users */

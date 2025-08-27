@@ -21,482 +21,7 @@ headingLevel: 2
 
 - HTTP Authentication, scheme: Bearer
 
-<h1 id="openapi-users">Users</h1>
-
-## EmailsApi_list
-
-<a id="opIdEmailsApi_list"></a>
-
-> Code samples
-
-```http
-GET /api/v2/emails?offset=0&limit=10 HTTP/1.1
-
-Accept: application/json
-
-```
-
-```javascript
-// javascript
-
-const headers = {
-  Accept: "application/json",
-}
-
-fetch("/api/v2/emails?offset=0&limit=10", {
-  method: "GET",
-
-  headers: headers,
-})
-  .then(function (res) {
-    return res.json()
-  })
-  .then(function (body) {
-    console.log(body)
-  })
-```
-
-```python
-# python
-
-import requests
-headers = {
-  'Accept': 'application/json'
-}
-
-r = requests.get('/api/v2/emails', params={
-  'offset': '0',  'limit': '10'
-}, headers = headers)
-
-print(r.json())
-
-```
-
-`GET /api/v2/emails`
-
-List users
-
-<h3 id="emailsapi_list-parameters">Parameters</h3>
-
-| Name   | In    | Type            | Required | Description                                             |
-| ------ | ----- | --------------- | -------- | ------------------------------------------------------- |
-| offset | query | integer(uint32) | true     | The offset of the list, 0 means no offset, default is 0 |
-| limit  | query | integer(uint32) | true     | The limit of the list, 0 means no limit, default is 10  |
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "items": [
-    {
-      "id": 0,
-      "email": "string",
-      "authMethod": 0,
-      "token": "pa$$word",
-      "createdAt": 0,
-      "updatedAt": 0
-    }
-  ],
-  "total": 0,
-  "offset": 0,
-  "limit": 0
-}
-```
-
-<h3 id="emailsapi_list-responses">Responses</h3>
-
-| Status  | Meaning                                                 | Description                   | Schema                        |
-| ------- | ------------------------------------------------------- | ----------------------------- | ----------------------------- |
-| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [EmailList](#schemaemaillist) |
-| default | Default                                                 | An unexpected error response. | [Error](#schemaerror)         |
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-BearerAuth
-</aside>
-
-## EmailsApi_create
-
-<a id="opIdEmailsApi_create"></a>
-
-> Code samples
-
-```http
-POST /api/v2/emails HTTP/1.1
-
-Content-Type: application/json
-Accept: application/json
-
-```
-
-```javascript
-// javascript
-const inputBody = '{
-  "id": 0,
-  "email": "string",
-  "authMethod": 0,
-  "password": "pa$$word",
-  "createdAt": 0,
-  "updatedAt": 0
-}';
-const headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json'
-};
-
-fetch('/api/v2/emails',
-{
-  method: 'POST',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```python
-# python
-
-import requests
-headers = {
-  'Content-Type': 'application/json',
-  'Accept': 'application/json'
-}
-
-r = requests.post('/api/v2/emails', headers = headers)
-
-print(r.json())
-
-```
-
-`POST /api/v2/emails`
-
-Create a users
-
-> Body parameter
-
-```json
-{
-  "id": 0,
-  "email": "string",
-  "authMethod": 0,
-  "password": "pa$$word",
-  "createdAt": 0,
-  "updatedAt": 0
-}
-```
-
-<h3 id="emailsapi_create-parameters">Parameters</h3>
-
-| Name | In   | Type                              | Required | Description |
-| ---- | ---- | --------------------------------- | -------- | ----------- |
-| body | body | [EmailCreate](#schemaemailcreate) | true     | none        |
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "id": 0,
-  "email": "string",
-  "authMethod": 0,
-  "token": "pa$$word",
-  "createdAt": 0,
-  "updatedAt": 0
-}
-```
-
-<h3 id="emailsapi_create-responses">Responses</h3>
-
-| Status  | Meaning                                                 | Description                   | Schema                |
-| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
-| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [Email](#schemaemail) |
-| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-BearerAuth
-</aside>
-
-## EmailsApi_read
-
-<a id="opIdEmailsApi_read"></a>
-
-> Code samples
-
-```http
-GET /api/v2/emails/{id} HTTP/1.1
-
-Accept: application/json
-
-```
-
-```javascript
-// javascript
-
-const headers = {
-  Accept: "application/json",
-}
-
-fetch("/api/v2/emails/{id}", {
-  method: "GET",
-
-  headers: headers,
-})
-  .then(function (res) {
-    return res.json()
-  })
-  .then(function (body) {
-    console.log(body)
-  })
-```
-
-```python
-# python
-
-import requests
-headers = {
-  'Accept': 'application/json'
-}
-
-r = requests.get('/api/v2/emails/{id}', headers = headers)
-
-print(r.json())
-
-```
-
-`GET /api/v2/emails/{id}`
-
-Read users
-
-<h3 id="emailsapi_read-parameters">Parameters</h3>
-
-| Name | In   | Type   | Required | Description                 |
-| ---- | ---- | ------ | -------- | --------------------------- |
-| id   | path | string | true     | The id of the Email to read |
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "id": 0,
-  "email": "string",
-  "authMethod": 0,
-  "token": "pa$$word",
-  "createdAt": 0,
-  "updatedAt": 0
-}
-```
-
-<h3 id="emailsapi_read-responses">Responses</h3>
-
-| Status  | Meaning                                                 | Description                   | Schema                |
-| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
-| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [Email](#schemaemail) |
-| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-BearerAuth
-</aside>
-
-## EmailsApi_update
-
-<a id="opIdEmailsApi_update"></a>
-
-> Code samples
-
-```http
-PUT /api/v2/emails/{id} HTTP/1.1
-
-Content-Type: application/json
-Accept: application/json
-
-```
-
-```javascript
-// javascript
-const inputBody = '{
-  "id": 0,
-  "email": "string",
-  "authMethod": 0,
-  "password": "pa$$word",
-  "createdAt": 0,
-  "updatedAt": 0
-}';
-const headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json'
-};
-
-fetch('/api/v2/emails/{id}',
-{
-  method: 'PUT',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```python
-# python
-
-import requests
-headers = {
-  'Content-Type': 'application/json',
-  'Accept': 'application/json'
-}
-
-r = requests.put('/api/v2/emails/{id}', headers = headers)
-
-print(r.json())
-
-```
-
-`PUT /api/v2/emails/{id}`
-
-Update a users
-
-> Body parameter
-
-```json
-{
-  "id": 0,
-  "email": "string",
-  "authMethod": 0,
-  "password": "pa$$word",
-  "createdAt": 0,
-  "updatedAt": 0
-}
-```
-
-<h3 id="emailsapi_update-parameters">Parameters</h3>
-
-| Name | In   | Type                                              | Required | Description                   |
-| ---- | ---- | ------------------------------------------------- | -------- | ----------------------------- |
-| id   | path | string                                            | true     | The id of the Email to update |
-| body | body | [EmailCreateOrUpdate](#schemaemailcreateorupdate) | true     | none                          |
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "id": 0,
-  "email": "string",
-  "authMethod": 0,
-  "token": "pa$$word",
-  "createdAt": 0,
-  "updatedAt": 0
-}
-```
-
-<h3 id="emailsapi_update-responses">Responses</h3>
-
-| Status  | Meaning                                                 | Description                   | Schema                |
-| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
-| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [Email](#schemaemail) |
-| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-BearerAuth
-</aside>
-
-## EmailsApi_delete
-
-<a id="opIdEmailsApi_delete"></a>
-
-> Code samples
-
-```http
-DELETE /api/v2/emails/{id} HTTP/1.1
-
-Accept: application/json
-
-```
-
-```javascript
-// javascript
-
-const headers = {
-  Accept: "application/json",
-}
-
-fetch("/api/v2/emails/{id}", {
-  method: "DELETE",
-
-  headers: headers,
-})
-  .then(function (res) {
-    return res.json()
-  })
-  .then(function (body) {
-    console.log(body)
-  })
-```
-
-```python
-# python
-
-import requests
-headers = {
-  'Accept': 'application/json'
-}
-
-r = requests.delete('/api/v2/emails/{id}', headers = headers)
-
-print(r.json())
-
-```
-
-`DELETE /api/v2/emails/{id}`
-
-Delete a users
-
-<h3 id="emailsapi_delete-parameters">Parameters</h3>
-
-| Name | In   | Type   | Required | Description                   |
-| ---- | ---- | ------ | -------- | ----------------------------- |
-| id   | path | string | true     | The id of the Email to delete |
-
-> Example responses
-
-> default Response
-
-```json
-{
-  "code": 100000,
-  "msg": "string"
-}
-```
-
-<h3 id="emailsapi_delete-responses">Responses</h3>
-
-| Status  | Meaning                                                         | Description                                                                  | Schema                |
-| ------- | --------------------------------------------------------------- | ---------------------------------------------------------------------------- | --------------------- |
-| 204     | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | There is no content to send for this request, but the headers may be useful. | None                  |
-| default | Default                                                         | An unexpected error response.                                                | [Error](#schemaerror) |
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-BearerAuth
-</aside>
+<h1 id="openapi-users-api">Users API</h1>
 
 ## UsersApi_list
 
@@ -1026,6 +551,483 @@ Delete a users
 ```
 
 <h3 id="usersapi_delete-responses">Responses</h3>
+
+| Status  | Meaning                                                         | Description                                                                  | Schema                |
+| ------- | --------------------------------------------------------------- | ---------------------------------------------------------------------------- | --------------------- |
+| 204     | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | There is no content to send for this request, but the headers may be useful. | None                  |
+| default | Default                                                         | An unexpected error response.                                                | [Error](#schemaerror) |
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+BearerAuth
+</aside>
+
+<h1 id="openapi-emails-api">Emails API</h1>
+
+## EmailsApi_list
+
+<a id="opIdEmailsApi_list"></a>
+
+> Code samples
+
+```http
+GET /api/v2/emails?offset=0&limit=10 HTTP/1.1
+
+Accept: application/json
+
+```
+
+```javascript
+// javascript
+
+const headers = {
+  Accept: "application/json",
+}
+
+fetch("/api/v2/emails?offset=0&limit=10", {
+  method: "GET",
+
+  headers: headers,
+})
+  .then(function (res) {
+    return res.json()
+  })
+  .then(function (body) {
+    console.log(body)
+  })
+```
+
+```python
+# python
+
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('/api/v2/emails', params={
+  'offset': '0',  'limit': '10'
+}, headers = headers)
+
+print(r.json())
+
+```
+
+`GET /api/v2/emails`
+
+List users
+
+<h3 id="emailsapi_list-parameters">Parameters</h3>
+
+| Name   | In    | Type            | Required | Description                                             |
+| ------ | ----- | --------------- | -------- | ------------------------------------------------------- |
+| offset | query | integer(uint32) | true     | The offset of the list, 0 means no offset, default is 0 |
+| limit  | query | integer(uint32) | true     | The limit of the list, 0 means no limit, default is 10  |
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "items": [
+    {
+      "id": 0,
+      "email": "string",
+      "authMethod": 0,
+      "token": "pa$$word",
+      "createdAt": 0,
+      "updatedAt": 0
+    }
+  ],
+  "total": 0,
+  "offset": 0,
+  "limit": 0
+}
+```
+
+<h3 id="emailsapi_list-responses">Responses</h3>
+
+| Status  | Meaning                                                 | Description                   | Schema                        |
+| ------- | ------------------------------------------------------- | ----------------------------- | ----------------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [EmailList](#schemaemaillist) |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror)         |
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+BearerAuth
+</aside>
+
+## EmailsApi_create
+
+<a id="opIdEmailsApi_create"></a>
+
+> Code samples
+
+```http
+POST /api/v2/emails HTTP/1.1
+
+Content-Type: application/json
+Accept: application/json
+
+```
+
+```javascript
+// javascript
+const inputBody = '{
+  "id": 0,
+  "email": "string",
+  "authMethod": 0,
+  "password": "pa$$word",
+  "createdAt": 0,
+  "updatedAt": 0
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json'
+};
+
+fetch('/api/v2/emails',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```python
+# python
+
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+r = requests.post('/api/v2/emails', headers = headers)
+
+print(r.json())
+
+```
+
+`POST /api/v2/emails`
+
+Create a users
+
+> Body parameter
+
+```json
+{
+  "id": 0,
+  "email": "string",
+  "authMethod": 0,
+  "password": "pa$$word",
+  "createdAt": 0,
+  "updatedAt": 0
+}
+```
+
+<h3 id="emailsapi_create-parameters">Parameters</h3>
+
+| Name | In   | Type                              | Required | Description |
+| ---- | ---- | --------------------------------- | -------- | ----------- |
+| body | body | [EmailCreate](#schemaemailcreate) | true     | none        |
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "id": 0,
+  "email": "string",
+  "authMethod": 0,
+  "token": "pa$$word",
+  "createdAt": 0,
+  "updatedAt": 0
+}
+```
+
+<h3 id="emailsapi_create-responses">Responses</h3>
+
+| Status  | Meaning                                                 | Description                   | Schema                |
+| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [Email](#schemaemail) |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+BearerAuth
+</aside>
+
+## EmailsApi_read
+
+<a id="opIdEmailsApi_read"></a>
+
+> Code samples
+
+```http
+GET /api/v2/emails/{id} HTTP/1.1
+
+Accept: application/json
+
+```
+
+```javascript
+// javascript
+
+const headers = {
+  Accept: "application/json",
+}
+
+fetch("/api/v2/emails/{id}", {
+  method: "GET",
+
+  headers: headers,
+})
+  .then(function (res) {
+    return res.json()
+  })
+  .then(function (body) {
+    console.log(body)
+  })
+```
+
+```python
+# python
+
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('/api/v2/emails/{id}', headers = headers)
+
+print(r.json())
+
+```
+
+`GET /api/v2/emails/{id}`
+
+Read users
+
+<h3 id="emailsapi_read-parameters">Parameters</h3>
+
+| Name | In   | Type   | Required | Description                 |
+| ---- | ---- | ------ | -------- | --------------------------- |
+| id   | path | string | true     | The id of the Email to read |
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "id": 0,
+  "email": "string",
+  "authMethod": 0,
+  "token": "pa$$word",
+  "createdAt": 0,
+  "updatedAt": 0
+}
+```
+
+<h3 id="emailsapi_read-responses">Responses</h3>
+
+| Status  | Meaning                                                 | Description                   | Schema                |
+| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [Email](#schemaemail) |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+BearerAuth
+</aside>
+
+## EmailsApi_update
+
+<a id="opIdEmailsApi_update"></a>
+
+> Code samples
+
+```http
+PUT /api/v2/emails/{id} HTTP/1.1
+
+Content-Type: application/json
+Accept: application/json
+
+```
+
+```javascript
+// javascript
+const inputBody = '{
+  "id": 0,
+  "email": "string",
+  "authMethod": 0,
+  "password": "pa$$word",
+  "createdAt": 0,
+  "updatedAt": 0
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json'
+};
+
+fetch('/api/v2/emails/{id}',
+{
+  method: 'PUT',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```python
+# python
+
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+r = requests.put('/api/v2/emails/{id}', headers = headers)
+
+print(r.json())
+
+```
+
+`PUT /api/v2/emails/{id}`
+
+Update a users
+
+> Body parameter
+
+```json
+{
+  "id": 0,
+  "email": "string",
+  "authMethod": 0,
+  "password": "pa$$word",
+  "createdAt": 0,
+  "updatedAt": 0
+}
+```
+
+<h3 id="emailsapi_update-parameters">Parameters</h3>
+
+| Name | In   | Type                                              | Required | Description                   |
+| ---- | ---- | ------------------------------------------------- | -------- | ----------------------------- |
+| id   | path | string                                            | true     | The id of the Email to update |
+| body | body | [EmailCreateOrUpdate](#schemaemailcreateorupdate) | true     | none                          |
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "id": 0,
+  "email": "string",
+  "authMethod": 0,
+  "token": "pa$$word",
+  "createdAt": 0,
+  "updatedAt": 0
+}
+```
+
+<h3 id="emailsapi_update-responses">Responses</h3>
+
+| Status  | Meaning                                                 | Description                   | Schema                |
+| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [Email](#schemaemail) |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+BearerAuth
+</aside>
+
+## EmailsApi_delete
+
+<a id="opIdEmailsApi_delete"></a>
+
+> Code samples
+
+```http
+DELETE /api/v2/emails/{id} HTTP/1.1
+
+Accept: application/json
+
+```
+
+```javascript
+// javascript
+
+const headers = {
+  Accept: "application/json",
+}
+
+fetch("/api/v2/emails/{id}", {
+  method: "DELETE",
+
+  headers: headers,
+})
+  .then(function (res) {
+    return res.json()
+  })
+  .then(function (body) {
+    console.log(body)
+  })
+```
+
+```python
+# python
+
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.delete('/api/v2/emails/{id}', headers = headers)
+
+print(r.json())
+
+```
+
+`DELETE /api/v2/emails/{id}`
+
+Delete a users
+
+<h3 id="emailsapi_delete-parameters">Parameters</h3>
+
+| Name | In   | Type   | Required | Description                   |
+| ---- | ---- | ------ | -------- | ----------------------------- |
+| id   | path | string | true     | The id of the Email to delete |
+
+> Example responses
+
+> default Response
+
+```json
+{
+  "code": 100000,
+  "msg": "string"
+}
+```
+
+<h3 id="emailsapi_delete-responses">Responses</h3>
 
 | Status  | Meaning                                                         | Description                                                                  | Schema                |
 | ------- | --------------------------------------------------------------- | ---------------------------------------------------------------------------- | --------------------- |

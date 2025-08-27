@@ -11,7 +11,7 @@ using TypeSpec.Http;
 namespace OpenApiV2;
 
 @route("/users")
-@tag("Users")
+@tag("Users API")
 @useAuth(BearerAuth)
 interface UsersApi {
   /** List users */
