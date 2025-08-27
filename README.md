@@ -1,7 +1,15 @@
-# openapi
+# OpenAPI Toolchain
 
-## Install
+## Usage
+
+### Install
 
 ```bash
-npm install openapi
+yarn
+```
+
+### Build
+
+```bash
+yarn build
 ```
