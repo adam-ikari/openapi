@@ -97,13 +97,13 @@ List users
       "gender": 0,
       "email": {
         "id": 0,
-        "email": "string",
+        "email": "user@example.com",
         "authMethod": 0,
         "token": "pa$$word",
         "createdAt": 0,
         "updatedAt": 0
       },
-      "avatar": "http://example.com",
+      "avatar": "https://example.com/avatar.png",
       "createdAt": 0,
       "updatedAt": 0
     }
@@ -149,13 +149,13 @@ const inputBody = '{
   "gender": 0,
   "email": {
     "id": 0,
-    "email": "string",
+    "email": "user@example.com",
     "authMethod": 0,
     "password": "pa$$word",
     "createdAt": 0,
     "updatedAt": 0
   },
-  "avatar": "http://example.com",
+  "avatar": "https://example.com/avatar.png",
   "password": "pa$$word",
   "createdAt": 0,
   "updatedAt": 0
@@ -208,13 +208,13 @@ Create a users
   "gender": 0,
   "email": {
     "id": 0,
-    "email": "string",
+    "email": "user@example.com",
     "authMethod": 0,
     "password": "pa$$word",
     "createdAt": 0,
     "updatedAt": 0
   },
-  "avatar": "http://example.com",
+  "avatar": "https://example.com/avatar.png",
   "password": "pa$$word",
   "createdAt": 0,
   "updatedAt": 0
@@ -239,13 +239,13 @@ Create a users
   "gender": 0,
   "email": {
     "id": 0,
-    "email": "string",
+    "email": "user@example.com",
     "authMethod": 0,
     "token": "pa$$word",
     "createdAt": 0,
     "updatedAt": 0
   },
-  "avatar": "http://example.com",
+  "avatar": "https://example.com/avatar.png",
   "createdAt": 0,
   "updatedAt": 0
 }
@@ -332,13 +332,13 @@ Read users
   "gender": 0,
   "email": {
     "id": 0,
-    "email": "string",
+    "email": "user@example.com",
     "authMethod": 0,
     "token": "pa$$word",
     "createdAt": 0,
     "updatedAt": 0
   },
-  "avatar": "http://example.com",
+  "avatar": "https://example.com/avatar.png",
   "createdAt": 0,
   "updatedAt": 0
 }
@@ -379,13 +379,13 @@ const inputBody = '{
   "gender": 0,
   "email": {
     "id": 0,
-    "email": "string",
+    "email": "user@example.com",
     "authMethod": 0,
     "password": "pa$$word",
     "createdAt": 0,
     "updatedAt": 0
   },
-  "avatar": "http://example.com",
+  "avatar": "https://example.com/avatar.png",
   "password": "pa$$word",
   "createdAt": 0,
   "updatedAt": 0
@@ -438,13 +438,13 @@ Update a users
   "gender": 0,
   "email": {
     "id": 0,
-    "email": "string",
+    "email": "user@example.com",
     "authMethod": 0,
     "password": "pa$$word",
     "createdAt": 0,
     "updatedAt": 0
   },
-  "avatar": "http://example.com",
+  "avatar": "https://example.com/avatar.png",
   "password": "pa$$word",
   "createdAt": 0,
   "updatedAt": 0
@@ -470,13 +470,13 @@ Update a users
   "gender": 0,
   "email": {
     "id": 0,
-    "email": "string",
+    "email": "user@example.com",
     "authMethod": 0,
     "token": "pa$$word",
     "createdAt": 0,
     "updatedAt": 0
   },
-  "avatar": "http://example.com",
+  "avatar": "https://example.com/avatar.png",
   "createdAt": 0,
   "updatedAt": 0
 }
@@ -645,7 +645,7 @@ List users
   "items": [
     {
       "id": 0,
-      "email": "string",
+      "email": "user@example.com",
       "authMethod": 0,
       "token": "pa$$word",
       "createdAt": 0,
@@ -688,7 +688,7 @@ Accept: application/json
 // javascript
 const inputBody = '{
   "id": 0,
-  "email": "string",
+  "email": "user@example.com",
   "authMethod": 0,
   "password": "pa$$word",
   "createdAt": 0,
@@ -737,7 +737,7 @@ Create a users
 ```json
 {
   "id": 0,
-  "email": "string",
+  "email": "user@example.com",
   "authMethod": 0,
   "password": "pa$$word",
   "createdAt": 0,
@@ -758,7 +758,7 @@ Create a users
 ```json
 {
   "id": 0,
-  "email": "string",
+  "email": "user@example.com",
   "authMethod": 0,
   "token": "pa$$word",
   "createdAt": 0,
@@ -842,7 +842,7 @@ Read users
 ```json
 {
   "id": 0,
-  "email": "string",
+  "email": "user@example.com",
   "authMethod": 0,
   "token": "pa$$word",
   "createdAt": 0,
@@ -880,7 +880,7 @@ Accept: application/json
 // javascript
 const inputBody = '{
   "id": 0,
-  "email": "string",
+  "email": "user@example.com",
   "authMethod": 0,
   "password": "pa$$word",
   "createdAt": 0,
@@ -929,7 +929,7 @@ Update a users
 ```json
 {
   "id": 0,
-  "email": "string",
+  "email": "user@example.com",
   "authMethod": 0,
   "password": "pa$$word",
   "createdAt": 0,
@@ -951,7 +951,7 @@ Update a users
 ```json
 {
   "id": 0,
-  "email": "string",
+  "email": "user@example.com",
   "authMethod": 0,
   "token": "pa$$word",
   "createdAt": 0,
@@ -1062,7 +1062,7 @@ BearerAuth
 
 ```yaml
 id: 0
-email: string
+email: user@example.com
 authMethod: 0
 token: pa$$word
 createdAt: 0
@@ -1117,7 +1117,7 @@ Email authentication method
 
 ```yaml
 id: 0
-email: string
+email: user@example.com
 authMethod: 0
 password: pa$$word
 createdAt: 0
@@ -1144,7 +1144,7 @@ updatedAt: 0
 
 ```yaml
 id: 0
-email: string
+email: user@example.com
 authMethod: 0
 password: pa$$word
 createdAt: 0
@@ -1172,7 +1172,7 @@ updatedAt: 0
 ```yaml
 items:
   - id: 0
-    email: string
+    email: user@example.com
     authMethod: 0
     token: pa$$word
     createdAt: 0
@@ -1277,12 +1277,12 @@ age: 1
 gender: 0
 email:
   id: 0
-  email: string
+  email: user@example.com
   authMethod: 0
   token: pa$$word
   createdAt: 0
   updatedAt: 0
-avatar: http://example.com
+avatar: https://example.com/avatar.png
 createdAt: 0
 updatedAt: 0
 ```
@@ -1314,12 +1314,12 @@ age: 1
 gender: 0
 email:
   id: 0
-  email: string
+  email: user@example.com
   authMethod: 0
   password: pa$$word
   createdAt: 0
   updatedAt: 0
-avatar: http://example.com
+avatar: https://example.com/avatar.png
 password: pa$$word
 createdAt: 0
 updatedAt: 0
@@ -1353,12 +1353,12 @@ age: 1
 gender: 0
 email:
   id: 0
-  email: string
+  email: user@example.com
   authMethod: 0
   password: pa$$word
   createdAt: 0
   updatedAt: 0
-avatar: http://example.com
+avatar: https://example.com/avatar.png
 password: pa$$word
 createdAt: 0
 updatedAt: 0
@@ -1393,12 +1393,12 @@ items:
     gender: 0
     email:
       id: 0
-      email: string
+      email: user@example.com
       authMethod: 0
       token: pa$$word
       createdAt: 0
       updatedAt: 0
-    avatar: http://example.com
+    avatar: https://example.com/avatar.png
     createdAt: 0
     updatedAt: 0
 total: 0

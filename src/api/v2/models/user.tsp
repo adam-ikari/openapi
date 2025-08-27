@@ -44,6 +44,7 @@ model User {
     email: Email;
 
     @doc("The avatar of the user")
+    @example("https://example.com/avatar.png")
     avatar?: url;
 
     @doc("The password of the user")

@@ -43,6 +43,7 @@ model Email {
 
     @doc("The email address")
     @pattern("/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$/")
+    @example("user@example.com")
     email: string;
 
     @doc("The authentication method")

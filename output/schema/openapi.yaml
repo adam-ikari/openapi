@@ -328,6 +328,8 @@ components:
           type: string
           pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
           description: The email address
+          examples:
+            - user@example.com
         authMethod:
           allOf:
             - $ref: '#/components/schemas/EmailAuthMethod'
@@ -389,6 +391,8 @@ components:
           type: string
           pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
           description: The email address
+          examples:
+            - user@example.com
         authMethod:
           allOf:
             - $ref: '#/components/schemas/EmailAuthMethod'
@@ -422,6 +426,8 @@ components:
           type: string
           pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
           description: The email address
+          examples:
+            - user@example.com
         authMethod:
           allOf:
             - $ref: '#/components/schemas/EmailAuthMethod'
@@ -551,6 +557,8 @@ components:
           type: string
           format: uri
           description: The avatar of the user
+          examples:
+            - https://example.com/avatar.png
         createdAt:
           type: integer
           format: int32
@@ -599,6 +607,8 @@ components:
           type: string
           format: uri
           description: The avatar of the user
+          examples:
+            - https://example.com/avatar.png
         password:
           type: string
           format: password
@@ -651,6 +661,8 @@ components:
           type: string
           format: uri
           description: The avatar of the user
+          examples:
+            - https://example.com/avatar.png
         password:
           type: string
           format: password
