@@ -7,7 +7,7 @@ import "./models/error.tsp";
 
 using TypeSpec.Http;
 
-namespace OpenApiV1;
+namespace OpenApiV2;
 
 @route("/emails")
 @tag("Users")

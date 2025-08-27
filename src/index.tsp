@@ -1,2 +1,1 @@
-import "./api/v1/index.tsp";
-
+import "./api/v2/index.tsp";

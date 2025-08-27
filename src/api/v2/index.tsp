@@ -9,4 +9,4 @@ using TypeSpec.OpenAPI;
 @service(#{ title: "OpenAPI" })
 @info(#{ version: "2.0.0" })
 @route("/api/v2")
-namespace OpenApiV1;
+namespace OpenApiV2;

@@ -2,15 +2,15 @@
 
 import { Client, ClientOptions, getClient } from "@typespec/ts-http-runtime";
 
-export interface OpenApiV1Context extends Client {}
+export interface OpenApiV2Context extends Client {}
 
 /** Optional parameters for the client. */
-export interface OpenApiV1ClientOptionalParams extends ClientOptions {}
+export interface OpenApiV2ClientOptionalParams extends ClientOptions {}
 
-export function createOpenApiV1(
+export function createOpenApiV2(
   endpointParam: string,
-  options: OpenApiV1ClientOptionalParams = {},
-): OpenApiV1Context {
+  options: OpenApiV2ClientOptionalParams = {},
+): OpenApiV2Context {
   const endpointUrl = options.endpoint ?? String(endpointParam);
   const prefixFromOptions = options?.userAgentOptions?.userAgentPrefix;
   const userAgentInfo = `azsdk-js-OpenAPI/1.0.0-beta.1`;

@@ -1,6 +1,6 @@
 // Licensed under the MIT License.
 
-import { OpenApiV1Context as Client } from "../index.js";
+import { OpenApiV2Context as Client } from "../index.js";
 import {
   UserList,
   userListDeserializer,
