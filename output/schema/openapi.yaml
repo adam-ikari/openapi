@@ -5,9 +5,160 @@ info:
 tags:
   - name: Users
 paths:
+  /api/v2/emails:
+    get:
+      operationId: EmailsApi_list
+      description: List users
+      parameters:
+        - name: offset
+          in: query
+          required: true
+          description: The offset of the list, 0 means no offset, default is 0
+          schema:
+            type: integer
+            format: uint32
+            default: 0
+          explode: false
+        - name: limit
+          in: query
+          required: true
+          description: The limit of the list, 0 means no limit, default is 10
+          schema:
+            type: integer
+            format: uint32
+            default: 10
+          explode: false
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailList'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - Users
+      security:
+        - BearerAuth: []
+    post:
+      operationId: EmailsApi_create
+      description: Create a users
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Email'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailCreate'
+      security:
+        - BearerAuth: []
+  /api/v2/emails/{id}:
+    get:
+      operationId: EmailsApi_read
+      description: Read users
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the Email to read
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Email'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - Users
+      security:
+        - BearerAuth: []
+    put:
+      operationId: EmailsApi_update
+      description: Update a users
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the Email to update
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Email'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailCreateOrUpdate'
+      security:
+        - BearerAuth: []
+    delete:
+      operationId: EmailsApi_delete
+      description: Delete a users
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the Email to delete
+          schema:
+            type: string
+      responses:
+        '204':
+          description: 'There is no content to send for this request, but the headers may be useful. '
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - Users
+      security:
+        - BearerAuth: []
   /api/v2/users:
     get:
-      operationId: Users_list
+      operationId: UsersApi_list
       description: List users
       parameters:
         - name: offset
@@ -46,7 +197,7 @@ paths:
       security:
         - BearerAuth: []
     post:
-      operationId: Users_create
+      operationId: UsersApi_create
       description: Create a users
       parameters: []
       responses:
@@ -74,7 +225,7 @@ paths:
         - BearerAuth: []
   /api/v2/users/{id}:
     get:
-      operationId: Users_read
+      operationId: UsersApi_read
       description: Read users
       parameters:
         - name: id
@@ -101,7 +252,7 @@ paths:
       security:
         - BearerAuth: []
     put:
-      operationId: Users_update
+      operationId: UsersApi_update
       description: Update a users
       parameters:
         - name: id
@@ -134,7 +285,7 @@ paths:
       security:
         - BearerAuth: []
     delete:
-      operationId: Users_delete
+      operationId: UsersApi_delete
       description: Delete a users
       parameters:
         - name: id
@@ -286,6 +437,31 @@ components:
           type: integer
           format: int32
           description: The timestamp when the email was updated
+    EmailList:
+      type: object
+      required:
+        - items
+        - total
+        - offset
+        - limit
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Email'
+          description: The list of emails
+        total:
+          type: integer
+          format: uint32
+          description: The total number of emails
+        offset:
+          type: integer
+          format: uint32
+          description: The offset to fetch the list, 0 means no offset
+        limit:
+          type: integer
+          format: uint32
+          description: The limit to fetch the list, 0 means no limit
     Error:
       type: object
       required:

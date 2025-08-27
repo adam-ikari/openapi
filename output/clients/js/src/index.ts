@@ -9,13 +9,21 @@ export {
   EmailAuthMethod,
   ErrorModel,
   StatusCode,
+  EmailList,
 } from "./models/index.js";
 export { OpenApiV2ClientOptionalParams } from "./api/index.js";
 export {
-  UsersDeleteOptionalParams,
-  UsersUpdateOptionalParams,
-  UsersCreateOptionalParams,
-  UsersReadOptionalParams,
-  UsersListOptionalParams,
-} from "./api/users/index.js";
-export { UsersOperations } from "./classic/index.js";
+  EmailsApiDeleteOptionalParams,
+  EmailsApiUpdateOptionalParams,
+  EmailsApiCreateOptionalParams,
+  EmailsApiReadOptionalParams,
+  EmailsApiListOptionalParams,
+} from "./api/emailsApi/index.js";
+export {
+  UsersApiDeleteOptionalParams,
+  UsersApiUpdateOptionalParams,
+  UsersApiCreateOptionalParams,
+  UsersApiReadOptionalParams,
+  UsersApiListOptionalParams,
+} from "./api/usersApi/index.js";
+export { EmailsApiOperations, UsersApiOperations } from "./classic/index.js";

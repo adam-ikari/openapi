@@ -2,6 +2,7 @@ import "@typespec/http";
 import "@typespec/openapi";
 
 import "./users.tsp";
+import "./emails.tsp";
 
 using TypeSpec.Http;
 using TypeSpec.OpenAPI;

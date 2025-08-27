@@ -13,7 +13,7 @@ namespace OpenApiV2;
 @route("/users")
 @tag("Users")
 @useAuth(BearerAuth)
-interface Users {
+interface UsersApi {
   /** List users */
   @get
   list(

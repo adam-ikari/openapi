@@ -5,7 +5,14 @@ import {
   OpenApiV2Context,
   OpenApiV2ClientOptionalParams,
 } from "./api/index.js";
-import { UsersOperations, _getUsersOperations } from "./classic/users/index.js";
+import {
+  EmailsApiOperations,
+  _getEmailsApiOperations,
+} from "./classic/emailsApi/index.js";
+import {
+  UsersApiOperations,
+  _getUsersApiOperations,
+} from "./classic/usersApi/index.js";
 import { Pipeline } from "@typespec/ts-http-runtime";
 
 export { OpenApiV2ClientOptionalParams } from "./api/openApiV2Context.js";
@@ -28,9 +35,12 @@ export class OpenApiV2Client {
       userAgentOptions: { userAgentPrefix },
     });
     this.pipeline = this._client.pipeline;
-    this.users = _getUsersOperations(this._client);
+    this.emailsApi = _getEmailsApiOperations(this._client);
+    this.usersApi = _getUsersApiOperations(this._client);
   }
 
-  /** The operation groups for users */
-  public readonly users: UsersOperations;
+  /** The operation groups for emailsApi */
+  public readonly emailsApi: EmailsApiOperations;
+  /** The operation groups for usersApi */
+  public readonly usersApi: UsersApiOperations;
 }

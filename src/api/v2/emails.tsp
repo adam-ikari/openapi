@@ -12,7 +12,7 @@ namespace OpenApiV2;
 @route("/emails")
 @tag("Users")
 @useAuth(BearerAuth)
-interface Users {
+interface EmailsApi {
     /** List users */
     @get
     list(

@@ -139,3 +139,36 @@ export function errorDeserializer(item: any): ErrorModel {
 
 /** Status Code */
 export type StatusCode = 100000 | 100001;
+
+/** model interface EmailList */
+export interface EmailList {
+  /** The list of emails */
+  items: Email[];
+  /** The total number of emails */
+  total: number;
+  /** The offset to fetch the list, 0 means no offset */
+  offset: number;
+  /** The limit to fetch the list, 0 means no limit */
+  limit: number;
+}
+
+export function emailListDeserializer(item: any): EmailList {
+  return {
+    items: emailArrayDeserializer(item["items"]),
+    total: item["total"],
+    offset: item["offset"],
+    limit: item["limit"],
+  };
+}
+
+export function emailArraySerializer(result: Array<Email>): any[] {
+  return result.map((item) => {
+    return emailSerializer(item);
+  });
+}
+
+export function emailArrayDeserializer(result: Array<Email>): any[] {
+  return result.map((item) => {
+    return emailDeserializer(item);
+  });
+}

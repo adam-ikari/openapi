@@ -1,3 +1,4 @@
 // Licensed under the MIT License.
 
-export { UsersOperations } from "./users/index.js";
+export { EmailsApiOperations } from "./emailsApi/index.js";
+export { UsersApiOperations } from "./usersApi/index.js";

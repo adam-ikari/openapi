@@ -2,20 +2,20 @@
 
 import { OpenApiV2Context as Client } from "../index.js";
 import {
-  UserList,
-  userListDeserializer,
-  User,
-  userSerializer,
-  userDeserializer,
+  Email,
+  emailSerializer,
+  emailDeserializer,
   errorDeserializer,
+  EmailList,
+  emailListDeserializer,
 } from "../../models/models.js";
 import { expandUrlTemplate } from "../../static-helpers/urlTemplate.js";
 import {
-  UsersDeleteOptionalParams,
-  UsersUpdateOptionalParams,
-  UsersCreateOptionalParams,
-  UsersReadOptionalParams,
-  UsersListOptionalParams,
+  EmailsApiDeleteOptionalParams,
+  EmailsApiUpdateOptionalParams,
+  EmailsApiCreateOptionalParams,
+  EmailsApiReadOptionalParams,
+  EmailsApiListOptionalParams,
 } from "./options.js";
 import {
   StreamableMethod,
@@ -27,10 +27,10 @@ import {
 export function _$deleteSend(
   context: Client,
   id: string,
-  options: UsersDeleteOptionalParams = { requestOptions: {} },
+  options: EmailsApiDeleteOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   const path = expandUrlTemplate(
-    "/api/v2/users/{id}",
+    "/api/v2/emails/{id}",
     {
       id: id,
     },
@@ -65,7 +65,7 @@ export async function _$deleteDeserialize(
 export async function $delete(
   context: Client,
   id: string,
-  options: UsersDeleteOptionalParams = { requestOptions: {} },
+  options: EmailsApiDeleteOptionalParams = { requestOptions: {} },
 ): Promise<void> {
   const result = await _$deleteSend(context, id, options);
   return _$deleteDeserialize(result);
@@ -74,11 +74,11 @@ export async function $delete(
 export function _updateSend(
   context: Client,
   id: string,
-  body: User,
-  options: UsersUpdateOptionalParams = { requestOptions: {} },
+  body: Email,
+  options: EmailsApiUpdateOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   const path = expandUrlTemplate(
-    "/api/v2/users/{id}",
+    "/api/v2/emails/{id}",
     {
       id: id,
     },
@@ -95,13 +95,13 @@ export function _updateSend(
         accept: "application/json",
         ...options.requestOptions?.headers,
       },
-      body: userSerializer(body),
+      body: emailSerializer(body),
     });
 }
 
 export async function _updateDeserialize(
   result: PathUncheckedResponse,
-): Promise<User> {
+): Promise<Email> {
   const expectedStatuses = ["200"];
   if (!expectedStatuses.includes(result.status)) {
     const error = createRestError(result);
@@ -109,27 +109,27 @@ export async function _updateDeserialize(
     throw error;
   }
 
-  return userDeserializer(result.body);
+  return emailDeserializer(result.body);
 }
 
 /** Update a users */
 export async function update(
   context: Client,
   id: string,
-  body: User,
-  options: UsersUpdateOptionalParams = { requestOptions: {} },
-): Promise<User> {
+  body: Email,
+  options: EmailsApiUpdateOptionalParams = { requestOptions: {} },
+): Promise<Email> {
   const result = await _updateSend(context, id, body, options);
   return _updateDeserialize(result);
 }
 
 export function _createSend(
   context: Client,
-  body: User,
-  options: UsersCreateOptionalParams = { requestOptions: {} },
+  body: Email,
+  options: EmailsApiCreateOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   return context
-    .path("/api/v2/users")
+    .path("/api/v2/emails")
     .post({
       ...operationOptionsToRequestParameters(options),
       contentType: "application/json",
@@ -137,13 +137,13 @@ export function _createSend(
         accept: "application/json",
         ...options.requestOptions?.headers,
       },
-      body: userSerializer(body),
+      body: emailSerializer(body),
     });
 }
 
 export async function _createDeserialize(
   result: PathUncheckedResponse,
-): Promise<User> {
+): Promise<Email> {
   const expectedStatuses = ["200"];
   if (!expectedStatuses.includes(result.status)) {
     const error = createRestError(result);
@@ -151,15 +151,15 @@ export async function _createDeserialize(
     throw error;
   }
 
-  return userDeserializer(result.body);
+  return emailDeserializer(result.body);
 }
 
 /** Create a users */
 export async function create(
   context: Client,
-  body: User,
-  options: UsersCreateOptionalParams = { requestOptions: {} },
-): Promise<User> {
+  body: Email,
+  options: EmailsApiCreateOptionalParams = { requestOptions: {} },
+): Promise<Email> {
   const result = await _createSend(context, body, options);
   return _createDeserialize(result);
 }
@@ -167,10 +167,10 @@ export async function create(
 export function _readSend(
   context: Client,
   id: string,
-  options: UsersReadOptionalParams = { requestOptions: {} },
+  options: EmailsApiReadOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   const path = expandUrlTemplate(
-    "/api/v2/users/{id}",
+    "/api/v2/emails/{id}",
     {
       id: id,
     },
@@ -191,7 +191,7 @@ export function _readSend(
 
 export async function _readDeserialize(
   result: PathUncheckedResponse,
-): Promise<User> {
+): Promise<Email> {
   const expectedStatuses = ["200"];
   if (!expectedStatuses.includes(result.status)) {
     const error = createRestError(result);
@@ -199,15 +199,15 @@ export async function _readDeserialize(
     throw error;
   }
 
-  return userDeserializer(result.body);
+  return emailDeserializer(result.body);
 }
 
 /** Read users */
 export async function read(
   context: Client,
   id: string,
-  options: UsersReadOptionalParams = { requestOptions: {} },
-): Promise<User> {
+  options: EmailsApiReadOptionalParams = { requestOptions: {} },
+): Promise<Email> {
   const result = await _readSend(context, id, options);
   return _readDeserialize(result);
 }
@@ -216,10 +216,10 @@ export function _listSend(
   context: Client,
   offset: number,
   limit: number,
-  options: UsersListOptionalParams = { requestOptions: {} },
+  options: EmailsApiListOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   const path = expandUrlTemplate(
-    "/api/v2/users{?offset,limit}",
+    "/api/v2/emails{?offset,limit}",
     {
       offset: offset,
       limit: limit,
@@ -241,7 +241,7 @@ export function _listSend(
 
 export async function _listDeserialize(
   result: PathUncheckedResponse,
-): Promise<UserList> {
+): Promise<EmailList> {
   const expectedStatuses = ["200"];
   if (!expectedStatuses.includes(result.status)) {
     const error = createRestError(result);
@@ -249,7 +249,7 @@ export async function _listDeserialize(
     throw error;
   }
 
-  return userListDeserializer(result.body);
+  return emailListDeserializer(result.body);
 }
 
 /** List users */
@@ -257,8 +257,8 @@ export async function list(
   context: Client,
   offset: number,
   limit: number,
-  options: UsersListOptionalParams = { requestOptions: {} },
-): Promise<UserList> {
+  options: EmailsApiListOptionalParams = { requestOptions: {} },
+): Promise<EmailList> {
   const result = await _listSend(context, offset, limit, options);
   return _listDeserialize(result);
 }

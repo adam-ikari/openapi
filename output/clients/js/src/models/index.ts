@@ -8,4 +8,5 @@ export {
   EmailAuthMethod,
   ErrorModel,
   StatusCode,
+  EmailList,
 } from "./models.js";
