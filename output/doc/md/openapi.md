@@ -770,15 +770,15 @@ updatedAt: 0
 
 ### Properties
 
-| Name      | Type                    | Required | Restrictions | Description                              |
-| --------- | ----------------------- | -------- | ------------ | ---------------------------------------- |
-| id        | string                  | true     | none         | The unique identifier of the user        |
-| name      | string                  | true     | none         | The name of the user                     |
-| age       | integer(uint8)          | true     | none         | The age of the user, min 1, max 120      |
-| gender    | [Gender](#schemagender) | true     | none         | The gender of the user                   |
-| email     | [Email](#schemaemail)   | true     | none         | The email of the user                    |
-| createdAt | integer(int32)          | true     | none         | The timestamp when the email was created |
-| updatedAt | integer(int32)          | true     | none         | The timestamp when the email was updated |
+| Name      | Type                    | Required | Restrictions | Description                             |
+| --------- | ----------------------- | -------- | ------------ | --------------------------------------- |
+| id        | string                  | true     | none         | The unique identifier of the user       |
+| name      | string                  | true     | none         | The name of the user                    |
+| age       | integer(uint8)          | true     | none         | The age of the user, min 1, max 120     |
+| gender    | [Gender](#schemagender) | true     | none         | The gender of the user                  |
+| email     | [Email](#schemaemail)   | true     | none         | The email of the user                   |
+| createdAt | integer(int32)          | true     | none         | The timestamp when the user was created |
+| updatedAt | integer(int32)          | true     | none         | The timestamp when the user was updated |
 
 <h2 id="tocS_UserCreate">UserCreate</h2>
 <!-- backwards compatibility -->
@@ -805,15 +805,15 @@ updatedAt: 0
 
 ### Properties
 
-| Name      | Type                              | Required | Restrictions | Description                              |
-| --------- | --------------------------------- | -------- | ------------ | ---------------------------------------- |
-| id        | string                            | true     | none         | The unique identifier of the user        |
-| name      | string                            | true     | none         | The name of the user                     |
-| age       | integer(uint8)                    | true     | none         | The age of the user, min 1, max 120      |
-| gender    | [Gender](#schemagender)           | true     | none         | The gender of the user                   |
-| email     | [EmailCreate](#schemaemailcreate) | true     | none         | The email of the user                    |
-| createdAt | integer(int32)                    | true     | none         | The timestamp when the email was created |
-| updatedAt | integer(int32)                    | true     | none         | The timestamp when the email was updated |
+| Name      | Type                              | Required | Restrictions | Description                             |
+| --------- | --------------------------------- | -------- | ------------ | --------------------------------------- |
+| id        | string                            | true     | none         | The unique identifier of the user       |
+| name      | string                            | true     | none         | The name of the user                    |
+| age       | integer(uint8)                    | true     | none         | The age of the user, min 1, max 120     |
+| gender    | [Gender](#schemagender)           | true     | none         | The gender of the user                  |
+| email     | [EmailCreate](#schemaemailcreate) | true     | none         | The email of the user                   |
+| createdAt | integer(int32)                    | true     | none         | The timestamp when the user was created |
+| updatedAt | integer(int32)                    | true     | none         | The timestamp when the user was updated |
 
 <h2 id="tocS_UserCreateOrUpdate">UserCreateOrUpdate</h2>
 <!-- backwards compatibility -->
@@ -840,15 +840,15 @@ updatedAt: 0
 
 ### Properties
 
-| Name      | Type                                              | Required | Restrictions | Description                              |
-| --------- | ------------------------------------------------- | -------- | ------------ | ---------------------------------------- |
-| id        | string                                            | true     | none         | The unique identifier of the user        |
-| name      | string                                            | true     | none         | The name of the user                     |
-| age       | integer(uint8)                                    | true     | none         | The age of the user, min 1, max 120      |
-| gender    | [Gender](#schemagender)                           | true     | none         | The gender of the user                   |
-| email     | [EmailCreateOrUpdate](#schemaemailcreateorupdate) | true     | none         | The email of the user                    |
-| createdAt | integer(int32)                                    | true     | none         | The timestamp when the email was created |
-| updatedAt | integer(int32)                                    | true     | none         | The timestamp when the email was updated |
+| Name      | Type                                              | Required | Restrictions | Description                             |
+| --------- | ------------------------------------------------- | -------- | ------------ | --------------------------------------- |
+| id        | string                                            | true     | none         | The unique identifier of the user       |
+| name      | string                                            | true     | none         | The name of the user                    |
+| age       | integer(uint8)                                    | true     | none         | The age of the user, min 1, max 120     |
+| gender    | [Gender](#schemagender)                           | true     | none         | The gender of the user                  |
+| email     | [EmailCreateOrUpdate](#schemaemailcreateorupdate) | true     | none         | The email of the user                   |
+| createdAt | integer(int32)                                    | true     | none         | The timestamp when the user was created |
+| updatedAt | integer(int32)                                    | true     | none         | The timestamp when the user was updated |
 
 <h2 id="tocS_UserList">UserList</h2>
 <!-- backwards compatibility -->

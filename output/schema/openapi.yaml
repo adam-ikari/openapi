@@ -372,11 +372,11 @@ components:
         createdAt:
           type: integer
           format: int32
-          description: The timestamp when the email was created
+          description: The timestamp when the user was created
         updatedAt:
           type: integer
           format: int32
-          description: The timestamp when the email was updated
+          description: The timestamp when the user was updated
     UserCreate:
       type: object
       required:
@@ -414,11 +414,11 @@ components:
         createdAt:
           type: integer
           format: int32
-          description: The timestamp when the email was created
+          description: The timestamp when the user was created
         updatedAt:
           type: integer
           format: int32
-          description: The timestamp when the email was updated
+          description: The timestamp when the user was updated
     UserCreateOrUpdate:
       type: object
       required:
@@ -456,11 +456,11 @@ components:
         createdAt:
           type: integer
           format: int32
-          description: The timestamp when the email was created
+          description: The timestamp when the user was created
         updatedAt:
           type: integer
           format: int32
-          description: The timestamp when the email was updated
+          description: The timestamp when the user was updated
     UserList:
       type: object
       required:

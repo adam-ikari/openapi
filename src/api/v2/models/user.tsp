@@ -43,10 +43,10 @@ model User {
     @doc("The email of the user")
     email: Email;
 
-    @doc("The timestamp when the email was created")
+    @doc("The timestamp when the user was created")
     createdAt: unixTimestamp32;
 
-    @doc("The timestamp when the email was updated")
+    @doc("The timestamp when the user was updated")
     updatedAt: unixTimestamp32;
 }
 

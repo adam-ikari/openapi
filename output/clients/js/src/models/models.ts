@@ -45,9 +45,9 @@ export interface User {
   gender: Gender;
   /** The email of the user */
   email: Email;
-  /** The timestamp when the email was created */
+  /** The timestamp when the user was created */
   createdAt: any;
-  /** The timestamp when the email was updated */
+  /** The timestamp when the user was updated */
   updatedAt: any;
 }
 
