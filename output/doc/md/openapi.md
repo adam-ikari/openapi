@@ -566,7 +566,7 @@ List users
 {
   "items": [
     {
-      "id": "string",
+      "id": 0,
       "name": "string",
       "age": 1,
       "gender": 0,
@@ -617,7 +617,7 @@ Accept: application/json
 ```javascript
 // javascript
 const inputBody = '{
-  "id": "string",
+  "id": 0,
   "name": "string",
   "age": 1,
   "gender": 0,
@@ -674,7 +674,7 @@ Create a users
 
 ```json
 {
-  "id": "string",
+  "id": 0,
   "name": "string",
   "age": 1,
   "gender": 0,
@@ -703,7 +703,7 @@ Create a users
 
 ```json
 {
-  "id": "string",
+  "id": 0,
   "name": "string",
   "age": 1,
   "gender": 0,
@@ -795,7 +795,7 @@ Read users
 
 ```json
 {
-  "id": "string",
+  "id": 0,
   "name": "string",
   "age": 1,
   "gender": 0,
@@ -841,7 +841,7 @@ Accept: application/json
 ```javascript
 // javascript
 const inputBody = '{
-  "id": "string",
+  "id": 0,
   "name": "string",
   "age": 1,
   "gender": 0,
@@ -898,7 +898,7 @@ Update a users
 
 ```json
 {
-  "id": "string",
+  "id": 0,
   "name": "string",
   "age": 1,
   "gender": 0,
@@ -928,7 +928,7 @@ Update a users
 
 ```json
 {
-  "id": "string",
+  "id": 0,
   "name": "string",
   "age": 1,
   "gender": 0,
@@ -1257,7 +1257,7 @@ Status Code
 <a id="tocsuser"></a>
 
 ```yaml
-id: string
+id: 0
 name: string
 age: 1
 gender: 0
@@ -1276,7 +1276,7 @@ updatedAt: 0
 
 | Name      | Type                    | Required | Restrictions | Description                             |
 | --------- | ----------------------- | -------- | ------------ | --------------------------------------- |
-| id        | string                  | true     | none         | The unique identifier of the user       |
+| id        | integer(uint32)         | true     | none         | The unique identifier of the user       |
 | name      | string                  | true     | none         | The name of the user                    |
 | age       | integer(uint8)          | true     | none         | The age of the user, min 1, max 120     |
 | gender    | [Gender](#schemagender) | true     | none         | The gender of the user                  |
@@ -1292,7 +1292,7 @@ updatedAt: 0
 <a id="tocsusercreate"></a>
 
 ```yaml
-id: string
+id: 0
 name: string
 age: 1
 gender: 0
@@ -1311,7 +1311,7 @@ updatedAt: 0
 
 | Name      | Type                              | Required | Restrictions | Description                             |
 | --------- | --------------------------------- | -------- | ------------ | --------------------------------------- |
-| id        | string                            | true     | none         | The unique identifier of the user       |
+| id        | integer(uint32)                   | true     | none         | The unique identifier of the user       |
 | name      | string                            | true     | none         | The name of the user                    |
 | age       | integer(uint8)                    | true     | none         | The age of the user, min 1, max 120     |
 | gender    | [Gender](#schemagender)           | true     | none         | The gender of the user                  |
@@ -1327,7 +1327,7 @@ updatedAt: 0
 <a id="tocsusercreateorupdate"></a>
 
 ```yaml
-id: string
+id: 0
 name: string
 age: 1
 gender: 0
@@ -1346,7 +1346,7 @@ updatedAt: 0
 
 | Name      | Type                                              | Required | Restrictions | Description                             |
 | --------- | ------------------------------------------------- | -------- | ------------ | --------------------------------------- |
-| id        | string                                            | true     | none         | The unique identifier of the user       |
+| id        | integer(uint32)                                   | true     | none         | The unique identifier of the user       |
 | name      | string                                            | true     | none         | The name of the user                    |
 | age       | integer(uint8)                                    | true     | none         | The age of the user, min 1, max 120     |
 | gender    | [Gender](#schemagender)                           | true     | none         | The gender of the user                  |
@@ -1363,7 +1363,7 @@ updatedAt: 0
 
 ```yaml
 items:
-  - id: string
+  - id: 0
     name: string
     age: 1
     gender: 0

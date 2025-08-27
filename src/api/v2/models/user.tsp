@@ -24,7 +24,7 @@ enum Gender {
 
 model User {
     @doc("The unique identifier of the user")
-    id: string;
+    id: uint32;
 
     @doc("The name of the user")
     @minLength(3)
