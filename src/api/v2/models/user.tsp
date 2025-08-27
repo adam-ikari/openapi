@@ -24,6 +24,7 @@ enum Gender {
 
 model User {
     @doc("The unique identifier of the user")
+    @visibility(Lifecycle.Read)
     id: uint32;
 
     @doc("The name of the user")

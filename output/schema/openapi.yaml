@@ -316,7 +316,6 @@ components:
         - id
         - email
         - authMethod
-        - token
         - createdAt
         - updatedAt
       properties:
@@ -324,6 +323,7 @@ components:
           type: integer
           format: uint32
           description: The id of the email
+          readOnly: true
         email:
           type: string
           pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
@@ -334,11 +334,6 @@ components:
           allOf:
             - $ref: '#/components/schemas/EmailAuthMethod'
           description: The authentication method
-        token:
-          type: string
-          format: password
-          description: The authentication token
-          readOnly: true
         createdAt:
           type: integer
           format: int32
@@ -377,16 +372,11 @@ components:
     EmailCreate:
       type: object
       required:
-        - id
         - email
         - authMethod
         - createdAt
         - updatedAt
       properties:
-        id:
-          type: integer
-          format: uint32
-          description: The id of the email
         email:
           type: string
           pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
@@ -399,6 +389,7 @@ components:
           description: The authentication method
         password:
           type: string
+          pattern: ^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$
           format: password
           description: The password
         createdAt:
@@ -412,16 +403,11 @@ components:
     EmailCreateOrUpdate:
       type: object
       required:
-        - id
         - email
         - authMethod
         - createdAt
         - updatedAt
       properties:
-        id:
-          type: integer
-          format: uint32
-          description: The id of the email
         email:
           type: string
           pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
@@ -434,6 +420,7 @@ components:
           description: The authentication method
         password:
           type: string
+          pattern: ^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$
           format: password
           description: The password
         createdAt:
@@ -533,6 +520,7 @@ components:
           type: integer
           format: uint32
           description: The unique identifier of the user
+          readOnly: true
         name:
           type: string
           minLength: 3
@@ -570,7 +558,6 @@ components:
     UserCreate:
       type: object
       required:
-        - id
         - name
         - age
         - gender
@@ -579,10 +566,6 @@ components:
         - createdAt
         - updatedAt
       properties:
-        id:
-          type: integer
-          format: uint32
-          description: The unique identifier of the user
         name:
           type: string
           minLength: 3
@@ -624,7 +607,6 @@ components:
     UserCreateOrUpdate:
       type: object
       required:
-        - id
         - name
         - age
         - gender
@@ -633,10 +615,6 @@ components:
         - createdAt
         - updatedAt
       properties:
-        id:
-          type: integer
-          format: uint32
-          description: The unique identifier of the user
         name:
           type: string
           minLength: 3

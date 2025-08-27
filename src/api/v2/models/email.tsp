@@ -39,6 +39,7 @@ enum EmailAuthMethod {
 
 model Email {
     @doc("The id of the email")
+    @visibility(Lifecycle.Read)
     id: uint32;
 
     @doc("The email address")
@@ -52,12 +53,8 @@ model Email {
     @doc("The password")
     @secret
     @visibility(Lifecycle.Create, Lifecycle.Update)
+    @pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")
     password?: string;
-
-    @doc("The authentication token")
-    @secret
-    @visibility(Lifecycle.Read)
-    token: string;
 
     @doc("The timestamp when the email was created")
     createdAt: unixTimestamp32;

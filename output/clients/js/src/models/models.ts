@@ -36,7 +36,7 @@ export function userArrayDeserializer(result: Array<User>): any[] {
 /** model interface User */
 export interface User {
   /** The unique identifier of the user */
-  id: number;
+  readonly id: number;
   /** The name of the user */
   name: string;
   /** The age of the user, min 1, max 120 */
@@ -57,7 +57,6 @@ export interface User {
 
 export function userSerializer(item: User): any {
   return {
-    id: item["id"],
     name: item["name"],
     age: item["age"],
     gender: item["gender"],
@@ -89,15 +88,13 @@ export type Gender = 0 | 1 | 2;
 /** model interface Email */
 export interface Email {
   /** The id of the email */
-  id: number;
+  readonly id: number;
   /** The email address */
   email: string;
   /** The authentication method */
   authMethod: EmailAuthMethod;
   /** The password */
   password?: string;
-  /** The authentication token */
-  readonly token: string;
   /** The timestamp when the email was created */
   createdAt: any;
   /** The timestamp when the email was updated */
@@ -106,7 +103,6 @@ export interface Email {
 
 export function emailSerializer(item: Email): any {
   return {
-    id: item["id"],
     email: item["email"],
     authMethod: item["authMethod"],
     password: item["password"],
@@ -121,7 +117,6 @@ export function emailDeserializer(item: any): Email {
     email: item["email"],
     authMethod: item["authMethod"],
     password: item["password"],
-    token: item["token"],
     createdAt: item["createdAt"],
     updatedAt: item["updatedAt"],
   };

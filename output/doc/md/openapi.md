@@ -99,7 +99,6 @@ List users
         "id": 0,
         "email": "user@example.com",
         "authMethod": 0,
-        "token": "pa$$word",
         "createdAt": 0,
         "updatedAt": 0
       },
@@ -143,12 +142,10 @@ Accept: application/json
 ```javascript
 // javascript
 const inputBody = '{
-  "id": 0,
   "name": "string",
   "age": 1,
   "gender": 0,
   "email": {
-    "id": 0,
     "email": "user@example.com",
     "authMethod": 0,
     "password": "pa$$word",
@@ -202,12 +199,10 @@ Create a users
 
 ```json
 {
-  "id": 0,
   "name": "string",
   "age": 1,
   "gender": 0,
   "email": {
-    "id": 0,
     "email": "user@example.com",
     "authMethod": 0,
     "password": "pa$$word",
@@ -241,7 +236,6 @@ Create a users
     "id": 0,
     "email": "user@example.com",
     "authMethod": 0,
-    "token": "pa$$word",
     "createdAt": 0,
     "updatedAt": 0
   },
@@ -334,7 +328,6 @@ Read users
     "id": 0,
     "email": "user@example.com",
     "authMethod": 0,
-    "token": "pa$$word",
     "createdAt": 0,
     "updatedAt": 0
   },
@@ -373,12 +366,10 @@ Accept: application/json
 ```javascript
 // javascript
 const inputBody = '{
-  "id": 0,
   "name": "string",
   "age": 1,
   "gender": 0,
   "email": {
-    "id": 0,
     "email": "user@example.com",
     "authMethod": 0,
     "password": "pa$$word",
@@ -432,12 +423,10 @@ Update a users
 
 ```json
 {
-  "id": 0,
   "name": "string",
   "age": 1,
   "gender": 0,
   "email": {
-    "id": 0,
     "email": "user@example.com",
     "authMethod": 0,
     "password": "pa$$word",
@@ -472,7 +461,6 @@ Update a users
     "id": 0,
     "email": "user@example.com",
     "authMethod": 0,
-    "token": "pa$$word",
     "createdAt": 0,
     "updatedAt": 0
   },
@@ -647,7 +635,6 @@ List users
       "id": 0,
       "email": "user@example.com",
       "authMethod": 0,
-      "token": "pa$$word",
       "createdAt": 0,
       "updatedAt": 0
     }
@@ -687,7 +674,6 @@ Accept: application/json
 ```javascript
 // javascript
 const inputBody = '{
-  "id": 0,
   "email": "user@example.com",
   "authMethod": 0,
   "password": "pa$$word",
@@ -736,7 +722,6 @@ Create a users
 
 ```json
 {
-  "id": 0,
   "email": "user@example.com",
   "authMethod": 0,
   "password": "pa$$word",
@@ -760,7 +745,6 @@ Create a users
   "id": 0,
   "email": "user@example.com",
   "authMethod": 0,
-  "token": "pa$$word",
   "createdAt": 0,
   "updatedAt": 0
 }
@@ -844,7 +828,6 @@ Read users
   "id": 0,
   "email": "user@example.com",
   "authMethod": 0,
-  "token": "pa$$word",
   "createdAt": 0,
   "updatedAt": 0
 }
@@ -879,7 +862,6 @@ Accept: application/json
 ```javascript
 // javascript
 const inputBody = '{
-  "id": 0,
   "email": "user@example.com",
   "authMethod": 0,
   "password": "pa$$word",
@@ -928,7 +910,6 @@ Update a users
 
 ```json
 {
-  "id": 0,
   "email": "user@example.com",
   "authMethod": 0,
   "password": "pa$$word",
@@ -953,7 +934,6 @@ Update a users
   "id": 0,
   "email": "user@example.com",
   "authMethod": 0,
-  "token": "pa$$word",
   "createdAt": 0,
   "updatedAt": 0
 }
@@ -1064,7 +1044,6 @@ BearerAuth
 id: 0
 email: user@example.com
 authMethod: 0
-token: pa$$word
 createdAt: 0
 updatedAt: 0
 ```
@@ -1073,10 +1052,9 @@ updatedAt: 0
 
 | Name       | Type                                      | Required | Restrictions | Description                              |
 | ---------- | ----------------------------------------- | -------- | ------------ | ---------------------------------------- |
-| id         | integer(uint32)                           | true     | none         | The id of the email                      |
+| id         | integer(uint32)                           | true     | read-only    | The id of the email                      |
 | email      | string                                    | true     | none         | The email address                        |
 | authMethod | [EmailAuthMethod](#schemaemailauthmethod) | true     | none         | The authentication method                |
-| token      | string(password)                          | true     | read-only    | The authentication token                 |
 | createdAt  | integer(int32)                            | true     | none         | The timestamp when the email was created |
 | updatedAt  | integer(int32)                            | true     | none         | The timestamp when the email was updated |
 
@@ -1116,7 +1094,6 @@ Email authentication method
 <a id="tocsemailcreate"></a>
 
 ```yaml
-id: 0
 email: user@example.com
 authMethod: 0
 password: pa$$word
@@ -1128,7 +1105,6 @@ updatedAt: 0
 
 | Name       | Type                                      | Required | Restrictions | Description                              |
 | ---------- | ----------------------------------------- | -------- | ------------ | ---------------------------------------- |
-| id         | integer(uint32)                           | true     | none         | The id of the email                      |
 | email      | string                                    | true     | none         | The email address                        |
 | authMethod | [EmailAuthMethod](#schemaemailauthmethod) | true     | none         | The authentication method                |
 | password   | string(password)                          | false    | none         | The password                             |
@@ -1143,7 +1119,6 @@ updatedAt: 0
 <a id="tocsemailcreateorupdate"></a>
 
 ```yaml
-id: 0
 email: user@example.com
 authMethod: 0
 password: pa$$word
@@ -1155,7 +1130,6 @@ updatedAt: 0
 
 | Name       | Type                                      | Required | Restrictions | Description                              |
 | ---------- | ----------------------------------------- | -------- | ------------ | ---------------------------------------- |
-| id         | integer(uint32)                           | true     | none         | The id of the email                      |
 | email      | string                                    | true     | none         | The email address                        |
 | authMethod | [EmailAuthMethod](#schemaemailauthmethod) | true     | none         | The authentication method                |
 | password   | string(password)                          | false    | none         | The password                             |
@@ -1174,7 +1148,6 @@ items:
   - id: 0
     email: user@example.com
     authMethod: 0
-    token: pa$$word
     createdAt: 0
     updatedAt: 0
 total: 0
@@ -1279,7 +1252,6 @@ email:
   id: 0
   email: user@example.com
   authMethod: 0
-  token: pa$$word
   createdAt: 0
   updatedAt: 0
 avatar: https://example.com/avatar.png
@@ -1291,7 +1263,7 @@ updatedAt: 0
 
 | Name      | Type                    | Required | Restrictions | Description                             |
 | --------- | ----------------------- | -------- | ------------ | --------------------------------------- |
-| id        | integer(uint32)         | true     | none         | The unique identifier of the user       |
+| id        | integer(uint32)         | true     | read-only    | The unique identifier of the user       |
 | name      | string                  | true     | none         | The name of the user                    |
 | age       | integer(uint8)          | true     | none         | The age of the user, min 1, max 120     |
 | gender    | [Gender](#schemagender) | true     | none         | The gender of the user                  |
@@ -1308,12 +1280,10 @@ updatedAt: 0
 <a id="tocsusercreate"></a>
 
 ```yaml
-id: 0
 name: string
 age: 1
 gender: 0
 email:
-  id: 0
   email: user@example.com
   authMethod: 0
   password: pa$$word
@@ -1329,7 +1299,6 @@ updatedAt: 0
 
 | Name      | Type                              | Required | Restrictions | Description                             |
 | --------- | --------------------------------- | -------- | ------------ | --------------------------------------- |
-| id        | integer(uint32)                   | true     | none         | The unique identifier of the user       |
 | name      | string                            | true     | none         | The name of the user                    |
 | age       | integer(uint8)                    | true     | none         | The age of the user, min 1, max 120     |
 | gender    | [Gender](#schemagender)           | true     | none         | The gender of the user                  |
@@ -1347,12 +1316,10 @@ updatedAt: 0
 <a id="tocsusercreateorupdate"></a>
 
 ```yaml
-id: 0
 name: string
 age: 1
 gender: 0
 email:
-  id: 0
   email: user@example.com
   authMethod: 0
   password: pa$$word
@@ -1368,7 +1335,6 @@ updatedAt: 0
 
 | Name      | Type                                              | Required | Restrictions | Description                             |
 | --------- | ------------------------------------------------- | -------- | ------------ | --------------------------------------- |
-| id        | integer(uint32)                                   | true     | none         | The unique identifier of the user       |
 | name      | string                                            | true     | none         | The name of the user                    |
 | age       | integer(uint8)                                    | true     | none         | The age of the user, min 1, max 120     |
 | gender    | [Gender](#schemagender)                           | true     | none         | The gender of the user                  |
@@ -1395,7 +1361,6 @@ items:
       id: 0
       email: user@example.com
       authMethod: 0
-      token: pa$$word
       createdAt: 0
       updatedAt: 0
     avatar: https://example.com/avatar.png
