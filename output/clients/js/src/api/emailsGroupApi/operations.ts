@@ -6,16 +6,19 @@ import {
   emailSerializer,
   emailDeserializer,
   errorDeserializer,
-  EmailList,
-  emailListDeserializer,
+  EmailGroupList,
+  emailGroupListDeserializer,
+  EmailGroup,
+  emailGroupSerializer,
+  emailGroupDeserializer,
 } from "../../models/models.js";
 import { expandUrlTemplate } from "../../static-helpers/urlTemplate.js";
 import {
-  EmailsApiDeleteOptionalParams,
-  EmailsApiUpdateOptionalParams,
-  EmailsApiCreateOptionalParams,
-  EmailsApiReadOptionalParams,
-  EmailsApiListOptionalParams,
+  EmailsGroupApiDeleteOptionalParams,
+  EmailsGroupApiUpdateOptionalParams,
+  EmailsGroupApiCreateOptionalParams,
+  EmailsGroupApiReadOptionalParams,
+  EmailsGroupApiListOptionalParams,
 } from "./options.js";
 import {
   StreamableMethod,
@@ -27,10 +30,10 @@ import {
 export function _$deleteSend(
   context: Client,
   id: string,
-  options: EmailsApiDeleteOptionalParams = { requestOptions: {} },
+  options: EmailsGroupApiDeleteOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   const path = expandUrlTemplate(
-    "/api/v2/emails/{id}",
+    "/api/v2/email-groups/{id}",
     {
       id: id,
     },
@@ -56,7 +59,7 @@ export async function _$deleteDeserialize(
   return;
 }
 
-/** Delete a email */
+/** Delete a email group */
 /**
  *  @fixme delete is a reserved word that cannot be used as an operation name.
  *         Please add @clientName("clientName") or @clientName("<JS-Specific-Name>", "javascript")
@@ -65,7 +68,7 @@ export async function _$deleteDeserialize(
 export async function $delete(
   context: Client,
   id: string,
-  options: EmailsApiDeleteOptionalParams = { requestOptions: {} },
+  options: EmailsGroupApiDeleteOptionalParams = { requestOptions: {} },
 ): Promise<void> {
   const result = await _$deleteSend(context, id, options);
   return _$deleteDeserialize(result);
@@ -74,11 +77,11 @@ export async function $delete(
 export function _updateSend(
   context: Client,
   id: string,
-  body: Email,
-  options: EmailsApiUpdateOptionalParams = { requestOptions: {} },
+  body: EmailGroup,
+  options: EmailsGroupApiUpdateOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   const path = expandUrlTemplate(
-    "/api/v2/emails/{id}",
+    "/api/v2/email-groups/{id}",
     {
       id: id,
     },
@@ -95,7 +98,7 @@ export function _updateSend(
         accept: "application/json",
         ...options.requestOptions?.headers,
       },
-      body: emailSerializer(body),
+      body: emailGroupSerializer(body),
     });
 }
 
@@ -112,12 +115,12 @@ export async function _updateDeserialize(
   return emailDeserializer(result.body);
 }
 
-/** Update a email */
+/** Update a email group */
 export async function update(
   context: Client,
   id: string,
-  body: Email,
-  options: EmailsApiUpdateOptionalParams = { requestOptions: {} },
+  body: EmailGroup,
+  options: EmailsGroupApiUpdateOptionalParams = { requestOptions: {} },
 ): Promise<Email> {
   const result = await _updateSend(context, id, body, options);
   return _updateDeserialize(result);
@@ -126,10 +129,10 @@ export async function update(
 export function _createSend(
   context: Client,
   body: Email,
-  options: EmailsApiCreateOptionalParams = { requestOptions: {} },
+  options: EmailsGroupApiCreateOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   return context
-    .path("/api/v2/emails")
+    .path("/api/v2/email-groups")
     .post({
       ...operationOptionsToRequestParameters(options),
       contentType: "application/json",
@@ -154,11 +157,11 @@ export async function _createDeserialize(
   return emailDeserializer(result.body);
 }
 
-/** Create a email */
+/** Create a email group */
 export async function create(
   context: Client,
   body: Email,
-  options: EmailsApiCreateOptionalParams = { requestOptions: {} },
+  options: EmailsGroupApiCreateOptionalParams = { requestOptions: {} },
 ): Promise<Email> {
   const result = await _createSend(context, body, options);
   return _createDeserialize(result);
@@ -167,10 +170,10 @@ export async function create(
 export function _readSend(
   context: Client,
   id: string,
-  options: EmailsApiReadOptionalParams = { requestOptions: {} },
+  options: EmailsGroupApiReadOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   const path = expandUrlTemplate(
-    "/api/v2/emails/{id}",
+    "/api/v2/email-groups/{id}",
     {
       id: id,
     },
@@ -191,7 +194,7 @@ export function _readSend(
 
 export async function _readDeserialize(
   result: PathUncheckedResponse,
-): Promise<Email> {
+): Promise<EmailGroup> {
   const expectedStatuses = ["200"];
   if (!expectedStatuses.includes(result.status)) {
     const error = createRestError(result);
@@ -199,15 +202,15 @@ export async function _readDeserialize(
     throw error;
   }
 
-  return emailDeserializer(result.body);
+  return emailGroupDeserializer(result.body);
 }
 
-/** Read email */
+/** Read a email group */
 export async function read(
   context: Client,
   id: string,
-  options: EmailsApiReadOptionalParams = { requestOptions: {} },
-): Promise<Email> {
+  options: EmailsGroupApiReadOptionalParams = { requestOptions: {} },
+): Promise<EmailGroup> {
   const result = await _readSend(context, id, options);
   return _readDeserialize(result);
 }
@@ -216,10 +219,10 @@ export function _listSend(
   context: Client,
   offset: number,
   limit: number,
-  options: EmailsApiListOptionalParams = { requestOptions: {} },
+  options: EmailsGroupApiListOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   const path = expandUrlTemplate(
-    "/api/v2/emails{?offset,limit}",
+    "/api/v2/email-groups{?offset,limit}",
     {
       offset: offset,
       limit: limit,
@@ -241,7 +244,7 @@ export function _listSend(
 
 export async function _listDeserialize(
   result: PathUncheckedResponse,
-): Promise<EmailList> {
+): Promise<EmailGroupList> {
   const expectedStatuses = ["200"];
   if (!expectedStatuses.includes(result.status)) {
     const error = createRestError(result);
@@ -249,16 +252,16 @@ export async function _listDeserialize(
     throw error;
   }
 
-  return emailListDeserializer(result.body);
+  return emailGroupListDeserializer(result.body);
 }
 
-/** List emails */
+/** List email groups */
 export async function list(
   context: Client,
   offset: number,
   limit: number,
-  options: EmailsApiListOptionalParams = { requestOptions: {} },
-): Promise<EmailList> {
+  options: EmailsGroupApiListOptionalParams = { requestOptions: {} },
+): Promise<EmailGroupList> {
   const result = await _listSend(context, offset, limit, options);
   return _listDeserialize(result);
 }

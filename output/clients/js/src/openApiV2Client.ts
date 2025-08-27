@@ -10,6 +10,10 @@ import {
   _getEmailsApiOperations,
 } from "./classic/emailsApi/index.js";
 import {
+  EmailsGroupApiOperations,
+  _getEmailsGroupApiOperations,
+} from "./classic/emailsGroupApi/index.js";
+import {
   UsersApiOperations,
   _getUsersApiOperations,
 } from "./classic/usersApi/index.js";
@@ -35,10 +39,13 @@ export class OpenApiV2Client {
       userAgentOptions: { userAgentPrefix },
     });
     this.pipeline = this._client.pipeline;
+    this.emailsGroupApi = _getEmailsGroupApiOperations(this._client);
     this.emailsApi = _getEmailsApiOperations(this._client);
     this.usersApi = _getUsersApiOperations(this._client);
   }
 
+  /** The operation groups for emailsGroupApi */
+  public readonly emailsGroupApi: EmailsGroupApiOperations;
   /** The operation groups for emailsApi */
   public readonly emailsApi: EmailsApiOperations;
   /** The operation groups for usersApi */

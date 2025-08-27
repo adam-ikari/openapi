@@ -9,4 +9,6 @@ export {
   ErrorModel,
   StatusCode,
   EmailList,
+  EmailGroupList,
+  EmailGroup,
 } from "./models.js";

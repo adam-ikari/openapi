@@ -10,6 +10,8 @@ export {
   ErrorModel,
   StatusCode,
   EmailList,
+  EmailGroupList,
+  EmailGroup,
 } from "./models/index.js";
 export { OpenApiV2ClientOptionalParams } from "./api/index.js";
 export {
@@ -20,10 +22,21 @@ export {
   EmailsApiListOptionalParams,
 } from "./api/emailsApi/index.js";
 export {
+  EmailsGroupApiDeleteOptionalParams,
+  EmailsGroupApiUpdateOptionalParams,
+  EmailsGroupApiCreateOptionalParams,
+  EmailsGroupApiReadOptionalParams,
+  EmailsGroupApiListOptionalParams,
+} from "./api/emailsGroupApi/index.js";
+export {
   UsersApiDeleteOptionalParams,
   UsersApiUpdateOptionalParams,
   UsersApiCreateOptionalParams,
   UsersApiReadOptionalParams,
   UsersApiListOptionalParams,
 } from "./api/usersApi/index.js";
-export { EmailsApiOperations, UsersApiOperations } from "./classic/index.js";
+export {
+  EmailsApiOperations,
+  EmailsGroupApiOperations,
+  UsersApiOperations,
+} from "./classic/index.js";

@@ -16,6 +16,7 @@ options.language_tabs = [
   { http: "HTTP" },
   { javascript: "JavaScript" },
   { python: "Python" },
+  { java: "Java" },
 ];
 // options.language_clients = [];
 // options.loadedFrom = sourceUrl; // only needed if input document is relative

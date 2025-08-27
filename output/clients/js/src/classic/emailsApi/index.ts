@@ -19,7 +19,7 @@ import { Email, EmailList } from "../../models/models.js";
 
 /** Interface representing a EmailsApi operations. */
 export interface EmailsApiOperations {
-  /** Delete a users */
+  /** Delete a email */
   /**
    *  @fixme delete is a reserved word that cannot be used as an operation name.
    *         Please add @clientName("clientName") or @clientName("<JS-Specific-Name>", "javascript")
@@ -29,20 +29,20 @@ export interface EmailsApiOperations {
     id: string,
     options?: EmailsApiDeleteOptionalParams,
   ) => Promise<void>;
-  /** Update a users */
+  /** Update a email */
   update: (
     id: string,
     body: Email,
     options?: EmailsApiUpdateOptionalParams,
   ) => Promise<Email>;
-  /** Create a users */
+  /** Create a email */
   create: (
     body: Email,
     options?: EmailsApiCreateOptionalParams,
   ) => Promise<Email>;
-  /** Read users */
+  /** Read email */
   read: (id: string, options?: EmailsApiReadOptionalParams) => Promise<Email>;
-  /** List users */
+  /** List emails */
   list: (
     offset: number,
     limit: number,

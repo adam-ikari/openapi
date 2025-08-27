@@ -1,9 +1,10 @@
 ---
-title: OpenAPI v2.0.0
+title: OpenAPI v2 v2.0.0
 language_tabs:
   - http: HTTP
   - javascript: JavaScript
   - python: Python
+  - java: Java
 toc_footers: []
 includes: []
 search: true
@@ -13,7 +14,7 @@ headingLevel: 2
 
 <!-- Generator: Widdershins v4.0.1 -->
 
-<h1 id="openapi">OpenAPI v2.0.0</h1>
+<h1 id="openapi-v2">OpenAPI v2 v2.0.0</h1>
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
@@ -21,7 +22,7 @@ headingLevel: 2
 
 - HTTP Authentication, scheme: Bearer
 
-<h1 id="openapi-users-api">Users API</h1>
+<h1 id="openapi-v2-users-api">Users API</h1>
 
 ## UsersApi_list
 
@@ -69,6 +70,23 @@ r = requests.get('/api/v2/users', params={
 }, headers = headers)
 
 print(r.json())
+
+```
+
+```java
+URL obj = new URL("/api/v2/users?offset=0&limit=10");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -191,6 +209,23 @@ print(r.json())
 
 ```
 
+```java
+URL obj = new URL("/api/v2/users");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
 `POST /api/v2/users`
 
 Create a users
@@ -304,6 +339,23 @@ print(r.json())
 
 ```
 
+```java
+URL obj = new URL("/api/v2/users/{id}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
 `GET /api/v2/users/{id}`
 
 Read users
@@ -412,6 +464,23 @@ headers = {
 r = requests.put('/api/v2/users/{id}', headers = headers)
 
 print(r.json())
+
+```
+
+```java
+URL obj = new URL("/api/v2/users/{id}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("PUT");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -529,6 +598,23 @@ print(r.json())
 
 ```
 
+```java
+URL obj = new URL("/api/v2/users/{id}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("DELETE");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
 `DELETE /api/v2/users/{id}`
 
 Delete a users
@@ -562,7 +648,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 BearerAuth
 </aside>
 
-<h1 id="openapi-emails-api">Emails API</h1>
+<h1 id="openapi-v2-emails-api">Emails API</h1>
 
 ## EmailsApi_list
 
@@ -613,9 +699,26 @@ print(r.json())
 
 ```
 
+```java
+URL obj = new URL("/api/v2/emails?offset=0&limit=10");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
 `GET /api/v2/emails`
 
-List users
+List emails
 
 <h3 id="emailsapi_list-parameters">Parameters</h3>
 
@@ -714,9 +817,26 @@ print(r.json())
 
 ```
 
+```java
+URL obj = new URL("/api/v2/emails");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
 `POST /api/v2/emails`
 
-Create a users
+Create a email
 
 > Body parameter
 
@@ -809,9 +929,26 @@ print(r.json())
 
 ```
 
+```java
+URL obj = new URL("/api/v2/emails/{id}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
 `GET /api/v2/emails/{id}`
 
-Read users
+Read email
 
 <h3 id="emailsapi_read-parameters">Parameters</h3>
 
@@ -902,9 +1039,26 @@ print(r.json())
 
 ```
 
+```java
+URL obj = new URL("/api/v2/emails/{id}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("PUT");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
 `PUT /api/v2/emails/{id}`
 
-Update a users
+Update a email
 
 > Body parameter
 
@@ -998,9 +1152,26 @@ print(r.json())
 
 ```
 
+```java
+URL obj = new URL("/api/v2/emails/{id}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("DELETE");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
 `DELETE /api/v2/emails/{id}`
 
-Delete a users
+Delete a email
 
 <h3 id="emailsapi_delete-parameters">Parameters</h3>
 
@@ -1020,6 +1191,582 @@ Delete a users
 ```
 
 <h3 id="emailsapi_delete-responses">Responses</h3>
+
+| Status  | Meaning                                                         | Description                                                                  | Schema                |
+| ------- | --------------------------------------------------------------- | ---------------------------------------------------------------------------- | --------------------- |
+| 204     | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | There is no content to send for this request, but the headers may be useful. | None                  |
+| default | Default                                                         | An unexpected error response.                                                | [Error](#schemaerror) |
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+BearerAuth
+</aside>
+
+<h1 id="openapi-v2-email-groups-api">Email Groups API</h1>
+
+## EmailsGroupApi_list
+
+<a id="opIdEmailsGroupApi_list"></a>
+
+> Code samples
+
+```http
+GET /api/v2/email-groups?offset=0&limit=10 HTTP/1.1
+
+Accept: application/json
+
+```
+
+```javascript
+// javascript
+
+const headers = {
+  Accept: "application/json",
+}
+
+fetch("/api/v2/email-groups?offset=0&limit=10", {
+  method: "GET",
+
+  headers: headers,
+})
+  .then(function (res) {
+    return res.json()
+  })
+  .then(function (body) {
+    console.log(body)
+  })
+```
+
+```python
+# python
+
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('/api/v2/email-groups', params={
+  'offset': '0',  'limit': '10'
+}, headers = headers)
+
+print(r.json())
+
+```
+
+```java
+URL obj = new URL("/api/v2/email-groups?offset=0&limit=10");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+`GET /api/v2/email-groups`
+
+List email groups
+
+<h3 id="emailsgroupapi_list-parameters">Parameters</h3>
+
+| Name   | In    | Type            | Required | Description                                             |
+| ------ | ----- | --------------- | -------- | ------------------------------------------------------- |
+| offset | query | integer(uint32) | true     | The offset of the list, 0 means no offset, default is 0 |
+| limit  | query | integer(uint32) | true     | The limit of the list, 0 means no limit, default is 10  |
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "items": [
+    {
+      "id": "string",
+      "name": "string",
+      "members": [
+        {
+          "id": 0,
+          "email": "user@example.com",
+          "authMethod": 0,
+          "createdAt": 0,
+          "updatedAt": 0
+        }
+      ]
+    }
+  ],
+  "total": 0,
+  "offset": 0,
+  "limit": 0
+}
+```
+
+<h3 id="emailsgroupapi_list-responses">Responses</h3>
+
+| Status  | Meaning                                                 | Description                   | Schema                                  |
+| ------- | ------------------------------------------------------- | ----------------------------- | --------------------------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [EmailGroupList](#schemaemailgrouplist) |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror)                   |
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+BearerAuth
+</aside>
+
+## EmailsGroupApi_create
+
+<a id="opIdEmailsGroupApi_create"></a>
+
+> Code samples
+
+```http
+POST /api/v2/email-groups HTTP/1.1
+
+Content-Type: application/json
+Accept: application/json
+
+```
+
+```javascript
+// javascript
+const inputBody = '{
+  "email": "user@example.com",
+  "authMethod": 0,
+  "password": "pa$$word",
+  "createdAt": 0,
+  "updatedAt": 0
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json'
+};
+
+fetch('/api/v2/email-groups',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```python
+# python
+
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+r = requests.post('/api/v2/email-groups', headers = headers)
+
+print(r.json())
+
+```
+
+```java
+URL obj = new URL("/api/v2/email-groups");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+`POST /api/v2/email-groups`
+
+Create a email group
+
+> Body parameter
+
+```json
+{
+  "email": "user@example.com",
+  "authMethod": 0,
+  "password": "pa$$word",
+  "createdAt": 0,
+  "updatedAt": 0
+}
+```
+
+<h3 id="emailsgroupapi_create-parameters">Parameters</h3>
+
+| Name | In   | Type                              | Required | Description |
+| ---- | ---- | --------------------------------- | -------- | ----------- |
+| body | body | [EmailCreate](#schemaemailcreate) | true     | none        |
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "id": 0,
+  "email": "user@example.com",
+  "authMethod": 0,
+  "createdAt": 0,
+  "updatedAt": 0
+}
+```
+
+<h3 id="emailsgroupapi_create-responses">Responses</h3>
+
+| Status  | Meaning                                                 | Description                   | Schema                |
+| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [Email](#schemaemail) |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+BearerAuth
+</aside>
+
+## EmailsGroupApi_read
+
+<a id="opIdEmailsGroupApi_read"></a>
+
+> Code samples
+
+```http
+GET /api/v2/email-groups/{id} HTTP/1.1
+
+Accept: application/json
+
+```
+
+```javascript
+// javascript
+
+const headers = {
+  Accept: "application/json",
+}
+
+fetch("/api/v2/email-groups/{id}", {
+  method: "GET",
+
+  headers: headers,
+})
+  .then(function (res) {
+    return res.json()
+  })
+  .then(function (body) {
+    console.log(body)
+  })
+```
+
+```python
+# python
+
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('/api/v2/email-groups/{id}', headers = headers)
+
+print(r.json())
+
+```
+
+```java
+URL obj = new URL("/api/v2/email-groups/{id}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+`GET /api/v2/email-groups/{id}`
+
+Read a email group
+
+<h3 id="emailsgroupapi_read-parameters">Parameters</h3>
+
+| Name | In   | Type   | Required | Description                       |
+| ---- | ---- | ------ | -------- | --------------------------------- |
+| id   | path | string | true     | The id of the Email Group to read |
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "id": "string",
+  "name": "string",
+  "members": [
+    {
+      "id": 0,
+      "email": "user@example.com",
+      "authMethod": 0,
+      "createdAt": 0,
+      "updatedAt": 0
+    }
+  ]
+}
+```
+
+<h3 id="emailsgroupapi_read-responses">Responses</h3>
+
+| Status  | Meaning                                                 | Description                   | Schema                          |
+| ------- | ------------------------------------------------------- | ----------------------------- | ------------------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [EmailGroup](#schemaemailgroup) |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror)           |
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+BearerAuth
+</aside>
+
+## EmailsGroupApi_update
+
+<a id="opIdEmailsGroupApi_update"></a>
+
+> Code samples
+
+```http
+PUT /api/v2/email-groups/{id} HTTP/1.1
+
+Content-Type: application/json
+Accept: application/json
+
+```
+
+```javascript
+// javascript
+const inputBody = '{
+  "name": "string",
+  "members": [
+    {
+      "email": "user@example.com",
+      "authMethod": 0,
+      "password": "pa$$word",
+      "createdAt": 0,
+      "updatedAt": 0
+    }
+  ]
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json'
+};
+
+fetch('/api/v2/email-groups/{id}',
+{
+  method: 'PUT',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```python
+# python
+
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+r = requests.put('/api/v2/email-groups/{id}', headers = headers)
+
+print(r.json())
+
+```
+
+```java
+URL obj = new URL("/api/v2/email-groups/{id}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("PUT");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+`PUT /api/v2/email-groups/{id}`
+
+Update a email group
+
+> Body parameter
+
+```json
+{
+  "name": "string",
+  "members": [
+    {
+      "email": "user@example.com",
+      "authMethod": 0,
+      "password": "pa$$word",
+      "createdAt": 0,
+      "updatedAt": 0
+    }
+  ]
+}
+```
+
+<h3 id="emailsgroupapi_update-parameters">Parameters</h3>
+
+| Name | In   | Type                                                        | Required | Description                         |
+| ---- | ---- | ----------------------------------------------------------- | -------- | ----------------------------------- |
+| id   | path | string                                                      | true     | The id of the Email Group to update |
+| body | body | [EmailGroupCreateOrUpdate](#schemaemailgroupcreateorupdate) | true     | none                                |
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "id": 0,
+  "email": "user@example.com",
+  "authMethod": 0,
+  "createdAt": 0,
+  "updatedAt": 0
+}
+```
+
+<h3 id="emailsgroupapi_update-responses">Responses</h3>
+
+| Status  | Meaning                                                 | Description                   | Schema                |
+| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [Email](#schemaemail) |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+BearerAuth
+</aside>
+
+## EmailsGroupApi_delete
+
+<a id="opIdEmailsGroupApi_delete"></a>
+
+> Code samples
+
+```http
+DELETE /api/v2/email-groups/{id} HTTP/1.1
+
+Accept: application/json
+
+```
+
+```javascript
+// javascript
+
+const headers = {
+  Accept: "application/json",
+}
+
+fetch("/api/v2/email-groups/{id}", {
+  method: "DELETE",
+
+  headers: headers,
+})
+  .then(function (res) {
+    return res.json()
+  })
+  .then(function (body) {
+    console.log(body)
+  })
+```
+
+```python
+# python
+
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.delete('/api/v2/email-groups/{id}', headers = headers)
+
+print(r.json())
+
+```
+
+```java
+URL obj = new URL("/api/v2/email-groups/{id}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("DELETE");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+`DELETE /api/v2/email-groups/{id}`
+
+Delete a email group
+
+<h3 id="emailsgroupapi_delete-parameters">Parameters</h3>
+
+| Name | In   | Type   | Required | Description                         |
+| ---- | ---- | ------ | -------- | ----------------------------------- |
+| id   | path | string | true     | The id of the Email Group to delete |
+
+> Example responses
+
+> default Response
+
+```json
+{
+  "code": 100000,
+  "msg": "string"
+}
+```
+
+<h3 id="emailsgroupapi_delete-responses">Responses</h3>
 
 | Status  | Meaning                                                         | Description                                                                  | Schema                |
 | ------- | --------------------------------------------------------------- | ---------------------------------------------------------------------------- | --------------------- |
@@ -1135,6 +1882,118 @@ updatedAt: 0
 | password   | string(password)                          | false    | none         | The password                             |
 | createdAt  | integer(int32)                            | true     | none         | The timestamp when the email was created |
 | updatedAt  | integer(int32)                            | true     | none         | The timestamp when the email was updated |
+
+<h2 id="tocS_EmailCreateOrUpdateItem">EmailCreateOrUpdateItem</h2>
+<!-- backwards compatibility -->
+<a id="schemaemailcreateorupdateitem"></a>
+<a id="schema_EmailCreateOrUpdateItem"></a>
+<a id="tocSemailcreateorupdateitem"></a>
+<a id="tocsemailcreateorupdateitem"></a>
+
+```yaml
+email: user@example.com
+authMethod: 0
+password: pa$$word
+createdAt: 0
+updatedAt: 0
+```
+
+### Properties
+
+| Name       | Type                                      | Required | Restrictions | Description                              |
+| ---------- | ----------------------------------------- | -------- | ------------ | ---------------------------------------- |
+| email      | string                                    | true     | none         | The email address                        |
+| authMethod | [EmailAuthMethod](#schemaemailauthmethod) | true     | none         | The authentication method                |
+| password   | string(password)                          | false    | none         | The password                             |
+| createdAt  | integer(int32)                            | true     | none         | The timestamp when the email was created |
+| updatedAt  | integer(int32)                            | true     | none         | The timestamp when the email was updated |
+
+<h2 id="tocS_EmailGroup">EmailGroup</h2>
+<!-- backwards compatibility -->
+<a id="schemaemailgroup"></a>
+<a id="schema_EmailGroup"></a>
+<a id="tocSemailgroup"></a>
+<a id="tocsemailgroup"></a>
+
+```yaml
+id: string
+name: string
+members:
+  - id: 0
+    email: user@example.com
+    authMethod: 0
+    createdAt: 0
+    updatedAt: 0
+```
+
+A group of emails
+
+### Properties
+
+| Name    | Type                    | Required | Restrictions | Description                         |
+| ------- | ----------------------- | -------- | ------------ | ----------------------------------- |
+| id      | string                  | true     | read-only    | The unique identifier for the group |
+| name    | string                  | true     | none         | The name of the group               |
+| members | [[Email](#schemaemail)] | true     | none         | none                                |
+
+<h2 id="tocS_EmailGroupCreateOrUpdate">EmailGroupCreateOrUpdate</h2>
+<!-- backwards compatibility -->
+<a id="schemaemailgroupcreateorupdate"></a>
+<a id="schema_EmailGroupCreateOrUpdate"></a>
+<a id="tocSemailgroupcreateorupdate"></a>
+<a id="tocsemailgroupcreateorupdate"></a>
+
+```yaml
+name: string
+members:
+  - email: user@example.com
+    authMethod: 0
+    password: pa$$word
+    createdAt: 0
+    updatedAt: 0
+```
+
+A group of emails
+
+### Properties
+
+| Name    | Type                                                        | Required | Restrictions | Description           |
+| ------- | ----------------------------------------------------------- | -------- | ------------ | --------------------- |
+| name    | string                                                      | true     | none         | The name of the group |
+| members | [[EmailCreateOrUpdateItem](#schemaemailcreateorupdateitem)] | true     | none         | none                  |
+
+<h2 id="tocS_EmailGroupList">EmailGroupList</h2>
+<!-- backwards compatibility -->
+<a id="schemaemailgrouplist"></a>
+<a id="schema_EmailGroupList"></a>
+<a id="tocSemailgrouplist"></a>
+<a id="tocsemailgrouplist"></a>
+
+```yaml
+items:
+  - id: string
+    name: string
+    members:
+      - id: 0
+        email: user@example.com
+        authMethod: 0
+        createdAt: 0
+        updatedAt: 0
+total: 0
+offset: 0
+limit: 0
+```
+
+A list of email groups
+
+### Properties
+
+| Name   | Type                              | Required | Restrictions | Description                                     |
+| ------ | --------------------------------- | -------- | ------------ | ----------------------------------------------- |
+| items  | [[EmailGroup](#schemaemailgroup)] | true     | none         | [A group of emails]                             |
+| total  | integer(uint32)                   | true     | none         | The total number of email groups                |
+| offset | integer(uint32)                   | true     | none         | The offset to fetch the list, 0 means no offset |
+| limit  | integer(uint32)                   | true     | none         | The limit to fetch the list, 0 means no limit   |
 
 <h2 id="tocS_EmailList">EmailList</h2>
 <!-- backwards compatibility -->

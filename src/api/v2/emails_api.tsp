@@ -13,7 +13,7 @@ namespace OpenApiV2;
 @tag("Emails API")
 @useAuth(BearerAuth)
 interface EmailsApi {
-    /** List users */
+    /** List emails */
     @get
     list(
         @doc("The offset of the list, 0 means no offset, default is 0")
@@ -25,7 +25,7 @@ interface EmailsApi {
         limit: uint32 = 10,
     ): EmailList | Error;
 
-    /** Read users */
+    /** Read email */
     @get
     read(
         @doc("The id of the Email to read")
@@ -33,11 +33,11 @@ interface EmailsApi {
         id: string,
     ): Email | Error;
 
-    /** Create a users */
+    /** Create a email */
     @post
     create(@body body: Email): Email | Error;
 
-    /** Update a users */
+    /** Update a email */
     @put
     update(
         @doc("The id of the Email to update")
@@ -47,7 +47,7 @@ interface EmailsApi {
         @body body: Email,
     ): Email | Error;
 
-    /** Delete a users */
+    /** Delete a email */
     @delete
     delete(
         @doc("The id of the Email to delete")

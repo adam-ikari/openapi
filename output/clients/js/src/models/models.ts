@@ -175,3 +175,56 @@ export function emailArrayDeserializer(result: Array<Email>): any[] {
     return emailDeserializer(item);
   });
 }
+
+/** A list of email groups */
+export interface EmailGroupList {
+  items: EmailGroup[];
+  /** The total number of email groups */
+  total: number;
+  /** The offset to fetch the list, 0 means no offset */
+  offset: number;
+  /** The limit to fetch the list, 0 means no limit */
+  limit: number;
+}
+
+export function emailGroupListDeserializer(item: any): EmailGroupList {
+  return {
+    items: emailGroupArrayDeserializer(item["items"]),
+    total: item["total"],
+    offset: item["offset"],
+    limit: item["limit"],
+  };
+}
+
+export function emailGroupArraySerializer(result: Array<EmailGroup>): any[] {
+  return result.map((item) => {
+    return emailGroupSerializer(item);
+  });
+}
+
+export function emailGroupArrayDeserializer(result: Array<EmailGroup>): any[] {
+  return result.map((item) => {
+    return emailGroupDeserializer(item);
+  });
+}
+
+/** A group of emails */
+export interface EmailGroup {
+  /** The unique identifier for the group */
+  readonly id: string;
+  /** The name of the group */
+  name: string;
+  members: Email[];
+}
+
+export function emailGroupSerializer(item: EmailGroup): any {
+  return { name: item["name"], members: emailArraySerializer(item["members"]) };
+}
+
+export function emailGroupDeserializer(item: any): EmailGroup {
+  return {
+    id: item["id"],
+    name: item["name"],
+    members: emailArrayDeserializer(item["members"]),
+  };
+}

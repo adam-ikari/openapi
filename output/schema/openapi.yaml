@@ -1,15 +1,167 @@
 openapi: 3.1.0
 info:
-  title: OpenAPI
+  title: OpenAPI v2
   version: 2.0.0
 tags:
   - name: Users API
   - name: Emails API
+  - name: Email Groups API
 paths:
+  /api/v2/email-groups:
+    get:
+      operationId: EmailsGroupApi_list
+      description: List email groups
+      parameters:
+        - name: offset
+          in: query
+          required: true
+          description: The offset of the list, 0 means no offset, default is 0
+          schema:
+            type: integer
+            format: uint32
+            default: 0
+          explode: false
+        - name: limit
+          in: query
+          required: true
+          description: The limit of the list, 0 means no limit, default is 10
+          schema:
+            type: integer
+            format: uint32
+            default: 10
+          explode: false
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailGroupList'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - Email Groups API
+      security:
+        - BearerAuth: []
+    post:
+      operationId: EmailsGroupApi_create
+      description: Create a email group
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Email'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - Email Groups API
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailCreate'
+      security:
+        - BearerAuth: []
+  /api/v2/email-groups/{id}:
+    get:
+      operationId: EmailsGroupApi_read
+      description: Read a email group
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the Email Group to read
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailGroup'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - Email Groups API
+      security:
+        - BearerAuth: []
+    put:
+      operationId: EmailsGroupApi_update
+      description: Update a email group
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the Email Group to update
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Email'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - Email Groups API
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailGroupCreateOrUpdate'
+      security:
+        - BearerAuth: []
+    delete:
+      operationId: EmailsGroupApi_delete
+      description: Delete a email group
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the Email Group to delete
+          schema:
+            type: string
+      responses:
+        '204':
+          description: 'There is no content to send for this request, but the headers may be useful. '
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - Email Groups API
+      security:
+        - BearerAuth: []
   /api/v2/emails:
     get:
       operationId: EmailsApi_list
-      description: List users
+      description: List emails
       parameters:
         - name: offset
           in: query
@@ -48,7 +200,7 @@ paths:
         - BearerAuth: []
     post:
       operationId: EmailsApi_create
-      description: Create a users
+      description: Create a email
       parameters: []
       responses:
         '200':
@@ -76,7 +228,7 @@ paths:
   /api/v2/emails/{id}:
     get:
       operationId: EmailsApi_read
-      description: Read users
+      description: Read email
       parameters:
         - name: id
           in: path
@@ -103,7 +255,7 @@ paths:
         - BearerAuth: []
     put:
       operationId: EmailsApi_update
-      description: Update a users
+      description: Update a email
       parameters:
         - name: id
           in: path
@@ -136,7 +288,7 @@ paths:
         - BearerAuth: []
     delete:
       operationId: EmailsApi_delete
-      description: Delete a users
+      description: Delete a email
       parameters:
         - name: id
           in: path
@@ -431,6 +583,95 @@ components:
           type: integer
           format: int32
           description: The timestamp when the email was updated
+    EmailCreateOrUpdateItem:
+      type: object
+      required:
+        - email
+        - authMethod
+        - createdAt
+        - updatedAt
+      properties:
+        email:
+          type: string
+          pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
+          description: The email address
+          examples:
+            - user@example.com
+        authMethod:
+          allOf:
+            - $ref: '#/components/schemas/EmailAuthMethod'
+          description: The authentication method
+        password:
+          type: string
+          pattern: ^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$
+          format: password
+          description: The password
+        createdAt:
+          type: integer
+          format: int32
+          description: The timestamp when the email was created
+        updatedAt:
+          type: integer
+          format: int32
+          description: The timestamp when the email was updated
+    EmailGroup:
+      type: object
+      required:
+        - id
+        - name
+        - members
+      properties:
+        id:
+          type: string
+          description: The unique identifier for the group
+          readOnly: true
+        name:
+          type: string
+          description: The name of the group
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/Email'
+      description: A group of emails
+    EmailGroupCreateOrUpdate:
+      type: object
+      required:
+        - name
+        - members
+      properties:
+        name:
+          type: string
+          description: The name of the group
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailCreateOrUpdateItem'
+      description: A group of emails
+    EmailGroupList:
+      type: object
+      required:
+        - items
+        - total
+        - offset
+        - limit
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailGroup'
+        total:
+          type: integer
+          format: uint32
+          description: The total number of email groups
+        offset:
+          type: integer
+          format: uint32
+          description: The offset to fetch the list, 0 means no offset
+        limit:
+          type: integer
+          format: uint32
+          description: The limit to fetch the list, 0 means no limit
+      description: A list of email groups
     EmailList:
       type: object
       required:
