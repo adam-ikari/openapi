@@ -1,7 +1,7 @@
 // Licensed under the MIT License.
 
 export {
-  createOpenApiService,
-  OpenApiServiceContext,
-  OpenApiServiceClientOptionalParams,
-} from "./openApiServiceContext.js";
+  createOpenApiV1,
+  OpenApiV1Context,
+  OpenApiV1ClientOptionalParams,
+} from "./openApiV1Context.js";

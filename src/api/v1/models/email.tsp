@@ -5,7 +5,32 @@ import "@typespec/openapi";
 using TypeSpec.Http;
 using TypeSpec.OpenAPI;
 
-enum AuthMethod {
+@doc("Email authentication method")
+@extension(
+    "x-ms-enum",
+    #{
+        values: #[
+            #{
+                name: "password",
+                value: 0,
+                description: "Password authentication",
+            },
+            #{
+                name: "otp",
+                value: 1,
+                description: "One time password authentication",
+            },
+            #{
+                name: "totp",
+                value: 2,
+                description: "Time-based one time password authentication",
+            },
+            #{ name: "oauth2", value: 3, description: "OAuth2 authentication" }
+        ],
+    }
+)
+@extension("x-enum-varnames", #["password", "otp", "totp", "oauth2"])
+enum EmailAuthMethod {
     password: 0,
     otp: 1,
     totp: 2,
@@ -21,7 +46,10 @@ model Email {
     email: string;
 
     @doc("The authentication method")
-    authMethod: AuthMethod;
+    authMethod: EmailAuthMethod;
+
+    @doc("The password")
+    password?: string;
 
     @doc("The authentication token")
     token: string;

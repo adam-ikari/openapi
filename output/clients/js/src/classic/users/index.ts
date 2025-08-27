@@ -1,6 +1,6 @@
 // Licensed under the MIT License.
 
-import { OpenApiServiceContext } from "../../api/openApiServiceContext.js";
+import { OpenApiV1Context } from "../../api/openApiV1Context.js";
 import {
   $delete,
   update,
@@ -44,7 +44,7 @@ export interface UsersOperations {
   ) => Promise<UserList>;
 }
 
-function _getUsers(context: OpenApiServiceContext) {
+function _getUsers(context: OpenApiV1Context) {
   return {
     delete: (id: string, options?: UsersDeleteOptionalParams) =>
       $delete(context, id, options),
@@ -60,7 +60,7 @@ function _getUsers(context: OpenApiServiceContext) {
 }
 
 export function _getUsersOperations(
-  context: OpenApiServiceContext,
+  context: OpenApiV1Context,
 ): UsersOperations {
   return {
     ..._getUsers(context),

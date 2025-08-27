@@ -5,7 +5,7 @@ info:
 tags:
   - name: Users
 paths:
-  /users:
+  /api/v1/users:
     get:
       operationId: Users_list
       description: List users
@@ -72,7 +72,7 @@ paths:
               $ref: '#/components/schemas/User'
       security:
         - BearerAuth: []
-  /users/{id}:
+  /api/v1/users/{id}:
     get:
       operationId: Users_read
       description: Read users
@@ -158,13 +158,6 @@ paths:
         - BearerAuth: []
 components:
   schemas:
-    AuthMethod:
-      type: number
-      enum:
-        - 0
-        - 1
-        - 2
-        - 3
     Email:
       type: object
       required:
@@ -185,8 +178,11 @@ components:
           description: The email address
         authMethod:
           allOf:
-            - $ref: '#/components/schemas/AuthMethod'
+            - $ref: '#/components/schemas/EmailAuthMethod'
           description: The authentication method
+        password:
+          type: string
+          description: The password
         token:
           type: string
           description: The authentication token
@@ -198,6 +194,33 @@ components:
           type: integer
           format: int32
           description: The timestamp when the email was updated
+    EmailAuthMethod:
+      type: number
+      enum:
+        - 0
+        - 1
+        - 2
+        - 3
+      description: Email authentication method
+      x-enum-varnames:
+        - password
+        - otp
+        - totp
+        - oauth2
+      x-ms-enum:
+        values:
+          - name: password
+            value: 0
+            description: Password authentication
+          - name: otp
+            value: 1
+            description: One time password authentication
+          - name: totp
+            value: 2
+            description: Time-based one time password authentication
+          - name: oauth2
+            value: 3
+            description: OAuth2 authentication
     Error:
       type: object
       required:

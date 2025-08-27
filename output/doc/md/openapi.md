@@ -30,7 +30,7 @@ headingLevel: 2
 > Code samples
 
 ```http
-GET /users?offset=0&limit=10 HTTP/1.1
+GET /api/v1/users?offset=0&limit=10 HTTP/1.1
 
 Accept: application/json
 
@@ -43,7 +43,7 @@ const headers = {
   Accept: "application/json",
 }
 
-fetch("/users?offset=0&limit=10", {
+fetch("/api/v1/users?offset=0&limit=10", {
   method: "GET",
 
   headers: headers,
@@ -64,7 +64,7 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.get('/users', params={
+r = requests.get('/api/v1/users', params={
   'offset': '0',  'limit': '10'
 }, headers = headers)
 
@@ -72,7 +72,7 @@ print(r.json())
 
 ```
 
-`GET /users`
+`GET /api/v1/users`
 
 List users
 
@@ -99,6 +99,7 @@ List users
         "id": 0,
         "email": "string",
         "authMethod": 0,
+        "password": "string",
         "token": "string",
         "createdAt": 0,
         "updatedAt": 0
@@ -132,7 +133,7 @@ BearerAuth
 > Code samples
 
 ```http
-POST /users HTTP/1.1
+POST /api/v1/users HTTP/1.1
 
 Content-Type: application/json
 Accept: application/json
@@ -150,6 +151,7 @@ const inputBody = '{
     "id": 0,
     "email": "string",
     "authMethod": 0,
+    "password": "string",
     "token": "string",
     "createdAt": 0,
     "updatedAt": 0
@@ -162,7 +164,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('/users',
+fetch('/api/v1/users',
 {
   method: 'POST',
   body: inputBody,
@@ -185,13 +187,13 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.post('/users', headers = headers)
+r = requests.post('/api/v1/users', headers = headers)
 
 print(r.json())
 
 ```
 
-`POST /users`
+`POST /api/v1/users`
 
 Create a users
 
@@ -207,6 +209,7 @@ Create a users
     "id": 0,
     "email": "string",
     "authMethod": 0,
+    "password": "string",
     "token": "string",
     "createdAt": 0,
     "updatedAt": 0
@@ -236,6 +239,7 @@ Create a users
     "id": 0,
     "email": "string",
     "authMethod": 0,
+    "password": "string",
     "token": "string",
     "createdAt": 0,
     "updatedAt": 0
@@ -264,7 +268,7 @@ BearerAuth
 > Code samples
 
 ```http
-GET /users/{id} HTTP/1.1
+GET /api/v1/users/{id} HTTP/1.1
 
 Accept: application/json
 
@@ -277,7 +281,7 @@ const headers = {
   Accept: "application/json",
 }
 
-fetch("/users/{id}", {
+fetch("/api/v1/users/{id}", {
   method: "GET",
 
   headers: headers,
@@ -298,13 +302,13 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.get('/users/{id}', headers = headers)
+r = requests.get('/api/v1/users/{id}', headers = headers)
 
 print(r.json())
 
 ```
 
-`GET /users/{id}`
+`GET /api/v1/users/{id}`
 
 Read users
 
@@ -328,6 +332,7 @@ Read users
     "id": 0,
     "email": "string",
     "authMethod": 0,
+    "password": "string",
     "token": "string",
     "createdAt": 0,
     "updatedAt": 0
@@ -356,7 +361,7 @@ BearerAuth
 > Code samples
 
 ```http
-PUT /users/{id} HTTP/1.1
+PUT /api/v1/users/{id} HTTP/1.1
 
 Content-Type: application/json
 Accept: application/json
@@ -374,6 +379,7 @@ const inputBody = '{
     "id": 0,
     "email": "string",
     "authMethod": 0,
+    "password": "string",
     "token": "string",
     "createdAt": 0,
     "updatedAt": 0
@@ -386,7 +392,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('/users/{id}',
+fetch('/api/v1/users/{id}',
 {
   method: 'PUT',
   body: inputBody,
@@ -409,13 +415,13 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.put('/users/{id}', headers = headers)
+r = requests.put('/api/v1/users/{id}', headers = headers)
 
 print(r.json())
 
 ```
 
-`PUT /users/{id}`
+`PUT /api/v1/users/{id}`
 
 Update a users
 
@@ -431,6 +437,7 @@ Update a users
     "id": 0,
     "email": "string",
     "authMethod": 0,
+    "password": "string",
     "token": "string",
     "createdAt": 0,
     "updatedAt": 0
@@ -461,6 +468,7 @@ Update a users
     "id": 0,
     "email": "string",
     "authMethod": 0,
+    "password": "string",
     "token": "string",
     "createdAt": 0,
     "updatedAt": 0
@@ -489,7 +497,7 @@ BearerAuth
 > Code samples
 
 ```http
-DELETE /users/{id} HTTP/1.1
+DELETE /api/v1/users/{id} HTTP/1.1
 
 Accept: application/json
 
@@ -502,7 +510,7 @@ const headers = {
   Accept: "application/json",
 }
 
-fetch("/users/{id}", {
+fetch("/api/v1/users/{id}", {
   method: "DELETE",
 
   headers: headers,
@@ -523,13 +531,13 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.delete('/users/{id}', headers = headers)
+r = requests.delete('/api/v1/users/{id}', headers = headers)
 
 print(r.json())
 
 ```
 
-`DELETE /users/{id}`
+`DELETE /api/v1/users/{id}`
 
 Delete a users
 
@@ -564,32 +572,6 @@ BearerAuth
 
 # Schemas
 
-<h2 id="tocS_AuthMethod">AuthMethod</h2>
-<!-- backwards compatibility -->
-<a id="schemaauthmethod"></a>
-<a id="schema_AuthMethod"></a>
-<a id="tocSauthmethod"></a>
-<a id="tocsauthmethod"></a>
-
-```yaml
-0
-```
-
-### Properties
-
-| Name        | Type   | Required | Restrictions | Description |
-| ----------- | ------ | -------- | ------------ | ----------- |
-| _anonymous_ | number | false    | none         | none        |
-
-#### Enumerated Values
-
-| Property    | Value | Description |
-| ----------- | ----- | ----------- |
-| _anonymous_ | 0     | undefined   |
-| _anonymous_ | 1     | undefined   |
-| _anonymous_ | 2     | undefined   |
-| _anonymous_ | 3     | undefined   |
-
 <h2 id="tocS_Email">Email</h2>
 <!-- backwards compatibility -->
 <a id="schemaemail"></a>
@@ -601,6 +583,7 @@ BearerAuth
 id: 0
 email: string
 authMethod: 0
+password: string
 token: string
 createdAt: 0
 updatedAt: 0
@@ -608,14 +591,43 @@ updatedAt: 0
 
 ### Properties
 
-| Name       | Type                            | Required | Restrictions | Description                              |
-| ---------- | ------------------------------- | -------- | ------------ | ---------------------------------------- |
-| id         | integer(uint32)                 | true     | none         | The id of the email                      |
-| email      | string                          | true     | none         | The email address                        |
-| authMethod | [AuthMethod](#schemaauthmethod) | true     | none         | The authentication method                |
-| token      | string                          | true     | none         | The authentication token                 |
-| createdAt  | integer(int32)                  | true     | none         | The timestamp when the email was created |
-| updatedAt  | integer(int32)                  | true     | none         | The timestamp when the email was updated |
+| Name       | Type                                      | Required | Restrictions | Description                              |
+| ---------- | ----------------------------------------- | -------- | ------------ | ---------------------------------------- |
+| id         | integer(uint32)                           | true     | none         | The id of the email                      |
+| email      | string                                    | true     | none         | The email address                        |
+| authMethod | [EmailAuthMethod](#schemaemailauthmethod) | true     | none         | The authentication method                |
+| password   | string                                    | false    | none         | The password                             |
+| token      | string                                    | true     | none         | The authentication token                 |
+| createdAt  | integer(int32)                            | true     | none         | The timestamp when the email was created |
+| updatedAt  | integer(int32)                            | true     | none         | The timestamp when the email was updated |
+
+<h2 id="tocS_EmailAuthMethod">EmailAuthMethod</h2>
+<!-- backwards compatibility -->
+<a id="schemaemailauthmethod"></a>
+<a id="schema_EmailAuthMethod"></a>
+<a id="tocSemailauthmethod"></a>
+<a id="tocsemailauthmethod"></a>
+
+```yaml
+0
+```
+
+Email authentication method
+
+### Properties
+
+| Name        | Type   | Required | Restrictions | Description                 |
+| ----------- | ------ | -------- | ------------ | --------------------------- |
+| _anonymous_ | number | false    | none         | Email authentication method |
+
+#### Enumerated Values
+
+| Property | Value | Description                                 |
+| -------- | ----- | ------------------------------------------- |
+| password | 0     | Password authentication                     |
+| otp      | 1     | One time password authentication            |
+| totp     | 2     | Time-based one time password authentication |
+| oauth2   | 3     | OAuth2 authentication                       |
 
 <h2 id="tocS_Error">Error</h2>
 <!-- backwards compatibility -->
@@ -705,6 +717,7 @@ email:
   id: 0
   email: string
   authMethod: 0
+  password: string
   token: string
   createdAt: 0
   updatedAt: 0
@@ -741,6 +754,7 @@ items:
       id: 0
       email: string
       authMethod: 0
+      password: string
       token: string
       createdAt: 0
       updatedAt: 0

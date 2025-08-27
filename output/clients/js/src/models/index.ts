@@ -5,7 +5,7 @@ export {
   User,
   Gender,
   Email,
-  AuthMethod,
+  EmailAuthMethod,
   ErrorModel,
   StatusCode,
 } from "./models.js";

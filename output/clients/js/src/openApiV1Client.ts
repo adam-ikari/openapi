@@ -1,29 +1,29 @@
 // Licensed under the MIT License.
 
 import {
-  createOpenApiService,
-  OpenApiServiceContext,
-  OpenApiServiceClientOptionalParams,
+  createOpenApiV1,
+  OpenApiV1Context,
+  OpenApiV1ClientOptionalParams,
 } from "./api/index.js";
 import { UsersOperations, _getUsersOperations } from "./classic/users/index.js";
 import { Pipeline } from "@typespec/ts-http-runtime";
 
-export { OpenApiServiceClientOptionalParams } from "./api/openApiServiceContext.js";
+export { OpenApiV1ClientOptionalParams } from "./api/openApiV1Context.js";
 
-export class OpenApiServiceClient {
-  private _client: OpenApiServiceContext;
+export class OpenApiV1Client {
+  private _client: OpenApiV1Context;
   /** The pipeline used by this client to make requests */
   public readonly pipeline: Pipeline;
 
   constructor(
     endpointParam: string,
-    options: OpenApiServiceClientOptionalParams = {},
+    options: OpenApiV1ClientOptionalParams = {},
   ) {
     const prefixFromOptions = options?.userAgentOptions?.userAgentPrefix;
     const userAgentPrefix = prefixFromOptions
       ? `${prefixFromOptions} azsdk-js-client`
       : `azsdk-js-client`;
-    this._client = createOpenApiService(endpointParam, {
+    this._client = createOpenApiV1(endpointParam, {
       ...options,
       userAgentOptions: { userAgentPrefix },
     });

@@ -85,7 +85,9 @@ export interface Email {
   /** The email address */
   email: string;
   /** The authentication method */
-  authMethod: AuthMethod;
+  authMethod: EmailAuthMethod;
+  /** The password */
+  password?: string;
   /** The authentication token */
   token: string;
   /** The timestamp when the email was created */
@@ -99,6 +101,7 @@ export function emailSerializer(item: Email): any {
     id: item["id"],
     email: item["email"],
     authMethod: item["authMethod"],
+    password: item["password"],
     token: item["token"],
     createdAt: item["createdAt"],
     updatedAt: item["updatedAt"],
@@ -110,14 +113,15 @@ export function emailDeserializer(item: any): Email {
     id: item["id"],
     email: item["email"],
     authMethod: item["authMethod"],
+    password: item["password"],
     token: item["token"],
     createdAt: item["createdAt"],
     updatedAt: item["updatedAt"],
   };
 }
 
-/** Type of AuthMethod */
-export type AuthMethod = 0 | 1 | 2 | 3;
+/** Email authentication method */
+export type EmailAuthMethod = 0 | 1 | 2 | 3;
 
 /** model interface ErrorModel */
 export interface ErrorModel {

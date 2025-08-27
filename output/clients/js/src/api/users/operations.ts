@@ -1,6 +1,6 @@
 // Licensed under the MIT License.
 
-import { OpenApiServiceContext as Client } from "../index.js";
+import { OpenApiV1Context as Client } from "../index.js";
 import {
   UserList,
   userListDeserializer,
@@ -30,7 +30,7 @@ export function _$deleteSend(
   options: UsersDeleteOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   const path = expandUrlTemplate(
-    "/users/{id}",
+    "/api/v1/users/{id}",
     {
       id: id,
     },
@@ -78,7 +78,7 @@ export function _updateSend(
   options: UsersUpdateOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   const path = expandUrlTemplate(
-    "/users/{id}",
+    "/api/v1/users/{id}",
     {
       id: id,
     },
@@ -129,7 +129,7 @@ export function _createSend(
   options: UsersCreateOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   return context
-    .path("/users")
+    .path("/api/v1/users")
     .post({
       ...operationOptionsToRequestParameters(options),
       contentType: "application/json",
@@ -170,7 +170,7 @@ export function _readSend(
   options: UsersReadOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   const path = expandUrlTemplate(
-    "/users/{id}",
+    "/api/v1/users/{id}",
     {
       id: id,
     },
@@ -219,7 +219,7 @@ export function _listSend(
   options: UsersListOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   const path = expandUrlTemplate(
-    "/users{?offset,limit}",
+    "/api/v1/users{?offset,limit}",
     {
       offset: offset,
       limit: limit,

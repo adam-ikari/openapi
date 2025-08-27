@@ -7,11 +7,8 @@ import "./models/user.tsp";
 import "./models/error.tsp";
 
 using TypeSpec.Http;
-using TypeSpec.OpenAPI;
 
-@service(#{ title: "OpenAPI" })
-@info(#{ version: "1.0.0" })
-namespace OpenApiService;
+namespace OpenApiV1;
 
 @route("/users")
 @tag("Users")
