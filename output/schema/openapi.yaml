@@ -547,6 +547,10 @@ components:
           allOf:
             - $ref: '#/components/schemas/Email'
           description: The email of the user
+        avatar:
+          type: string
+          format: uri
+          description: The avatar of the user
         createdAt:
           type: integer
           format: int32
@@ -563,6 +567,7 @@ components:
         - age
         - gender
         - email
+        - password
         - createdAt
         - updatedAt
       properties:
@@ -590,6 +595,14 @@ components:
           allOf:
             - $ref: '#/components/schemas/EmailCreate'
           description: The email of the user
+        avatar:
+          type: string
+          format: uri
+          description: The avatar of the user
+        password:
+          type: string
+          format: password
+          description: The password of the user
         createdAt:
           type: integer
           format: int32
@@ -606,6 +619,7 @@ components:
         - age
         - gender
         - email
+        - password
         - createdAt
         - updatedAt
       properties:
@@ -633,6 +647,14 @@ components:
           allOf:
             - $ref: '#/components/schemas/EmailCreateOrUpdate'
           description: The email of the user
+        avatar:
+          type: string
+          format: uri
+          description: The avatar of the user
+        password:
+          type: string
+          format: password
+          description: The password of the user
         createdAt:
           type: integer
           format: int32

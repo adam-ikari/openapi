@@ -45,6 +45,10 @@ export interface User {
   gender: Gender;
   /** The email of the user */
   email: Email;
+  /** The avatar of the user */
+  avatar?: string;
+  /** The password of the user */
+  password: string;
   /** The timestamp when the user was created */
   createdAt: any;
   /** The timestamp when the user was updated */
@@ -58,6 +62,8 @@ export function userSerializer(item: User): any {
     age: item["age"],
     gender: item["gender"],
     email: emailSerializer(item["email"]),
+    avatar: item["avatar"],
+    password: item["password"],
     createdAt: item["createdAt"],
     updatedAt: item["updatedAt"],
   };
@@ -70,6 +76,8 @@ export function userDeserializer(item: any): User {
     age: item["age"],
     gender: item["gender"],
     email: emailDeserializer(item["email"]),
+    avatar: item["avatar"],
+    password: item["password"],
     createdAt: item["createdAt"],
     updatedAt: item["updatedAt"],
   };

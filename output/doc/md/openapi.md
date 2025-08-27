@@ -103,6 +103,7 @@ List users
         "createdAt": 0,
         "updatedAt": 0
       },
+      "avatar": "http://example.com",
       "createdAt": 0,
       "updatedAt": 0
     }
@@ -154,6 +155,8 @@ const inputBody = '{
     "createdAt": 0,
     "updatedAt": 0
   },
+  "avatar": "http://example.com",
+  "password": "pa$$word",
   "createdAt": 0,
   "updatedAt": 0
 }';
@@ -211,6 +214,8 @@ Create a users
     "createdAt": 0,
     "updatedAt": 0
   },
+  "avatar": "http://example.com",
+  "password": "pa$$word",
   "createdAt": 0,
   "updatedAt": 0
 }
@@ -240,6 +245,7 @@ Create a users
     "createdAt": 0,
     "updatedAt": 0
   },
+  "avatar": "http://example.com",
   "createdAt": 0,
   "updatedAt": 0
 }
@@ -332,6 +338,7 @@ Read users
     "createdAt": 0,
     "updatedAt": 0
   },
+  "avatar": "http://example.com",
   "createdAt": 0,
   "updatedAt": 0
 }
@@ -378,6 +385,8 @@ const inputBody = '{
     "createdAt": 0,
     "updatedAt": 0
   },
+  "avatar": "http://example.com",
+  "password": "pa$$word",
   "createdAt": 0,
   "updatedAt": 0
 }';
@@ -435,6 +444,8 @@ Update a users
     "createdAt": 0,
     "updatedAt": 0
   },
+  "avatar": "http://example.com",
+  "password": "pa$$word",
   "createdAt": 0,
   "updatedAt": 0
 }
@@ -465,6 +476,7 @@ Update a users
     "createdAt": 0,
     "updatedAt": 0
   },
+  "avatar": "http://example.com",
   "createdAt": 0,
   "updatedAt": 0
 }
@@ -1270,6 +1282,7 @@ email:
   token: pa$$word
   createdAt: 0
   updatedAt: 0
+avatar: http://example.com
 createdAt: 0
 updatedAt: 0
 ```
@@ -1283,6 +1296,7 @@ updatedAt: 0
 | age       | integer(uint8)          | true     | none         | The age of the user, min 1, max 120     |
 | gender    | [Gender](#schemagender) | true     | none         | The gender of the user                  |
 | email     | [Email](#schemaemail)   | true     | none         | The email of the user                   |
+| avatar    | string(uri)             | false    | none         | The avatar of the user                  |
 | createdAt | integer(int32)          | true     | none         | The timestamp when the user was created |
 | updatedAt | integer(int32)          | true     | none         | The timestamp when the user was updated |
 
@@ -1305,6 +1319,8 @@ email:
   password: pa$$word
   createdAt: 0
   updatedAt: 0
+avatar: http://example.com
+password: pa$$word
 createdAt: 0
 updatedAt: 0
 ```
@@ -1318,6 +1334,8 @@ updatedAt: 0
 | age       | integer(uint8)                    | true     | none         | The age of the user, min 1, max 120     |
 | gender    | [Gender](#schemagender)           | true     | none         | The gender of the user                  |
 | email     | [EmailCreate](#schemaemailcreate) | true     | none         | The email of the user                   |
+| avatar    | string(uri)                       | false    | none         | The avatar of the user                  |
+| password  | string(password)                  | true     | none         | The password of the user                |
 | createdAt | integer(int32)                    | true     | none         | The timestamp when the user was created |
 | updatedAt | integer(int32)                    | true     | none         | The timestamp when the user was updated |
 
@@ -1340,6 +1358,8 @@ email:
   password: pa$$word
   createdAt: 0
   updatedAt: 0
+avatar: http://example.com
+password: pa$$word
 createdAt: 0
 updatedAt: 0
 ```
@@ -1353,6 +1373,8 @@ updatedAt: 0
 | age       | integer(uint8)                                    | true     | none         | The age of the user, min 1, max 120     |
 | gender    | [Gender](#schemagender)                           | true     | none         | The gender of the user                  |
 | email     | [EmailCreateOrUpdate](#schemaemailcreateorupdate) | true     | none         | The email of the user                   |
+| avatar    | string(uri)                                       | false    | none         | The avatar of the user                  |
+| password  | string(password)                                  | true     | none         | The password of the user                |
 | createdAt | integer(int32)                                    | true     | none         | The timestamp when the user was created |
 | updatedAt | integer(int32)                                    | true     | none         | The timestamp when the user was updated |
 
@@ -1376,6 +1398,7 @@ items:
       token: pa$$word
       createdAt: 0
       updatedAt: 0
+    avatar: http://example.com
     createdAt: 0
     updatedAt: 0
 total: 0

@@ -43,6 +43,14 @@ model User {
     @doc("The email of the user")
     email: Email;
 
+    @doc("The avatar of the user")
+    avatar?: url;
+
+    @doc("The password of the user")
+    @secret
+    @visibility(Lifecycle.Create, Lifecycle.Update)
+    password: string;
+
     @doc("The timestamp when the user was created")
     createdAt: unixTimestamp32;
 
