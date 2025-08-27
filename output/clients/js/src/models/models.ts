@@ -89,7 +89,7 @@ export interface Email {
   /** The password */
   password?: string;
   /** The authentication token */
-  token: string;
+  readonly token: string;
   /** The timestamp when the email was created */
   createdAt: any;
   /** The timestamp when the email was updated */
@@ -102,7 +102,6 @@ export function emailSerializer(item: Email): any {
     email: item["email"],
     authMethod: item["authMethod"],
     password: item["password"],
-    token: item["token"],
     createdAt: item["createdAt"],
     updatedAt: item["updatedAt"],
   };

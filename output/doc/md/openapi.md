@@ -99,8 +99,7 @@ List users
         "id": 0,
         "email": "string",
         "authMethod": 0,
-        "password": "string",
-        "token": "string",
+        "token": "pa$$word",
         "createdAt": 0,
         "updatedAt": 0
       },
@@ -151,8 +150,7 @@ const inputBody = '{
     "id": 0,
     "email": "string",
     "authMethod": 0,
-    "password": "string",
-    "token": "string",
+    "password": "pa$$word",
     "createdAt": 0,
     "updatedAt": 0
   },
@@ -209,8 +207,7 @@ Create a users
     "id": 0,
     "email": "string",
     "authMethod": 0,
-    "password": "string",
-    "token": "string",
+    "password": "pa$$word",
     "createdAt": 0,
     "updatedAt": 0
   },
@@ -221,9 +218,9 @@ Create a users
 
 <h3 id="users_create-parameters">Parameters</h3>
 
-| Name | In   | Type                | Required | Description |
-| ---- | ---- | ------------------- | -------- | ----------- |
-| body | body | [User](#schemauser) | true     | none        |
+| Name | In   | Type                            | Required | Description |
+| ---- | ---- | ------------------------------- | -------- | ----------- |
+| body | body | [UserCreate](#schemausercreate) | true     | none        |
 
 > Example responses
 
@@ -239,8 +236,7 @@ Create a users
     "id": 0,
     "email": "string",
     "authMethod": 0,
-    "password": "string",
-    "token": "string",
+    "token": "pa$$word",
     "createdAt": 0,
     "updatedAt": 0
   },
@@ -332,8 +328,7 @@ Read users
     "id": 0,
     "email": "string",
     "authMethod": 0,
-    "password": "string",
-    "token": "string",
+    "token": "pa$$word",
     "createdAt": 0,
     "updatedAt": 0
   },
@@ -379,8 +374,7 @@ const inputBody = '{
     "id": 0,
     "email": "string",
     "authMethod": 0,
-    "password": "string",
-    "token": "string",
+    "password": "pa$$word",
     "createdAt": 0,
     "updatedAt": 0
   },
@@ -437,8 +431,7 @@ Update a users
     "id": 0,
     "email": "string",
     "authMethod": 0,
-    "password": "string",
-    "token": "string",
+    "password": "pa$$word",
     "createdAt": 0,
     "updatedAt": 0
   },
@@ -449,10 +442,10 @@ Update a users
 
 <h3 id="users_update-parameters">Parameters</h3>
 
-| Name | In   | Type                | Required | Description                  |
-| ---- | ---- | ------------------- | -------- | ---------------------------- |
-| id   | path | string              | true     | The id of the user to update |
-| body | body | [User](#schemauser) | true     | none                         |
+| Name | In   | Type                                            | Required | Description                  |
+| ---- | ---- | ----------------------------------------------- | -------- | ---------------------------- |
+| id   | path | string                                          | true     | The id of the user to update |
+| body | body | [UserCreateOrUpdate](#schemausercreateorupdate) | true     | none                         |
 
 > Example responses
 
@@ -468,8 +461,7 @@ Update a users
     "id": 0,
     "email": "string",
     "authMethod": 0,
-    "password": "string",
-    "token": "string",
+    "token": "pa$$word",
     "createdAt": 0,
     "updatedAt": 0
   },
@@ -583,8 +575,7 @@ BearerAuth
 id: 0
 email: string
 authMethod: 0
-password: string
-token: string
+token: pa$$word
 createdAt: 0
 updatedAt: 0
 ```
@@ -596,8 +587,7 @@ updatedAt: 0
 | id         | integer(uint32)                           | true     | none         | The id of the email                      |
 | email      | string                                    | true     | none         | The email address                        |
 | authMethod | [EmailAuthMethod](#schemaemailauthmethod) | true     | none         | The authentication method                |
-| password   | string                                    | false    | none         | The password                             |
-| token      | string                                    | true     | none         | The authentication token                 |
+| token      | string(password)                          | true     | read-only    | The authentication token                 |
 | createdAt  | integer(int32)                            | true     | none         | The timestamp when the email was created |
 | updatedAt  | integer(int32)                            | true     | none         | The timestamp when the email was updated |
 
@@ -628,6 +618,60 @@ Email authentication method
 | otp      | 1     | One time password authentication            |
 | totp     | 2     | Time-based one time password authentication |
 | oauth2   | 3     | OAuth2 authentication                       |
+
+<h2 id="tocS_EmailCreate">EmailCreate</h2>
+<!-- backwards compatibility -->
+<a id="schemaemailcreate"></a>
+<a id="schema_EmailCreate"></a>
+<a id="tocSemailcreate"></a>
+<a id="tocsemailcreate"></a>
+
+```yaml
+id: 0
+email: string
+authMethod: 0
+password: pa$$word
+createdAt: 0
+updatedAt: 0
+```
+
+### Properties
+
+| Name       | Type                                      | Required | Restrictions | Description                              |
+| ---------- | ----------------------------------------- | -------- | ------------ | ---------------------------------------- |
+| id         | integer(uint32)                           | true     | none         | The id of the email                      |
+| email      | string                                    | true     | none         | The email address                        |
+| authMethod | [EmailAuthMethod](#schemaemailauthmethod) | true     | none         | The authentication method                |
+| password   | string(password)                          | false    | none         | The password                             |
+| createdAt  | integer(int32)                            | true     | none         | The timestamp when the email was created |
+| updatedAt  | integer(int32)                            | true     | none         | The timestamp when the email was updated |
+
+<h2 id="tocS_EmailCreateOrUpdate">EmailCreateOrUpdate</h2>
+<!-- backwards compatibility -->
+<a id="schemaemailcreateorupdate"></a>
+<a id="schema_EmailCreateOrUpdate"></a>
+<a id="tocSemailcreateorupdate"></a>
+<a id="tocsemailcreateorupdate"></a>
+
+```yaml
+id: 0
+email: string
+authMethod: 0
+password: pa$$word
+createdAt: 0
+updatedAt: 0
+```
+
+### Properties
+
+| Name       | Type                                      | Required | Restrictions | Description                              |
+| ---------- | ----------------------------------------- | -------- | ------------ | ---------------------------------------- |
+| id         | integer(uint32)                           | true     | none         | The id of the email                      |
+| email      | string                                    | true     | none         | The email address                        |
+| authMethod | [EmailAuthMethod](#schemaemailauthmethod) | true     | none         | The authentication method                |
+| password   | string(password)                          | false    | none         | The password                             |
+| createdAt  | integer(int32)                            | true     | none         | The timestamp when the email was created |
+| updatedAt  | integer(int32)                            | true     | none         | The timestamp when the email was updated |
 
 <h2 id="tocS_Error">Error</h2>
 <!-- backwards compatibility -->
@@ -717,8 +761,7 @@ email:
   id: 0
   email: string
   authMethod: 0
-  password: string
-  token: string
+  token: pa$$word
   createdAt: 0
   updatedAt: 0
 createdAt: 0
@@ -737,6 +780,76 @@ updatedAt: 0
 | createdAt | integer(int32)          | true     | none         | The timestamp when the email was created |
 | updatedAt | integer(int32)          | true     | none         | The timestamp when the email was updated |
 
+<h2 id="tocS_UserCreate">UserCreate</h2>
+<!-- backwards compatibility -->
+<a id="schemausercreate"></a>
+<a id="schema_UserCreate"></a>
+<a id="tocSusercreate"></a>
+<a id="tocsusercreate"></a>
+
+```yaml
+id: string
+name: string
+age: 1
+gender: 0
+email:
+  id: 0
+  email: string
+  authMethod: 0
+  password: pa$$word
+  createdAt: 0
+  updatedAt: 0
+createdAt: 0
+updatedAt: 0
+```
+
+### Properties
+
+| Name      | Type                              | Required | Restrictions | Description                              |
+| --------- | --------------------------------- | -------- | ------------ | ---------------------------------------- |
+| id        | string                            | true     | none         | The unique identifier of the user        |
+| name      | string                            | true     | none         | The name of the user                     |
+| age       | integer(uint8)                    | true     | none         | The age of the user, min 1, max 120      |
+| gender    | [Gender](#schemagender)           | true     | none         | The gender of the user                   |
+| email     | [EmailCreate](#schemaemailcreate) | true     | none         | The email of the user                    |
+| createdAt | integer(int32)                    | true     | none         | The timestamp when the email was created |
+| updatedAt | integer(int32)                    | true     | none         | The timestamp when the email was updated |
+
+<h2 id="tocS_UserCreateOrUpdate">UserCreateOrUpdate</h2>
+<!-- backwards compatibility -->
+<a id="schemausercreateorupdate"></a>
+<a id="schema_UserCreateOrUpdate"></a>
+<a id="tocSusercreateorupdate"></a>
+<a id="tocsusercreateorupdate"></a>
+
+```yaml
+id: string
+name: string
+age: 1
+gender: 0
+email:
+  id: 0
+  email: string
+  authMethod: 0
+  password: pa$$word
+  createdAt: 0
+  updatedAt: 0
+createdAt: 0
+updatedAt: 0
+```
+
+### Properties
+
+| Name      | Type                                              | Required | Restrictions | Description                              |
+| --------- | ------------------------------------------------- | -------- | ------------ | ---------------------------------------- |
+| id        | string                                            | true     | none         | The unique identifier of the user        |
+| name      | string                                            | true     | none         | The name of the user                     |
+| age       | integer(uint8)                                    | true     | none         | The age of the user, min 1, max 120      |
+| gender    | [Gender](#schemagender)                           | true     | none         | The gender of the user                   |
+| email     | [EmailCreateOrUpdate](#schemaemailcreateorupdate) | true     | none         | The email of the user                    |
+| createdAt | integer(int32)                                    | true     | none         | The timestamp when the email was created |
+| updatedAt | integer(int32)                                    | true     | none         | The timestamp when the email was updated |
+
 <h2 id="tocS_UserList">UserList</h2>
 <!-- backwards compatibility -->
 <a id="schemauserlist"></a>
@@ -754,8 +867,7 @@ items:
       id: 0
       email: string
       authMethod: 0
-      password: string
-      token: string
+      token: pa$$word
       createdAt: 0
       updatedAt: 0
     createdAt: 0

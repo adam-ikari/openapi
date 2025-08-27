@@ -49,9 +49,13 @@ model Email {
     authMethod: EmailAuthMethod;
 
     @doc("The password")
+    @secret
+    @visibility(Lifecycle.Create, Lifecycle.Update)
     password?: string;
 
     @doc("The authentication token")
+    @secret
+    @visibility(Lifecycle.Read)
     token: string;
 
     @doc("The timestamp when the email was created")
