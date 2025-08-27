@@ -4,7 +4,6 @@ import "@typespec/openapi";
 
 // Import Models
 import "./models/user.tsp";
-import "./models/user_list.tsp";
 import "./models/error.tsp";
 
 using TypeSpec.Http;

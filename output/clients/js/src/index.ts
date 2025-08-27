@@ -5,6 +5,8 @@ export {
   UserList,
   User,
   Gender,
+  Email,
+  AuthMethod,
   ErrorModel,
   StatusCode,
 } from "./models/index.js";

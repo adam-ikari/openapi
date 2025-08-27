@@ -43,6 +43,12 @@ export interface User {
   age: number;
   /** The gender of the user */
   gender: Gender;
+  /** The email of the user */
+  email: Email;
+  /** The timestamp when the email was created */
+  createdAt: any;
+  /** The timestamp when the email was updated */
+  updatedAt: any;
 }
 
 export function userSerializer(item: User): any {
@@ -51,6 +57,9 @@ export function userSerializer(item: User): any {
     name: item["name"],
     age: item["age"],
     gender: item["gender"],
+    email: emailSerializer(item["email"]),
+    createdAt: item["createdAt"],
+    updatedAt: item["updatedAt"],
   };
 }
 
@@ -60,11 +69,55 @@ export function userDeserializer(item: any): User {
     name: item["name"],
     age: item["age"],
     gender: item["gender"],
+    email: emailDeserializer(item["email"]),
+    createdAt: item["createdAt"],
+    updatedAt: item["updatedAt"],
   };
 }
 
 /** Gender enum values */
 export type Gender = 0 | 1 | 2;
+
+/** model interface Email */
+export interface Email {
+  /** The id of the email */
+  id: number;
+  /** The email address */
+  email: string;
+  /** The authentication method */
+  authMethod: AuthMethod;
+  /** The authentication token */
+  token: string;
+  /** The timestamp when the email was created */
+  createdAt: any;
+  /** The timestamp when the email was updated */
+  updatedAt: any;
+}
+
+export function emailSerializer(item: Email): any {
+  return {
+    id: item["id"],
+    email: item["email"],
+    authMethod: item["authMethod"],
+    token: item["token"],
+    createdAt: item["createdAt"],
+    updatedAt: item["updatedAt"],
+  };
+}
+
+export function emailDeserializer(item: any): Email {
+  return {
+    id: item["id"],
+    email: item["email"],
+    authMethod: item["authMethod"],
+    token: item["token"],
+    createdAt: item["createdAt"],
+    updatedAt: item["updatedAt"],
+  };
+}
+
+/** Type of AuthMethod */
+export type AuthMethod = 0 | 1 | 2 | 3;
 
 /** model interface ErrorModel */
 export interface ErrorModel {

@@ -3,7 +3,6 @@ title: OpenAPI v1.0.0
 language_tabs:
   - http: HTTP
   - javascript: JavaScript
-  - javascript-axios: Axios
   - python: Python
 toc_footers: []
 includes: []
@@ -57,32 +56,6 @@ fetch("/users?offset=0&limit=10", {
   })
 ```
 
-```javascript-axios
-// axios.js
-
-const headers = {
-  'Accept':'application/json'
-};
-
-let config = {
-  method: 'GET',
-  maxBodyLength: Infinity,
-  url: '/users',
-  headers: headers
-};
-
-// 使用 axios 发送请求
-import axios from 'axios';
-
-axios.request(config)
-.then((response) => {
-  console.log(JSON.stringify(response.data));
-})
-.catch((error) => {
-  console.log(error);
-});
-```
-
 ```python
 # python
 
@@ -121,7 +94,17 @@ List users
       "id": "string",
       "name": "string",
       "age": 1,
-      "gender": 0
+      "gender": 0,
+      "email": {
+        "id": 0,
+        "email": "string",
+        "authMethod": 0,
+        "token": "string",
+        "createdAt": 0,
+        "updatedAt": 0
+      },
+      "createdAt": 0,
+      "updatedAt": 0
     }
   ],
   "total": 0,
@@ -162,7 +145,17 @@ const inputBody = '{
   "id": "string",
   "name": "string",
   "age": 1,
-  "gender": 0
+  "gender": 0,
+  "email": {
+    "id": 0,
+    "email": "string",
+    "authMethod": 0,
+    "token": "string",
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "createdAt": 0,
+  "updatedAt": 0
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -181,39 +174,6 @@ fetch('/users',
     console.log(body);
 });
 
-```
-
-```javascript-axios
-// axios.js
-const inputBody = '{
-  "id": "string",
-  "name": "string",
-  "age": 1,
-  "gender": 0
-}';
-const headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json'
-};
-
-let config = {
-  method: 'POST',
-  maxBodyLength: Infinity,
-  url: '/users',
-  headers: headers,
-  data : inputBody
-};
-
-// 使用 axios 发送请求
-import axios from 'axios';
-
-axios.request(config)
-.then((response) => {
-  console.log(JSON.stringify(response.data));
-})
-.catch((error) => {
-  console.log(error);
-});
 ```
 
 ```python
@@ -242,7 +202,17 @@ Create a users
   "id": "string",
   "name": "string",
   "age": 1,
-  "gender": 0
+  "gender": 0,
+  "email": {
+    "id": 0,
+    "email": "string",
+    "authMethod": 0,
+    "token": "string",
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "createdAt": 0,
+  "updatedAt": 0
 }
 ```
 
@@ -261,7 +231,17 @@ Create a users
   "id": "string",
   "name": "string",
   "age": 1,
-  "gender": 0
+  "gender": 0,
+  "email": {
+    "id": 0,
+    "email": "string",
+    "authMethod": 0,
+    "token": "string",
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "createdAt": 0,
+  "updatedAt": 0
 }
 ```
 
@@ -310,32 +290,6 @@ fetch("/users/{id}", {
   })
 ```
 
-```javascript-axios
-// axios.js
-
-const headers = {
-  'Accept':'application/json'
-};
-
-let config = {
-  method: 'GET',
-  maxBodyLength: Infinity,
-  url: '/users/{id}',
-  headers: headers
-};
-
-// 使用 axios 发送请求
-import axios from 'axios';
-
-axios.request(config)
-.then((response) => {
-  console.log(JSON.stringify(response.data));
-})
-.catch((error) => {
-  console.log(error);
-});
-```
-
 ```python
 # python
 
@@ -369,7 +323,17 @@ Read users
   "id": "string",
   "name": "string",
   "age": 1,
-  "gender": 0
+  "gender": 0,
+  "email": {
+    "id": 0,
+    "email": "string",
+    "authMethod": 0,
+    "token": "string",
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "createdAt": 0,
+  "updatedAt": 0
 }
 ```
 
@@ -405,7 +369,17 @@ const inputBody = '{
   "id": "string",
   "name": "string",
   "age": 1,
-  "gender": 0
+  "gender": 0,
+  "email": {
+    "id": 0,
+    "email": "string",
+    "authMethod": 0,
+    "token": "string",
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "createdAt": 0,
+  "updatedAt": 0
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -424,39 +398,6 @@ fetch('/users/{id}',
     console.log(body);
 });
 
-```
-
-```javascript-axios
-// axios.js
-const inputBody = '{
-  "id": "string",
-  "name": "string",
-  "age": 1,
-  "gender": 0
-}';
-const headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json'
-};
-
-let config = {
-  method: 'PUT',
-  maxBodyLength: Infinity,
-  url: '/users/{id}',
-  headers: headers,
-  data : inputBody
-};
-
-// 使用 axios 发送请求
-import axios from 'axios';
-
-axios.request(config)
-.then((response) => {
-  console.log(JSON.stringify(response.data));
-})
-.catch((error) => {
-  console.log(error);
-});
 ```
 
 ```python
@@ -485,7 +426,17 @@ Update a users
   "id": "string",
   "name": "string",
   "age": 1,
-  "gender": 0
+  "gender": 0,
+  "email": {
+    "id": 0,
+    "email": "string",
+    "authMethod": 0,
+    "token": "string",
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "createdAt": 0,
+  "updatedAt": 0
 }
 ```
 
@@ -505,7 +456,17 @@ Update a users
   "id": "string",
   "name": "string",
   "age": 1,
-  "gender": 0
+  "gender": 0,
+  "email": {
+    "id": 0,
+    "email": "string",
+    "authMethod": 0,
+    "token": "string",
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "createdAt": 0,
+  "updatedAt": 0
 }
 ```
 
@@ -552,32 +513,6 @@ fetch("/users/{id}", {
   .then(function (body) {
     console.log(body)
   })
-```
-
-```javascript-axios
-// axios.js
-
-const headers = {
-  'Accept':'application/json'
-};
-
-let config = {
-  method: 'DELETE',
-  maxBodyLength: Infinity,
-  url: '/users/{id}',
-  headers: headers
-};
-
-// 使用 axios 发送请求
-import axios from 'axios';
-
-axios.request(config)
-.then((response) => {
-  console.log(JSON.stringify(response.data));
-})
-.catch((error) => {
-  console.log(error);
-});
 ```
 
 ```python
@@ -628,6 +563,59 @@ BearerAuth
 </aside>
 
 # Schemas
+
+<h2 id="tocS_AuthMethod">AuthMethod</h2>
+<!-- backwards compatibility -->
+<a id="schemaauthmethod"></a>
+<a id="schema_AuthMethod"></a>
+<a id="tocSauthmethod"></a>
+<a id="tocsauthmethod"></a>
+
+```yaml
+0
+```
+
+### Properties
+
+| Name        | Type   | Required | Restrictions | Description |
+| ----------- | ------ | -------- | ------------ | ----------- |
+| _anonymous_ | number | false    | none         | none        |
+
+#### Enumerated Values
+
+| Property    | Value | Description |
+| ----------- | ----- | ----------- |
+| _anonymous_ | 0     | undefined   |
+| _anonymous_ | 1     | undefined   |
+| _anonymous_ | 2     | undefined   |
+| _anonymous_ | 3     | undefined   |
+
+<h2 id="tocS_Email">Email</h2>
+<!-- backwards compatibility -->
+<a id="schemaemail"></a>
+<a id="schema_Email"></a>
+<a id="tocSemail"></a>
+<a id="tocsemail"></a>
+
+```yaml
+id: 0
+email: string
+authMethod: 0
+token: string
+createdAt: 0
+updatedAt: 0
+```
+
+### Properties
+
+| Name       | Type                            | Required | Restrictions | Description                              |
+| ---------- | ------------------------------- | -------- | ------------ | ---------------------------------------- |
+| id         | integer(uint32)                 | true     | none         | The id of the email                      |
+| email      | string                          | true     | none         | The email address                        |
+| authMethod | [AuthMethod](#schemaauthmethod) | true     | none         | The authentication method                |
+| token      | string                          | true     | none         | The authentication token                 |
+| createdAt  | integer(int32)                  | true     | none         | The timestamp when the email was created |
+| updatedAt  | integer(int32)                  | true     | none         | The timestamp when the email was updated |
 
 <h2 id="tocS_Error">Error</h2>
 <!-- backwards compatibility -->
@@ -713,16 +701,28 @@ id: string
 name: string
 age: 1
 gender: 0
+email:
+  id: 0
+  email: string
+  authMethod: 0
+  token: string
+  createdAt: 0
+  updatedAt: 0
+createdAt: 0
+updatedAt: 0
 ```
 
 ### Properties
 
-| Name   | Type                    | Required | Restrictions | Description                         |
-| ------ | ----------------------- | -------- | ------------ | ----------------------------------- |
-| id     | string                  | true     | none         | The unique identifier of the user   |
-| name   | string                  | true     | none         | The name of the user                |
-| age    | integer(uint8)          | true     | none         | The age of the user, min 1, max 120 |
-| gender | [Gender](#schemagender) | true     | none         | The gender of the user              |
+| Name      | Type                    | Required | Restrictions | Description                              |
+| --------- | ----------------------- | -------- | ------------ | ---------------------------------------- |
+| id        | string                  | true     | none         | The unique identifier of the user        |
+| name      | string                  | true     | none         | The name of the user                     |
+| age       | integer(uint8)          | true     | none         | The age of the user, min 1, max 120      |
+| gender    | [Gender](#schemagender) | true     | none         | The gender of the user                   |
+| email     | [Email](#schemaemail)   | true     | none         | The email of the user                    |
+| createdAt | integer(int32)          | true     | none         | The timestamp when the email was created |
+| updatedAt | integer(int32)          | true     | none         | The timestamp when the email was updated |
 
 <h2 id="tocS_UserList">UserList</h2>
 <!-- backwards compatibility -->
@@ -737,6 +737,15 @@ items:
     name: string
     age: 1
     gender: 0
+    email:
+      id: 0
+      email: string
+      authMethod: 0
+      token: string
+      createdAt: 0
+      updatedAt: 0
+    createdAt: 0
+    updatedAt: 0
 total: 0
 offset: 0
 limit: 0

@@ -15,7 +15,6 @@ options.httpsnippet = false;
 options.language_tabs = [
   { http: "HTTP" },
   { javascript: "JavaScript" },
-  { "javascript-axios": "Axios" },
   { python: "Python" },
 ];
 // options.language_clients = [];
