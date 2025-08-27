@@ -74,6 +74,8 @@ print(r.json())
 ```
 
 ```java
+// Java
+
 URL obj = new URL("/api/v2/users?offset=0&limit=10");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
@@ -210,6 +212,8 @@ print(r.json())
 ```
 
 ```java
+// Java
+
 URL obj = new URL("/api/v2/users");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("POST");
@@ -340,6 +344,8 @@ print(r.json())
 ```
 
 ```java
+// Java
+
 URL obj = new URL("/api/v2/users/{id}");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
@@ -468,6 +474,8 @@ print(r.json())
 ```
 
 ```java
+// Java
+
 URL obj = new URL("/api/v2/users/{id}");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("PUT");
@@ -599,6 +607,8 @@ print(r.json())
 ```
 
 ```java
+// Java
+
 URL obj = new URL("/api/v2/users/{id}");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("DELETE");
@@ -700,6 +710,8 @@ print(r.json())
 ```
 
 ```java
+// Java
+
 URL obj = new URL("/api/v2/emails?offset=0&limit=10");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
@@ -818,6 +830,8 @@ print(r.json())
 ```
 
 ```java
+// Java
+
 URL obj = new URL("/api/v2/emails");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("POST");
@@ -930,6 +944,8 @@ print(r.json())
 ```
 
 ```java
+// Java
+
 URL obj = new URL("/api/v2/emails/{id}");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
@@ -1040,6 +1056,8 @@ print(r.json())
 ```
 
 ```java
+// Java
+
 URL obj = new URL("/api/v2/emails/{id}");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("PUT");
@@ -1153,6 +1171,8 @@ print(r.json())
 ```
 
 ```java
+// Java
+
 URL obj = new URL("/api/v2/emails/{id}");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("DELETE");
@@ -1254,6 +1274,8 @@ print(r.json())
 ```
 
 ```java
+// Java
+
 URL obj = new URL("/api/v2/email-groups?offset=0&limit=10");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
@@ -1378,6 +1400,8 @@ print(r.json())
 ```
 
 ```java
+// Java
+
 URL obj = new URL("/api/v2/email-groups");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("POST");
@@ -1490,6 +1514,8 @@ print(r.json())
 ```
 
 ```java
+// Java
+
 URL obj = new URL("/api/v2/email-groups/{id}");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
@@ -1611,6 +1637,8 @@ print(r.json())
 ```
 
 ```java
+// Java
+
 URL obj = new URL("/api/v2/email-groups/{id}");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("PUT");
@@ -1729,6 +1757,8 @@ print(r.json())
 ```
 
 ```java
+// Java
+
 URL obj = new URL("/api/v2/email-groups/{id}");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("DELETE");
