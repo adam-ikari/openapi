@@ -807,8 +807,8 @@ components:
             - user@example.com
         authMethod:
           allOf:
-            - $ref: '#/components/schemas/EmailAuthMethod'
-          description: The authentication method
+            - $ref: '#/components/schemas/EmailAuthType'
+          description: The authentication type
         createdAt:
           type: integer
           format: int32
@@ -817,14 +817,14 @@ components:
           type: integer
           format: int32
           description: The timestamp when the email was updated
-    EmailAuthMethod:
+    EmailAuthType:
       type: string
       enum:
         - password
         - otp
         - totp
         - oauth2
-      description: Email authentication method enum values
+      description: Email authentication type enum values
       x-enum-varnames:
         - password
         - otp
@@ -860,8 +860,8 @@ components:
             - user@example.com
         authMethod:
           allOf:
-            - $ref: '#/components/schemas/EmailAuthMethod'
-          description: The authentication method
+            - $ref: '#/components/schemas/EmailAuthType'
+          description: The authentication type
         password:
           type: string
           pattern: ^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$
@@ -891,8 +891,8 @@ components:
             - user@example.com
         authMethod:
           allOf:
-            - $ref: '#/components/schemas/EmailAuthMethod'
-          description: The authentication method
+            - $ref: '#/components/schemas/EmailAuthType'
+          description: The authentication type
         password:
           type: string
           pattern: ^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$
@@ -922,8 +922,8 @@ components:
             - user@example.com
         authMethod:
           allOf:
-            - $ref: '#/components/schemas/EmailAuthMethod'
-          description: The authentication method
+            - $ref: '#/components/schemas/EmailAuthType'
+          description: The authentication type
         password:
           type: string
           pattern: ^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$

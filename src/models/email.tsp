@@ -7,7 +7,7 @@ import "@typespec/openapi";
 using TypeSpec.OpenAPI;
 
 // 为枚举类型添加文档说明
-@doc("Email authentication method enum values")
+@doc("Email authentication type enum values")
 // 使用@extension装饰器添加OpenAPI扩展属性，这里是为Azure SDK生成服务
 @extension(
     "x-ms-enum",
@@ -39,7 +39,7 @@ using TypeSpec.OpenAPI;
 // 添加另一个扩展属性，用于指定枚举变量名
 @extension("x-enum-varnames", #["password", "otp", "totp", "oauth2"])
 // 定义枚举类型，表示邮件认证方式
-enum EmailAuthMethod {
+enum EmailAuthType {
     password: "password",
     otp: "otp",
     totp: "totp",
@@ -62,9 +62,9 @@ model Email {
     @example("user@example.com")
     email: string;
 
-    @doc("The authentication method")
+    @doc("The authentication type")
     // 引用之前定义的枚举类型
-    authMethod: EmailAuthMethod;
+    authMethod: EmailAuthType;
 
     @doc("The password")
     // @secret装饰器标记敏感字段，通常用于密码等保密信息

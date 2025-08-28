@@ -3029,32 +3029,32 @@ updatedAt: 0
 
 ### Properties
 
-| Name       | Type                                      | Required | Restrictions | Description                              |
-| ---------- | ----------------------------------------- | -------- | ------------ | ---------------------------------------- |
-| id         | integer(uint32)                           | true     | read-only    | The id of the email                      |
-| email      | string                                    | true     | none         | The email address                        |
-| authMethod | [EmailAuthMethod](#schemaemailauthmethod) | true     | none         | The authentication method                |
-| createdAt  | integer(int32)                            | true     | none         | The timestamp when the email was created |
-| updatedAt  | integer(int32)                            | true     | none         | The timestamp when the email was updated |
+| Name       | Type                                  | Required | Restrictions | Description                              |
+| ---------- | ------------------------------------- | -------- | ------------ | ---------------------------------------- |
+| id         | integer(uint32)                       | true     | read-only    | The id of the email                      |
+| email      | string                                | true     | none         | The email address                        |
+| authMethod | [EmailAuthType](#schemaemailauthtype) | true     | none         | The authentication type                  |
+| createdAt  | integer(int32)                        | true     | none         | The timestamp when the email was created |
+| updatedAt  | integer(int32)                        | true     | none         | The timestamp when the email was updated |
 
-<h2 id="tocS_EmailAuthMethod">EmailAuthMethod</h2>
+<h2 id="tocS_EmailAuthType">EmailAuthType</h2>
 <!-- backwards compatibility -->
-<a id="schemaemailauthmethod"></a>
-<a id="schema_EmailAuthMethod"></a>
-<a id="tocSemailauthmethod"></a>
-<a id="tocsemailauthmethod"></a>
+<a id="schemaemailauthtype"></a>
+<a id="schema_EmailAuthType"></a>
+<a id="tocSemailauthtype"></a>
+<a id="tocsemailauthtype"></a>
 
 ```yaml
 password
 ```
 
-Email authentication method enum values
+Email authentication type enum values
 
 ### Properties
 
-| Name        | Type   | Required | Restrictions | Description                             |
-| ----------- | ------ | -------- | ------------ | --------------------------------------- |
-| _anonymous_ | string | false    | none         | Email authentication method enum values |
+| Name        | Type   | Required | Restrictions | Description                           |
+| ----------- | ------ | -------- | ------------ | ------------------------------------- |
+| _anonymous_ | string | false    | none         | Email authentication type enum values |
 
 #### Enumerated Values
 
@@ -3082,13 +3082,13 @@ updatedAt: 0
 
 ### Properties
 
-| Name       | Type                                      | Required | Restrictions | Description                              |
-| ---------- | ----------------------------------------- | -------- | ------------ | ---------------------------------------- |
-| email      | string                                    | true     | none         | The email address                        |
-| authMethod | [EmailAuthMethod](#schemaemailauthmethod) | true     | none         | The authentication method                |
-| password   | string(password)                          | false    | none         | The password                             |
-| createdAt  | integer(int32)                            | true     | none         | The timestamp when the email was created |
-| updatedAt  | integer(int32)                            | true     | none         | The timestamp when the email was updated |
+| Name       | Type                                  | Required | Restrictions | Description                              |
+| ---------- | ------------------------------------- | -------- | ------------ | ---------------------------------------- |
+| email      | string                                | true     | none         | The email address                        |
+| authMethod | [EmailAuthType](#schemaemailauthtype) | true     | none         | The authentication type                  |
+| password   | string(password)                      | false    | none         | The password                             |
+| createdAt  | integer(int32)                        | true     | none         | The timestamp when the email was created |
+| updatedAt  | integer(int32)                        | true     | none         | The timestamp when the email was updated |
 
 <h2 id="tocS_EmailCreateOrUpdate">EmailCreateOrUpdate</h2>
 <!-- backwards compatibility -->
@@ -3107,13 +3107,13 @@ updatedAt: 0
 
 ### Properties
 
-| Name       | Type                                      | Required | Restrictions | Description                              |
-| ---------- | ----------------------------------------- | -------- | ------------ | ---------------------------------------- |
-| email      | string                                    | true     | none         | The email address                        |
-| authMethod | [EmailAuthMethod](#schemaemailauthmethod) | true     | none         | The authentication method                |
-| password   | string(password)                          | false    | none         | The password                             |
-| createdAt  | integer(int32)                            | true     | none         | The timestamp when the email was created |
-| updatedAt  | integer(int32)                            | true     | none         | The timestamp when the email was updated |
+| Name       | Type                                  | Required | Restrictions | Description                              |
+| ---------- | ------------------------------------- | -------- | ------------ | ---------------------------------------- |
+| email      | string                                | true     | none         | The email address                        |
+| authMethod | [EmailAuthType](#schemaemailauthtype) | true     | none         | The authentication type                  |
+| password   | string(password)                      | false    | none         | The password                             |
+| createdAt  | integer(int32)                        | true     | none         | The timestamp when the email was created |
+| updatedAt  | integer(int32)                        | true     | none         | The timestamp when the email was updated |
 
 <h2 id="tocS_EmailCreateOrUpdateItem">EmailCreateOrUpdateItem</h2>
 <!-- backwards compatibility -->
@@ -3132,13 +3132,13 @@ updatedAt: 0
 
 ### Properties
 
-| Name       | Type                                      | Required | Restrictions | Description                              |
-| ---------- | ----------------------------------------- | -------- | ------------ | ---------------------------------------- |
-| email      | string                                    | true     | none         | The email address                        |
-| authMethod | [EmailAuthMethod](#schemaemailauthmethod) | true     | none         | The authentication method                |
-| password   | string(password)                          | false    | none         | The password                             |
-| createdAt  | integer(int32)                            | true     | none         | The timestamp when the email was created |
-| updatedAt  | integer(int32)                            | true     | none         | The timestamp when the email was updated |
+| Name       | Type                                  | Required | Restrictions | Description                              |
+| ---------- | ------------------------------------- | -------- | ------------ | ---------------------------------------- |
+| email      | string                                | true     | none         | The email address                        |
+| authMethod | [EmailAuthType](#schemaemailauthtype) | true     | none         | The authentication type                  |
+| password   | string(password)                      | false    | none         | The password                             |
+| createdAt  | integer(int32)                        | true     | none         | The timestamp when the email was created |
+| updatedAt  | integer(int32)                        | true     | none         | The timestamp when the email was updated |
 
 <h2 id="tocS_EmailGroup">EmailGroup</h2>
 <!-- backwards compatibility -->

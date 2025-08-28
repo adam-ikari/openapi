@@ -91,8 +91,8 @@ export interface Email {
   readonly id: number;
   /** The email address */
   email: string;
-  /** The authentication method */
-  authMethod: EmailAuthMethod;
+  /** The authentication type */
+  authMethod: EmailAuthType;
   /** The password */
   password?: string;
   /** The timestamp when the email was created */
@@ -122,8 +122,8 @@ export function emailDeserializer(item: any): Email {
   };
 }
 
-/** Email authentication method enum values */
-export type EmailAuthMethod = "password" | "otp" | "totp" | "oauth2";
+/** Email authentication type enum values */
+export type EmailAuthType = "password" | "otp" | "totp" | "oauth2";
 
 /** model interface ErrorModel */
 export interface ErrorModel {

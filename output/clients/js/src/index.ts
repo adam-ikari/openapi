@@ -6,7 +6,7 @@ export {
   User,
   Gender,
   Email,
-  EmailAuthMethod,
+  EmailAuthType,
   ErrorModel,
   StatusCode,
   EmailList,
