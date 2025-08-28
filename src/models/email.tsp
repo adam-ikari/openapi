@@ -64,7 +64,7 @@ model Email {
 
     @doc("The authentication type")
     // 引用之前定义的枚举类型
-    authMethod: EmailAuthType;
+    authType: EmailAuthType;
 
     @doc("The password")
     // @secret装饰器标记敏感字段，通常用于密码等保密信息

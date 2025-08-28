@@ -118,7 +118,7 @@ List users
       "email": {
         "id": 0,
         "email": "user@example.com",
-        "authMethod": "password",
+        "authType": "password",
         "createdAt": 0,
         "updatedAt": 0
       },
@@ -167,7 +167,7 @@ const inputBody = '{
   "gender": "secret",
   "email": {
     "email": "user@example.com",
-    "authMethod": "password",
+    "authType": "password",
     "password": "pa$$word",
     "createdAt": 0,
     "updatedAt": 0
@@ -243,7 +243,7 @@ Create a users
   "gender": "secret",
   "email": {
     "email": "user@example.com",
-    "authMethod": "password",
+    "authType": "password",
     "password": "pa$$word",
     "createdAt": 0,
     "updatedAt": 0
@@ -274,7 +274,7 @@ Create a users
   "email": {
     "id": 0,
     "email": "user@example.com",
-    "authMethod": "password",
+    "authType": "password",
     "createdAt": 0,
     "updatedAt": 0
   },
@@ -385,7 +385,7 @@ Read users
   "email": {
     "id": 0,
     "email": "user@example.com",
-    "authMethod": "password",
+    "authType": "password",
     "createdAt": 0,
     "updatedAt": 0
   },
@@ -429,7 +429,7 @@ const inputBody = '{
   "gender": "secret",
   "email": {
     "email": "user@example.com",
-    "authMethod": "password",
+    "authType": "password",
     "password": "pa$$word",
     "createdAt": 0,
     "updatedAt": 0
@@ -505,7 +505,7 @@ Update a users
   "gender": "secret",
   "email": {
     "email": "user@example.com",
-    "authMethod": "password",
+    "authType": "password",
     "password": "pa$$word",
     "createdAt": 0,
     "updatedAt": 0
@@ -537,7 +537,7 @@ Update a users
   "email": {
     "id": 0,
     "email": "user@example.com",
-    "authMethod": "password",
+    "authType": "password",
     "createdAt": 0,
     "updatedAt": 0
   },
@@ -749,7 +749,7 @@ List emails
     {
       "id": 0,
       "email": "user@example.com",
-      "authMethod": "password",
+      "authType": "password",
       "createdAt": 0,
       "updatedAt": 0
     }
@@ -790,7 +790,7 @@ Accept: application/json
 // javascript
 const inputBody = '{
   "email": "user@example.com",
-  "authMethod": "password",
+  "authType": "password",
   "password": "pa$$word",
   "createdAt": 0,
   "updatedAt": 0
@@ -857,7 +857,7 @@ Create a email
 ```json
 {
   "email": "user@example.com",
-  "authMethod": "password",
+  "authType": "password",
   "password": "pa$$word",
   "createdAt": 0,
   "updatedAt": 0
@@ -878,7 +878,7 @@ Create a email
 {
   "id": 0,
   "email": "user@example.com",
-  "authMethod": "password",
+  "authType": "password",
   "createdAt": 0,
   "updatedAt": 0
 }
@@ -980,7 +980,7 @@ Read email
 {
   "id": 0,
   "email": "user@example.com",
-  "authMethod": "password",
+  "authType": "password",
   "createdAt": 0,
   "updatedAt": 0
 }
@@ -1016,7 +1016,7 @@ Accept: application/json
 // javascript
 const inputBody = '{
   "email": "user@example.com",
-  "authMethod": "password",
+  "authType": "password",
   "password": "pa$$word",
   "createdAt": 0,
   "updatedAt": 0
@@ -1083,7 +1083,7 @@ Update a email
 ```json
 {
   "email": "user@example.com",
-  "authMethod": "password",
+  "authType": "password",
   "password": "pa$$word",
   "createdAt": 0,
   "updatedAt": 0
@@ -1105,7 +1105,7 @@ Update a email
 {
   "id": 0,
   "email": "user@example.com",
-  "authMethod": "password",
+  "authType": "password",
   "createdAt": 0,
   "updatedAt": 0
 }
@@ -1317,7 +1317,7 @@ List email groups
         {
           "id": 0,
           "email": "user@example.com",
-          "authMethod": "password",
+          "authType": "password",
           "createdAt": 0,
           "updatedAt": 0
         }
@@ -1360,7 +1360,7 @@ Accept: application/json
 // javascript
 const inputBody = '{
   "email": "user@example.com",
-  "authMethod": "password",
+  "authType": "password",
   "password": "pa$$word",
   "createdAt": 0,
   "updatedAt": 0
@@ -1427,7 +1427,7 @@ Create a email group
 ```json
 {
   "email": "user@example.com",
-  "authMethod": "password",
+  "authType": "password",
   "password": "pa$$word",
   "createdAt": 0,
   "updatedAt": 0
@@ -1448,7 +1448,7 @@ Create a email group
 {
   "id": 0,
   "email": "user@example.com",
-  "authMethod": "password",
+  "authType": "password",
   "createdAt": 0,
   "updatedAt": 0
 }
@@ -1554,7 +1554,7 @@ Read a email group
     {
       "id": 0,
       "email": "user@example.com",
-      "authMethod": "password",
+      "authType": "password",
       "createdAt": 0,
       "updatedAt": 0
     }
@@ -1595,7 +1595,7 @@ const inputBody = '{
   "members": [
     {
       "email": "user@example.com",
-      "authMethod": "password",
+      "authType": "password",
       "password": "pa$$word",
       "createdAt": 0,
       "updatedAt": 0
@@ -1667,7 +1667,7 @@ Update a email group
   "members": [
     {
       "email": "user@example.com",
-      "authMethod": "password",
+      "authType": "password",
       "password": "pa$$word",
       "createdAt": 0,
       "updatedAt": 0
@@ -1691,7 +1691,7 @@ Update a email group
 {
   "id": 0,
   "email": "user@example.com",
-  "authMethod": "password",
+  "authType": "password",
   "createdAt": 0,
   "updatedAt": 0
 }
@@ -3022,20 +3022,20 @@ BearerAuth
 ```yaml
 id: 0
 email: user@example.com
-authMethod: password
+authType: password
 createdAt: 0
 updatedAt: 0
 ```
 
 ### Properties
 
-| Name       | Type                                  | Required | Restrictions | Description                              |
-| ---------- | ------------------------------------- | -------- | ------------ | ---------------------------------------- |
-| id         | integer(uint32)                       | true     | read-only    | The id of the email                      |
-| email      | string                                | true     | none         | The email address                        |
-| authMethod | [EmailAuthType](#schemaemailauthtype) | true     | none         | The authentication type                  |
-| createdAt  | integer(int32)                        | true     | none         | The timestamp when the email was created |
-| updatedAt  | integer(int32)                        | true     | none         | The timestamp when the email was updated |
+| Name      | Type                                  | Required | Restrictions | Description                              |
+| --------- | ------------------------------------- | -------- | ------------ | ---------------------------------------- |
+| id        | integer(uint32)                       | true     | read-only    | The id of the email                      |
+| email     | string                                | true     | none         | The email address                        |
+| authType  | [EmailAuthType](#schemaemailauthtype) | true     | none         | The authentication type                  |
+| createdAt | integer(int32)                        | true     | none         | The timestamp when the email was created |
+| updatedAt | integer(int32)                        | true     | none         | The timestamp when the email was updated |
 
 <h2 id="tocS_EmailAuthType">EmailAuthType</h2>
 <!-- backwards compatibility -->
@@ -3074,7 +3074,7 @@ Email authentication type enum values
 
 ```yaml
 email: user@example.com
-authMethod: password
+authType: password
 password: pa$$word
 createdAt: 0
 updatedAt: 0
@@ -3082,13 +3082,13 @@ updatedAt: 0
 
 ### Properties
 
-| Name       | Type                                  | Required | Restrictions | Description                              |
-| ---------- | ------------------------------------- | -------- | ------------ | ---------------------------------------- |
-| email      | string                                | true     | none         | The email address                        |
-| authMethod | [EmailAuthType](#schemaemailauthtype) | true     | none         | The authentication type                  |
-| password   | string(password)                      | false    | none         | The password                             |
-| createdAt  | integer(int32)                        | true     | none         | The timestamp when the email was created |
-| updatedAt  | integer(int32)                        | true     | none         | The timestamp when the email was updated |
+| Name      | Type                                  | Required | Restrictions | Description                              |
+| --------- | ------------------------------------- | -------- | ------------ | ---------------------------------------- |
+| email     | string                                | true     | none         | The email address                        |
+| authType  | [EmailAuthType](#schemaemailauthtype) | true     | none         | The authentication type                  |
+| password  | string(password)                      | false    | none         | The password                             |
+| createdAt | integer(int32)                        | true     | none         | The timestamp when the email was created |
+| updatedAt | integer(int32)                        | true     | none         | The timestamp when the email was updated |
 
 <h2 id="tocS_EmailCreateOrUpdate">EmailCreateOrUpdate</h2>
 <!-- backwards compatibility -->
@@ -3099,7 +3099,7 @@ updatedAt: 0
 
 ```yaml
 email: user@example.com
-authMethod: password
+authType: password
 password: pa$$word
 createdAt: 0
 updatedAt: 0
@@ -3107,13 +3107,13 @@ updatedAt: 0
 
 ### Properties
 
-| Name       | Type                                  | Required | Restrictions | Description                              |
-| ---------- | ------------------------------------- | -------- | ------------ | ---------------------------------------- |
-| email      | string                                | true     | none         | The email address                        |
-| authMethod | [EmailAuthType](#schemaemailauthtype) | true     | none         | The authentication type                  |
-| password   | string(password)                      | false    | none         | The password                             |
-| createdAt  | integer(int32)                        | true     | none         | The timestamp when the email was created |
-| updatedAt  | integer(int32)                        | true     | none         | The timestamp when the email was updated |
+| Name      | Type                                  | Required | Restrictions | Description                              |
+| --------- | ------------------------------------- | -------- | ------------ | ---------------------------------------- |
+| email     | string                                | true     | none         | The email address                        |
+| authType  | [EmailAuthType](#schemaemailauthtype) | true     | none         | The authentication type                  |
+| password  | string(password)                      | false    | none         | The password                             |
+| createdAt | integer(int32)                        | true     | none         | The timestamp when the email was created |
+| updatedAt | integer(int32)                        | true     | none         | The timestamp when the email was updated |
 
 <h2 id="tocS_EmailCreateOrUpdateItem">EmailCreateOrUpdateItem</h2>
 <!-- backwards compatibility -->
@@ -3124,7 +3124,7 @@ updatedAt: 0
 
 ```yaml
 email: user@example.com
-authMethod: password
+authType: password
 password: pa$$word
 createdAt: 0
 updatedAt: 0
@@ -3132,13 +3132,13 @@ updatedAt: 0
 
 ### Properties
 
-| Name       | Type                                  | Required | Restrictions | Description                              |
-| ---------- | ------------------------------------- | -------- | ------------ | ---------------------------------------- |
-| email      | string                                | true     | none         | The email address                        |
-| authMethod | [EmailAuthType](#schemaemailauthtype) | true     | none         | The authentication type                  |
-| password   | string(password)                      | false    | none         | The password                             |
-| createdAt  | integer(int32)                        | true     | none         | The timestamp when the email was created |
-| updatedAt  | integer(int32)                        | true     | none         | The timestamp when the email was updated |
+| Name      | Type                                  | Required | Restrictions | Description                              |
+| --------- | ------------------------------------- | -------- | ------------ | ---------------------------------------- |
+| email     | string                                | true     | none         | The email address                        |
+| authType  | [EmailAuthType](#schemaemailauthtype) | true     | none         | The authentication type                  |
+| password  | string(password)                      | false    | none         | The password                             |
+| createdAt | integer(int32)                        | true     | none         | The timestamp when the email was created |
+| updatedAt | integer(int32)                        | true     | none         | The timestamp when the email was updated |
 
 <h2 id="tocS_EmailGroup">EmailGroup</h2>
 <!-- backwards compatibility -->
@@ -3153,7 +3153,7 @@ name: string
 members:
   - id: 0
     email: user@example.com
-    authMethod: password
+    authType: password
     createdAt: 0
     updatedAt: 0
 ```
@@ -3179,7 +3179,7 @@ A group of emails
 name: string
 members:
   - email: user@example.com
-    authMethod: password
+    authType: password
     password: pa$$word
     createdAt: 0
     updatedAt: 0
@@ -3208,7 +3208,7 @@ items:
     members:
       - id: 0
         email: user@example.com
-        authMethod: password
+        authType: password
         createdAt: 0
         updatedAt: 0
 total: 0
@@ -3238,7 +3238,7 @@ A list of email groups
 items:
   - id: 0
     email: user@example.com
-    authMethod: password
+    authType: password
     createdAt: 0
     updatedAt: 0
 total: 0
@@ -3342,7 +3342,7 @@ gender: secret
 email:
   id: 0
   email: user@example.com
-  authMethod: password
+  authType: password
   createdAt: 0
   updatedAt: 0
 avatar: https://example.com/avatar.png
@@ -3376,7 +3376,7 @@ age: 1
 gender: secret
 email:
   email: user@example.com
-  authMethod: password
+  authType: password
   password: pa$$word
   createdAt: 0
   updatedAt: 0
@@ -3412,7 +3412,7 @@ age: 1
 gender: secret
 email:
   email: user@example.com
-  authMethod: password
+  authType: password
   password: pa$$word
   createdAt: 0
   updatedAt: 0
@@ -3451,7 +3451,7 @@ items:
     email:
       id: 0
       email: user@example.com
-      authMethod: password
+      authType: password
       createdAt: 0
       updatedAt: 0
     avatar: https://example.com/avatar.png

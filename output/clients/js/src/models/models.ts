@@ -92,7 +92,7 @@ export interface Email {
   /** The email address */
   email: string;
   /** The authentication type */
-  authMethod: EmailAuthType;
+  authType: EmailAuthType;
   /** The password */
   password?: string;
   /** The timestamp when the email was created */
@@ -104,7 +104,7 @@ export interface Email {
 export function emailSerializer(item: Email): any {
   return {
     email: item["email"],
-    authMethod: item["authMethod"],
+    authType: item["authType"],
     password: item["password"],
     createdAt: item["createdAt"],
     updatedAt: item["updatedAt"],
@@ -115,7 +115,7 @@ export function emailDeserializer(item: any): Email {
   return {
     id: item["id"],
     email: item["email"],
-    authMethod: item["authMethod"],
+    authType: item["authType"],
     password: item["password"],
     createdAt: item["createdAt"],
     updatedAt: item["updatedAt"],

@@ -790,7 +790,7 @@ components:
       required:
         - id
         - email
-        - authMethod
+        - authType
         - createdAt
         - updatedAt
       properties:
@@ -805,7 +805,7 @@ components:
           description: The email address
           examples:
             - user@example.com
-        authMethod:
+        authType:
           allOf:
             - $ref: '#/components/schemas/EmailAuthType'
           description: The authentication type
@@ -848,7 +848,7 @@ components:
       type: object
       required:
         - email
-        - authMethod
+        - authType
         - createdAt
         - updatedAt
       properties:
@@ -858,7 +858,7 @@ components:
           description: The email address
           examples:
             - user@example.com
-        authMethod:
+        authType:
           allOf:
             - $ref: '#/components/schemas/EmailAuthType'
           description: The authentication type
@@ -879,7 +879,7 @@ components:
       type: object
       required:
         - email
-        - authMethod
+        - authType
         - createdAt
         - updatedAt
       properties:
@@ -889,7 +889,7 @@ components:
           description: The email address
           examples:
             - user@example.com
-        authMethod:
+        authType:
           allOf:
             - $ref: '#/components/schemas/EmailAuthType'
           description: The authentication type
@@ -910,7 +910,7 @@ components:
       type: object
       required:
         - email
-        - authMethod
+        - authType
         - createdAt
         - updatedAt
       properties:
@@ -920,7 +920,7 @@ components:
           description: The email address
           examples:
             - user@example.com
-        authMethod:
+        authType:
           allOf:
             - $ref: '#/components/schemas/EmailAuthType'
           description: The authentication type
