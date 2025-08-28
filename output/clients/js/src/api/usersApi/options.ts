@@ -15,4 +15,9 @@ export interface UsersApiCreateOptionalParams extends OperationOptions {}
 export interface UsersApiReadOptionalParams extends OperationOptions {}
 
 /** Optional parameters. */
-export interface UsersApiListOptionalParams extends OperationOptions {}
+export interface UsersApiListOptionalParams extends OperationOptions {
+  /** The offset of the list, 0 means no offset, default is 0 */
+  offset?: number;
+  /** The limit of the list, 0 means no limit, default is 10 */
+  limit?: number;
+}

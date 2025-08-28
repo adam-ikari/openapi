@@ -214,15 +214,13 @@ export async function read(
 
 export function _listSend(
   context: Client,
-  offset: number,
-  limit: number,
   options: UsersApiListOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   const path = expandUrlTemplate(
     "/api/v2/users{?offset,limit}",
     {
-      offset: offset,
-      limit: limit,
+      offset: options?.offset,
+      limit: options?.limit,
     },
     {
       allowReserved: options?.requestOptions?.skipUrlEncoding,
@@ -255,10 +253,8 @@ export async function _listDeserialize(
 /** List users */
 export async function list(
   context: Client,
-  offset: number,
-  limit: number,
   options: UsersApiListOptionalParams = { requestOptions: {} },
 ): Promise<UserList> {
-  const result = await _listSend(context, offset, limit, options);
+  const result = await _listSend(context, options);
   return _listDeserialize(result);
 }

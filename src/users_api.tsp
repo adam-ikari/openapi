@@ -31,12 +31,12 @@ interface UsersApi {
     // @query装饰器表示这是一个查询参数
     @query
     // 定义offset参数，默认值为0
-    offset: uint32 = 0,
+    offset?: uint32 = 0,
 
     @doc("The limit of the list, 0 means no limit, default is 10")
     @query
     // 定义limit参数，默认值为10
-    limit: uint32 = 10,
+    limit?: uint32 = 10,
     // 返回类型可以是UserList或Error，使用|表示联合类型
   ): UserList | Error;
 

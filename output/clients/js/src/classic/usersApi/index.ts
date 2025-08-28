@@ -37,11 +37,7 @@ export interface UsersApiOperations {
   /** Read users */
   read: (id: string, options?: UsersApiReadOptionalParams) => Promise<User>;
   /** List users */
-  list: (
-    offset: number,
-    limit: number,
-    options?: UsersApiListOptionalParams,
-  ) => Promise<UserList>;
+  list: (options?: UsersApiListOptionalParams) => Promise<UserList>;
 }
 
 function _getUsersApi(context: OpenApiV2Context) {
@@ -54,11 +50,7 @@ function _getUsersApi(context: OpenApiV2Context) {
       create(context, body, options),
     read: (id: string, options?: UsersApiReadOptionalParams) =>
       read(context, id, options),
-    list: (
-      offset: number,
-      limit: number,
-      options?: UsersApiListOptionalParams,
-    ) => list(context, offset, limit, options),
+    list: (options?: UsersApiListOptionalParams) => list(context, options),
   };
 }
 

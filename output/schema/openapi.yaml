@@ -317,7 +317,7 @@ paths:
       parameters:
         - name: offset
           in: query
-          required: true
+          required: false
           description: The offset of the list, 0 means no offset, default is 0
           schema:
             type: integer
@@ -326,7 +326,7 @@ paths:
           explode: false
         - name: limit
           in: query
-          required: true
+          required: false
           description: The limit of the list, 0 means no limit, default is 10
           schema:
             type: integer

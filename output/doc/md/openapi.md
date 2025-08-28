@@ -31,7 +31,7 @@ headingLevel: 2
 > Code samples
 
 ```http
-GET /api/v2/users?offset=0&limit=10 HTTP/1.1
+GET /api/v2/users HTTP/1.1
 
 Accept: application/json
 
@@ -44,7 +44,7 @@ const headers = {
   Accept: "application/json",
 }
 
-fetch("/api/v2/users?offset=0&limit=10", {
+fetch("/api/v2/users", {
   method: "GET",
 
   headers: headers,
@@ -65,9 +65,7 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.get('/api/v2/users', params={
-  'offset': '0',  'limit': '10'
-}, headers = headers)
+r = requests.get('/api/v2/users', headers = headers)
 
 print(r.json())
 
@@ -76,7 +74,7 @@ print(r.json())
 ```java
 // Java
 
-URL obj = new URL("/api/v2/users?offset=0&limit=10");
+URL obj = new URL("/api/v2/users");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -100,8 +98,8 @@ List users
 
 | Name   | In    | Type            | Required | Description                                             |
 | ------ | ----- | --------------- | -------- | ------------------------------------------------------- |
-| offset | query | integer(uint32) | true     | The offset of the list, 0 means no offset, default is 0 |
-| limit  | query | integer(uint32) | true     | The limit of the list, 0 means no limit, default is 10  |
+| offset | query | integer(uint32) | false    | The offset of the list, 0 means no offset, default is 0 |
+| limit  | query | integer(uint32) | false    | The limit of the list, 0 means no limit, default is 10  |
 
 > Example responses
 
