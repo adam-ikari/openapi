@@ -7,22 +7,15 @@ using TypeSpec.OpenAPI;
 // 定义WiFi安全类型枚举
 @doc("WiFi security type enum values")
 @extension(
-    "x-ms-enum",
-    #{
-        values: #[
-            #{
-                name: "none",
-                value: "none",
-                description: "Open network without security",
-            },
-            #{ name: "wep", value: "wep", description: "WEP security" },
-            #{ name: "wpa", value: "wpa", description: "WPA security" },
-            #{ name: "wpa2", value: "wpa2", description: "WPA2 security" },
-            #{ name: "wpa3", value: "wpa3", description: "WPA3 security" }
-        ],
-    }
+    "x-enum-descriptions",
+    #[
+        "Open network without security",
+        "WEP security",
+        "WPA security",
+        "WPA2 security",
+        "WPA3 security"
+    ]
 )
-@extension("x-enum-varnames", #["none", "wep", "wpa", "wpa2", "wpa3"])
 enum WiFiSecurityType {
     none: "none",
     wep: "wep",
@@ -34,39 +27,22 @@ enum WiFiSecurityType {
 // 定义WiFi频段枚举
 @doc("WiFi frequency band enum values")
 @extension(
-    "x-ms-enum",
-    #{
-        values: #[
-            #{ name: "mixed", value: 0, description: "Mixed band" },
-            #{ name: "2_4GHz", value: 1, description: "2.4GHz band" },
-            #{ name: "5GHz", value: 2, description: "5GHz band" },
-            #{ name: "6GHz", value: 3, description: "6GHz band" }
-        ],
-    }
+    "x-enum-descriptions",
+    #["Mixed band (2.4GHz and 5GHz)", "2.4GHz band", "5GHz band", "6GHz band"]
 )
-@extension("x-enum-varnames", #["mixed", "2_4GHz", "5GHz", "6GHz"])
 enum WiFiBand {
-    mixed: 0,
-    `2_4GHz`: 1,
-    `5GHz`: 2,
-    `6GHz`: 3,
+    mixed: "mixed",
+    `2_4GHz`: "2_4GHz",
+    `5GHz`: "5GHz",
+    `6GHz`: "6GHz",
 }
 
 // 定义WiFi网络状态枚举
 @doc("WiFi connection status enum values")
 @extension(
-    "x-ms-enum",
-    #{
-        values: #[
-            #{ name: "disconnected", value: "disconnected", description: "Not connected" },
-            #{ name: "connecting", value: "connecting", description: "Connecting to network" },
-            #{ name: "connected", value: "connected", description: "Successfully connected" },
-            #{ name: "disconnecting", value: "disconnecting", description: "Disconnecting from network" },
-            #{ name: "error", value: "error", description: "Connection error" }
-        ],
-    }
+    "x-enum-descriptions",
+    #["Disconnected", "Connecting", "Connected", "Disconnecting", "Error"]
 )
-@extension("x-enum-varnames", #["disconnected", "connecting", "connected", "disconnecting", "error"])
 enum WiFiConnectionStatus {
     disconnected: "disconnected",
     connecting: "connecting",
@@ -170,7 +146,7 @@ model WiFiConnectRequest {
     @doc("The password for the WiFi network (required for secured networks)")
     @secret
     password?: string;
-    
+
     @doc("Whether to save this configuration for future use")
     saveConfiguration: boolean = true;
 }

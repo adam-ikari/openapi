@@ -297,7 +297,7 @@ export function wiFiNetworkDeserializer(item: any): WiFiNetwork {
 /** WiFi security type enum values */
 export type WiFiSecurityType = "none" | "wep" | "wpa" | "wpa2" | "wpa3";
 /** WiFi frequency band enum values */
-export type WiFiBand = 0 | 1 | 2 | 3;
+export type WiFiBand = "mixed" | "2_4GHz" | "5GHz" | "6GHz";
 
 /** model interface WiFiConfigList */
 export interface WiFiConfigList {

@@ -2595,7 +2595,7 @@ Scan for available WiFi networks
       "bssid": "string",
       "security": "none",
       "signalStrength": 0,
-      "band": 0,
+      "band": "mixed",
       "channel": 0,
       "hidden": true,
       "isConnected": true,
@@ -2706,7 +2706,7 @@ Get details of a specific WiFi network
   "bssid": "string",
   "security": "none",
   "signalStrength": 0,
-  "band": 0,
+  "band": "mixed",
   "channel": 0,
   "hidden": true,
   "isConnected": true,
@@ -2947,7 +2947,7 @@ Get current WiFi connection status
     "bssid": "string",
     "security": "none",
     "signalStrength": 0,
-    "band": 0,
+    "band": "mixed",
     "channel": 0,
     "hidden": true,
     "isConnected": true,
@@ -3000,10 +3000,10 @@ Status Code **200**
 | security | wpa           |
 | security | wpa2          |
 | security | wpa3          |
-| band     | 0             |
-| band     | 1             |
-| band     | 2             |
-| band     | 3             |
+| band     | mixed         |
+| band     | 2_4GHz        |
+| band     | 5GHz          |
+| band     | 6GHz          |
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -3479,7 +3479,7 @@ limit: 0
 <a id="tocswifiband"></a>
 
 ```yaml
-0
+mixed
 ```
 
 WiFi frequency band enum values
@@ -3488,16 +3488,16 @@ WiFi frequency band enum values
 
 | Name        | Type   | Required | Restrictions | Description                     |
 | ----------- | ------ | -------- | ------------ | ------------------------------- |
-| _anonymous_ | number | false    | none         | WiFi frequency band enum values |
+| _anonymous_ | string | false    | none         | WiFi frequency band enum values |
 
 #### Enumerated Values
 
-| Property | Value | Description |
-| -------- | ----- | ----------- |
-| mixed    | 0     | Mixed band  |
-| 2_4GHz   | 1     | 2.4GHz band |
-| 5GHz     | 2     | 5GHz band   |
-| 6GHz     | 3     | 6GHz band   |
+| Property    | Value  | Description |
+| ----------- | ------ | ----------- |
+| _anonymous_ | mixed  | undefined   |
+| _anonymous_ | 2_4GHz | undefined   |
+| _anonymous_ | 5GHz   | undefined   |
+| _anonymous_ | 6GHz   | undefined   |
 
 <h2 id="tocS_WiFiConfig">WiFiConfig</h2>
 <!-- backwards compatibility -->
@@ -3600,13 +3600,13 @@ WiFi connection status enum values
 
 #### Enumerated Values
 
-| Property      | Value         | Description                |
-| ------------- | ------------- | -------------------------- |
-| disconnected  | disconnected  | Not connected              |
-| connecting    | connecting    | Connecting to network      |
-| connected     | connected     | Successfully connected     |
-| disconnecting | disconnecting | Disconnecting from network |
-| error         | error         | Connection error           |
+| Property    | Value         | Description |
+| ----------- | ------------- | ----------- |
+| _anonymous_ | disconnected  | undefined   |
+| _anonymous_ | connecting    | undefined   |
+| _anonymous_ | connected     | undefined   |
+| _anonymous_ | disconnecting | undefined   |
+| _anonymous_ | error         | undefined   |
 
 <h2 id="tocS_WiFiNetwork">WiFiNetwork</h2>
 <!-- backwards compatibility -->
@@ -3621,7 +3621,7 @@ ssid: string
 bssid: string
 security: none
 signalStrength: 0
-band: 0
+band: mixed
 channel: 0
 hidden: true
 isConnected: true
@@ -3659,7 +3659,7 @@ items:
     bssid: string
     security: none
     signalStrength: 0
-    band: 0
+    band: mixed
     channel: 0
     hidden: true
     isConnected: true
@@ -3696,10 +3696,10 @@ WiFi security type enum values
 
 #### Enumerated Values
 
-| Property | Value | Description                   |
-| -------- | ----- | ----------------------------- |
-| none     | none  | Open network without security |
-| wep      | wep   | WEP security                  |
-| wpa      | wpa   | WPA security                  |
-| wpa2     | wpa2  | WPA2 security                 |
-| wpa3     | wpa3  | WPA3 security                 |
+| Property    | Value | Description |
+| ----------- | ----- | ----------- |
+| _anonymous_ | none  | undefined   |
+| _anonymous_ | wep   | undefined   |
+| _anonymous_ | wpa   | undefined   |
+| _anonymous_ | wpa2  | undefined   |
+| _anonymous_ | wpa3  | undefined   |
