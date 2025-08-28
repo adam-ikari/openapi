@@ -4,7 +4,7 @@ import "./email.tsp";
 
 using TypeSpec.OpenAPI;
 
-@doc("Gender enum values")
+@doc("User gender enum values")
 @extension(
     "x-ms-enum",
     #{

@@ -10,7 +10,7 @@ using TypeSpec.Http;
 namespace OpenApiV2;
 
 @route("/email-groups")
-@tag("Email Groups API")
+@tag("EmailGroups")
 @useAuth(BearerAuth)
 interface EmailsGroupApi {
     /** List email groups */

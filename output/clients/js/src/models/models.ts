@@ -82,7 +82,7 @@ export function userDeserializer(item: any): User {
   };
 }
 
-/** Gender enum values */
+/** User gender enum values */
 export type Gender = 0 | 1 | 2;
 
 /** model interface Email */
@@ -122,7 +122,7 @@ export function emailDeserializer(item: any): Email {
   };
 }
 
-/** Email authentication method */
+/** Email authentication method enum values */
 export type EmailAuthMethod = 0 | 1 | 2 | 3;
 
 /** model interface ErrorModel */

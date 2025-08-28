@@ -22,7 +22,7 @@ headingLevel: 2
 
 - HTTP Authentication, scheme: Bearer
 
-<h1 id="openapi-v2-users-api">Users API</h1>
+<h1 id="openapi-v2-users">Users</h1>
 
 ## UsersApi_list
 
@@ -658,7 +658,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 BearerAuth
 </aside>
 
-<h1 id="openapi-v2-emails-api">Emails API</h1>
+<h1 id="openapi-v2-emails">Emails</h1>
 
 ## EmailsApi_list
 
@@ -1222,7 +1222,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 BearerAuth
 </aside>
 
-<h1 id="openapi-v2-email-groups-api">Email Groups API</h1>
+<h1 id="openapi-v2-emailgroups">EmailGroups</h1>
 
 ## EmailsGroupApi_list
 
@@ -1846,13 +1846,13 @@ updatedAt: 0
 0
 ```
 
-Email authentication method
+Email authentication method enum values
 
 ### Properties
 
-| Name        | Type   | Required | Restrictions | Description                 |
-| ----------- | ------ | -------- | ------------ | --------------------------- |
-| _anonymous_ | number | false    | none         | Email authentication method |
+| Name        | Type   | Required | Restrictions | Description                             |
+| ----------- | ------ | -------- | ------------ | --------------------------------------- |
+| _anonymous_ | number | false    | none         | Email authentication method enum values |
 
 #### Enumerated Values
 
@@ -2083,13 +2083,13 @@ msg: string
 0
 ```
 
-Gender enum values
+User gender enum values
 
 ### Properties
 
-| Name        | Type   | Required | Restrictions | Description        |
-| ----------- | ------ | -------- | ------------ | ------------------ |
-| _anonymous_ | number | false    | none         | Gender enum values |
+| Name        | Type   | Required | Restrictions | Description             |
+| ----------- | ------ | -------- | ------------ | ----------------------- |
+| _anonymous_ | number | false    | none         | User gender enum values |
 
 #### Enumerated Values
 

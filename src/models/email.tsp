@@ -2,10 +2,9 @@
 import "@typespec/http";
 import "@typespec/openapi";
 
-using TypeSpec.Http;
 using TypeSpec.OpenAPI;
 
-@doc("Email authentication method")
+@doc("Email authentication method enum values")
 @extension(
     "x-ms-enum",
     #{
