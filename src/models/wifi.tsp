@@ -7,14 +7,15 @@ using TypeSpec.OpenAPI;
 // 定义WiFi安全类型枚举
 @doc("WiFi security type enum values")
 @extension(
-    "x-enum-descriptions",
-    #[
-        "Open network without security",
-        "WEP security",
-        "WPA security",
-        "WPA2 security",
-        "WPA3 security"
-    ]
+    "x-ms-enum",
+    #{
+        values: #[
+            #{ name: "none", value: "none", description: "No security" },
+            #{ name: "wep", value: "wep", description: "WEP encryption" },
+            #{ name: "wpa", value: "wpa", description: "WPA encryption" },
+            #{ name: "wpa2", value: "wpa2", description: "WPA2 encryption" }
+        ],
+    }
 )
 enum WiFiSecurityType {
     none: "none",
@@ -27,9 +28,29 @@ enum WiFiSecurityType {
 // 定义WiFi频段枚举
 @doc("WiFi frequency band enum values")
 @extension(
-    "x-enum-descriptions",
-    #["Mixed band (2.4GHz and 5GHz)", "2.4GHz band", "5GHz band", "6GHz band"]
+    "x-ms-enum",
+    #{
+        values: #[
+            #{
+                name: "mixed",
+                value: "mixed",
+                description: "Mixed band (2.4GHz and 5GHz)",
+            },
+            #{ name: "2_4GHz", value: "2_4GHz", description: "2.4GHz band" },
+            #{
+                name: "5GHz",
+                value: "5GHz",
+                description: "Mixed band (2.4GHz and 5GHz)",
+            },
+            #{
+                name: "6GHz",
+                value: "6GHz",
+                description: "Mixed band (2.4GHz and 5GHz)",
+            }
+        ],
+    }
 )
+@extension("x-enum-varnames", #["mixed", "2_4GHz", "5GHz", "6GHz"])
 enum WiFiBand {
     mixed: "mixed",
     `2_4GHz`: "2_4GHz",

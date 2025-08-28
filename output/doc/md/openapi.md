@@ -3492,12 +3492,12 @@ WiFi frequency band enum values
 
 #### Enumerated Values
 
-| Property    | Value  | Description |
-| ----------- | ------ | ----------- |
-| _anonymous_ | mixed  | undefined   |
-| _anonymous_ | 2_4GHz | undefined   |
-| _anonymous_ | 5GHz   | undefined   |
-| _anonymous_ | 6GHz   | undefined   |
+| Property | Value  | Description                  |
+| -------- | ------ | ---------------------------- |
+| mixed    | mixed  | Mixed band (2.4GHz and 5GHz) |
+| 2_4GHz   | 2_4GHz | 2.4GHz band                  |
+| 5GHz     | 5GHz   | Mixed band (2.4GHz and 5GHz) |
+| 6GHz     | 6GHz   | Mixed band (2.4GHz and 5GHz) |
 
 <h2 id="tocS_WiFiConfig">WiFiConfig</h2>
 <!-- backwards compatibility -->
@@ -3696,10 +3696,9 @@ WiFi security type enum values
 
 #### Enumerated Values
 
-| Property    | Value | Description |
-| ----------- | ----- | ----------- |
-| _anonymous_ | none  | undefined   |
-| _anonymous_ | wep   | undefined   |
-| _anonymous_ | wpa   | undefined   |
-| _anonymous_ | wpa2  | undefined   |
-| _anonymous_ | wpa3  | undefined   |
+| Property | Value | Description     |
+| -------- | ----- | --------------- |
+| none     | none  | No security     |
+| wep      | wep   | WEP encryption  |
+| wpa      | wpa   | WPA encryption  |
+| wpa2     | wpa2  | WPA2 encryption |
