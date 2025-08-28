@@ -738,6 +738,9 @@ components:
         - 100000
         - 100001
       description: Status Code
+      x-enum-varnames:
+        - SUCCESS
+        - FAILURE
       x-ms-enum:
         values:
           - name: SUCCESS
