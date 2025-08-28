@@ -12,6 +12,14 @@ export {
   EmailList,
   EmailGroupList,
   EmailGroup,
+  WiFiNetworkList,
+  WiFiNetwork,
+  WiFiSecurityType,
+  WiFiBand,
+  WiFiConfigList,
+  WiFiConfig,
+  WiFiConnectionStatus,
+  WiFiConnectRequest,
 } from "./models/index.js";
 export { OpenApiV2ClientOptionalParams } from "./api/index.js";
 export {
@@ -36,7 +44,20 @@ export {
   UsersApiListOptionalParams,
 } from "./api/usersApi/index.js";
 export {
+  WiFiApiGetStatusOptionalParams,
+  WiFiApiDisconnectOptionalParams,
+  WiFiApiConnectNetworkOptionalParams,
+  WiFiApiDeleteConfigOptionalParams,
+  WiFiApiUpdateConfigOptionalParams,
+  WiFiApiCreateConfigOptionalParams,
+  WiFiApiGetConfigOptionalParams,
+  WiFiApiListConfigsOptionalParams,
+  WiFiApiGetNetworkOptionalParams,
+  WiFiApiScanNetworksOptionalParams,
+} from "./api/wiFiApi/index.js";
+export {
   EmailsApiOperations,
   EmailsGroupApiOperations,
   UsersApiOperations,
+  WiFiApiOperations,
 } from "./classic/index.js";

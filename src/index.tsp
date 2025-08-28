@@ -7,6 +7,7 @@ import "@typespec/openapi";
 import "./users_api.tsp";
 import "./emails_api.tsp";
 import "./email_groups_api.tsp";
+import "./wifi_api.tsp";
 
 // 使用TypeSpec.Http和TypeSpec.OpenAPI命名空间
 using TypeSpec.Http;

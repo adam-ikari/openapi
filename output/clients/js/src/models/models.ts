@@ -228,3 +228,221 @@ export function emailGroupDeserializer(item: any): EmailGroup {
     members: emailArrayDeserializer(item["members"]),
   };
 }
+
+/** model interface WiFiNetworkList */
+export interface WiFiNetworkList {
+  /** The list of available WiFi networks */
+  items: WiFiNetwork[];
+  /** The total number of WiFi networks found */
+  total: number;
+}
+
+export function wiFiNetworkListDeserializer(item: any): WiFiNetworkList {
+  return {
+    items: wiFiNetworkArrayDeserializer(item["items"]),
+    total: item["total"],
+  };
+}
+
+export function wiFiNetworkArrayDeserializer(
+  result: Array<WiFiNetwork>,
+): any[] {
+  return result.map((item) => {
+    return wiFiNetworkDeserializer(item);
+  });
+}
+
+/** model interface WiFiNetwork */
+export interface WiFiNetwork {
+  /** The unique identifier of the WiFi network */
+  readonly id: string;
+  /** The SSID of the WiFi network */
+  ssid: string;
+  /** The BSSID of the WiFi network */
+  bssid: string;
+  /** The security type of the WiFi network */
+  security: WiFiSecurityType;
+  /** The signal strength in dBm */
+  signalStrength: number;
+  /** The WiFi frequency band */
+  band: WiFiBand;
+  /** The WiFi channel */
+  channel: number;
+  /** Whether the network is hidden */
+  hidden: boolean;
+  /** Whether this network is the currently connected one */
+  isConnected: boolean;
+  /** Whether this network has a saved configuration */
+  isSaved: boolean;
+  /** The timestamp when the network was last seen */
+  readonly lastSeen: any;
+}
+
+export function wiFiNetworkDeserializer(item: any): WiFiNetwork {
+  return {
+    id: item["id"],
+    ssid: item["ssid"],
+    bssid: item["bssid"],
+    security: item["security"],
+    signalStrength: item["signalStrength"],
+    band: item["band"],
+    channel: item["channel"],
+    hidden: item["hidden"],
+    isConnected: item["isConnected"],
+    isSaved: item["isSaved"],
+    lastSeen: item["lastSeen"],
+  };
+}
+
+/** WiFi security type enum values */
+export type WiFiSecurityType = "none" | "wep" | "wpa" | "wpa2" | "wpa3";
+/** WiFi frequency band enum values */
+export type WiFiBand = 0 | 1 | 2 | 3;
+
+/** model interface WiFiConfigList */
+export interface WiFiConfigList {
+  /** The list of WiFi configurations */
+  items: WiFiConfig[];
+  /** The total number of WiFi configurations */
+  total: number;
+}
+
+export function wiFiConfigListDeserializer(item: any): WiFiConfigList {
+  return {
+    items: wiFiConfigArrayDeserializer(item["items"]),
+    total: item["total"],
+  };
+}
+
+export function wiFiConfigArraySerializer(result: Array<WiFiConfig>): any[] {
+  return result.map((item) => {
+    return wiFiConfigSerializer(item);
+  });
+}
+
+export function wiFiConfigArrayDeserializer(result: Array<WiFiConfig>): any[] {
+  return result.map((item) => {
+    return wiFiConfigDeserializer(item);
+  });
+}
+
+/** model interface WiFiConfig */
+export interface WiFiConfig {
+  /** The unique identifier of the WiFi configuration */
+  readonly id: string;
+  /** The SSID of the WiFi network to connect to */
+  ssid: string;
+  /** The security type of the WiFi network */
+  security: WiFiSecurityType;
+  /** The password for the WiFi network (required for secured networks). encrypted depends security type */
+  password?: string;
+  /** Whether to connect automatically */
+  autoConnect: boolean;
+  /** Whether this is a hidden network */
+  hidden: boolean;
+  /** The current connection status of this configuration */
+  status: WiFiConnectionStatus;
+  /** The timestamp when the configuration was created */
+  readonly createdAt: any;
+  /** The timestamp when the configuration was last updated */
+  readonly updatedAt: any;
+}
+
+export function wiFiConfigSerializer(item: WiFiConfig): any {
+  return {
+    ssid: item["ssid"],
+    security: item["security"],
+    password: item["password"],
+    autoConnect: item["autoConnect"],
+    hidden: item["hidden"],
+    status: item["status"],
+  };
+}
+
+export function wiFiConfigDeserializer(item: any): WiFiConfig {
+  return {
+    id: item["id"],
+    ssid: item["ssid"],
+    security: item["security"],
+    password: item["password"],
+    autoConnect: item["autoConnect"],
+    hidden: item["hidden"],
+    status: item["status"],
+    createdAt: item["createdAt"],
+    updatedAt: item["updatedAt"],
+  };
+}
+
+/** WiFi connection status enum values */
+export type WiFiConnectionStatus =
+  | "disconnected"
+  | "connecting"
+  | "connected"
+  | "disconnecting"
+  | "error";
+
+/** model interface WiFiConnectRequest */
+export interface WiFiConnectRequest {
+  /** The password for the WiFi network (required for secured networks) */
+  password?: string;
+  /** Whether to save this configuration for future use */
+  saveConfiguration: boolean;
+}
+
+export function wiFiConnectRequestSerializer(item: WiFiConnectRequest): any {
+  return {
+    password: item["password"],
+    saveConfiguration: item["saveConfiguration"],
+  };
+}
+
+/** model interface _ConnectNetworkResponse */
+export interface _ConnectNetworkResponse {
+  success: boolean;
+  message: string;
+  status: WiFiConnectionStatus;
+}
+
+export function _connectNetworkResponseDeserializer(
+  item: any,
+): _ConnectNetworkResponse {
+  return {
+    success: item["success"],
+    message: item["message"],
+    status: item["status"],
+  };
+}
+
+/** model interface _DisconnectResponse */
+export interface _DisconnectResponse {
+  success: boolean;
+  message: string;
+  status: WiFiConnectionStatus;
+}
+
+export function _disconnectResponseDeserializer(
+  item: any,
+): _DisconnectResponse {
+  return {
+    success: item["success"],
+    message: item["message"],
+    status: item["status"],
+  };
+}
+
+/** model interface _GetStatusResponse */
+export interface _GetStatusResponse {
+  status: WiFiConnectionStatus;
+  connectedNetwork?: WiFiNetwork;
+  message: string;
+}
+
+export function _getStatusResponseDeserializer(item: any): _GetStatusResponse {
+  return {
+    status: item["status"],
+    connectedNetwork: !item["connectedNetwork"]
+      ? item["connectedNetwork"]
+      : wiFiNetworkDeserializer(item["connectedNetwork"]),
+    message: item["message"],
+  };
+}

@@ -6,6 +6,7 @@ tags:
   - name: Users
   - name: Emails
   - name: EmailGroups
+  - name: WiFi
 paths:
   /api/v2/email-groups:
     get:
@@ -458,6 +459,328 @@ paths:
                 $ref: '#/components/schemas/Error'
       tags:
         - Users
+      security:
+        - BearerAuth: []
+  /api/v2/wifi/configs:
+    get:
+      operationId: WiFiApi_listConfigs
+      description: List WiFi configurations
+      parameters:
+        - name: offset
+          in: query
+          required: true
+          description: The offset of the list, 0 means no offset, default is 0
+          schema:
+            type: integer
+            format: uint32
+            default: 0
+          explode: false
+        - name: limit
+          in: query
+          required: true
+          description: The limit of the list, 0 means no limit, default is 10
+          schema:
+            type: integer
+            format: uint32
+            default: 10
+          explode: false
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WiFiConfigList'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - WiFi
+      security:
+        - BearerAuth: []
+    post:
+      operationId: WiFiApi_createConfig
+      description: Create a WiFi configuration
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WiFiConfig'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - WiFi
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WiFiConfig'
+        description: The WiFi configuration to create
+      security:
+        - BearerAuth: []
+  /api/v2/wifi/configs/{id}:
+    get:
+      operationId: WiFiApi_getConfig
+      description: Get a specific WiFi configuration
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the WiFi configuration to get
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WiFiConfig'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - WiFi
+      security:
+        - BearerAuth: []
+    put:
+      operationId: WiFiApi_updateConfig
+      description: Update a WiFi configuration
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the WiFi configuration to update
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WiFiConfig'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - WiFi
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WiFiConfig'
+        description: The WiFi configuration update data
+      security:
+        - BearerAuth: []
+    delete:
+      operationId: WiFiApi_deleteConfig
+      description: Delete a WiFi configuration
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the WiFi configuration to delete
+          schema:
+            type: string
+      responses:
+        '204':
+          description: 'There is no content to send for this request, but the headers may be useful. '
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - WiFi
+      security:
+        - BearerAuth: []
+  /api/v2/wifi/disconnect:
+    post:
+      operationId: WiFiApi_disconnect
+      description: Disconnect from current WiFi network
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  status:
+                    $ref: '#/components/schemas/WiFiConnectionStatus'
+                required:
+                  - success
+                  - message
+                  - status
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - WiFi
+      security:
+        - BearerAuth: []
+  /api/v2/wifi/networks:
+    get:
+      operationId: WiFiApi_scanNetworks
+      description: Scan for available WiFi networks
+      parameters:
+        - name: force
+          in: query
+          required: true
+          description: Whether to force a rescan instead of using cached results
+          schema:
+            type: boolean
+            default: false
+          explode: false
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WiFiNetworkList'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - WiFi
+      security:
+        - BearerAuth: []
+  /api/v2/wifi/networks/{id}:
+    get:
+      operationId: WiFiApi_getNetwork
+      description: Get details of a specific WiFi network
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the WiFi network to get
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WiFiNetwork'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - WiFi
+      security:
+        - BearerAuth: []
+  /api/v2/wifi/networks/{id}/connect:
+    post:
+      operationId: WiFiApi_connectNetwork
+      description: Connect to a WiFi network
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the WiFi network to connect to
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  status:
+                    $ref: '#/components/schemas/WiFiConnectionStatus'
+                required:
+                  - success
+                  - message
+                  - status
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - WiFi
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WiFiConnectRequest'
+        description: Connection parameters
+      security:
+        - BearerAuth: []
+  /api/v2/wifi/status:
+    get:
+      operationId: WiFiApi_getStatus
+      description: Get current WiFi connection status
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    $ref: '#/components/schemas/WiFiConnectionStatus'
+                  connectedNetwork:
+                    $ref: '#/components/schemas/WiFiNetwork'
+                  message:
+                    type: string
+                required:
+                  - status
+                  - message
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - WiFi
       security:
         - BearerAuth: []
 components:
@@ -922,6 +1245,245 @@ components:
           type: integer
           format: uint32
           description: The limit to fetch the list, 0 means no limit
+    WiFiBand:
+      type: number
+      enum:
+        - 0
+        - 1
+        - 2
+        - 3
+      description: WiFi frequency band enum values
+      x-enum-varnames:
+        - mixed
+        - 2_4GHz
+        - 5GHz
+        - 6GHz
+      x-ms-enum:
+        values:
+          - name: mixed
+            value: 0
+            description: Mixed band
+          - name: 2_4GHz
+            value: 1
+            description: 2.4GHz band
+          - name: 5GHz
+            value: 2
+            description: 5GHz band
+          - name: 6GHz
+            value: 3
+            description: 6GHz band
+    WiFiConfig:
+      type: object
+      required:
+        - id
+        - ssid
+        - security
+        - autoConnect
+        - hidden
+        - status
+        - createdAt
+        - updatedAt
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the WiFi configuration
+          readOnly: true
+        ssid:
+          type: string
+          description: The SSID of the WiFi network to connect to
+        security:
+          allOf:
+            - $ref: '#/components/schemas/WiFiSecurityType'
+          description: The security type of the WiFi network
+        password:
+          type: string
+          format: password
+          description: The password for the WiFi network (required for secured networks). encrypted depends security type
+        autoConnect:
+          type: boolean
+          description: Whether to connect automatically
+          default: true
+        hidden:
+          type: boolean
+          description: Whether this is a hidden network
+          default: false
+        status:
+          allOf:
+            - $ref: '#/components/schemas/WiFiConnectionStatus'
+          description: The current connection status of this configuration
+          default: disconnected
+        createdAt:
+          type: integer
+          format: int32
+          description: The timestamp when the configuration was created
+          readOnly: true
+        updatedAt:
+          type: integer
+          format: int32
+          description: The timestamp when the configuration was last updated
+          readOnly: true
+    WiFiConfigList:
+      type: object
+      required:
+        - items
+        - total
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/WiFiConfig'
+          description: The list of WiFi configurations
+        total:
+          type: integer
+          format: uint32
+          description: The total number of WiFi configurations
+    WiFiConnectRequest:
+      type: object
+      required:
+        - saveConfiguration
+      properties:
+        password:
+          type: string
+          format: password
+          description: The password for the WiFi network (required for secured networks)
+        saveConfiguration:
+          type: boolean
+          description: Whether to save this configuration for future use
+          default: true
+    WiFiConnectionStatus:
+      type: string
+      enum:
+        - disconnected
+        - connecting
+        - connected
+        - disconnecting
+        - error
+      description: WiFi connection status enum values
+      x-enum-varnames:
+        - disconnected
+        - connecting
+        - connected
+        - disconnecting
+        - error
+      x-ms-enum:
+        values:
+          - name: disconnected
+            value: disconnected
+            description: Not connected
+          - name: connecting
+            value: connecting
+            description: Connecting to network
+          - name: connected
+            value: connected
+            description: Successfully connected
+          - name: disconnecting
+            value: disconnecting
+            description: Disconnecting from network
+          - name: error
+            value: error
+            description: Connection error
+    WiFiNetwork:
+      type: object
+      required:
+        - id
+        - ssid
+        - bssid
+        - security
+        - signalStrength
+        - band
+        - channel
+        - hidden
+        - isConnected
+        - isSaved
+        - lastSeen
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the WiFi network
+          readOnly: true
+        ssid:
+          type: string
+          description: The SSID of the WiFi network
+        bssid:
+          type: string
+          description: The BSSID of the WiFi network
+        security:
+          allOf:
+            - $ref: '#/components/schemas/WiFiSecurityType'
+          description: The security type of the WiFi network
+        signalStrength:
+          type: integer
+          format: int32
+          description: The signal strength in dBm
+        band:
+          allOf:
+            - $ref: '#/components/schemas/WiFiBand'
+          description: The WiFi frequency band
+        channel:
+          type: integer
+          format: uint32
+          description: The WiFi channel
+        hidden:
+          type: boolean
+          description: Whether the network is hidden
+        isConnected:
+          type: boolean
+          description: Whether this network is the currently connected one
+        isSaved:
+          type: boolean
+          description: Whether this network has a saved configuration
+        lastSeen:
+          type: integer
+          format: int32
+          description: The timestamp when the network was last seen
+          readOnly: true
+    WiFiNetworkList:
+      type: object
+      required:
+        - items
+        - total
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/WiFiNetwork'
+          description: The list of available WiFi networks
+        total:
+          type: integer
+          format: uint32
+          description: The total number of WiFi networks found
+    WiFiSecurityType:
+      type: string
+      enum:
+        - none
+        - wep
+        - wpa
+        - wpa2
+        - wpa3
+      description: WiFi security type enum values
+      x-enum-varnames:
+        - none
+        - wep
+        - wpa
+        - wpa2
+        - wpa3
+      x-ms-enum:
+        values:
+          - name: none
+            value: none
+            description: Open network without security
+          - name: wep
+            value: wep
+            description: WEP security
+          - name: wpa
+            value: wpa
+            description: WPA security
+          - name: wpa2
+            value: wpa2
+            description: WPA2 security
+          - name: wpa3
+            value: wpa3
+            description: WPA3 security
   securitySchemes:
     BearerAuth:
       type: http

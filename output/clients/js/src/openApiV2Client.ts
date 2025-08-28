@@ -17,6 +17,10 @@ import {
   UsersApiOperations,
   _getUsersApiOperations,
 } from "./classic/usersApi/index.js";
+import {
+  WiFiApiOperations,
+  _getWiFiApiOperations,
+} from "./classic/wiFiApi/index.js";
 import { Pipeline } from "@typespec/ts-http-runtime";
 
 export { OpenApiV2ClientOptionalParams } from "./api/openApiV2Context.js";
@@ -39,11 +43,14 @@ export class OpenApiV2Client {
       userAgentOptions: { userAgentPrefix },
     });
     this.pipeline = this._client.pipeline;
+    this.wiFiApi = _getWiFiApiOperations(this._client);
     this.emailsGroupApi = _getEmailsGroupApiOperations(this._client);
     this.emailsApi = _getEmailsApiOperations(this._client);
     this.usersApi = _getUsersApiOperations(this._client);
   }
 
+  /** The operation groups for wiFiApi */
+  public readonly wiFiApi: WiFiApiOperations;
   /** The operation groups for emailsGroupApi */
   public readonly emailsGroupApi: EmailsGroupApiOperations;
   /** The operation groups for emailsApi */

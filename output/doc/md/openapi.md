@@ -1808,6 +1808,1208 @@ To perform this operation, you must be authenticated by means of one of the foll
 BearerAuth
 </aside>
 
+<h1 id="openapi-v2-wifi">WiFi</h1>
+
+## WiFiApi_listConfigs
+
+<a id="opIdWiFiApi_listConfigs"></a>
+
+> Code samples
+
+```http
+GET /api/v2/wifi/configs?offset=0&limit=10 HTTP/1.1
+
+Accept: application/json
+
+```
+
+```javascript
+// javascript
+
+const headers = {
+  Accept: "application/json",
+}
+
+fetch("/api/v2/wifi/configs?offset=0&limit=10", {
+  method: "GET",
+
+  headers: headers,
+})
+  .then(function (res) {
+    return res.json()
+  })
+  .then(function (body) {
+    console.log(body)
+  })
+```
+
+```python
+# python
+
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('/api/v2/wifi/configs', params={
+  'offset': '0',  'limit': '10'
+}, headers = headers)
+
+print(r.json())
+
+```
+
+```java
+// Java
+
+URL obj = new URL("/api/v2/wifi/configs?offset=0&limit=10");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+`GET /api/v2/wifi/configs`
+
+List WiFi configurations
+
+<h3 id="wifiapi_listconfigs-parameters">Parameters</h3>
+
+| Name   | In    | Type            | Required | Description                                             |
+| ------ | ----- | --------------- | -------- | ------------------------------------------------------- |
+| offset | query | integer(uint32) | true     | The offset of the list, 0 means no offset, default is 0 |
+| limit  | query | integer(uint32) | true     | The limit of the list, 0 means no limit, default is 10  |
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "items": [
+    {
+      "id": "string",
+      "ssid": "string",
+      "security": "none",
+      "password": "pa$$word",
+      "autoConnect": true,
+      "hidden": false,
+      "status": "disconnected",
+      "createdAt": 0,
+      "updatedAt": 0
+    }
+  ],
+  "total": 0
+}
+```
+
+<h3 id="wifiapi_listconfigs-responses">Responses</h3>
+
+| Status  | Meaning                                                 | Description                   | Schema                                  |
+| ------- | ------------------------------------------------------- | ----------------------------- | --------------------------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [WiFiConfigList](#schemawificonfiglist) |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror)                   |
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+BearerAuth
+</aside>
+
+## WiFiApi_createConfig
+
+<a id="opIdWiFiApi_createConfig"></a>
+
+> Code samples
+
+```http
+POST /api/v2/wifi/configs HTTP/1.1
+
+Content-Type: application/json
+Accept: application/json
+
+```
+
+```javascript
+// javascript
+const inputBody = '{
+  "ssid": "string",
+  "security": "none",
+  "password": "pa$$word",
+  "autoConnect": true,
+  "hidden": false,
+  "status": "disconnected"
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json'
+};
+
+fetch('/api/v2/wifi/configs',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```python
+# python
+
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+r = requests.post('/api/v2/wifi/configs', headers = headers)
+
+print(r.json())
+
+```
+
+```java
+// Java
+
+URL obj = new URL("/api/v2/wifi/configs");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+`POST /api/v2/wifi/configs`
+
+Create a WiFi configuration
+
+> Body parameter
+
+```json
+{
+  "ssid": "string",
+  "security": "none",
+  "password": "pa$$word",
+  "autoConnect": true,
+  "hidden": false,
+  "status": "disconnected"
+}
+```
+
+<h3 id="wifiapi_createconfig-parameters">Parameters</h3>
+
+| Name | In   | Type                            | Required | Description                      |
+| ---- | ---- | ------------------------------- | -------- | -------------------------------- |
+| body | body | [WiFiConfig](#schemawificonfig) | true     | The WiFi configuration to create |
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "id": "string",
+  "ssid": "string",
+  "security": "none",
+  "password": "pa$$word",
+  "autoConnect": true,
+  "hidden": false,
+  "status": "disconnected",
+  "createdAt": 0,
+  "updatedAt": 0
+}
+```
+
+<h3 id="wifiapi_createconfig-responses">Responses</h3>
+
+| Status  | Meaning                                                 | Description                   | Schema                          |
+| ------- | ------------------------------------------------------- | ----------------------------- | ------------------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [WiFiConfig](#schemawificonfig) |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror)           |
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+BearerAuth
+</aside>
+
+## WiFiApi_getConfig
+
+<a id="opIdWiFiApi_getConfig"></a>
+
+> Code samples
+
+```http
+GET /api/v2/wifi/configs/{id} HTTP/1.1
+
+Accept: application/json
+
+```
+
+```javascript
+// javascript
+
+const headers = {
+  Accept: "application/json",
+}
+
+fetch("/api/v2/wifi/configs/{id}", {
+  method: "GET",
+
+  headers: headers,
+})
+  .then(function (res) {
+    return res.json()
+  })
+  .then(function (body) {
+    console.log(body)
+  })
+```
+
+```python
+# python
+
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('/api/v2/wifi/configs/{id}', headers = headers)
+
+print(r.json())
+
+```
+
+```java
+// Java
+
+URL obj = new URL("/api/v2/wifi/configs/{id}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+`GET /api/v2/wifi/configs/{id}`
+
+Get a specific WiFi configuration
+
+<h3 id="wifiapi_getconfig-parameters">Parameters</h3>
+
+| Name | In   | Type   | Required | Description                             |
+| ---- | ---- | ------ | -------- | --------------------------------------- |
+| id   | path | string | true     | The id of the WiFi configuration to get |
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "id": "string",
+  "ssid": "string",
+  "security": "none",
+  "password": "pa$$word",
+  "autoConnect": true,
+  "hidden": false,
+  "status": "disconnected",
+  "createdAt": 0,
+  "updatedAt": 0
+}
+```
+
+<h3 id="wifiapi_getconfig-responses">Responses</h3>
+
+| Status  | Meaning                                                 | Description                   | Schema                          |
+| ------- | ------------------------------------------------------- | ----------------------------- | ------------------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [WiFiConfig](#schemawificonfig) |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror)           |
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+BearerAuth
+</aside>
+
+## WiFiApi_updateConfig
+
+<a id="opIdWiFiApi_updateConfig"></a>
+
+> Code samples
+
+```http
+PUT /api/v2/wifi/configs/{id} HTTP/1.1
+
+Content-Type: application/json
+Accept: application/json
+
+```
+
+```javascript
+// javascript
+const inputBody = '{
+  "ssid": "string",
+  "security": "none",
+  "password": "pa$$word",
+  "autoConnect": true,
+  "hidden": false,
+  "status": "disconnected"
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json'
+};
+
+fetch('/api/v2/wifi/configs/{id}',
+{
+  method: 'PUT',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```python
+# python
+
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+r = requests.put('/api/v2/wifi/configs/{id}', headers = headers)
+
+print(r.json())
+
+```
+
+```java
+// Java
+
+URL obj = new URL("/api/v2/wifi/configs/{id}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("PUT");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+`PUT /api/v2/wifi/configs/{id}`
+
+Update a WiFi configuration
+
+> Body parameter
+
+```json
+{
+  "ssid": "string",
+  "security": "none",
+  "password": "pa$$word",
+  "autoConnect": true,
+  "hidden": false,
+  "status": "disconnected"
+}
+```
+
+<h3 id="wifiapi_updateconfig-parameters">Parameters</h3>
+
+| Name | In   | Type                            | Required | Description                                |
+| ---- | ---- | ------------------------------- | -------- | ------------------------------------------ |
+| id   | path | string                          | true     | The id of the WiFi configuration to update |
+| body | body | [WiFiConfig](#schemawificonfig) | true     | The WiFi configuration update data         |
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "id": "string",
+  "ssid": "string",
+  "security": "none",
+  "password": "pa$$word",
+  "autoConnect": true,
+  "hidden": false,
+  "status": "disconnected",
+  "createdAt": 0,
+  "updatedAt": 0
+}
+```
+
+<h3 id="wifiapi_updateconfig-responses">Responses</h3>
+
+| Status  | Meaning                                                 | Description                   | Schema                          |
+| ------- | ------------------------------------------------------- | ----------------------------- | ------------------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [WiFiConfig](#schemawificonfig) |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror)           |
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+BearerAuth
+</aside>
+
+## WiFiApi_deleteConfig
+
+<a id="opIdWiFiApi_deleteConfig"></a>
+
+> Code samples
+
+```http
+DELETE /api/v2/wifi/configs/{id} HTTP/1.1
+
+Accept: application/json
+
+```
+
+```javascript
+// javascript
+
+const headers = {
+  Accept: "application/json",
+}
+
+fetch("/api/v2/wifi/configs/{id}", {
+  method: "DELETE",
+
+  headers: headers,
+})
+  .then(function (res) {
+    return res.json()
+  })
+  .then(function (body) {
+    console.log(body)
+  })
+```
+
+```python
+# python
+
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.delete('/api/v2/wifi/configs/{id}', headers = headers)
+
+print(r.json())
+
+```
+
+```java
+// Java
+
+URL obj = new URL("/api/v2/wifi/configs/{id}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("DELETE");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+`DELETE /api/v2/wifi/configs/{id}`
+
+Delete a WiFi configuration
+
+<h3 id="wifiapi_deleteconfig-parameters">Parameters</h3>
+
+| Name | In   | Type   | Required | Description                                |
+| ---- | ---- | ------ | -------- | ------------------------------------------ |
+| id   | path | string | true     | The id of the WiFi configuration to delete |
+
+> Example responses
+
+> default Response
+
+```json
+{
+  "code": 100000,
+  "msg": "string"
+}
+```
+
+<h3 id="wifiapi_deleteconfig-responses">Responses</h3>
+
+| Status  | Meaning                                                         | Description                                                                  | Schema                |
+| ------- | --------------------------------------------------------------- | ---------------------------------------------------------------------------- | --------------------- |
+| 204     | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | There is no content to send for this request, but the headers may be useful. | None                  |
+| default | Default                                                         | An unexpected error response.                                                | [Error](#schemaerror) |
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+BearerAuth
+</aside>
+
+## WiFiApi_disconnect
+
+<a id="opIdWiFiApi_disconnect"></a>
+
+> Code samples
+
+```http
+POST /api/v2/wifi/disconnect HTTP/1.1
+
+Accept: application/json
+
+```
+
+```javascript
+// javascript
+
+const headers = {
+  Accept: "application/json",
+}
+
+fetch("/api/v2/wifi/disconnect", {
+  method: "POST",
+
+  headers: headers,
+})
+  .then(function (res) {
+    return res.json()
+  })
+  .then(function (body) {
+    console.log(body)
+  })
+```
+
+```python
+# python
+
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.post('/api/v2/wifi/disconnect', headers = headers)
+
+print(r.json())
+
+```
+
+```java
+// Java
+
+URL obj = new URL("/api/v2/wifi/disconnect");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+`POST /api/v2/wifi/disconnect`
+
+Disconnect from current WiFi network
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "success": true,
+  "message": "string",
+  "status": "disconnected"
+}
+```
+
+<h3 id="wifiapi_disconnect-responses">Responses</h3>
+
+| Status  | Meaning                                                 | Description                   | Schema                |
+| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | Inline                |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
+
+<h3 id="wifiapi_disconnect-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+| Name      | Type                                                | Required | Restrictions | Description                        |
+| --------- | --------------------------------------------------- | -------- | ------------ | ---------------------------------- |
+| » success | boolean                                             | true     | none         | none                               |
+| » message | string                                              | true     | none         | none                               |
+| » status  | [WiFiConnectionStatus](#schemawificonnectionstatus) | true     | none         | WiFi connection status enum values |
+
+#### Enumerated Values
+
+| Property | Value         |
+| -------- | ------------- |
+| status   | disconnected  |
+| status   | connecting    |
+| status   | connected     |
+| status   | disconnecting |
+| status   | error         |
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+BearerAuth
+</aside>
+
+## WiFiApi_scanNetworks
+
+<a id="opIdWiFiApi_scanNetworks"></a>
+
+> Code samples
+
+```http
+GET /api/v2/wifi/networks?force=false HTTP/1.1
+
+Accept: application/json
+
+```
+
+```javascript
+// javascript
+
+const headers = {
+  Accept: "application/json",
+}
+
+fetch("/api/v2/wifi/networks?force=false", {
+  method: "GET",
+
+  headers: headers,
+})
+  .then(function (res) {
+    return res.json()
+  })
+  .then(function (body) {
+    console.log(body)
+  })
+```
+
+```python
+# python
+
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('/api/v2/wifi/networks', params={
+  'force': 'false'
+}, headers = headers)
+
+print(r.json())
+
+```
+
+```java
+// Java
+
+URL obj = new URL("/api/v2/wifi/networks?force=false");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+`GET /api/v2/wifi/networks`
+
+Scan for available WiFi networks
+
+<h3 id="wifiapi_scannetworks-parameters">Parameters</h3>
+
+| Name  | In    | Type    | Required | Description                                               |
+| ----- | ----- | ------- | -------- | --------------------------------------------------------- |
+| force | query | boolean | true     | Whether to force a rescan instead of using cached results |
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "items": [
+    {
+      "id": "string",
+      "ssid": "string",
+      "bssid": "string",
+      "security": "none",
+      "signalStrength": 0,
+      "band": 0,
+      "channel": 0,
+      "hidden": true,
+      "isConnected": true,
+      "isSaved": true,
+      "lastSeen": 0
+    }
+  ],
+  "total": 0
+}
+```
+
+<h3 id="wifiapi_scannetworks-responses">Responses</h3>
+
+| Status  | Meaning                                                 | Description                   | Schema                                    |
+| ------- | ------------------------------------------------------- | ----------------------------- | ----------------------------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [WiFiNetworkList](#schemawifinetworklist) |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror)                     |
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+BearerAuth
+</aside>
+
+## WiFiApi_getNetwork
+
+<a id="opIdWiFiApi_getNetwork"></a>
+
+> Code samples
+
+```http
+GET /api/v2/wifi/networks/{id} HTTP/1.1
+
+Accept: application/json
+
+```
+
+```javascript
+// javascript
+
+const headers = {
+  Accept: "application/json",
+}
+
+fetch("/api/v2/wifi/networks/{id}", {
+  method: "GET",
+
+  headers: headers,
+})
+  .then(function (res) {
+    return res.json()
+  })
+  .then(function (body) {
+    console.log(body)
+  })
+```
+
+```python
+# python
+
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('/api/v2/wifi/networks/{id}', headers = headers)
+
+print(r.json())
+
+```
+
+```java
+// Java
+
+URL obj = new URL("/api/v2/wifi/networks/{id}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+`GET /api/v2/wifi/networks/{id}`
+
+Get details of a specific WiFi network
+
+<h3 id="wifiapi_getnetwork-parameters">Parameters</h3>
+
+| Name | In   | Type   | Required | Description                       |
+| ---- | ---- | ------ | -------- | --------------------------------- |
+| id   | path | string | true     | The id of the WiFi network to get |
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "id": "string",
+  "ssid": "string",
+  "bssid": "string",
+  "security": "none",
+  "signalStrength": 0,
+  "band": 0,
+  "channel": 0,
+  "hidden": true,
+  "isConnected": true,
+  "isSaved": true,
+  "lastSeen": 0
+}
+```
+
+<h3 id="wifiapi_getnetwork-responses">Responses</h3>
+
+| Status  | Meaning                                                 | Description                   | Schema                            |
+| ------- | ------------------------------------------------------- | ----------------------------- | --------------------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [WiFiNetwork](#schemawifinetwork) |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror)             |
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+BearerAuth
+</aside>
+
+## WiFiApi_connectNetwork
+
+<a id="opIdWiFiApi_connectNetwork"></a>
+
+> Code samples
+
+```http
+POST /api/v2/wifi/networks/{id}/connect HTTP/1.1
+
+Content-Type: application/json
+Accept: application/json
+
+```
+
+```javascript
+// javascript
+const inputBody = '{
+  "password": "pa$$word",
+  "saveConfiguration": true
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json'
+};
+
+fetch('/api/v2/wifi/networks/{id}/connect',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```python
+# python
+
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+r = requests.post('/api/v2/wifi/networks/{id}/connect', headers = headers)
+
+print(r.json())
+
+```
+
+```java
+// Java
+
+URL obj = new URL("/api/v2/wifi/networks/{id}/connect");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+`POST /api/v2/wifi/networks/{id}/connect`
+
+Connect to a WiFi network
+
+> Body parameter
+
+```json
+{
+  "password": "pa$$word",
+  "saveConfiguration": true
+}
+```
+
+<h3 id="wifiapi_connectnetwork-parameters">Parameters</h3>
+
+| Name | In   | Type                                            | Required | Description                              |
+| ---- | ---- | ----------------------------------------------- | -------- | ---------------------------------------- |
+| id   | path | string                                          | true     | The id of the WiFi network to connect to |
+| body | body | [WiFiConnectRequest](#schemawificonnectrequest) | false    | Connection parameters                    |
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "success": true,
+  "message": "string",
+  "status": "disconnected"
+}
+```
+
+<h3 id="wifiapi_connectnetwork-responses">Responses</h3>
+
+| Status  | Meaning                                                 | Description                   | Schema                |
+| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | Inline                |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
+
+<h3 id="wifiapi_connectnetwork-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+| Name      | Type                                                | Required | Restrictions | Description                        |
+| --------- | --------------------------------------------------- | -------- | ------------ | ---------------------------------- |
+| » success | boolean                                             | true     | none         | none                               |
+| » message | string                                              | true     | none         | none                               |
+| » status  | [WiFiConnectionStatus](#schemawificonnectionstatus) | true     | none         | WiFi connection status enum values |
+
+#### Enumerated Values
+
+| Property | Value         |
+| -------- | ------------- |
+| status   | disconnected  |
+| status   | connecting    |
+| status   | connected     |
+| status   | disconnecting |
+| status   | error         |
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+BearerAuth
+</aside>
+
+## WiFiApi_getStatus
+
+<a id="opIdWiFiApi_getStatus"></a>
+
+> Code samples
+
+```http
+GET /api/v2/wifi/status HTTP/1.1
+
+Accept: application/json
+
+```
+
+```javascript
+// javascript
+
+const headers = {
+  Accept: "application/json",
+}
+
+fetch("/api/v2/wifi/status", {
+  method: "GET",
+
+  headers: headers,
+})
+  .then(function (res) {
+    return res.json()
+  })
+  .then(function (body) {
+    console.log(body)
+  })
+```
+
+```python
+# python
+
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('/api/v2/wifi/status', headers = headers)
+
+print(r.json())
+
+```
+
+```java
+// Java
+
+URL obj = new URL("/api/v2/wifi/status");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+`GET /api/v2/wifi/status`
+
+Get current WiFi connection status
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "status": "disconnected",
+  "connectedNetwork": {
+    "id": "string",
+    "ssid": "string",
+    "bssid": "string",
+    "security": "none",
+    "signalStrength": 0,
+    "band": 0,
+    "channel": 0,
+    "hidden": true,
+    "isConnected": true,
+    "isSaved": true,
+    "lastSeen": 0
+  },
+  "message": "string"
+}
+```
+
+<h3 id="wifiapi_getstatus-responses">Responses</h3>
+
+| Status  | Meaning                                                 | Description                   | Schema                |
+| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | Inline                |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
+
+<h3 id="wifiapi_getstatus-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+| Name               | Type                                                | Required | Restrictions | Description                                         |
+| ------------------ | --------------------------------------------------- | -------- | ------------ | --------------------------------------------------- |
+| » status           | [WiFiConnectionStatus](#schemawificonnectionstatus) | true     | none         | WiFi connection status enum values                  |
+| » connectedNetwork | [WiFiNetwork](#schemawifinetwork)                   | false    | none         | none                                                |
+| »» id              | string                                              | true     | read-only    | The unique identifier of the WiFi network           |
+| »» ssid            | string                                              | true     | none         | The SSID of the WiFi network                        |
+| »» bssid           | string                                              | true     | none         | The BSSID of the WiFi network                       |
+| »» security        | [WiFiSecurityType](#schemawifisecuritytype)         | true     | none         | The security type of the WiFi network               |
+| »» signalStrength  | integer(int32)                                      | true     | none         | The signal strength in dBm                          |
+| »» band            | [WiFiBand](#schemawifiband)                         | true     | none         | The WiFi frequency band                             |
+| »» channel         | integer(uint32)                                     | true     | none         | The WiFi channel                                    |
+| »» hidden          | boolean                                             | true     | none         | Whether the network is hidden                       |
+| »» isConnected     | boolean                                             | true     | none         | Whether this network is the currently connected one |
+| »» isSaved         | boolean                                             | true     | none         | Whether this network has a saved configuration      |
+| »» lastSeen        | integer(int32)                                      | true     | read-only    | The timestamp when the network was last seen        |
+| » message          | string                                              | true     | none         | none                                                |
+
+#### Enumerated Values
+
+| Property | Value         |
+| -------- | ------------- |
+| status   | disconnected  |
+| status   | connecting    |
+| status   | connected     |
+| status   | disconnecting |
+| status   | error         |
+| security | none          |
+| security | wep           |
+| security | wpa           |
+| security | wpa2          |
+| security | wpa3          |
+| band     | 0             |
+| band     | 1             |
+| band     | 2             |
+| band     | 3             |
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+BearerAuth
+</aside>
+
 # Schemas
 
 <h2 id="tocS_Email">Email</h2>
@@ -2268,3 +3470,236 @@ limit: 0
 | total  | integer(uint32)       | true     | none         | The total number of users                       |
 | offset | integer(uint32)       | true     | none         | The offset to fetch the list, 0 means no offset |
 | limit  | integer(uint32)       | true     | none         | The limit to fetch the list, 0 means no limit   |
+
+<h2 id="tocS_WiFiBand">WiFiBand</h2>
+<!-- backwards compatibility -->
+<a id="schemawifiband"></a>
+<a id="schema_WiFiBand"></a>
+<a id="tocSwifiband"></a>
+<a id="tocswifiband"></a>
+
+```yaml
+0
+```
+
+WiFi frequency band enum values
+
+### Properties
+
+| Name        | Type   | Required | Restrictions | Description                     |
+| ----------- | ------ | -------- | ------------ | ------------------------------- |
+| _anonymous_ | number | false    | none         | WiFi frequency band enum values |
+
+#### Enumerated Values
+
+| Property | Value | Description |
+| -------- | ----- | ----------- |
+| mixed    | 0     | Mixed band  |
+| 2_4GHz   | 1     | 2.4GHz band |
+| 5GHz     | 2     | 5GHz band   |
+| 6GHz     | 3     | 6GHz band   |
+
+<h2 id="tocS_WiFiConfig">WiFiConfig</h2>
+<!-- backwards compatibility -->
+<a id="schemawificonfig"></a>
+<a id="schema_WiFiConfig"></a>
+<a id="tocSwificonfig"></a>
+<a id="tocswificonfig"></a>
+
+```yaml
+id: string
+ssid: string
+security: none
+password: pa$$word
+autoConnect: true
+hidden: false
+status: disconnected
+createdAt: 0
+updatedAt: 0
+```
+
+### Properties
+
+| Name        | Type                                                | Required | Restrictions | Description                                                                                        |
+| ----------- | --------------------------------------------------- | -------- | ------------ | -------------------------------------------------------------------------------------------------- |
+| id          | string                                              | true     | read-only    | The unique identifier of the WiFi configuration                                                    |
+| ssid        | string                                              | true     | none         | The SSID of the WiFi network to connect to                                                         |
+| security    | [WiFiSecurityType](#schemawifisecuritytype)         | true     | none         | The security type of the WiFi network                                                              |
+| password    | string(password)                                    | false    | none         | The password for the WiFi network (required for secured networks). encrypted depends security type |
+| autoConnect | boolean                                             | true     | none         | Whether to connect automatically                                                                   |
+| hidden      | boolean                                             | true     | none         | Whether this is a hidden network                                                                   |
+| status      | [WiFiConnectionStatus](#schemawificonnectionstatus) | true     | none         | The current connection status of this configuration                                                |
+| createdAt   | integer(int32)                                      | true     | read-only    | The timestamp when the configuration was created                                                   |
+| updatedAt   | integer(int32)                                      | true     | read-only    | The timestamp when the configuration was last updated                                              |
+
+<h2 id="tocS_WiFiConfigList">WiFiConfigList</h2>
+<!-- backwards compatibility -->
+<a id="schemawificonfiglist"></a>
+<a id="schema_WiFiConfigList"></a>
+<a id="tocSwificonfiglist"></a>
+<a id="tocswificonfiglist"></a>
+
+```yaml
+items:
+  - id: string
+    ssid: string
+    security: none
+    password: pa$$word
+    autoConnect: true
+    hidden: false
+    status: disconnected
+    createdAt: 0
+    updatedAt: 0
+total: 0
+```
+
+### Properties
+
+| Name  | Type                              | Required | Restrictions | Description                             |
+| ----- | --------------------------------- | -------- | ------------ | --------------------------------------- |
+| items | [[WiFiConfig](#schemawificonfig)] | true     | none         | The list of WiFi configurations         |
+| total | integer(uint32)                   | true     | none         | The total number of WiFi configurations |
+
+<h2 id="tocS_WiFiConnectRequest">WiFiConnectRequest</h2>
+<!-- backwards compatibility -->
+<a id="schemawificonnectrequest"></a>
+<a id="schema_WiFiConnectRequest"></a>
+<a id="tocSwificonnectrequest"></a>
+<a id="tocswificonnectrequest"></a>
+
+```yaml
+password: pa$$word
+saveConfiguration: true
+```
+
+### Properties
+
+| Name              | Type             | Required | Restrictions | Description                                                       |
+| ----------------- | ---------------- | -------- | ------------ | ----------------------------------------------------------------- |
+| password          | string(password) | false    | none         | The password for the WiFi network (required for secured networks) |
+| saveConfiguration | boolean          | true     | none         | Whether to save this configuration for future use                 |
+
+<h2 id="tocS_WiFiConnectionStatus">WiFiConnectionStatus</h2>
+<!-- backwards compatibility -->
+<a id="schemawificonnectionstatus"></a>
+<a id="schema_WiFiConnectionStatus"></a>
+<a id="tocSwificonnectionstatus"></a>
+<a id="tocswificonnectionstatus"></a>
+
+```yaml
+disconnected
+```
+
+WiFi connection status enum values
+
+### Properties
+
+| Name        | Type   | Required | Restrictions | Description                        |
+| ----------- | ------ | -------- | ------------ | ---------------------------------- |
+| _anonymous_ | string | false    | none         | WiFi connection status enum values |
+
+#### Enumerated Values
+
+| Property      | Value         | Description                |
+| ------------- | ------------- | -------------------------- |
+| disconnected  | disconnected  | Not connected              |
+| connecting    | connecting    | Connecting to network      |
+| connected     | connected     | Successfully connected     |
+| disconnecting | disconnecting | Disconnecting from network |
+| error         | error         | Connection error           |
+
+<h2 id="tocS_WiFiNetwork">WiFiNetwork</h2>
+<!-- backwards compatibility -->
+<a id="schemawifinetwork"></a>
+<a id="schema_WiFiNetwork"></a>
+<a id="tocSwifinetwork"></a>
+<a id="tocswifinetwork"></a>
+
+```yaml
+id: string
+ssid: string
+bssid: string
+security: none
+signalStrength: 0
+band: 0
+channel: 0
+hidden: true
+isConnected: true
+isSaved: true
+lastSeen: 0
+```
+
+### Properties
+
+| Name           | Type                                        | Required | Restrictions | Description                                         |
+| -------------- | ------------------------------------------- | -------- | ------------ | --------------------------------------------------- |
+| id             | string                                      | true     | read-only    | The unique identifier of the WiFi network           |
+| ssid           | string                                      | true     | none         | The SSID of the WiFi network                        |
+| bssid          | string                                      | true     | none         | The BSSID of the WiFi network                       |
+| security       | [WiFiSecurityType](#schemawifisecuritytype) | true     | none         | The security type of the WiFi network               |
+| signalStrength | integer(int32)                              | true     | none         | The signal strength in dBm                          |
+| band           | [WiFiBand](#schemawifiband)                 | true     | none         | The WiFi frequency band                             |
+| channel        | integer(uint32)                             | true     | none         | The WiFi channel                                    |
+| hidden         | boolean                                     | true     | none         | Whether the network is hidden                       |
+| isConnected    | boolean                                     | true     | none         | Whether this network is the currently connected one |
+| isSaved        | boolean                                     | true     | none         | Whether this network has a saved configuration      |
+| lastSeen       | integer(int32)                              | true     | read-only    | The timestamp when the network was last seen        |
+
+<h2 id="tocS_WiFiNetworkList">WiFiNetworkList</h2>
+<!-- backwards compatibility -->
+<a id="schemawifinetworklist"></a>
+<a id="schema_WiFiNetworkList"></a>
+<a id="tocSwifinetworklist"></a>
+<a id="tocswifinetworklist"></a>
+
+```yaml
+items:
+  - id: string
+    ssid: string
+    bssid: string
+    security: none
+    signalStrength: 0
+    band: 0
+    channel: 0
+    hidden: true
+    isConnected: true
+    isSaved: true
+    lastSeen: 0
+total: 0
+```
+
+### Properties
+
+| Name  | Type                                | Required | Restrictions | Description                             |
+| ----- | ----------------------------------- | -------- | ------------ | --------------------------------------- |
+| items | [[WiFiNetwork](#schemawifinetwork)] | true     | none         | The list of available WiFi networks     |
+| total | integer(uint32)                     | true     | none         | The total number of WiFi networks found |
+
+<h2 id="tocS_WiFiSecurityType">WiFiSecurityType</h2>
+<!-- backwards compatibility -->
+<a id="schemawifisecuritytype"></a>
+<a id="schema_WiFiSecurityType"></a>
+<a id="tocSwifisecuritytype"></a>
+<a id="tocswifisecuritytype"></a>
+
+```yaml
+none
+```
+
+WiFi security type enum values
+
+### Properties
+
+| Name        | Type   | Required | Restrictions | Description                    |
+| ----------- | ------ | -------- | ------------ | ------------------------------ |
+| _anonymous_ | string | false    | none         | WiFi security type enum values |
+
+#### Enumerated Values
+
+| Property | Value | Description                   |
+| -------- | ----- | ----------------------------- |
+| none     | none  | Open network without security |
+| wep      | wep   | WEP security                  |
+| wpa      | wpa   | WPA security                  |
+| wpa2     | wpa2  | WPA2 security                 |
+| wpa3     | wpa3  | WPA3 security                 |

@@ -11,4 +11,12 @@ export {
   EmailList,
   EmailGroupList,
   EmailGroup,
+  WiFiNetworkList,
+  WiFiNetwork,
+  WiFiSecurityType,
+  WiFiBand,
+  WiFiConfigList,
+  WiFiConfig,
+  WiFiConnectionStatus,
+  WiFiConnectRequest,
 } from "./models.js";
