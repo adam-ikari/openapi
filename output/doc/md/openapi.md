@@ -114,11 +114,11 @@ List users
       "id": 0,
       "name": "string",
       "age": 1,
-      "gender": 0,
+      "gender": "secret",
       "email": {
         "id": 0,
         "email": "user@example.com",
-        "authMethod": 0,
+        "authMethod": "password",
         "createdAt": 0,
         "updatedAt": 0
       },
@@ -164,10 +164,10 @@ Accept: application/json
 const inputBody = '{
   "name": "string",
   "age": 1,
-  "gender": 0,
+  "gender": "secret",
   "email": {
     "email": "user@example.com",
-    "authMethod": 0,
+    "authMethod": "password",
     "password": "pa$$word",
     "createdAt": 0,
     "updatedAt": 0
@@ -240,10 +240,10 @@ Create a users
 {
   "name": "string",
   "age": 1,
-  "gender": 0,
+  "gender": "secret",
   "email": {
     "email": "user@example.com",
-    "authMethod": 0,
+    "authMethod": "password",
     "password": "pa$$word",
     "createdAt": 0,
     "updatedAt": 0
@@ -270,11 +270,11 @@ Create a users
   "id": 0,
   "name": "string",
   "age": 1,
-  "gender": 0,
+  "gender": "secret",
   "email": {
     "id": 0,
     "email": "user@example.com",
-    "authMethod": 0,
+    "authMethod": "password",
     "createdAt": 0,
     "updatedAt": 0
   },
@@ -381,11 +381,11 @@ Read users
   "id": 0,
   "name": "string",
   "age": 1,
-  "gender": 0,
+  "gender": "secret",
   "email": {
     "id": 0,
     "email": "user@example.com",
-    "authMethod": 0,
+    "authMethod": "password",
     "createdAt": 0,
     "updatedAt": 0
   },
@@ -426,10 +426,10 @@ Accept: application/json
 const inputBody = '{
   "name": "string",
   "age": 1,
-  "gender": 0,
+  "gender": "secret",
   "email": {
     "email": "user@example.com",
-    "authMethod": 0,
+    "authMethod": "password",
     "password": "pa$$word",
     "createdAt": 0,
     "updatedAt": 0
@@ -502,10 +502,10 @@ Update a users
 {
   "name": "string",
   "age": 1,
-  "gender": 0,
+  "gender": "secret",
   "email": {
     "email": "user@example.com",
-    "authMethod": 0,
+    "authMethod": "password",
     "password": "pa$$word",
     "createdAt": 0,
     "updatedAt": 0
@@ -533,11 +533,11 @@ Update a users
   "id": 0,
   "name": "string",
   "age": 1,
-  "gender": 0,
+  "gender": "secret",
   "email": {
     "id": 0,
     "email": "user@example.com",
-    "authMethod": 0,
+    "authMethod": "password",
     "createdAt": 0,
     "updatedAt": 0
   },
@@ -749,7 +749,7 @@ List emails
     {
       "id": 0,
       "email": "user@example.com",
-      "authMethod": 0,
+      "authMethod": "password",
       "createdAt": 0,
       "updatedAt": 0
     }
@@ -790,7 +790,7 @@ Accept: application/json
 // javascript
 const inputBody = '{
   "email": "user@example.com",
-  "authMethod": 0,
+  "authMethod": "password",
   "password": "pa$$word",
   "createdAt": 0,
   "updatedAt": 0
@@ -857,7 +857,7 @@ Create a email
 ```json
 {
   "email": "user@example.com",
-  "authMethod": 0,
+  "authMethod": "password",
   "password": "pa$$word",
   "createdAt": 0,
   "updatedAt": 0
@@ -878,7 +878,7 @@ Create a email
 {
   "id": 0,
   "email": "user@example.com",
-  "authMethod": 0,
+  "authMethod": "password",
   "createdAt": 0,
   "updatedAt": 0
 }
@@ -980,7 +980,7 @@ Read email
 {
   "id": 0,
   "email": "user@example.com",
-  "authMethod": 0,
+  "authMethod": "password",
   "createdAt": 0,
   "updatedAt": 0
 }
@@ -1016,7 +1016,7 @@ Accept: application/json
 // javascript
 const inputBody = '{
   "email": "user@example.com",
-  "authMethod": 0,
+  "authMethod": "password",
   "password": "pa$$word",
   "createdAt": 0,
   "updatedAt": 0
@@ -1083,7 +1083,7 @@ Update a email
 ```json
 {
   "email": "user@example.com",
-  "authMethod": 0,
+  "authMethod": "password",
   "password": "pa$$word",
   "createdAt": 0,
   "updatedAt": 0
@@ -1105,7 +1105,7 @@ Update a email
 {
   "id": 0,
   "email": "user@example.com",
-  "authMethod": 0,
+  "authMethod": "password",
   "createdAt": 0,
   "updatedAt": 0
 }
@@ -1317,7 +1317,7 @@ List email groups
         {
           "id": 0,
           "email": "user@example.com",
-          "authMethod": 0,
+          "authMethod": "password",
           "createdAt": 0,
           "updatedAt": 0
         }
@@ -1360,7 +1360,7 @@ Accept: application/json
 // javascript
 const inputBody = '{
   "email": "user@example.com",
-  "authMethod": 0,
+  "authMethod": "password",
   "password": "pa$$word",
   "createdAt": 0,
   "updatedAt": 0
@@ -1427,7 +1427,7 @@ Create a email group
 ```json
 {
   "email": "user@example.com",
-  "authMethod": 0,
+  "authMethod": "password",
   "password": "pa$$word",
   "createdAt": 0,
   "updatedAt": 0
@@ -1448,7 +1448,7 @@ Create a email group
 {
   "id": 0,
   "email": "user@example.com",
-  "authMethod": 0,
+  "authMethod": "password",
   "createdAt": 0,
   "updatedAt": 0
 }
@@ -1554,7 +1554,7 @@ Read a email group
     {
       "id": 0,
       "email": "user@example.com",
-      "authMethod": 0,
+      "authMethod": "password",
       "createdAt": 0,
       "updatedAt": 0
     }
@@ -1595,7 +1595,7 @@ const inputBody = '{
   "members": [
     {
       "email": "user@example.com",
-      "authMethod": 0,
+      "authMethod": "password",
       "password": "pa$$word",
       "createdAt": 0,
       "updatedAt": 0
@@ -1667,7 +1667,7 @@ Update a email group
   "members": [
     {
       "email": "user@example.com",
-      "authMethod": 0,
+      "authMethod": "password",
       "password": "pa$$word",
       "createdAt": 0,
       "updatedAt": 0
@@ -1691,7 +1691,7 @@ Update a email group
 {
   "id": 0,
   "email": "user@example.com",
-  "authMethod": 0,
+  "authMethod": "password",
   "createdAt": 0,
   "updatedAt": 0
 }
@@ -3022,7 +3022,7 @@ BearerAuth
 ```yaml
 id: 0
 email: user@example.com
-authMethod: 0
+authMethod: password
 createdAt: 0
 updatedAt: 0
 ```
@@ -3045,7 +3045,7 @@ updatedAt: 0
 <a id="tocsemailauthmethod"></a>
 
 ```yaml
-0
+password
 ```
 
 Email authentication method enum values
@@ -3054,16 +3054,16 @@ Email authentication method enum values
 
 | Name        | Type   | Required | Restrictions | Description                             |
 | ----------- | ------ | -------- | ------------ | --------------------------------------- |
-| _anonymous_ | number | false    | none         | Email authentication method enum values |
+| _anonymous_ | string | false    | none         | Email authentication method enum values |
 
 #### Enumerated Values
 
-| Property | Value | Description                                 |
-| -------- | ----- | ------------------------------------------- |
-| password | 0     | Password authentication                     |
-| otp      | 1     | One time password authentication            |
-| totp     | 2     | Time-based one time password authentication |
-| oauth2   | 3     | OAuth2 authentication                       |
+| Property | Value    | Description                                 |
+| -------- | -------- | ------------------------------------------- |
+| password | password | Password authentication                     |
+| otp      | otp      | One time password authentication            |
+| totp     | totp     | Time-based one time password authentication |
+| oauth2   | oauth2   | OAuth2 authentication                       |
 
 <h2 id="tocS_EmailCreate">EmailCreate</h2>
 <!-- backwards compatibility -->
@@ -3074,7 +3074,7 @@ Email authentication method enum values
 
 ```yaml
 email: user@example.com
-authMethod: 0
+authMethod: password
 password: pa$$word
 createdAt: 0
 updatedAt: 0
@@ -3099,7 +3099,7 @@ updatedAt: 0
 
 ```yaml
 email: user@example.com
-authMethod: 0
+authMethod: password
 password: pa$$word
 createdAt: 0
 updatedAt: 0
@@ -3124,7 +3124,7 @@ updatedAt: 0
 
 ```yaml
 email: user@example.com
-authMethod: 0
+authMethod: password
 password: pa$$word
 createdAt: 0
 updatedAt: 0
@@ -3153,7 +3153,7 @@ name: string
 members:
   - id: 0
     email: user@example.com
-    authMethod: 0
+    authMethod: password
     createdAt: 0
     updatedAt: 0
 ```
@@ -3179,7 +3179,7 @@ A group of emails
 name: string
 members:
   - email: user@example.com
-    authMethod: 0
+    authMethod: password
     password: pa$$word
     createdAt: 0
     updatedAt: 0
@@ -3208,7 +3208,7 @@ items:
     members:
       - id: 0
         email: user@example.com
-        authMethod: 0
+        authMethod: password
         createdAt: 0
         updatedAt: 0
 total: 0
@@ -3238,7 +3238,7 @@ A list of email groups
 items:
   - id: 0
     email: user@example.com
-    authMethod: 0
+    authMethod: password
     createdAt: 0
     updatedAt: 0
 total: 0
@@ -3282,7 +3282,7 @@ msg: string
 <a id="tocsgender"></a>
 
 ```yaml
-0
+secret
 ```
 
 User gender enum values
@@ -3291,15 +3291,15 @@ User gender enum values
 
 | Name        | Type   | Required | Restrictions | Description             |
 | ----------- | ------ | -------- | ------------ | ----------------------- |
-| _anonymous_ | number | false    | none         | User gender enum values |
+| _anonymous_ | string | false    | none         | User gender enum values |
 
 #### Enumerated Values
 
-| Property | Value | Description     |
-| -------- | ----- | --------------- |
-| secret   | 0     | unpublic gender |
-| male     | 1     | male gender     |
-| female   | 2     | female gender   |
+| Property | Value  | Description     |
+| -------- | ------ | --------------- |
+| secret   | secret | unpublic gender |
+| male     | male   | male gender     |
+| female   | female | female gender   |
 
 <h2 id="tocS_StatusCode">StatusCode</h2>
 <!-- backwards compatibility -->
@@ -3338,11 +3338,11 @@ Status Code
 id: 0
 name: string
 age: 1
-gender: 0
+gender: secret
 email:
   id: 0
   email: user@example.com
-  authMethod: 0
+  authMethod: password
   createdAt: 0
   updatedAt: 0
 avatar: https://example.com/avatar.png
@@ -3373,10 +3373,10 @@ updatedAt: 0
 ```yaml
 name: string
 age: 1
-gender: 0
+gender: secret
 email:
   email: user@example.com
-  authMethod: 0
+  authMethod: password
   password: pa$$word
   createdAt: 0
   updatedAt: 0
@@ -3409,10 +3409,10 @@ updatedAt: 0
 ```yaml
 name: string
 age: 1
-gender: 0
+gender: secret
 email:
   email: user@example.com
-  authMethod: 0
+  authMethod: password
   password: pa$$word
   createdAt: 0
   updatedAt: 0
@@ -3447,11 +3447,11 @@ items:
   - id: 0
     name: string
     age: 1
-    gender: 0
+    gender: secret
     email:
       id: 0
       email: user@example.com
-      authMethod: 0
+      authMethod: password
       createdAt: 0
       updatedAt: 0
     avatar: https://example.com/avatar.png
@@ -3600,13 +3600,12 @@ WiFi connection status enum values
 
 #### Enumerated Values
 
-| Property    | Value         | Description |
-| ----------- | ------------- | ----------- |
-| _anonymous_ | disconnected  | undefined   |
-| _anonymous_ | connecting    | undefined   |
-| _anonymous_ | connected     | undefined   |
-| _anonymous_ | disconnecting | undefined   |
-| _anonymous_ | error         | undefined   |
+| Property      | Value         | Description                  |
+| ------------- | ------------- | ---------------------------- |
+| disconnected  | disconnected  | Not connected to any network |
+| connecting    | connecting    | Connecting to a network      |
+| connected     | connected     | Connected to a network       |
+| disconnecting | disconnecting | Disconnecting from a network |
 
 <h2 id="tocS_WiFiNetwork">WiFiNetwork</h2>
 <!-- backwards compatibility -->

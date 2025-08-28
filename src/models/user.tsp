@@ -15,9 +15,13 @@ using TypeSpec.OpenAPI;
     #{
         values: #[
             // 定义枚举值，包含名称、值和描述
-            #{ name: "secret", value: 0, description: "unpublic gender" },
-            #{ name: "male", value: 1, description: "male gender" },
-            #{ name: "female", value: 2, description: "female gender" }
+            #{
+                name: "secret",
+                value: "secret",
+                description: "unpublic gender",
+            },
+            #{ name: "male", value: "male", description: "male gender" },
+            #{ name: "female", value: "female", description: "female gender" }
         ],
     }
 )
@@ -25,9 +29,9 @@ using TypeSpec.OpenAPI;
 @extension("x-enum-varnames", #["secret", "male", "female"])
 // 定义性别枚举类型
 enum Gender {
-    secret: 0,
-    male: 1,
-    female: 2,
+    secret: "secret",
+    male: "male",
+    female: "female",
 }
 
 // 定义User模型

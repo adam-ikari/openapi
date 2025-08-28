@@ -61,8 +61,31 @@ enum WiFiBand {
 // 定义WiFi网络状态枚举
 @doc("WiFi connection status enum values")
 @extension(
-    "x-enum-descriptions",
-    #["Disconnected", "Connecting", "Connected", "Disconnecting", "Error"]
+    "x-ms-enum",
+    #{
+        values: #[
+            #{
+                name: "disconnected",
+                value: "disconnected",
+                description: "Not connected to any network",
+            },
+            #{
+                name: "connecting",
+                value: "connecting",
+                description: "Connecting to a network",
+            },
+            #{
+                name: "connected",
+                value: "connected",
+                description: "Connected to a network",
+            },
+            #{
+                name: "disconnecting",
+                value: "disconnecting",
+                description: "Disconnecting from a network",
+            }
+        ],
+    }
 )
 enum WiFiConnectionStatus {
     disconnected: "disconnected",

@@ -83,7 +83,7 @@ export function userDeserializer(item: any): User {
 }
 
 /** User gender enum values */
-export type Gender = 0 | 1 | 2;
+export type Gender = "secret" | "male" | "female";
 
 /** model interface Email */
 export interface Email {
@@ -123,7 +123,7 @@ export function emailDeserializer(item: any): Email {
 }
 
 /** Email authentication method enum values */
-export type EmailAuthMethod = 0 | 1 | 2 | 3;
+export type EmailAuthMethod = "password" | "otp" | "totp" | "oauth2";
 
 /** model interface ErrorModel */
 export interface ErrorModel {

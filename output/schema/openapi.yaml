@@ -818,12 +818,12 @@ components:
           format: int32
           description: The timestamp when the email was updated
     EmailAuthMethod:
-      type: number
+      type: string
       enum:
-        - 0
-        - 1
-        - 2
-        - 3
+        - password
+        - otp
+        - totp
+        - oauth2
       description: Email authentication method enum values
       x-enum-varnames:
         - password
@@ -833,16 +833,16 @@ components:
       x-ms-enum:
         values:
           - name: password
-            value: 0
+            value: password
             description: Password authentication
           - name: otp
-            value: 1
+            value: otp
             description: One time password authentication
           - name: totp
-            value: 2
+            value: totp
             description: Time-based one time password authentication
           - name: oauth2
-            value: 3
+            value: oauth2
             description: OAuth2 authentication
     EmailCreate:
       type: object
@@ -1034,11 +1034,11 @@ components:
           type: string
           description: The error message
     Gender:
-      type: number
+      type: string
       enum:
-        - 0
-        - 1
-        - 2
+        - secret
+        - male
+        - female
       description: User gender enum values
       x-enum-varnames:
         - secret
@@ -1047,13 +1047,13 @@ components:
       x-ms-enum:
         values:
           - name: secret
-            value: 0
+            value: secret
             description: unpublic gender
           - name: male
-            value: 1
+            value: male
             description: male gender
           - name: female
-            value: 2
+            value: female
             description: female gender
     StatusCode:
       type: number
@@ -1359,12 +1359,20 @@ components:
         - disconnecting
         - error
       description: WiFi connection status enum values
-      x-enum-descriptions:
-        - Disconnected
-        - Connecting
-        - Connected
-        - Disconnecting
-        - Error
+      x-ms-enum:
+        values:
+          - name: disconnected
+            value: disconnected
+            description: Not connected to any network
+          - name: connecting
+            value: connecting
+            description: Connecting to a network
+          - name: connected
+            value: connected
+            description: Connected to a network
+          - name: disconnecting
+            value: disconnecting
+            description: Disconnecting from a network
     WiFiNetwork:
       type: object
       required:

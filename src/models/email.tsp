@@ -15,20 +15,24 @@ using TypeSpec.OpenAPI;
         values: #[
             #{
                 name: "password",
-                value: 0,
+                value: "password",
                 description: "Password authentication",
             },
             #{
                 name: "otp",
-                value: 1,
+                value: "otp",
                 description: "One time password authentication",
             },
             #{
                 name: "totp",
-                value: 2,
+                value: "totp",
                 description: "Time-based one time password authentication",
             },
-            #{ name: "oauth2", value: 3, description: "OAuth2 authentication" }
+            #{
+                name: "oauth2",
+                value: "oauth2",
+                description: "OAuth2 authentication",
+            }
         ],
     }
 )
@@ -36,10 +40,10 @@ using TypeSpec.OpenAPI;
 @extension("x-enum-varnames", #["password", "otp", "totp", "oauth2"])
 // 定义枚举类型，表示邮件认证方式
 enum EmailAuthMethod {
-    password: 0,
-    otp: 1,
-    totp: 2,
-    oauth2: 3,
+    password: "password",
+    otp: "otp",
+    totp: "totp",
+    oauth2: "oauth2",
 }
 
 // 定义Email模型
