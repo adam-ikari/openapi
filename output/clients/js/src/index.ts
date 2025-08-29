@@ -1,5 +1,7 @@
 // Licensed under the MIT License.
 
+import { FileContents } from "./static-helpers/multipartHelpers.js";
+
 export { OpenApiV2Client } from "./openApiV2Client.js";
 export {
   PagedResultUser,
@@ -20,8 +22,16 @@ export {
   WiFiConfig,
   WiFiConnectionStatus,
   WiFiConnectRequest,
+  PagedResultCertificateInfo,
+  CertificateInfo,
 } from "./models/index.js";
 export { OpenApiV2ClientOptionalParams } from "./api/index.js";
+export {
+  CertificateApiDeleteCertificateOptionalParams,
+  CertificateApiGetCertificateOptionalParams,
+  CertificateApiListCertificatesOptionalParams,
+  CertificateApiUploadCertificateOptionalParams,
+} from "./api/certificateApi/index.js";
 export {
   EmailsApiDeleteOptionalParams,
   EmailsApiUpdateOptionalParams,
@@ -44,19 +54,22 @@ export {
   UsersApiListOptionalParams,
 } from "./api/usersApi/index.js";
 export {
+  WiFiApiGetStatusOptionalParams,
   WiFiApiDisconnectOptionalParams,
-  WiFiApiConnectOptionalParams,
+  WiFiApiConnectNetworkOptionalParams,
   WiFiApiDeleteConfigOptionalParams,
   WiFiApiUpdateConfigOptionalParams,
   WiFiApiCreateConfigOptionalParams,
-  WiFiApiReadConfigOptionalParams,
+  WiFiApiGetConfigOptionalParams,
   WiFiApiListConfigsOptionalParams,
-  WiFiApiReadNetworkOptionalParams,
-  WiFiApiListNetworksOptionalParams,
+  WiFiApiGetNetworkOptionalParams,
+  WiFiApiScanNetworksOptionalParams,
 } from "./api/wiFiApi/index.js";
 export {
+  CertificateApiOperations,
   EmailsApiOperations,
   EmailsGroupApiOperations,
   UsersApiOperations,
   WiFiApiOperations,
 } from "./classic/index.js";
+export { FileContents };

@@ -1,23 +1,24 @@
-// Import TypeSpec core library for HTTP protocol support
+// 导入TypeSpec核心库，用于HTTP协议支持
 import "@typespec/http";
-// Import OpenAPI library for generating OpenAPI documentation
+// 导入OpenAPI库，用于生成OpenAPI文档
 import "@typespec/openapi";
 
-// Import each API module
+// 导入各个API模块
 import "./users_api.tsp";
 import "./emails_api.tsp";
 import "./email_groups_api.tsp";
 import "./wifi_api.tsp";
+import "./certificates_api.tsp";
 
-// Use TypeSpec.Http and TypeSpec.OpenAPI namespaces
+// 使用TypeSpec.Http和TypeSpec.OpenAPI命名空间
 using TypeSpec.Http;
 using TypeSpec.OpenAPI;
 
-// @service decorator to define basic service information
+// @service装饰器用于定义服务的基本信息
 @service(#{ title: "OpenAPI v2" })
-// @info decorator to add API metadata such as version
+// @info装饰器用于添加API的元信息，如版本号
 @info(#{ version: "2.0.0" })
-// @route decorator to set base route path for API
+// @route装饰器用于设置API的基础路由路径
 @route("/api/v2")
-// Define root namespace for service
+// 定义服务的根命名空间
 namespace OpenApiV2;

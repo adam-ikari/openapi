@@ -19,4 +19,6 @@ export {
   WiFiConfig,
   WiFiConnectionStatus,
   WiFiConnectRequest,
+  PagedResultCertificateInfo,
+  CertificateInfo,
 } from "./models.js";

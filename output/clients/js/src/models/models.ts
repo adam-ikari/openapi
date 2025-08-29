@@ -1,17 +1,22 @@
 // Licensed under the MIT License.
 
+import {
+  FileContents,
+  createFilePartDescriptor,
+} from "../static-helpers/multipartHelpers.js";
+
 /**
- * Generic pagination response model
- * All list interface return types should inherit from this model
+ * 通用分页响应模型
+ * 所有列表接口的返回类型都应该继承自该模型
  */
 export interface PagedResultUser {
-  /** Data list */
+  /** 数据列表 */
   items: User[];
-  /** Total data count */
+  /** 数据总数量 */
   total: number;
-  /** Offset, starting from 0 */
+  /** 偏移量，从0开始 */
   offset: number;
-  /** Number per page, 0 means no limit */
+  /** 每页数量，0表示不限制 */
   limit: number;
 }
 
@@ -147,17 +152,17 @@ export function errorDeserializer(item: any): ErrorModel {
 export type StatusCode = 100000 | 100001;
 
 /**
- * Generic pagination response model
- * All list interface return types should inherit from this model
+ * 通用分页响应模型
+ * 所有列表接口的返回类型都应该继承自该模型
  */
 export interface PagedResultEmail {
-  /** Data list */
+  /** 数据列表 */
   items: Email[];
-  /** Total data count */
+  /** 数据总数量 */
   total: number;
-  /** Offset, starting from 0 */
+  /** 偏移量，从0开始 */
   offset: number;
-  /** Number per page, 0 means no limit */
+  /** 每页数量，0表示不限制 */
   limit: number;
 }
 
@@ -183,17 +188,17 @@ export function emailArrayDeserializer(result: Array<Email>): any[] {
 }
 
 /**
- * Generic pagination response model
- * All list interface return types should inherit from this model
+ * 通用分页响应模型
+ * 所有列表接口的返回类型都应该继承自该模型
  */
 export interface PagedResultEmailGroup {
-  /** Data list */
+  /** 数据列表 */
   items: EmailGroup[];
-  /** Total data count */
+  /** 数据总数量 */
   total: number;
-  /** Offset, starting from 0 */
+  /** 偏移量，从0开始 */
   offset: number;
-  /** Number per page, 0 means no limit */
+  /** 每页数量，0表示不限制 */
   limit: number;
 }
 
@@ -243,17 +248,17 @@ export function emailGroupDeserializer(item: any): EmailGroup {
 }
 
 /**
- * Generic pagination response model
- * All list interface return types should inherit from this model
+ * 通用分页响应模型
+ * 所有列表接口的返回类型都应该继承自该模型
  */
 export interface PagedResultWiFiNetwork {
-  /** Data list */
+  /** 数据列表 */
   items: WiFiNetwork[];
-  /** Total data count */
+  /** 数据总数量 */
   total: number;
-  /** Offset, starting from 0 */
+  /** 偏移量，从0开始 */
   offset: number;
-  /** Number per page, 0 means no limit */
+  /** 每页数量，0表示不限制 */
   limit: number;
 }
 
@@ -324,17 +329,17 @@ export type WiFiSecurityType = "none" | "wep" | "wpa" | "wpa2" | "wpa3";
 export type WiFiBand = "mixed" | "2_4GHz" | "5GHz" | "6GHz";
 
 /**
- * Generic pagination response model
- * All list interface return types should inherit from this model
+ * 通用分页响应模型
+ * 所有列表接口的返回类型都应该继承自该模型
  */
 export interface PagedResultWiFiConfig {
-  /** Data list */
+  /** 数据列表 */
   items: WiFiConfig[];
-  /** Total data count */
+  /** 数据总数量 */
   total: number;
-  /** Offset, starting from 0 */
+  /** 偏移量，从0开始 */
   offset: number;
-  /** Number per page, 0 means no limit */
+  /** 每页数量，0表示不限制 */
   limit: number;
 }
 
@@ -408,13 +413,13 @@ export function wiFiConfigDeserializer(item: any): WiFiConfig {
   };
 }
 
-/** WiFi connection status enum values */
+/** WiFi connection status */
 export type WiFiConnectionStatus =
   | "disconnected"
   | "connecting"
   | "connected"
-  | "disconnecting"
-  | "error";
+  | "failed"
+  | "disconnecting";
 
 /** model interface WiFiConnectRequest */
 export interface WiFiConnectRequest {
@@ -428,5 +433,180 @@ export function wiFiConnectRequestSerializer(item: WiFiConnectRequest): any {
   return {
     password: item["password"],
     saveConfiguration: item["saveConfiguration"],
+  };
+}
+
+/** model interface _ConnectNetworkResponse */
+export interface _ConnectNetworkResponse {
+  success: boolean;
+  message: string;
+  status: WiFiConnectionStatus;
+}
+
+export function _connectNetworkResponseDeserializer(
+  item: any,
+): _ConnectNetworkResponse {
+  return {
+    success: item["success"],
+    message: item["message"],
+    status: item["status"],
+  };
+}
+
+/** model interface _DisconnectResponse */
+export interface _DisconnectResponse {
+  success: boolean;
+  message: string;
+  status: WiFiConnectionStatus;
+}
+
+export function _disconnectResponseDeserializer(
+  item: any,
+): _DisconnectResponse {
+  return {
+    success: item["success"],
+    message: item["message"],
+    status: item["status"],
+  };
+}
+
+/** model interface _GetStatusResponse */
+export interface _GetStatusResponse {
+  status: WiFiConnectionStatus;
+  connectedNetwork?: WiFiNetwork;
+  message: string;
+}
+
+export function _getStatusResponseDeserializer(item: any): _GetStatusResponse {
+  return {
+    status: item["status"],
+    connectedNetwork: !item["connectedNetwork"]
+      ? item["connectedNetwork"]
+      : wiFiNetworkDeserializer(item["connectedNetwork"]),
+    message: item["message"],
+  };
+}
+
+/** model interface _UploadCertificateRequest */
+export interface _UploadCertificateRequest {
+  /** The certificate file */
+  file:
+    | FileContents
+    | { contents: FileContents; contentType?: string; filename?: string };
+  /** Optional certificate name */
+  name?: string;
+  /** Optional certificate description */
+  description?: string;
+}
+
+export function _uploadCertificateRequestSerializer(
+  item: _UploadCertificateRequest,
+): any {
+  return [
+    createFilePartDescriptor("file", item["file"]),
+    ...(item["name"] === undefined
+      ? []
+      : [{ name: "name", body: item["name"] }]),
+    ...(item["description"] === undefined
+      ? []
+      : [{ name: "description", body: item["description"] }]),
+  ];
+}
+
+/** model interface _UploadCertificateResponse */
+export interface _UploadCertificateResponse {
+  /** Whether the upload was successful */
+  success: boolean;
+  /** The ID of the uploaded certificate */
+  certificateId: string;
+  /** Message describing the result */
+  message: string;
+}
+
+export function _uploadCertificateResponseDeserializer(
+  item: any,
+): _UploadCertificateResponse {
+  return {
+    success: item["success"],
+    certificateId: item["certificateId"],
+    message: item["message"],
+  };
+}
+
+/**
+ * 通用分页响应模型
+ * 所有列表接口的返回类型都应该继承自该模型
+ */
+export interface PagedResultCertificateInfo {
+  /** 数据列表 */
+  items: CertificateInfo[];
+  /** 数据总数量 */
+  total: number;
+  /** 偏移量，从0开始 */
+  offset: number;
+  /** 每页数量，0表示不限制 */
+  limit: number;
+}
+
+export function pagedResultCertificateInfoDeserializer(
+  item: any,
+): PagedResultCertificateInfo {
+  return {
+    items: certificateInfoArrayDeserializer(item["items"]),
+    total: item["total"],
+    offset: item["offset"],
+    limit: item["limit"],
+  };
+}
+
+export function certificateInfoArrayDeserializer(
+  result: Array<CertificateInfo>,
+): any[] {
+  return result.map((item) => {
+    return certificateInfoDeserializer(item);
+  });
+}
+
+/** Certificate information */
+export interface CertificateInfo {
+  /** The ID of the certificate */
+  id: string;
+  /** The name of the certificate */
+  name?: string;
+  /** The description of the certificate */
+  description?: string;
+  /** The size of the certificate file in bytes */
+  size: number;
+  /** The upload timestamp */
+  uploadTime: Date;
+  /** The MD5 hash of the certificate file */
+  md5: string;
+}
+
+export function certificateInfoDeserializer(item: any): CertificateInfo {
+  return {
+    id: item["id"],
+    name: item["name"],
+    description: item["description"],
+    size: item["size"],
+    uploadTime: new Date(item["uploadTime"]),
+    md5: item["md5"],
+  };
+}
+
+/** model interface _DeleteCertificateResponse */
+export interface _DeleteCertificateResponse {
+  /** Whether the deletion was successful */
+  success: boolean;
+  /** Message describing the result */
+  message: string;
+}
+
+export function _deleteCertificateResponseDeserializer(
+  item: any,
+): _DeleteCertificateResponse {
+  return {
+    success: item["success"],
+    message: item["message"],
   };
 }

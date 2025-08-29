@@ -1,12 +1,19 @@
 // Licensed under the MIT License.
 
+import { WiFiConnectRequest } from "../../models/models.js";
 import { OperationOptions } from "@typespec/ts-http-runtime";
+
+/** Optional parameters. */
+export interface WiFiApiGetStatusOptionalParams extends OperationOptions {}
 
 /** Optional parameters. */
 export interface WiFiApiDisconnectOptionalParams extends OperationOptions {}
 
 /** Optional parameters. */
-export interface WiFiApiConnectOptionalParams extends OperationOptions {}
+export interface WiFiApiConnectNetworkOptionalParams extends OperationOptions {
+  /** Connection parameters */
+  body?: WiFiConnectRequest;
+}
 
 /** Optional parameters. */
 export interface WiFiApiDeleteConfigOptionalParams extends OperationOptions {}
@@ -18,23 +25,23 @@ export interface WiFiApiUpdateConfigOptionalParams extends OperationOptions {}
 export interface WiFiApiCreateConfigOptionalParams extends OperationOptions {}
 
 /** Optional parameters. */
-export interface WiFiApiReadConfigOptionalParams extends OperationOptions {}
+export interface WiFiApiGetConfigOptionalParams extends OperationOptions {}
 
 /** Optional parameters. */
 export interface WiFiApiListConfigsOptionalParams extends OperationOptions {
-  /** Offset, starting from 0, default is 0 */
+  /** 偏移量，从0开始，默认为0 */
   offset?: number;
-  /** Number per page, 0 means no limit, default is 10 */
+  /** 每页数量，0表示不限制，默认为10 */
   limit?: number;
 }
 
 /** Optional parameters. */
-export interface WiFiApiReadNetworkOptionalParams extends OperationOptions {}
+export interface WiFiApiGetNetworkOptionalParams extends OperationOptions {}
 
 /** Optional parameters. */
-export interface WiFiApiListNetworksOptionalParams extends OperationOptions {
-  /** Offset, starting from 0, default is 0 */
+export interface WiFiApiScanNetworksOptionalParams extends OperationOptions {
+  /** 偏移量，从0开始，默认为0 */
   offset?: number;
-  /** Number per page, 0 means no limit, default is 10 */
+  /** 每页数量，0表示不限制，默认为10 */
   limit?: number;
 }

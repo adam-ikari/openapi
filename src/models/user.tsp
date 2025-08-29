@@ -1,13 +1,13 @@
-// Import OpenAPI library for generating OpenAPI documentation
+// 导入OpenAPI库，用于生成OpenAPI文档
 import "@typespec/openapi";
 
-// Import email model since it's referenced in the user model
+// 导入邮件模型，因为用户模型中引用了邮件模型
 import "./email.tsp";
 
-// Using TypeSpec.OpenAPI namespace to simplify decorator usage
+// 使用TypeSpec.OpenAPI命名空间，简化后续装饰器的使用
 using TypeSpec.OpenAPI;
 
-// Add documentation for the enum type
+// 为枚举类型添加文档说明
 @doc("User gender enum values")
 // 使用@extension装饰器添加OpenAPI扩展属性，这里是为Azure SDK生成服务
 @extension(
@@ -27,18 +27,18 @@ using TypeSpec.OpenAPI;
 )
 // 添加另一个扩展属性，用于指定枚举变量名
 @extension("x-enum-varnames", #["secret", "male", "female"])
-// Define gender enum type
+// 定义性别枚举类型
 enum Gender {
     secret: "secret",
     male: "male",
     female: "female",
 }
 
-// Define User model
+// 定义User模型
 model User {
     @doc("The unique identifier of the user")
-    // @visibility decorator is used to control field visibility in different operations
-    // Lifecycle.Read means this field is only visible in read operations
+    // @visibility装饰器用于控制字段在不同操作中的可见性
+    // Lifecycle.Read表示该字段仅在读取操作中可见
     @visibility(Lifecycle.Read)
     id: uint32;
 
@@ -59,11 +59,11 @@ model User {
     age: uint8;
 
     @doc("The gender of the user")
-    // Reference the previously defined enum type
+    // 引用之前定义的枚举类型
     gender: Gender;
 
     @doc("The email of the user")
-    // Reference Email model representing the user's associated email
+    // 引用Email模型，表示用户关联的邮箱
     email: Email;
 
     @doc("The avatar of the user")
@@ -80,7 +80,7 @@ model User {
     password: string;
 
     @doc("The timestamp when the user was created")
-    // Using unix timestamp type
+    // 使用unix时间戳类型
     createdAt: unixTimestamp32;
 
     @doc("The timestamp when the user was updated")

@@ -12,20 +12,24 @@ import {
   WiFiConfig,
   wiFiConfigSerializer,
   wiFiConfigDeserializer,
-  WiFiConnectRequest,
+  WiFiConnectionStatus,
   wiFiConnectRequestSerializer,
+  _connectNetworkResponseDeserializer,
+  _disconnectResponseDeserializer,
+  _getStatusResponseDeserializer,
 } from "../../models/models.js";
 import { expandUrlTemplate } from "../../static-helpers/urlTemplate.js";
 import {
+  WiFiApiGetStatusOptionalParams,
   WiFiApiDisconnectOptionalParams,
-  WiFiApiConnectOptionalParams,
+  WiFiApiConnectNetworkOptionalParams,
   WiFiApiDeleteConfigOptionalParams,
   WiFiApiUpdateConfigOptionalParams,
   WiFiApiCreateConfigOptionalParams,
-  WiFiApiReadConfigOptionalParams,
+  WiFiApiGetConfigOptionalParams,
   WiFiApiListConfigsOptionalParams,
-  WiFiApiReadNetworkOptionalParams,
-  WiFiApiListNetworksOptionalParams,
+  WiFiApiGetNetworkOptionalParams,
+  WiFiApiScanNetworksOptionalParams,
 } from "./options.js";
 import {
   StreamableMethod,
@@ -34,31 +38,28 @@ import {
   operationOptionsToRequestParameters,
 } from "@typespec/ts-http-runtime";
 
-export function _disconnectSend(
+export function _getStatusSend(
   context: Client,
-  id: string,
-  options: WiFiApiDisconnectOptionalParams = { requestOptions: {} },
+  options: WiFiApiGetStatusOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
-  const path = expandUrlTemplate(
-    "/api/v2/wifi/networks/{id}/disconnect",
-    {
-      id: id,
-    },
-    {
-      allowReserved: options?.requestOptions?.skipUrlEncoding,
-    },
-  );
   return context
-    .path(path)
-    .post({
+    .path("/api/v2/wifi/status")
+    .get({
       ...operationOptionsToRequestParameters(options),
-      headers: { accept: "text/plain", ...options.requestOptions?.headers },
+      headers: {
+        accept: "application/json",
+        ...options.requestOptions?.headers,
+      },
     });
 }
 
-export async function _disconnectDeserialize(
+export async function _getStatusDeserialize(
   result: PathUncheckedResponse,
-): Promise<boolean> {
+): Promise<{
+  status: WiFiConnectionStatus;
+  connectedNetwork?: WiFiNetwork;
+  message: string;
+}> {
   const expectedStatuses = ["200"];
   if (!expectedStatuses.includes(result.status)) {
     const error = createRestError(result);
@@ -66,24 +67,71 @@ export async function _disconnectDeserialize(
     throw error;
   }
 
-  return result.body;
+  return _getStatusResponseDeserializer(result.body);
 }
 
-/** Disconnect from WiFi network */
+/** Get current WiFi connection status */
+export async function getStatus(
+  context: Client,
+  options: WiFiApiGetStatusOptionalParams = { requestOptions: {} },
+): Promise<{
+  status: WiFiConnectionStatus;
+  connectedNetwork?: WiFiNetwork;
+  message: string;
+}> {
+  const result = await _getStatusSend(context, options);
+  return _getStatusDeserialize(result);
+}
+
+export function _disconnectSend(
+  context: Client,
+  options: WiFiApiDisconnectOptionalParams = { requestOptions: {} },
+): StreamableMethod {
+  return context
+    .path("/api/v2/wifi/disconnect")
+    .post({
+      ...operationOptionsToRequestParameters(options),
+      headers: {
+        accept: "application/json",
+        ...options.requestOptions?.headers,
+      },
+    });
+}
+
+export async function _disconnectDeserialize(
+  result: PathUncheckedResponse,
+): Promise<{
+  success: boolean;
+  message: string;
+  status: WiFiConnectionStatus;
+}> {
+  const expectedStatuses = ["200"];
+  if (!expectedStatuses.includes(result.status)) {
+    const error = createRestError(result);
+    error.details = errorDeserializer(result.body);
+    throw error;
+  }
+
+  return _disconnectResponseDeserializer(result.body);
+}
+
+/** Disconnect from current WiFi network */
 export async function disconnect(
   context: Client,
-  id: string,
   options: WiFiApiDisconnectOptionalParams = { requestOptions: {} },
-): Promise<boolean> {
-  const result = await _disconnectSend(context, id, options);
+): Promise<{
+  success: boolean;
+  message: string;
+  status: WiFiConnectionStatus;
+}> {
+  const result = await _disconnectSend(context, options);
   return _disconnectDeserialize(result);
 }
 
-export function _connectSend(
+export function _connectNetworkSend(
   context: Client,
   id: string,
-  body: WiFiConnectRequest,
-  options: WiFiApiConnectOptionalParams = { requestOptions: {} },
+  options: WiFiApiConnectNetworkOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   const path = expandUrlTemplate(
     "/api/v2/wifi/networks/{id}/connect",
@@ -99,14 +147,23 @@ export function _connectSend(
     .post({
       ...operationOptionsToRequestParameters(options),
       contentType: "application/json",
-      headers: { accept: "text/plain", ...options.requestOptions?.headers },
-      body: wiFiConnectRequestSerializer(body),
+      headers: {
+        accept: "application/json",
+        ...options.requestOptions?.headers,
+      },
+      body: !options["body"]
+        ? options["body"]
+        : wiFiConnectRequestSerializer(options["body"]),
     });
 }
 
-export async function _connectDeserialize(
+export async function _connectNetworkDeserialize(
   result: PathUncheckedResponse,
-): Promise<boolean> {
+): Promise<{
+  success: boolean;
+  message: string;
+  status: WiFiConnectionStatus;
+}> {
   const expectedStatuses = ["200"];
   if (!expectedStatuses.includes(result.status)) {
     const error = createRestError(result);
@@ -114,18 +171,21 @@ export async function _connectDeserialize(
     throw error;
   }
 
-  return result.body;
+  return _connectNetworkResponseDeserializer(result.body);
 }
 
-/** Connect to WiFi network */
-export async function connect(
+/** Connect to a WiFi network */
+export async function connectNetwork(
   context: Client,
   id: string,
-  body: WiFiConnectRequest,
-  options: WiFiApiConnectOptionalParams = { requestOptions: {} },
-): Promise<boolean> {
-  const result = await _connectSend(context, id, body, options);
-  return _connectDeserialize(result);
+  options: WiFiApiConnectNetworkOptionalParams = { requestOptions: {} },
+): Promise<{
+  success: boolean;
+  message: string;
+  status: WiFiConnectionStatus;
+}> {
+  const result = await _connectNetworkSend(context, id, options);
+  return _connectNetworkDeserialize(result);
 }
 
 export function _deleteConfigSend(
@@ -144,34 +204,28 @@ export function _deleteConfigSend(
   );
   return context
     .path(path)
-    .delete({
-      ...operationOptionsToRequestParameters(options),
-      headers: {
-        accept: "application/json",
-        ...options.requestOptions?.headers,
-      },
-    });
+    .delete({ ...operationOptionsToRequestParameters(options) });
 }
 
 export async function _deleteConfigDeserialize(
   result: PathUncheckedResponse,
-): Promise<WiFiConfig> {
-  const expectedStatuses = ["200"];
+): Promise<void> {
+  const expectedStatuses = ["204"];
   if (!expectedStatuses.includes(result.status)) {
     const error = createRestError(result);
     error.details = errorDeserializer(result.body);
     throw error;
   }
 
-  return wiFiConfigDeserializer(result.body);
+  return;
 }
 
-/** Delete WiFi configuration */
+/** Delete a WiFi configuration */
 export async function deleteConfig(
   context: Client,
   id: string,
   options: WiFiApiDeleteConfigOptionalParams = { requestOptions: {} },
-): Promise<WiFiConfig> {
+): Promise<void> {
   const result = await _deleteConfigSend(context, id, options);
   return _deleteConfigDeserialize(result);
 }
@@ -217,7 +271,7 @@ export async function _updateConfigDeserialize(
   return wiFiConfigDeserializer(result.body);
 }
 
-/** Update WiFi configuration */
+/** Update a WiFi configuration */
 export async function updateConfig(
   context: Client,
   id: string,
@@ -259,7 +313,7 @@ export async function _createConfigDeserialize(
   return wiFiConfigDeserializer(result.body);
 }
 
-/** Create WiFi configuration */
+/** Create a WiFi configuration */
 export async function createConfig(
   context: Client,
   body: WiFiConfig,
@@ -269,10 +323,10 @@ export async function createConfig(
   return _createConfigDeserialize(result);
 }
 
-export function _readConfigSend(
+export function _getConfigSend(
   context: Client,
   id: string,
-  options: WiFiApiReadConfigOptionalParams = { requestOptions: {} },
+  options: WiFiApiGetConfigOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   const path = expandUrlTemplate(
     "/api/v2/wifi/configs/{id}",
@@ -294,7 +348,7 @@ export function _readConfigSend(
     });
 }
 
-export async function _readConfigDeserialize(
+export async function _getConfigDeserialize(
   result: PathUncheckedResponse,
 ): Promise<WiFiConfig> {
   const expectedStatuses = ["200"];
@@ -307,14 +361,14 @@ export async function _readConfigDeserialize(
   return wiFiConfigDeserializer(result.body);
 }
 
-/** Read WiFi configuration */
-export async function readConfig(
+/** Get a specific WiFi configuration */
+export async function getConfig(
   context: Client,
   id: string,
-  options: WiFiApiReadConfigOptionalParams = { requestOptions: {} },
+  options: WiFiApiGetConfigOptionalParams = { requestOptions: {} },
 ): Promise<WiFiConfig> {
-  const result = await _readConfigSend(context, id, options);
-  return _readConfigDeserialize(result);
+  const result = await _getConfigSend(context, id, options);
+  return _getConfigDeserialize(result);
 }
 
 export function _listConfigsSend(
@@ -364,10 +418,10 @@ export async function listConfigs(
   return _listConfigsDeserialize(result);
 }
 
-export function _readNetworkSend(
+export function _getNetworkSend(
   context: Client,
   id: string,
-  options: WiFiApiReadNetworkOptionalParams = { requestOptions: {} },
+  options: WiFiApiGetNetworkOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   const path = expandUrlTemplate(
     "/api/v2/wifi/networks/{id}",
@@ -389,7 +443,7 @@ export function _readNetworkSend(
     });
 }
 
-export async function _readNetworkDeserialize(
+export async function _getNetworkDeserialize(
   result: PathUncheckedResponse,
 ): Promise<WiFiNetwork> {
   const expectedStatuses = ["200"];
@@ -402,23 +456,25 @@ export async function _readNetworkDeserialize(
   return wiFiNetworkDeserializer(result.body);
 }
 
-/** Read WiFi network */
-export async function readNetwork(
+/** Get details of a specific WiFi network */
+export async function getNetwork(
   context: Client,
   id: string,
-  options: WiFiApiReadNetworkOptionalParams = { requestOptions: {} },
+  options: WiFiApiGetNetworkOptionalParams = { requestOptions: {} },
 ): Promise<WiFiNetwork> {
-  const result = await _readNetworkSend(context, id, options);
-  return _readNetworkDeserialize(result);
+  const result = await _getNetworkSend(context, id, options);
+  return _getNetworkDeserialize(result);
 }
 
-export function _listNetworksSend(
+export function _scanNetworksSend(
   context: Client,
-  options: WiFiApiListNetworksOptionalParams = { requestOptions: {} },
+  force: boolean,
+  options: WiFiApiScanNetworksOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   const path = expandUrlTemplate(
-    "/api/v2/wifi/networks{?offset,limit}",
+    "/api/v2/wifi/networks{?force,offset,limit}",
     {
+      force: force,
       offset: options?.offset,
       limit: options?.limit,
     },
@@ -437,7 +493,7 @@ export function _listNetworksSend(
     });
 }
 
-export async function _listNetworksDeserialize(
+export async function _scanNetworksDeserialize(
   result: PathUncheckedResponse,
 ): Promise<PagedResultWiFiNetwork> {
   const expectedStatuses = ["200"];
@@ -450,11 +506,12 @@ export async function _listNetworksDeserialize(
   return pagedResultWiFiNetworkDeserializer(result.body);
 }
 
-/** List WiFi networks */
-export async function listNetworks(
+/** Scan for available WiFi networks */
+export async function scanNetworks(
   context: Client,
-  options: WiFiApiListNetworksOptionalParams = { requestOptions: {} },
+  force: boolean,
+  options: WiFiApiScanNetworksOptionalParams = { requestOptions: {} },
 ): Promise<PagedResultWiFiNetwork> {
-  const result = await _listNetworksSend(context, options);
-  return _listNetworksDeserialize(result);
+  const result = await _scanNetworksSend(context, force, options);
+  return _scanNetworksDeserialize(result);
 }

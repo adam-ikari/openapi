@@ -6,6 +6,10 @@ import {
   OpenApiV2ClientOptionalParams,
 } from "./api/index.js";
 import {
+  CertificateApiOperations,
+  _getCertificateApiOperations,
+} from "./classic/certificateApi/index.js";
+import {
   EmailsApiOperations,
   _getEmailsApiOperations,
 } from "./classic/emailsApi/index.js";
@@ -43,12 +47,15 @@ export class OpenApiV2Client {
       userAgentOptions: { userAgentPrefix },
     });
     this.pipeline = this._client.pipeline;
+    this.certificateApi = _getCertificateApiOperations(this._client);
     this.wiFiApi = _getWiFiApiOperations(this._client);
     this.emailsGroupApi = _getEmailsGroupApiOperations(this._client);
     this.emailsApi = _getEmailsApiOperations(this._client);
     this.usersApi = _getUsersApiOperations(this._client);
   }
 
+  /** The operation groups for certificateApi */
+  public readonly certificateApi: CertificateApiOperations;
   /** The operation groups for wiFiApi */
   public readonly wiFiApi: WiFiApiOperations;
   /** The operation groups for emailsGroupApi */

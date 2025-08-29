@@ -1,24 +1,26 @@
 // Licensed under the MIT License.
 
 export {
+  getStatus,
   disconnect,
-  connect,
+  connectNetwork,
   deleteConfig,
   updateConfig,
   createConfig,
-  readConfig,
+  getConfig,
   listConfigs,
-  readNetwork,
-  listNetworks,
+  getNetwork,
+  scanNetworks,
 } from "./operations.js";
 export {
+  WiFiApiGetStatusOptionalParams,
   WiFiApiDisconnectOptionalParams,
-  WiFiApiConnectOptionalParams,
+  WiFiApiConnectNetworkOptionalParams,
   WiFiApiDeleteConfigOptionalParams,
   WiFiApiUpdateConfigOptionalParams,
   WiFiApiCreateConfigOptionalParams,
-  WiFiApiReadConfigOptionalParams,
+  WiFiApiGetConfigOptionalParams,
   WiFiApiListConfigsOptionalParams,
-  WiFiApiReadNetworkOptionalParams,
-  WiFiApiListNetworksOptionalParams,
+  WiFiApiGetNetworkOptionalParams,
+  WiFiApiScanNetworksOptionalParams,
 } from "./options.js";

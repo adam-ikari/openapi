@@ -7,7 +7,183 @@ tags:
   - name: Emails
   - name: EmailGroups
   - name: WiFi
+  - name: CertificateApi
 paths:
+  /api/v2/certificates/certificates:
+    post:
+      operationId: CertificateApi_uploadCertificate
+      description: Upload a certificate file for WiFi authentication
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Whether the upload was successful
+                  certificateId:
+                    type: string
+                    description: The ID of the uploaded certificate
+                  message:
+                    type: string
+                    description: Message describing the result
+                required:
+                  - success
+                  - certificateId
+                  - message
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - CertificateApi
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  description: The certificate file
+                name:
+                  type: string
+                  description: Optional certificate name
+                description:
+                  type: string
+                  description: Optional certificate description
+              required:
+                - file
+            encoding:
+              file:
+                contentType: '*/*'
+        description: The certificate file to upload
+      security:
+        - BearerAuth: []
+    get:
+      operationId: CertificateApi_listCertificates
+      description: List certificates
+      parameters:
+        - $ref: '#/components/parameters/PaginationParams.offset'
+        - $ref: '#/components/parameters/PaginationParams.limit'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - items
+                  - total
+                  - offset
+                  - limit
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CertificateInfo'
+                    description: 数据列表
+                    title: 数据列表
+                  total:
+                    type: integer
+                    format: uint32
+                    description: 数据总数量
+                    title: 数据总数量
+                  offset:
+                    type: integer
+                    format: uint32
+                    description: 偏移量，从0开始
+                    title: 偏移量
+                  limit:
+                    type: integer
+                    format: uint32
+                    description: 每页数量，0表示不限制
+                    title: 每页数量
+                description: |-
+                  通用分页响应模型
+                  所有列表接口的返回类型都应该继承自该模型
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - CertificateApi
+      security:
+        - BearerAuth: []
+  /api/v2/certificates/certificates/{id}:
+    get:
+      operationId: CertificateApi_getCertificate
+      description: Get a specific certificate
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the certificate to get
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificateInfo'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - CertificateApi
+      security:
+        - BearerAuth: []
+    delete:
+      operationId: CertificateApi_deleteCertificate
+      description: Delete a certificate
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the certificate to delete
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Whether the deletion was successful
+                  message:
+                    type: string
+                    description: Message describing the result
+                required:
+                  - success
+                  - message
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - CertificateApi
+      security:
+        - BearerAuth: []
   /api/v2/email-groups:
     get:
       operationId: EmailsGroupApi_list
@@ -32,26 +208,26 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/EmailGroup'
-                    description: Data list
-                    title: Data list
+                    description: 数据列表
+                    title: 数据列表
                   total:
                     type: integer
                     format: uint32
-                    description: Total data count
-                    title: Total data count
+                    description: 数据总数量
+                    title: 数据总数量
                   offset:
                     type: integer
                     format: uint32
-                    description: Offset, starting from 0
-                    title: Offset
+                    description: 偏移量，从0开始
+                    title: 偏移量
                   limit:
                     type: integer
                     format: uint32
-                    description: Number per page, 0 means no limit
-                    title: Number per page
+                    description: 每页数量，0表示不限制
+                    title: 每页数量
                 description: |-
-                  Generic pagination response model
-                  All list interface return types should inherit from this model
+                  通用分页响应模型
+                  所有列表接口的返回类型都应该继承自该模型
         default:
           description: An unexpected error response.
           content:
@@ -133,7 +309,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EmailGroup'
+                $ref: '#/components/schemas/Email'
         default:
           description: An unexpected error response.
           content:
@@ -161,12 +337,8 @@ paths:
           schema:
             type: string
       responses:
-        '200':
-          description: The request has succeeded.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EmailGroup'
+        '204':
+          description: 'There is no content to send for this request, but the headers may be useful. '
         default:
           description: An unexpected error response.
           content:
@@ -201,26 +373,26 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/Email'
-                    description: Data list
-                    title: Data list
+                    description: 数据列表
+                    title: 数据列表
                   total:
                     type: integer
                     format: uint32
-                    description: Total data count
-                    title: Total data count
+                    description: 数据总数量
+                    title: 数据总数量
                   offset:
                     type: integer
                     format: uint32
-                    description: Offset, starting from 0
-                    title: Offset
+                    description: 偏移量，从0开始
+                    title: 偏移量
                   limit:
                     type: integer
                     format: uint32
-                    description: Number per page, 0 means no limit
-                    title: Number per page
+                    description: 每页数量，0表示不限制
+                    title: 每页数量
                 description: |-
-                  Generic pagination response model
-                  All list interface return types should inherit from this model
+                  通用分页响应模型
+                  所有列表接口的返回类型都应该继承自该模型
         default:
           description: An unexpected error response.
           content:
@@ -330,12 +502,8 @@ paths:
           schema:
             type: string
       responses:
-        '200':
-          description: The request has succeeded.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Email'
+        '204':
+          description: 'There is no content to send for this request, but the headers may be useful. '
         default:
           description: An unexpected error response.
           content:
@@ -370,26 +538,26 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/User'
-                    description: Data list
-                    title: Data list
+                    description: 数据列表
+                    title: 数据列表
                   total:
                     type: integer
                     format: uint32
-                    description: Total data count
-                    title: Total data count
+                    description: 数据总数量
+                    title: 数据总数量
                   offset:
                     type: integer
                     format: uint32
-                    description: Offset, starting from 0
-                    title: Offset
+                    description: 偏移量，从0开始
+                    title: 偏移量
                   limit:
                     type: integer
                     format: uint32
-                    description: Number per page, 0 means no limit
-                    title: Number per page
+                    description: 每页数量，0表示不限制
+                    title: 每页数量
                 description: |-
-                  Generic pagination response model
-                  All list interface return types should inherit from this model
+                  通用分页响应模型
+                  所有列表接口的返回类型都应该继承自该模型
         default:
           description: An unexpected error response.
           content:
@@ -499,12 +667,8 @@ paths:
           schema:
             type: string
       responses:
-        '200':
-          description: The request has succeeded.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
+        '204':
+          description: 'There is no content to send for this request, but the headers may be useful. '
         default:
           description: An unexpected error response.
           content:
@@ -539,26 +703,26 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/WiFiConfig'
-                    description: Data list
-                    title: Data list
+                    description: 数据列表
+                    title: 数据列表
                   total:
                     type: integer
                     format: uint32
-                    description: Total data count
-                    title: Total data count
+                    description: 数据总数量
+                    title: 数据总数量
                   offset:
                     type: integer
                     format: uint32
-                    description: Offset, starting from 0
-                    title: Offset
+                    description: 偏移量，从0开始
+                    title: 偏移量
                   limit:
                     type: integer
                     format: uint32
-                    description: Number per page, 0 means no limit
-                    title: Number per page
+                    description: 每页数量，0表示不限制
+                    title: 每页数量
                 description: |-
-                  Generic pagination response model
-                  All list interface return types should inherit from this model
+                  通用分页响应模型
+                  所有列表接口的返回类型都应该继承自该模型
         default:
           description: An unexpected error response.
           content:
@@ -571,7 +735,7 @@ paths:
         - BearerAuth: []
     post:
       operationId: WiFiApi_createConfig
-      description: Create WiFi configuration
+      description: Create a WiFi configuration
       parameters: []
       responses:
         '200':
@@ -594,17 +758,18 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/WiFiConfig'
+        description: The WiFi configuration to create
       security:
         - BearerAuth: []
   /api/v2/wifi/configs/{id}:
     get:
-      operationId: WiFiApi_readConfig
-      description: Read WiFi configuration
+      operationId: WiFiApi_getConfig
+      description: Get a specific WiFi configuration
       parameters:
         - name: id
           in: path
           required: true
-          description: The id of the WiFi configuration to read
+          description: The id of the WiFi configuration to get
           schema:
             type: string
       responses:
@@ -626,7 +791,7 @@ paths:
         - BearerAuth: []
     put:
       operationId: WiFiApi_updateConfig
-      description: Update WiFi configuration
+      description: Update a WiFi configuration
       parameters:
         - name: id
           in: path
@@ -655,11 +820,12 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/WiFiConfig'
+        description: The WiFi configuration update data
       security:
         - BearerAuth: []
     delete:
       operationId: WiFiApi_deleteConfig
-      description: Delete WiFi configuration
+      description: Delete a WiFi configuration
       parameters:
         - name: id
           in: path
@@ -668,12 +834,41 @@ paths:
           schema:
             type: string
       responses:
+        '204':
+          description: 'There is no content to send for this request, but the headers may be useful. '
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - WiFi
+      security:
+        - BearerAuth: []
+  /api/v2/wifi/disconnect:
+    post:
+      operationId: WiFiApi_disconnect
+      description: Disconnect from current WiFi network
+      parameters: []
+      responses:
         '200':
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/WiFiConfig'
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  status:
+                    $ref: '#/components/schemas/WiFiConnectionStatus'
+                required:
+                  - success
+                  - message
+                  - status
         default:
           description: An unexpected error response.
           content:
@@ -686,9 +881,17 @@ paths:
         - BearerAuth: []
   /api/v2/wifi/networks:
     get:
-      operationId: WiFiApi_listNetworks
-      description: List WiFi networks
+      operationId: WiFiApi_scanNetworks
+      description: Scan for available WiFi networks
       parameters:
+        - name: force
+          in: query
+          required: true
+          description: Whether to force a rescan instead of using cached results
+          schema:
+            type: boolean
+            default: false
+          explode: false
         - $ref: '#/components/parameters/PaginationParams.offset'
         - $ref: '#/components/parameters/PaginationParams.limit'
       responses:
@@ -708,26 +911,26 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/WiFiNetwork'
-                    description: Data list
-                    title: Data list
+                    description: 数据列表
+                    title: 数据列表
                   total:
                     type: integer
                     format: uint32
-                    description: Total data count
-                    title: Total data count
+                    description: 数据总数量
+                    title: 数据总数量
                   offset:
                     type: integer
                     format: uint32
-                    description: Offset, starting from 0
-                    title: Offset
+                    description: 偏移量，从0开始
+                    title: 偏移量
                   limit:
                     type: integer
                     format: uint32
-                    description: Number per page, 0 means no limit
-                    title: Number per page
+                    description: 每页数量，0表示不限制
+                    title: 每页数量
                 description: |-
-                  Generic pagination response model
-                  All list interface return types should inherit from this model
+                  通用分页响应模型
+                  所有列表接口的返回类型都应该继承自该模型
         default:
           description: An unexpected error response.
           content:
@@ -740,13 +943,13 @@ paths:
         - BearerAuth: []
   /api/v2/wifi/networks/{id}:
     get:
-      operationId: WiFiApi_readNetwork
-      description: Read WiFi network
+      operationId: WiFiApi_getNetwork
+      description: Get details of a specific WiFi network
       parameters:
         - name: id
           in: path
           required: true
-          description: The id of the WiFi network to read
+          description: The id of the WiFi network to get
           schema:
             type: string
       responses:
@@ -768,22 +971,33 @@ paths:
         - BearerAuth: []
   /api/v2/wifi/networks/{id}/connect:
     post:
-      operationId: WiFiApi_connect
-      description: Connect to WiFi network
+      operationId: WiFiApi_connectNetwork
+      description: Connect to a WiFi network
       parameters:
         - name: id
           in: path
           required: true
-          description: The id of the WiFi network to connect
+          description: The id of the WiFi network to connect to
           schema:
             type: string
       responses:
         '200':
           description: The request has succeeded.
           content:
-            text/plain:
+            application/json:
               schema:
-                type: boolean
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  status:
+                    $ref: '#/components/schemas/WiFiConnectionStatus'
+                required:
+                  - success
+                  - message
+                  - status
         default:
           description: An unexpected error response.
           content:
@@ -793,31 +1007,36 @@ paths:
       tags:
         - WiFi
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/WiFiConnectRequest'
+        description: Connection parameters
       security:
         - BearerAuth: []
-  /api/v2/wifi/networks/{id}/disconnect:
-    post:
-      operationId: WiFiApi_disconnect
-      description: Disconnect from WiFi network
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: The id of the WiFi network to disconnect
-          schema:
-            type: string
+  /api/v2/wifi/status:
+    get:
+      operationId: WiFiApi_getStatus
+      description: Get current WiFi connection status
+      parameters: []
       responses:
         '200':
           description: The request has succeeded.
           content:
-            text/plain:
+            application/json:
               schema:
-                type: boolean
+                type: object
+                properties:
+                  status:
+                    $ref: '#/components/schemas/WiFiConnectionStatus'
+                  connectedNetwork:
+                    $ref: '#/components/schemas/WiFiNetwork'
+                  message:
+                    type: string
+                required:
+                  - status
+                  - message
         default:
           description: An unexpected error response.
           content:
@@ -834,25 +1053,54 @@ components:
       name: limit
       in: query
       required: false
-      description: Number per page, 0 means no limit, default is 10
+      description: 每页数量，0表示不限制，默认为10
       schema:
         type: integer
         format: uint32
-        title: Number per page
+        title: 每页数量
         default: 10
       explode: false
     PaginationParams.offset:
       name: offset
       in: query
       required: false
-      description: Offset, starting from 0, default is 0
+      description: 偏移量，从0开始，默认为0
       schema:
         type: integer
         format: uint32
-        title: Offset
+        title: 偏移量
         default: 0
       explode: false
   schemas:
+    CertificateInfo:
+      type: object
+      required:
+        - id
+        - size
+        - uploadTime
+        - md5
+      properties:
+        id:
+          type: string
+          description: The ID of the certificate
+        name:
+          type: string
+          description: The name of the certificate
+        description:
+          type: string
+          description: The description of the certificate
+        size:
+          type: integer
+          format: uint32
+          description: The size of the certificate file in bytes
+        uploadTime:
+          type: string
+          format: date-time
+          description: The upload timestamp
+        md5:
+          type: string
+          description: The MD5 hash of the certificate file
+      description: Certificate information
     Email:
       type: object
       required:
@@ -1341,23 +1589,9 @@ components:
         - disconnected
         - connecting
         - connected
+        - failed
         - disconnecting
-        - error
-      description: WiFi connection status enum values
-      x-ms-enum:
-        values:
-          - name: disconnected
-            value: disconnected
-            description: Not connected to any network
-          - name: connecting
-            value: connecting
-            description: Connecting to a network
-          - name: connected
-            value: connected
-            description: Connected to a network
-          - name: disconnecting
-            value: disconnecting
-            description: Disconnecting from a network
+      description: WiFi connection status
     WiFiNetwork:
       type: object
       required:

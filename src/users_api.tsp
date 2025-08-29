@@ -1,80 +1,72 @@
-// Import TypeSpec core library for HTTP protocol support
+// 导入TypeSpec核心库，用于HTTP协议支持
 import "@typespec/http";
-// Import OpenAPI library for generating OpenAPI documentation
+// 导入OpenAPI库，用于生成OpenAPI文档
 import "@typespec/openapi";
 
-// Import user related model definitions
+// 导入用户相关的模型定义
 import "./models/user.tsp";
-// Import error handling model
+// 导入错误处理模型
 import "./models/error.tsp";
-// Import common pagination model
+// 导入通用分页模型
 import "./common/pagination.tsp";
 
-// Use TypeSpec.Http namespace to simplify subsequent decorator usage
+// 使用TypeSpec.Http命名空间，简化后续装饰器的使用
 using TypeSpec.Http;
 
-// Define namespace to organize related APIs
+// 定义命名空间，将相关API组织在一起
 namespace OpenApiV2;
 
-// Set route prefix for API interface
+// 为API接口设置路由前缀
 @route("/users")
-// Add tags to API for categorization in generated documentation
+// 为API添加标签，用于在生成的文档中分类显示
 @tag("Users")
-// Define UsersApi interface containing user related operations
+// 设置API需要Bearer Token认证
+@useAuth(BearerAuth)
+// 定义UsersApi接口，包含用户相关的操作
 interface UsersApi {
   /** List users */
-  // @get decorator indicates this is an HTTP GET request
+  // @get装饰器表示这是一个HTTP GET请求
   @get
-  // Set API to require Bearer Token authentication
-  @useAuth(BearerAuth)
   list(
-    // Use common pagination query parameters
+    // 使用通用分页查询参数
     ...PaginationParams
   ): PagedResult<User> | Error;
 
   /** Read users */
-  // HTTP GET request to read single user information
+  // HTTP GET请求，用于读取单个用户信息
   @get
-  // Set API to require Bearer Token authentication
-  @useAuth(BearerAuth)
   read(
     @doc("The id of the user to read")
-    // @path decorator indicates this is a path parameter, will replace {id} placeholder in route
+    // @path装饰器表示这是一个路径参数，会替换路由中的{id}占位符
     @path
     id: string,
   ): User | Error;
 
   /** Create a users */
-  // @post decorator indicates this is an HTTP POST request for creating resource
+  // @post装饰器表示这是一个HTTP POST请求，用于创建资源
   @post
-  // Set API to require Bearer Token authentication
-  @useAuth(BearerAuth)
-  // @body decorator indicates parameter will be sent as request body
+  // @body装饰器表示参数将作为请求体发送
   create(@body body: User): User | Error;
 
   /** Update a users */
-  // HTTP PUT request for updating user information
+  // @put装饰器表示这是一个HTTP PUT请求，用于完整更新资源
   @put
-  // Set API to require Bearer Token authentication
-  @useAuth(BearerAuth)
   update(
     @doc("The id of the user to update")
-    // @path decorator indicates this is a path parameter
     @path
     id: string,
-    // @body decorator indicates the parameter will be sent as request body
+
+    // 更新操作的请求体
     @body body: User,
   ): User | Error;
 
   /** Delete a users */
-  // @delete decorator indicates this is an HTTP DELETE request for deleting user
+  // @delete装饰器表示这是一个HTTP DELETE请求，用于删除资源
   @delete
-  // Set API to require Bearer Token authentication
-  @useAuth(BearerAuth)
   delete(
     @doc("The id of the user to delete")
-    // @path decorator indicates this is a path parameter
     @path
     id: string,
-  ): User | Error;
+    // 删除操作通常不需要返回内容，所以返回void或Error
+  ): void | Error;
 }

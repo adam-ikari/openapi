@@ -28,7 +28,7 @@ export interface EmailsApiOperations {
   delete: (
     id: string,
     options?: EmailsApiDeleteOptionalParams,
-  ) => Promise<Email>;
+  ) => Promise<void>;
   /** Update a emails */
   update: (
     id: string,

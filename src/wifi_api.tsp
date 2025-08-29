@@ -1,137 +1,142 @@
-// Import TypeSpec core library for HTTP protocol support
+// 导入TypeSpec核心库，用于HTTP协议支持
 import "@typespec/http";
-// Import OpenAPI library for generating OpenAPI documentation
+// 导入OpenAPI库，用于生成OpenAPI文档
 import "@typespec/openapi";
 
-// Import WiFi related model definitions
+// 导入WiFi相关的模型定义
 import "./models/wifi.tsp";
-// Import error handling model
+// 导入错误处理模型
 import "./models/error.tsp";
-// Import common pagination model
+// 导入通用分页模型
 import "./common/pagination.tsp";
 
-// Use TypeSpec.Http namespace to simplify subsequent decorator usage
+// 使用TypeSpec.Http命名空间，简化后续装饰器的使用
 using TypeSpec.Http;
 
-// Define namespace to organize related APIs
+// 定义命名空间，将相关API组织在一起
 namespace OpenApiV2;
 
-// Set route prefix for API interface
+// 为API接口设置路由前缀
 @route("/wifi")
-// Add tags to API for categorization in generated documentation
+// 为API添加标签，用于在生成的文档中分类显示
 @tag("WiFi")
-// Define WiFiApi interface containing WiFi related operations
+// 设置API需要Bearer Token认证
+@useAuth(BearerAuth)
+// 定义WiFiApi接口，包含WiFi相关的操作
 interface WiFiApi {
-  /** List WiFi networks */
-  // @get decorator indicates this is an HTTP GET request
+  /** Scan for available WiFi networks */
+  // @get装饰器表示这是一个HTTP GET请求
   @get
-  // Set API to require Bearer Token authentication
-  @useAuth(BearerAuth)
   @route("/networks")
-  listNetworks(
-    // Use common pagination query parameters
+  scanNetworks(
+    @doc("Whether to force a rescan instead of using cached results")
+    @query
+    force: boolean = false,
+    // 使用通用分页查询参数
     ...PaginationParams
   ): PagedResult<WiFiNetwork> | Error;
 
-  /** Read WiFi network */
-  // HTTP GET request to read single WiFi network information
+  /** Get details of a specific WiFi network */
+  // HTTP GET请求，用于获取特定WiFi网络信息
   @get
-  // Set API to require Bearer Token authentication
-  @useAuth(BearerAuth)
   @route("/networks/{id}")
-  readNetwork(
-    @doc("The id of the WiFi network to read")
-    // @path decorator indicates this is a path parameter
+  getNetwork(
+    @doc("The id of the WiFi network to get")
+    // @path装饰器表示这是一个路径参数，会替换路由中的{id}占位符
     @path
     id: string,
   ): WiFiNetwork | Error;
 
   /** List WiFi configurations */
-  // HTTP GET request to list WiFi configurations
+  // HTTP GET请求，用于列出WiFi配置
   @get
-  // Set API to require Bearer Token authentication
-  @useAuth(BearerAuth)
   @route("/configs")
   listConfigs(
-    // Use common pagination query parameters
+    // 使用通用分页查询参数
     ...PaginationParams
   ): PagedResult<WiFiConfig> | Error;
 
-  /** Read WiFi configuration */
-  // HTTP GET request to read single WiFi configuration
+  /** Get a specific WiFi configuration */
+  // HTTP GET请求，用于获取特定WiFi配置
   @get
-  // Set API to require Bearer Token authentication
-  @useAuth(BearerAuth)
   @route("/configs/{id}")
-  readConfig(
-    @doc("The id of the WiFi configuration to read")
-    // @path decorator indicates this is a path parameter
+  getConfig(
+    @doc("The id of the WiFi configuration to get")
     @path
     id: string,
   ): WiFiConfig | Error;
 
-  /** Create WiFi configuration */
-  // @post decorator indicates this is an HTTP POST request for creating WiFi configuration
+  /** Create a WiFi configuration */
+  // @post装饰器表示这是一个HTTP POST请求，用于创建资源
   @post
-  // Set API to require Bearer Token authentication
-  @useAuth(BearerAuth)
   @route("/configs")
-  // @body decorator indicates parameter will be sent as request body
-  createConfig(@body body: WiFiConfig): WiFiConfig | Error;
+  createConfig(
+    @doc("The WiFi configuration to create")
+    @body body: WiFiConfig
+  ): WiFiConfig | Error;
 
-  /** Update WiFi configuration */
-  // HTTP PUT request for updating WiFi configuration
+  /** Update a WiFi configuration */
+  // @put装饰器表示这是一个HTTP PUT请求，用于完整更新资源
   @put
-  // Set API to require Bearer Token authentication
-  @useAuth(BearerAuth)
   @route("/configs/{id}")
   updateConfig(
     @doc("The id of the WiFi configuration to update")
-    // @path decorator indicates this is a path parameter
     @path
     id: string,
-    // @body decorator indicates the parameter will be sent as request body
+
+    @doc("The WiFi configuration update data")
     @body body: WiFiConfig,
   ): WiFiConfig | Error;
 
-  /** Delete WiFi configuration */
-  // @delete decorator indicates this is an HTTP DELETE request for deleting WiFi configuration
+  /** Delete a WiFi configuration */
+  // @delete装饰器表示这是一个HTTP DELETE请求，用于删除资源
   @delete
-  // Set API to require Bearer Token authentication
-  @useAuth(BearerAuth)
   @route("/configs/{id}")
   deleteConfig(
     @doc("The id of the WiFi configuration to delete")
-    // @path decorator indicates this is a path parameter
     @path
     id: string,
-  ): WiFiConfig | Error;
+  ): void | Error;
 
-  /** Connect to WiFi network */
-  // HTTP POST request to connect to WiFi network
+  /** Connect to a WiFi network */
+  // @post装饰器表示这是一个HTTP POST请求，用于执行连接操作
   @post
-  // Set API to require Bearer Token authentication
-  @useAuth(BearerAuth)
   @route("/networks/{id}/connect")
-  connect(
-    @doc("The id of the WiFi network to connect")
-    // @path decorator indicates this is a path parameter
+  connectNetwork(
+    @doc("The id of the WiFi network to connect to")
     @path
     id: string,
-    // @body decorator indicates the parameter will be sent as request body
-    @body body: WiFiConnectRequest,
-  ): boolean | Error;
+    
+    @doc("Connection parameters")
+    @body body?: WiFiConnectRequest
+  ): {
+    // 连接结果
+    success: boolean;
+    message: string;
+    status: WiFiConnectionStatus;
+  } | Error;
 
-  /** Disconnect from WiFi network */
-  // HTTP POST request to disconnect from WiFi network
+  /** Disconnect from current WiFi network */
+  // @post装饰器表示这是一个HTTP POST请求，用于断开连接
   @post
-  // Set API to require Bearer Token authentication
-  @useAuth(BearerAuth)
-  @route("/networks/{id}/disconnect")
+  @route("/disconnect")
   disconnect(
-    @doc("The id of the WiFi network to disconnect")
-    // @path decorator indicates this is a path parameter
-    @path
-    id: string,
-  ): boolean | Error;
+  ): {
+    // 断开连接结果
+    success: boolean;
+    message: string;
+    status: WiFiConnectionStatus;
+  } | Error;
+  
+  /** Get current WiFi connection status */
+  // @get装饰器表示这是一个HTTP GET请求，用于获取当前连接状态
+  @get
+  @route("/status")
+  getStatus(
+  ): {
+    // 当前连接状态
+    status: WiFiConnectionStatus;
+    connectedNetwork?: WiFiNetwork;
+    message: string;
+  } | Error;
 }

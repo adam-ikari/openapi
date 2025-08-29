@@ -40,26 +40,20 @@ export function _$deleteSend(
   );
   return context
     .path(path)
-    .delete({
-      ...operationOptionsToRequestParameters(options),
-      headers: {
-        accept: "application/json",
-        ...options.requestOptions?.headers,
-      },
-    });
+    .delete({ ...operationOptionsToRequestParameters(options) });
 }
 
 export async function _$deleteDeserialize(
   result: PathUncheckedResponse,
-): Promise<User> {
-  const expectedStatuses = ["200"];
+): Promise<void> {
+  const expectedStatuses = ["204"];
   if (!expectedStatuses.includes(result.status)) {
     const error = createRestError(result);
     error.details = errorDeserializer(result.body);
     throw error;
   }
 
-  return userDeserializer(result.body);
+  return;
 }
 
 /** Delete a users */
@@ -72,7 +66,7 @@ export async function $delete(
   context: Client,
   id: string,
   options: UsersApiDeleteOptionalParams = { requestOptions: {} },
-): Promise<User> {
+): Promise<void> {
   const result = await _$deleteSend(context, id, options);
   return _$deleteDeserialize(result);
 }

@@ -43,26 +43,20 @@ export function _$deleteSend(
   );
   return context
     .path(path)
-    .delete({
-      ...operationOptionsToRequestParameters(options),
-      headers: {
-        accept: "application/json",
-        ...options.requestOptions?.headers,
-      },
-    });
+    .delete({ ...operationOptionsToRequestParameters(options) });
 }
 
 export async function _$deleteDeserialize(
   result: PathUncheckedResponse,
-): Promise<EmailGroup> {
-  const expectedStatuses = ["200"];
+): Promise<void> {
+  const expectedStatuses = ["204"];
   if (!expectedStatuses.includes(result.status)) {
     const error = createRestError(result);
     error.details = errorDeserializer(result.body);
     throw error;
   }
 
-  return emailGroupDeserializer(result.body);
+  return;
 }
 
 /** Delete a email group */
@@ -75,7 +69,7 @@ export async function $delete(
   context: Client,
   id: string,
   options: EmailsGroupApiDeleteOptionalParams = { requestOptions: {} },
-): Promise<EmailGroup> {
+): Promise<void> {
   const result = await _$deleteSend(context, id, options);
   return _$deleteDeserialize(result);
 }
@@ -110,7 +104,7 @@ export function _updateSend(
 
 export async function _updateDeserialize(
   result: PathUncheckedResponse,
-): Promise<EmailGroup> {
+): Promise<Email> {
   const expectedStatuses = ["200"];
   if (!expectedStatuses.includes(result.status)) {
     const error = createRestError(result);
@@ -118,7 +112,7 @@ export async function _updateDeserialize(
     throw error;
   }
 
-  return emailGroupDeserializer(result.body);
+  return emailDeserializer(result.body);
 }
 
 /** Update a email group */
@@ -127,7 +121,7 @@ export async function update(
   id: string,
   body: EmailGroup,
   options: EmailsGroupApiUpdateOptionalParams = { requestOptions: {} },
-): Promise<EmailGroup> {
+): Promise<Email> {
   const result = await _updateSend(context, id, body, options);
   return _updateDeserialize(result);
 }
