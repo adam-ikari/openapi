@@ -15,11 +15,11 @@ import {
   EmailsApiReadOptionalParams,
   EmailsApiListOptionalParams,
 } from "../../api/emailsApi/options.js";
-import { Email, EmailList } from "../../models/models.js";
+import { Email, PagedResultEmail } from "../../models/models.js";
 
 /** Interface representing a EmailsApi operations. */
 export interface EmailsApiOperations {
-  /** Delete a email */
+  /** Delete a emails */
   /**
    *  @fixme delete is a reserved word that cannot be used as an operation name.
    *         Please add @clientName("clientName") or @clientName("<JS-Specific-Name>", "javascript")
@@ -29,25 +29,21 @@ export interface EmailsApiOperations {
     id: string,
     options?: EmailsApiDeleteOptionalParams,
   ) => Promise<void>;
-  /** Update a email */
+  /** Update a emails */
   update: (
     id: string,
     body: Email,
     options?: EmailsApiUpdateOptionalParams,
   ) => Promise<Email>;
-  /** Create a email */
+  /** Create a emails */
   create: (
     body: Email,
     options?: EmailsApiCreateOptionalParams,
   ) => Promise<Email>;
-  /** Read email */
+  /** Read emails */
   read: (id: string, options?: EmailsApiReadOptionalParams) => Promise<Email>;
   /** List emails */
-  list: (
-    offset: number,
-    limit: number,
-    options?: EmailsApiListOptionalParams,
-  ) => Promise<EmailList>;
+  list: (options?: EmailsApiListOptionalParams) => Promise<PagedResultEmail>;
 }
 
 function _getEmailsApi(context: OpenApiV2Context) {
@@ -63,11 +59,7 @@ function _getEmailsApi(context: OpenApiV2Context) {
       create(context, body, options),
     read: (id: string, options?: EmailsApiReadOptionalParams) =>
       read(context, id, options),
-    list: (
-      offset: number,
-      limit: number,
-      options?: EmailsApiListOptionalParams,
-    ) => list(context, offset, limit, options),
+    list: (options?: EmailsApiListOptionalParams) => list(context, options),
   };
 }
 

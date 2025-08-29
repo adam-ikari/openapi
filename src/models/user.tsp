@@ -86,19 +86,3 @@ model User {
     @doc("The timestamp when the user was updated")
     updatedAt: unixTimestamp32;
 }
-
-// 定义用户列表模型
-model UserList {
-    @doc("The list of users")
-    // 数组类型，包含多个User对象
-    items: User[];
-
-    @doc("The total number of users")
-    total: uint32;
-
-    @doc("The offset to fetch the list, 0 means no offset")
-    offset: uint32;
-
-    @doc("The limit to fetch the list, 0 means no limit")
-    limit: uint32;
-}

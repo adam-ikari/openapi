@@ -2,8 +2,8 @@
 
 import { OpenApiV2Context as Client } from "../index.js";
 import {
-  UserList,
-  userListDeserializer,
+  PagedResultUser,
+  pagedResultUserDeserializer,
   User,
   userSerializer,
   userDeserializer,
@@ -239,7 +239,7 @@ export function _listSend(
 
 export async function _listDeserialize(
   result: PathUncheckedResponse,
-): Promise<UserList> {
+): Promise<PagedResultUser> {
   const expectedStatuses = ["200"];
   if (!expectedStatuses.includes(result.status)) {
     const error = createRestError(result);
@@ -247,14 +247,14 @@ export async function _listDeserialize(
     throw error;
   }
 
-  return userListDeserializer(result.body);
+  return pagedResultUserDeserializer(result.body);
 }
 
 /** List users */
 export async function list(
   context: Client,
   options: UsersApiListOptionalParams = { requestOptions: {} },
-): Promise<UserList> {
+): Promise<PagedResultUser> {
   const result = await _listSend(context, options);
   return _listDeserialize(result);
 }

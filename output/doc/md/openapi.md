@@ -96,10 +96,10 @@ List users
 
 <h3 id="usersapi_list-parameters">Parameters</h3>
 
-| Name   | In    | Type            | Required | Description                                             |
-| ------ | ----- | --------------- | -------- | ------------------------------------------------------- |
-| offset | query | integer(uint32) | false    | The offset of the list, 0 means no offset, default is 0 |
-| limit  | query | integer(uint32) | false    | The limit of the list, 0 means no limit, default is 10  |
+| Name   | In    | Type            | Required | Description                     |
+| ------ | ----- | --------------- | -------- | ------------------------------- |
+| offset | query | integer(uint32) | false    | 偏移量，从0开始，默认为0        |
+| limit  | query | integer(uint32) | false    | 每页数量，0表示不限制，默认为10 |
 
 > Example responses
 
@@ -133,10 +133,49 @@ List users
 
 <h3 id="usersapi_list-responses">Responses</h3>
 
-| Status  | Meaning                                                 | Description                   | Schema                      |
-| ------- | ------------------------------------------------------- | ----------------------------- | --------------------------- |
-| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [UserList](#schemauserlist) |
-| default | Default                                                 | An unexpected error response. | [Error](#schemaerror)       |
+| Status  | Meaning                                                 | Description                   | Schema                |
+| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | Inline                |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
+
+<h3 id="usersapi_list-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+_通用分页响应模型
+所有列表接口的返回类型都应该继承自该模型_
+
+| Name          | Type                                  | Required | Restrictions | Description                              |
+| ------------- | ------------------------------------- | -------- | ------------ | ---------------------------------------- |
+| » items       | [[User](#schemauser)]                 | true     | none         | 数据列表                                 |
+| »» id         | integer(uint32)                       | true     | read-only    | The unique identifier of the user        |
+| »» name       | string                                | true     | none         | The name of the user                     |
+| »» age        | integer(uint8)                        | true     | none         | The age of the user, min 1, max 120      |
+| »» gender     | [Gender](#schemagender)               | true     | none         | The gender of the user                   |
+| »» email      | [Email](#schemaemail)                 | true     | none         | The email of the user                    |
+| »»» id        | integer(uint32)                       | true     | read-only    | The id of the email                      |
+| »»» email     | string                                | true     | none         | The email address                        |
+| »»» authType  | [EmailAuthType](#schemaemailauthtype) | true     | none         | The authentication type                  |
+| »»» createdAt | integer(int32)                        | true     | none         | The timestamp when the email was created |
+| »»» updatedAt | integer(int32)                        | true     | none         | The timestamp when the email was updated |
+| »» avatar     | string(uri)                           | false    | none         | The avatar of the user                   |
+| »» createdAt  | integer(int32)                        | true     | none         | The timestamp when the user was created  |
+| »» updatedAt  | integer(int32)                        | true     | none         | The timestamp when the user was updated  |
+| » total       | integer(uint32)                       | true     | none         | 数据总数量                               |
+| » offset      | integer(uint32)                       | true     | none         | 偏移量，从0开始                          |
+| » limit       | integer(uint32)                       | true     | none         | 每页数量，0表示不限制                    |
+
+#### Enumerated Values
+
+| Property | Value    |
+| -------- | -------- |
+| gender   | secret   |
+| gender   | male     |
+| gender   | female   |
+| authType | password |
+| authType | otp      |
+| authType | totp     |
+| authType | oauth2   |
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -665,7 +704,7 @@ BearerAuth
 > Code samples
 
 ```http
-GET /api/v2/emails?offset=0&limit=10 HTTP/1.1
+GET /api/v2/emails HTTP/1.1
 
 Accept: application/json
 
@@ -678,7 +717,7 @@ const headers = {
   Accept: "application/json",
 }
 
-fetch("/api/v2/emails?offset=0&limit=10", {
+fetch("/api/v2/emails", {
   method: "GET",
 
   headers: headers,
@@ -699,9 +738,7 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.get('/api/v2/emails', params={
-  'offset': '0',  'limit': '10'
-}, headers = headers)
+r = requests.get('/api/v2/emails', headers = headers)
 
 print(r.json())
 
@@ -710,7 +747,7 @@ print(r.json())
 ```java
 // Java
 
-URL obj = new URL("/api/v2/emails?offset=0&limit=10");
+URL obj = new URL("/api/v2/emails");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -732,10 +769,10 @@ List emails
 
 <h3 id="emailsapi_list-parameters">Parameters</h3>
 
-| Name   | In    | Type            | Required | Description                                             |
-| ------ | ----- | --------------- | -------- | ------------------------------------------------------- |
-| offset | query | integer(uint32) | true     | The offset of the list, 0 means no offset, default is 0 |
-| limit  | query | integer(uint32) | true     | The limit of the list, 0 means no limit, default is 10  |
+| Name   | In    | Type            | Required | Description                     |
+| ------ | ----- | --------------- | -------- | ------------------------------- |
+| offset | query | integer(uint32) | false    | 偏移量，从0开始，默认为0        |
+| limit  | query | integer(uint32) | false    | 每页数量，0表示不限制，默认为10 |
 
 > Example responses
 
@@ -760,10 +797,38 @@ List emails
 
 <h3 id="emailsapi_list-responses">Responses</h3>
 
-| Status  | Meaning                                                 | Description                   | Schema                        |
-| ------- | ------------------------------------------------------- | ----------------------------- | ----------------------------- |
-| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [EmailList](#schemaemaillist) |
-| default | Default                                                 | An unexpected error response. | [Error](#schemaerror)         |
+| Status  | Meaning                                                 | Description                   | Schema                |
+| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | Inline                |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
+
+<h3 id="emailsapi_list-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+_通用分页响应模型
+所有列表接口的返回类型都应该继承自该模型_
+
+| Name         | Type                                  | Required | Restrictions | Description                              |
+| ------------ | ------------------------------------- | -------- | ------------ | ---------------------------------------- |
+| » items      | [[Email](#schemaemail)]               | true     | none         | 数据列表                                 |
+| »» id        | integer(uint32)                       | true     | read-only    | The id of the email                      |
+| »» email     | string                                | true     | none         | The email address                        |
+| »» authType  | [EmailAuthType](#schemaemailauthtype) | true     | none         | The authentication type                  |
+| »» createdAt | integer(int32)                        | true     | none         | The timestamp when the email was created |
+| »» updatedAt | integer(int32)                        | true     | none         | The timestamp when the email was updated |
+| » total      | integer(uint32)                       | true     | none         | 数据总数量                               |
+| » offset     | integer(uint32)                       | true     | none         | 偏移量，从0开始                          |
+| » limit      | integer(uint32)                       | true     | none         | 每页数量，0表示不限制                    |
+
+#### Enumerated Values
+
+| Property | Value    |
+| -------- | -------- |
+| authType | password |
+| authType | otp      |
+| authType | totp     |
+| authType | oauth2   |
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -848,7 +913,7 @@ System.out.println(response.toString());
 
 `POST /api/v2/emails`
 
-Create a email
+Create a emails
 
 > Body parameter
 
@@ -962,13 +1027,13 @@ System.out.println(response.toString());
 
 `GET /api/v2/emails/{id}`
 
-Read email
+Read emails
 
 <h3 id="emailsapi_read-parameters">Parameters</h3>
 
 | Name | In   | Type   | Required | Description                 |
 | ---- | ---- | ------ | -------- | --------------------------- |
-| id   | path | string | true     | The id of the Email to read |
+| id   | path | string | true     | The id of the email to read |
 
 > Example responses
 
@@ -1074,7 +1139,7 @@ System.out.println(response.toString());
 
 `PUT /api/v2/emails/{id}`
 
-Update a email
+Update a emails
 
 > Body parameter
 
@@ -1092,7 +1157,7 @@ Update a email
 
 | Name | In   | Type                                              | Required | Description                   |
 | ---- | ---- | ------------------------------------------------- | -------- | ----------------------------- |
-| id   | path | string                                            | true     | The id of the Email to update |
+| id   | path | string                                            | true     | The id of the email to update |
 | body | body | [EmailCreateOrUpdate](#schemaemailcreateorupdate) | true     | none                          |
 
 > Example responses
@@ -1189,13 +1254,13 @@ System.out.println(response.toString());
 
 `DELETE /api/v2/emails/{id}`
 
-Delete a email
+Delete a emails
 
 <h3 id="emailsapi_delete-parameters">Parameters</h3>
 
 | Name | In   | Type   | Required | Description                   |
 | ---- | ---- | ------ | -------- | ----------------------------- |
-| id   | path | string | true     | The id of the Email to delete |
+| id   | path | string | true     | The id of the email to delete |
 
 > Example responses
 
@@ -1229,7 +1294,7 @@ BearerAuth
 > Code samples
 
 ```http
-GET /api/v2/email-groups?offset=0&limit=10 HTTP/1.1
+GET /api/v2/email-groups HTTP/1.1
 
 Accept: application/json
 
@@ -1242,7 +1307,7 @@ const headers = {
   Accept: "application/json",
 }
 
-fetch("/api/v2/email-groups?offset=0&limit=10", {
+fetch("/api/v2/email-groups", {
   method: "GET",
 
   headers: headers,
@@ -1263,9 +1328,7 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.get('/api/v2/email-groups', params={
-  'offset': '0',  'limit': '10'
-}, headers = headers)
+r = requests.get('/api/v2/email-groups', headers = headers)
 
 print(r.json())
 
@@ -1274,7 +1337,7 @@ print(r.json())
 ```java
 // Java
 
-URL obj = new URL("/api/v2/email-groups?offset=0&limit=10");
+URL obj = new URL("/api/v2/email-groups");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -1296,10 +1359,10 @@ List email groups
 
 <h3 id="emailsgroupapi_list-parameters">Parameters</h3>
 
-| Name   | In    | Type            | Required | Description                                             |
-| ------ | ----- | --------------- | -------- | ------------------------------------------------------- |
-| offset | query | integer(uint32) | true     | The offset of the list, 0 means no offset, default is 0 |
-| limit  | query | integer(uint32) | true     | The limit of the list, 0 means no limit, default is 10  |
+| Name   | In    | Type            | Required | Description                     |
+| ------ | ----- | --------------- | -------- | ------------------------------- |
+| offset | query | integer(uint32) | false    | 偏移量，从0开始，默认为0        |
+| limit  | query | integer(uint32) | false    | 每页数量，0表示不限制，默认为10 |
 
 > Example responses
 
@@ -1309,7 +1372,7 @@ List email groups
 {
   "items": [
     {
-      "id": "string",
+      "id": 0,
       "name": "string",
       "members": [
         {
@@ -1330,10 +1393,41 @@ List email groups
 
 <h3 id="emailsgroupapi_list-responses">Responses</h3>
 
-| Status  | Meaning                                                 | Description                   | Schema                                  |
-| ------- | ------------------------------------------------------- | ----------------------------- | --------------------------------------- |
-| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [EmailGroupList](#schemaemailgrouplist) |
-| default | Default                                                 | An unexpected error response. | [Error](#schemaerror)                   |
+| Status  | Meaning                                                 | Description                   | Schema                |
+| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | Inline                |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
+
+<h3 id="emailsgroupapi_list-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+_通用分页响应模型
+所有列表接口的返回类型都应该继承自该模型_
+
+| Name          | Type                                  | Required | Restrictions | Description                              |
+| ------------- | ------------------------------------- | -------- | ------------ | ---------------------------------------- |
+| » items       | [[EmailGroup](#schemaemailgroup)]     | true     | none         | 数据列表                                 |
+| »» id         | integer(uint32)                       | true     | read-only    | The unique identifier of the group       |
+| »» name       | string                                | true     | none         | The name of the group                    |
+| »» members    | [[Email](#schemaemail)]               | true     | none         | The members of the group                 |
+| »»» id        | integer(uint32)                       | true     | read-only    | The id of the email                      |
+| »»» email     | string                                | true     | none         | The email address                        |
+| »»» authType  | [EmailAuthType](#schemaemailauthtype) | true     | none         | The authentication type                  |
+| »»» createdAt | integer(int32)                        | true     | none         | The timestamp when the email was created |
+| »»» updatedAt | integer(int32)                        | true     | none         | The timestamp when the email was updated |
+| » total       | integer(uint32)                       | true     | none         | 数据总数量                               |
+| » offset      | integer(uint32)                       | true     | none         | 偏移量，从0开始                          |
+| » limit       | integer(uint32)                       | true     | none         | 每页数量，0表示不限制                    |
+
+#### Enumerated Values
+
+| Property | Value    |
+| -------- | -------- |
+| authType | password |
+| authType | otp      |
+| authType | totp     |
+| authType | oauth2   |
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -1546,7 +1640,7 @@ Read a email group
 
 ```json
 {
-  "id": "string",
+  "id": 0,
   "name": "string",
   "members": [
     {
@@ -1815,7 +1909,7 @@ BearerAuth
 > Code samples
 
 ```http
-GET /api/v2/wifi/configs?offset=0&limit=10 HTTP/1.1
+GET /api/v2/wifi/configs HTTP/1.1
 
 Accept: application/json
 
@@ -1828,7 +1922,7 @@ const headers = {
   Accept: "application/json",
 }
 
-fetch("/api/v2/wifi/configs?offset=0&limit=10", {
+fetch("/api/v2/wifi/configs", {
   method: "GET",
 
   headers: headers,
@@ -1849,9 +1943,7 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.get('/api/v2/wifi/configs', params={
-  'offset': '0',  'limit': '10'
-}, headers = headers)
+r = requests.get('/api/v2/wifi/configs', headers = headers)
 
 print(r.json())
 
@@ -1860,7 +1952,7 @@ print(r.json())
 ```java
 // Java
 
-URL obj = new URL("/api/v2/wifi/configs?offset=0&limit=10");
+URL obj = new URL("/api/v2/wifi/configs");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -1882,10 +1974,10 @@ List WiFi configurations
 
 <h3 id="wifiapi_listconfigs-parameters">Parameters</h3>
 
-| Name   | In    | Type            | Required | Description                                             |
-| ------ | ----- | --------------- | -------- | ------------------------------------------------------- |
-| offset | query | integer(uint32) | true     | The offset of the list, 0 means no offset, default is 0 |
-| limit  | query | integer(uint32) | true     | The limit of the list, 0 means no limit, default is 10  |
+| Name   | In    | Type            | Required | Description                     |
+| ------ | ----- | --------------- | -------- | ------------------------------- |
+| offset | query | integer(uint32) | false    | 偏移量，从0开始，默认为0        |
+| limit  | query | integer(uint32) | false    | 每页数量，0表示不限制，默认为10 |
 
 > Example responses
 
@@ -1906,16 +1998,56 @@ List WiFi configurations
       "updatedAt": 0
     }
   ],
-  "total": 0
+  "total": 0,
+  "offset": 0,
+  "limit": 0
 }
 ```
 
 <h3 id="wifiapi_listconfigs-responses">Responses</h3>
 
-| Status  | Meaning                                                 | Description                   | Schema                                  |
-| ------- | ------------------------------------------------------- | ----------------------------- | --------------------------------------- |
-| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [WiFiConfigList](#schemawificonfiglist) |
-| default | Default                                                 | An unexpected error response. | [Error](#schemaerror)                   |
+| Status  | Meaning                                                 | Description                   | Schema                |
+| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | Inline                |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
+
+<h3 id="wifiapi_listconfigs-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+_通用分页响应模型
+所有列表接口的返回类型都应该继承自该模型_
+
+| Name           | Type                                                | Required | Restrictions | Description                                                                                        |
+| -------------- | --------------------------------------------------- | -------- | ------------ | -------------------------------------------------------------------------------------------------- |
+| » items        | [[WiFiConfig](#schemawificonfig)]                   | true     | none         | 数据列表                                                                                           |
+| »» id          | string                                              | true     | read-only    | The unique identifier of the WiFi configuration                                                    |
+| »» ssid        | string                                              | true     | none         | The SSID of the WiFi network to connect to                                                         |
+| »» security    | [WiFiSecurityType](#schemawifisecuritytype)         | true     | none         | The security type of the WiFi network                                                              |
+| »» password    | string(password)                                    | false    | none         | The password for the WiFi network (required for secured networks). encrypted depends security type |
+| »» autoConnect | boolean                                             | true     | none         | Whether to connect automatically                                                                   |
+| »» hidden      | boolean                                             | true     | none         | Whether this is a hidden network                                                                   |
+| »» status      | [WiFiConnectionStatus](#schemawificonnectionstatus) | true     | none         | The current connection status of this configuration                                                |
+| »» createdAt   | integer(int32)                                      | true     | read-only    | The timestamp when the configuration was created                                                   |
+| »» updatedAt   | integer(int32)                                      | true     | read-only    | The timestamp when the configuration was last updated                                              |
+| » total        | integer(uint32)                                     | true     | none         | 数据总数量                                                                                         |
+| » offset       | integer(uint32)                                     | true     | none         | 偏移量，从0开始                                                                                    |
+| » limit        | integer(uint32)                                     | true     | none         | 每页数量，0表示不限制                                                                              |
+
+#### Enumerated Values
+
+| Property | Value         |
+| -------- | ------------- |
+| security | none          |
+| security | wep           |
+| security | wpa           |
+| security | wpa2          |
+| security | wpa3          |
+| status   | disconnected  |
+| status   | connecting    |
+| status   | connected     |
+| status   | disconnecting |
+| status   | error         |
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -2576,9 +2708,11 @@ Scan for available WiFi networks
 
 <h3 id="wifiapi_scannetworks-parameters">Parameters</h3>
 
-| Name  | In    | Type    | Required | Description                                               |
-| ----- | ----- | ------- | -------- | --------------------------------------------------------- |
-| force | query | boolean | true     | Whether to force a rescan instead of using cached results |
+| Name   | In    | Type            | Required | Description                                               |
+| ------ | ----- | --------------- | -------- | --------------------------------------------------------- |
+| force  | query | boolean         | true     | Whether to force a rescan instead of using cached results |
+| offset | query | integer(uint32) | false    | 偏移量，从0开始，默认为0                                  |
+| limit  | query | integer(uint32) | false    | 每页数量，0表示不限制，默认为10                           |
 
 > Example responses
 
@@ -2601,16 +2735,57 @@ Scan for available WiFi networks
       "lastSeen": 0
     }
   ],
-  "total": 0
+  "total": 0,
+  "offset": 0,
+  "limit": 0
 }
 ```
 
 <h3 id="wifiapi_scannetworks-responses">Responses</h3>
 
-| Status  | Meaning                                                 | Description                   | Schema                                    |
-| ------- | ------------------------------------------------------- | ----------------------------- | ----------------------------------------- |
-| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [WiFiNetworkList](#schemawifinetworklist) |
-| default | Default                                                 | An unexpected error response. | [Error](#schemaerror)                     |
+| Status  | Meaning                                                 | Description                   | Schema                |
+| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | Inline                |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
+
+<h3 id="wifiapi_scannetworks-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+_通用分页响应模型
+所有列表接口的返回类型都应该继承自该模型_
+
+| Name              | Type                                        | Required | Restrictions | Description                                         |
+| ----------------- | ------------------------------------------- | -------- | ------------ | --------------------------------------------------- |
+| » items           | [[WiFiNetwork](#schemawifinetwork)]         | true     | none         | 数据列表                                            |
+| »» id             | string                                      | true     | read-only    | The unique identifier of the WiFi network           |
+| »» ssid           | string                                      | true     | none         | The SSID of the WiFi network                        |
+| »» bssid          | string                                      | true     | none         | The BSSID of the WiFi network                       |
+| »» security       | [WiFiSecurityType](#schemawifisecuritytype) | true     | none         | The security type of the WiFi network               |
+| »» signalStrength | integer(int32)                              | true     | none         | The signal strength in dBm                          |
+| »» band           | [WiFiBand](#schemawifiband)                 | true     | none         | The WiFi frequency band                             |
+| »» channel        | integer(uint32)                             | true     | none         | The WiFi channel                                    |
+| »» hidden         | boolean                                     | true     | none         | Whether the network is hidden                       |
+| »» isConnected    | boolean                                     | true     | none         | Whether this network is the currently connected one |
+| »» isSaved        | boolean                                     | true     | none         | Whether this network has a saved configuration      |
+| »» lastSeen       | integer(int32)                              | true     | read-only    | The timestamp when the network was last seen        |
+| » total           | integer(uint32)                             | true     | none         | 数据总数量                                          |
+| » offset          | integer(uint32)                             | true     | none         | 偏移量，从0开始                                     |
+| » limit           | integer(uint32)                             | true     | none         | 每页数量，0表示不限制                               |
+
+#### Enumerated Values
+
+| Property | Value  |
+| -------- | ------ |
+| security | none   |
+| security | wep    |
+| security | wpa    |
+| security | wpa2   |
+| security | wpa3   |
+| band     | mixed  |
+| band     | 2_4GHz |
+| band     | 5GHz   |
+| band     | 6GHz   |
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -3146,7 +3321,7 @@ updatedAt: 0
 <a id="tocsemailgroup"></a>
 
 ```yaml
-id: string
+id: 0
 name: string
 members:
   - id: 0
@@ -3156,15 +3331,13 @@ members:
     updatedAt: 0
 ```
 
-A group of emails
-
 ### Properties
 
-| Name    | Type                    | Required | Restrictions | Description                         |
-| ------- | ----------------------- | -------- | ------------ | ----------------------------------- |
-| id      | string                  | true     | read-only    | The unique identifier for the group |
-| name    | string                  | true     | none         | The name of the group               |
-| members | [[Email](#schemaemail)] | true     | none         | none                                |
+| Name    | Type                    | Required | Restrictions | Description                        |
+| ------- | ----------------------- | -------- | ------------ | ---------------------------------- |
+| id      | integer(uint32)         | true     | read-only    | The unique identifier of the group |
+| name    | string                  | true     | none         | The name of the group              |
+| members | [[Email](#schemaemail)] | true     | none         | The members of the group           |
 
 <h2 id="tocS_EmailGroupCreateOrUpdate">EmailGroupCreateOrUpdate</h2>
 <!-- backwards compatibility -->
@@ -3183,75 +3356,12 @@ members:
     updatedAt: 0
 ```
 
-A group of emails
-
 ### Properties
 
-| Name    | Type                                                        | Required | Restrictions | Description           |
-| ------- | ----------------------------------------------------------- | -------- | ------------ | --------------------- |
-| name    | string                                                      | true     | none         | The name of the group |
-| members | [[EmailCreateOrUpdateItem](#schemaemailcreateorupdateitem)] | true     | none         | none                  |
-
-<h2 id="tocS_EmailGroupList">EmailGroupList</h2>
-<!-- backwards compatibility -->
-<a id="schemaemailgrouplist"></a>
-<a id="schema_EmailGroupList"></a>
-<a id="tocSemailgrouplist"></a>
-<a id="tocsemailgrouplist"></a>
-
-```yaml
-items:
-  - id: string
-    name: string
-    members:
-      - id: 0
-        email: user@example.com
-        authType: password
-        createdAt: 0
-        updatedAt: 0
-total: 0
-offset: 0
-limit: 0
-```
-
-A list of email groups
-
-### Properties
-
-| Name   | Type                              | Required | Restrictions | Description                                     |
-| ------ | --------------------------------- | -------- | ------------ | ----------------------------------------------- |
-| items  | [[EmailGroup](#schemaemailgroup)] | true     | none         | [A group of emails]                             |
-| total  | integer(uint32)                   | true     | none         | The total number of email groups                |
-| offset | integer(uint32)                   | true     | none         | The offset to fetch the list, 0 means no offset |
-| limit  | integer(uint32)                   | true     | none         | The limit to fetch the list, 0 means no limit   |
-
-<h2 id="tocS_EmailList">EmailList</h2>
-<!-- backwards compatibility -->
-<a id="schemaemaillist"></a>
-<a id="schema_EmailList"></a>
-<a id="tocSemaillist"></a>
-<a id="tocsemaillist"></a>
-
-```yaml
-items:
-  - id: 0
-    email: user@example.com
-    authType: password
-    createdAt: 0
-    updatedAt: 0
-total: 0
-offset: 0
-limit: 0
-```
-
-### Properties
-
-| Name   | Type                    | Required | Restrictions | Description                                     |
-| ------ | ----------------------- | -------- | ------------ | ----------------------------------------------- |
-| items  | [[Email](#schemaemail)] | true     | none         | The list of emails                              |
-| total  | integer(uint32)         | true     | none         | The total number of emails                      |
-| offset | integer(uint32)         | true     | none         | The offset to fetch the list, 0 means no offset |
-| limit  | integer(uint32)         | true     | none         | The limit to fetch the list, 0 means no limit   |
+| Name    | Type                                                        | Required | Restrictions | Description              |
+| ------- | ----------------------------------------------------------- | -------- | ------------ | ------------------------ |
+| name    | string                                                      | true     | none         | The name of the group    |
+| members | [[EmailCreateOrUpdateItem](#schemaemailcreateorupdateitem)] | true     | none         | The members of the group |
 
 <h2 id="tocS_Error">Error</h2>
 <!-- backwards compatibility -->
@@ -3433,42 +3543,6 @@ updatedAt: 0
 | createdAt | integer(int32)                                    | true     | none         | The timestamp when the user was created |
 | updatedAt | integer(int32)                                    | true     | none         | The timestamp when the user was updated |
 
-<h2 id="tocS_UserList">UserList</h2>
-<!-- backwards compatibility -->
-<a id="schemauserlist"></a>
-<a id="schema_UserList"></a>
-<a id="tocSuserlist"></a>
-<a id="tocsuserlist"></a>
-
-```yaml
-items:
-  - id: 0
-    name: string
-    age: 1
-    gender: secret
-    email:
-      id: 0
-      email: user@example.com
-      authType: password
-      createdAt: 0
-      updatedAt: 0
-    avatar: https://example.com/avatar.png
-    createdAt: 0
-    updatedAt: 0
-total: 0
-offset: 0
-limit: 0
-```
-
-### Properties
-
-| Name   | Type                  | Required | Restrictions | Description                                     |
-| ------ | --------------------- | -------- | ------------ | ----------------------------------------------- |
-| items  | [[User](#schemauser)] | true     | none         | The list of users                               |
-| total  | integer(uint32)       | true     | none         | The total number of users                       |
-| offset | integer(uint32)       | true     | none         | The offset to fetch the list, 0 means no offset |
-| limit  | integer(uint32)       | true     | none         | The limit to fetch the list, 0 means no limit   |
-
 <h2 id="tocS_WiFiBand">WiFiBand</h2>
 <!-- backwards compatibility -->
 <a id="schemawifiband"></a>
@@ -3529,34 +3603,6 @@ updatedAt: 0
 | status      | [WiFiConnectionStatus](#schemawificonnectionstatus) | true     | none         | The current connection status of this configuration                                                |
 | createdAt   | integer(int32)                                      | true     | read-only    | The timestamp when the configuration was created                                                   |
 | updatedAt   | integer(int32)                                      | true     | read-only    | The timestamp when the configuration was last updated                                              |
-
-<h2 id="tocS_WiFiConfigList">WiFiConfigList</h2>
-<!-- backwards compatibility -->
-<a id="schemawificonfiglist"></a>
-<a id="schema_WiFiConfigList"></a>
-<a id="tocSwificonfiglist"></a>
-<a id="tocswificonfiglist"></a>
-
-```yaml
-items:
-  - id: string
-    ssid: string
-    security: none
-    password: pa$$word
-    autoConnect: true
-    hidden: false
-    status: disconnected
-    createdAt: 0
-    updatedAt: 0
-total: 0
-```
-
-### Properties
-
-| Name  | Type                              | Required | Restrictions | Description                             |
-| ----- | --------------------------------- | -------- | ------------ | --------------------------------------- |
-| items | [[WiFiConfig](#schemawificonfig)] | true     | none         | The list of WiFi configurations         |
-| total | integer(uint32)                   | true     | none         | The total number of WiFi configurations |
 
 <h2 id="tocS_WiFiConnectRequest">WiFiConnectRequest</h2>
 <!-- backwards compatibility -->
@@ -3641,36 +3687,6 @@ lastSeen: 0
 | isConnected    | boolean                                     | true     | none         | Whether this network is the currently connected one |
 | isSaved        | boolean                                     | true     | none         | Whether this network has a saved configuration      |
 | lastSeen       | integer(int32)                              | true     | read-only    | The timestamp when the network was last seen        |
-
-<h2 id="tocS_WiFiNetworkList">WiFiNetworkList</h2>
-<!-- backwards compatibility -->
-<a id="schemawifinetworklist"></a>
-<a id="schema_WiFiNetworkList"></a>
-<a id="tocSwifinetworklist"></a>
-<a id="tocswifinetworklist"></a>
-
-```yaml
-items:
-  - id: string
-    ssid: string
-    bssid: string
-    security: none
-    signalStrength: 0
-    band: mixed
-    channel: 0
-    hidden: true
-    isConnected: true
-    isSaved: true
-    lastSeen: 0
-total: 0
-```
-
-### Properties
-
-| Name  | Type                                | Required | Restrictions | Description                             |
-| ----- | ----------------------------------- | -------- | ------------ | --------------------------------------- |
-| items | [[WiFiNetwork](#schemawifinetwork)] | true     | none         | The list of available WiFi networks     |
-| total | integer(uint32)                     | true     | none         | The total number of WiFi networks found |
 
 <h2 id="tocS_WiFiSecurityType">WiFiSecurityType</h2>
 <!-- backwards compatibility -->

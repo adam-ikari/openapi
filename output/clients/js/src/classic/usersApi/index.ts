@@ -15,7 +15,7 @@ import {
   UsersApiReadOptionalParams,
   UsersApiListOptionalParams,
 } from "../../api/usersApi/options.js";
-import { UserList, User } from "../../models/models.js";
+import { PagedResultUser, User } from "../../models/models.js";
 
 /** Interface representing a UsersApi operations. */
 export interface UsersApiOperations {
@@ -37,7 +37,7 @@ export interface UsersApiOperations {
   /** Read users */
   read: (id: string, options?: UsersApiReadOptionalParams) => Promise<User>;
   /** List users */
-  list: (options?: UsersApiListOptionalParams) => Promise<UserList>;
+  list: (options?: UsersApiListOptionalParams) => Promise<PagedResultUser>;
 }
 
 function _getUsersApi(context: OpenApiV2Context) {

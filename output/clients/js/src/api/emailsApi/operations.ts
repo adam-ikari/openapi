@@ -6,8 +6,8 @@ import {
   emailSerializer,
   emailDeserializer,
   errorDeserializer,
-  EmailList,
-  emailListDeserializer,
+  PagedResultEmail,
+  pagedResultEmailDeserializer,
 } from "../../models/models.js";
 import { expandUrlTemplate } from "../../static-helpers/urlTemplate.js";
 import {
@@ -56,7 +56,7 @@ export async function _$deleteDeserialize(
   return;
 }
 
-/** Delete a email */
+/** Delete a emails */
 /**
  *  @fixme delete is a reserved word that cannot be used as an operation name.
  *         Please add @clientName("clientName") or @clientName("<JS-Specific-Name>", "javascript")
@@ -112,7 +112,7 @@ export async function _updateDeserialize(
   return emailDeserializer(result.body);
 }
 
-/** Update a email */
+/** Update a emails */
 export async function update(
   context: Client,
   id: string,
@@ -154,7 +154,7 @@ export async function _createDeserialize(
   return emailDeserializer(result.body);
 }
 
-/** Create a email */
+/** Create a emails */
 export async function create(
   context: Client,
   body: Email,
@@ -202,7 +202,7 @@ export async function _readDeserialize(
   return emailDeserializer(result.body);
 }
 
-/** Read email */
+/** Read emails */
 export async function read(
   context: Client,
   id: string,
@@ -214,15 +214,13 @@ export async function read(
 
 export function _listSend(
   context: Client,
-  offset: number,
-  limit: number,
   options: EmailsApiListOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   const path = expandUrlTemplate(
     "/api/v2/emails{?offset,limit}",
     {
-      offset: offset,
-      limit: limit,
+      offset: options?.offset,
+      limit: options?.limit,
     },
     {
       allowReserved: options?.requestOptions?.skipUrlEncoding,
@@ -241,7 +239,7 @@ export function _listSend(
 
 export async function _listDeserialize(
   result: PathUncheckedResponse,
-): Promise<EmailList> {
+): Promise<PagedResultEmail> {
   const expectedStatuses = ["200"];
   if (!expectedStatuses.includes(result.status)) {
     const error = createRestError(result);
@@ -249,16 +247,14 @@ export async function _listDeserialize(
     throw error;
   }
 
-  return emailListDeserializer(result.body);
+  return pagedResultEmailDeserializer(result.body);
 }
 
 /** List emails */
 export async function list(
   context: Client,
-  offset: number,
-  limit: number,
   options: EmailsApiListOptionalParams = { requestOptions: {} },
-): Promise<EmailList> {
-  const result = await _listSend(context, offset, limit, options);
+): Promise<PagedResultEmail> {
+  const result = await _listSend(context, options);
   return _listDeserialize(result);
 }

@@ -15,7 +15,11 @@ import {
   EmailsGroupApiReadOptionalParams,
   EmailsGroupApiListOptionalParams,
 } from "../../api/emailsGroupApi/options.js";
-import { Email, EmailGroupList, EmailGroup } from "../../models/models.js";
+import {
+  Email,
+  PagedResultEmailGroup,
+  EmailGroup,
+} from "../../models/models.js";
 
 /** Interface representing a EmailsGroupApi operations. */
 export interface EmailsGroupApiOperations {
@@ -47,10 +51,8 @@ export interface EmailsGroupApiOperations {
   ) => Promise<EmailGroup>;
   /** List email groups */
   list: (
-    offset: number,
-    limit: number,
     options?: EmailsGroupApiListOptionalParams,
-  ) => Promise<EmailGroupList>;
+  ) => Promise<PagedResultEmailGroup>;
 }
 
 function _getEmailsGroupApi(context: OpenApiV2Context) {
@@ -66,11 +68,8 @@ function _getEmailsGroupApi(context: OpenApiV2Context) {
       create(context, body, options),
     read: (id: string, options?: EmailsGroupApiReadOptionalParams) =>
       read(context, id, options),
-    list: (
-      offset: number,
-      limit: number,
-      options?: EmailsGroupApiListOptionalParams,
-    ) => list(context, offset, limit, options),
+    list: (options?: EmailsGroupApiListOptionalParams) =>
+      list(context, options),
   };
 }
 

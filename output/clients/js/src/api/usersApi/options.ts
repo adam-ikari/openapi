@@ -16,8 +16,8 @@ export interface UsersApiReadOptionalParams extends OperationOptions {}
 
 /** Optional parameters. */
 export interface UsersApiListOptionalParams extends OperationOptions {
-  /** The offset of the list, 0 means no offset, default is 0 */
+  /** 偏移量，从0开始，默认为0 */
   offset?: number;
-  /** The limit of the list, 0 means no limit, default is 10 */
+  /** 每页数量，0表示不限制，默认为10 */
   limit?: number;
 }

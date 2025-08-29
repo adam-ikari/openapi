@@ -7,6 +7,8 @@ import "@typespec/openapi";
 import "./models/wifi.tsp";
 // 导入错误处理模型
 import "./models/error.tsp";
+// 导入通用分页模型
+import "./common/pagination.tsp";
 
 // 使用TypeSpec.Http命名空间，简化后续装饰器的使用
 using TypeSpec.Http;
@@ -30,7 +32,9 @@ interface WiFiApi {
     @doc("Whether to force a rescan instead of using cached results")
     @query
     force: boolean = false,
-  ): WiFiNetworkList | Error;
+    // 使用通用分页查询参数
+    ...PaginationParams
+  ): PagedResult<WiFiNetwork> | Error;
 
   /** Get details of a specific WiFi network */
   // HTTP GET请求，用于获取特定WiFi网络信息
@@ -48,14 +52,9 @@ interface WiFiApi {
   @get
   @route("/configs")
   listConfigs(
-    @doc("The offset of the list, 0 means no offset, default is 0")
-    @query
-    offset: uint32 = 0,
-
-    @doc("The limit of the list, 0 means no limit, default is 10")
-    @query
-    limit: uint32 = 10,
-  ): WiFiConfigList | Error;
+    // 使用通用分页查询参数
+    ...PaginationParams
+  ): PagedResult<WiFiConfig> | Error;
 
   /** Get a specific WiFi configuration */
   // HTTP GET请求，用于获取特定WiFi配置

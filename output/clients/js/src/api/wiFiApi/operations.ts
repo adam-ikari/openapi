@@ -3,12 +3,12 @@
 import { OpenApiV2Context as Client } from "../index.js";
 import {
   errorDeserializer,
-  WiFiNetworkList,
-  wiFiNetworkListDeserializer,
+  PagedResultWiFiNetwork,
+  pagedResultWiFiNetworkDeserializer,
   WiFiNetwork,
   wiFiNetworkDeserializer,
-  WiFiConfigList,
-  wiFiConfigListDeserializer,
+  PagedResultWiFiConfig,
+  pagedResultWiFiConfigDeserializer,
   WiFiConfig,
   wiFiConfigSerializer,
   wiFiConfigDeserializer,
@@ -373,15 +373,13 @@ export async function getConfig(
 
 export function _listConfigsSend(
   context: Client,
-  offset: number,
-  limit: number,
   options: WiFiApiListConfigsOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   const path = expandUrlTemplate(
     "/api/v2/wifi/configs{?offset,limit}",
     {
-      offset: offset,
-      limit: limit,
+      offset: options?.offset,
+      limit: options?.limit,
     },
     {
       allowReserved: options?.requestOptions?.skipUrlEncoding,
@@ -400,7 +398,7 @@ export function _listConfigsSend(
 
 export async function _listConfigsDeserialize(
   result: PathUncheckedResponse,
-): Promise<WiFiConfigList> {
+): Promise<PagedResultWiFiConfig> {
   const expectedStatuses = ["200"];
   if (!expectedStatuses.includes(result.status)) {
     const error = createRestError(result);
@@ -408,17 +406,15 @@ export async function _listConfigsDeserialize(
     throw error;
   }
 
-  return wiFiConfigListDeserializer(result.body);
+  return pagedResultWiFiConfigDeserializer(result.body);
 }
 
 /** List WiFi configurations */
 export async function listConfigs(
   context: Client,
-  offset: number,
-  limit: number,
   options: WiFiApiListConfigsOptionalParams = { requestOptions: {} },
-): Promise<WiFiConfigList> {
-  const result = await _listConfigsSend(context, offset, limit, options);
+): Promise<PagedResultWiFiConfig> {
+  const result = await _listConfigsSend(context, options);
   return _listConfigsDeserialize(result);
 }
 
@@ -476,9 +472,11 @@ export function _scanNetworksSend(
   options: WiFiApiScanNetworksOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   const path = expandUrlTemplate(
-    "/api/v2/wifi/networks{?force}",
+    "/api/v2/wifi/networks{?force,offset,limit}",
     {
       force: force,
+      offset: options?.offset,
+      limit: options?.limit,
     },
     {
       allowReserved: options?.requestOptions?.skipUrlEncoding,
@@ -497,7 +495,7 @@ export function _scanNetworksSend(
 
 export async function _scanNetworksDeserialize(
   result: PathUncheckedResponse,
-): Promise<WiFiNetworkList> {
+): Promise<PagedResultWiFiNetwork> {
   const expectedStatuses = ["200"];
   if (!expectedStatuses.includes(result.status)) {
     const error = createRestError(result);
@@ -505,7 +503,7 @@ export async function _scanNetworksDeserialize(
     throw error;
   }
 
-  return wiFiNetworkListDeserializer(result.body);
+  return pagedResultWiFiNetworkDeserializer(result.body);
 }
 
 /** Scan for available WiFi networks */
@@ -513,7 +511,7 @@ export async function scanNetworks(
   context: Client,
   force: boolean,
   options: WiFiApiScanNetworksOptionalParams = { requestOptions: {} },
-): Promise<WiFiNetworkList> {
+): Promise<PagedResultWiFiNetwork> {
   const result = await _scanNetworksSend(context, force, options);
   return _scanNetworksDeserialize(result);
 }

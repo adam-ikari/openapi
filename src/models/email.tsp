@@ -3,7 +3,8 @@ import "@typespec/http";
 // 导入OpenAPI库，用于生成OpenAPI文档
 import "@typespec/openapi";
 
-// 使用TypeSpec.OpenAPI命名空间，简化后续装饰器的使用
+// 使用TypeSpec.Http和TypeSpec.OpenAPI命名空间
+using TypeSpec.Http;
 using TypeSpec.OpenAPI;
 
 // 为枚举类型添加文档说明
@@ -81,20 +82,4 @@ model Email {
 
     @doc("The timestamp when the email was updated")
     updatedAt: unixTimestamp32;
-}
-
-// 定义邮件列表模型
-model EmailList {
-    @doc("The list of emails")
-    // 数组类型，包含多个Email对象
-    items: Email[];
-
-    @doc("The total number of emails")
-    total: uint32;
-
-    @doc("The offset to fetch the list, 0 means no offset")
-    offset: uint32;
-
-    @doc("The limit to fetch the list, 0 means no limit")
-    limit: uint32;
 }

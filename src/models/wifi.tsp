@@ -1,7 +1,10 @@
+// 导入TypeSpec核心库，用于HTTP协议支持
+import "@typespec/http";
 // 导入OpenAPI库，用于生成OpenAPI文档
 import "@typespec/openapi";
 
-// 使用TypeSpec.OpenAPI命名空间，简化后续装饰器的使用
+// 使用TypeSpec.Http和TypeSpec.OpenAPI命名空间
+using TypeSpec.Http;
 using TypeSpec.OpenAPI;
 
 // 定义WiFi安全类型枚举
@@ -165,24 +168,6 @@ model WiFiConfig {
     @doc("The timestamp when the configuration was last updated")
     @visibility(Lifecycle.Read)
     updatedAt: unixTimestamp32;
-}
-
-// 定义WiFi网络列表模型
-model WiFiNetworkList {
-    @doc("The list of available WiFi networks")
-    items: WiFiNetwork[];
-
-    @doc("The total number of WiFi networks found")
-    total: uint32;
-}
-
-// 定义WiFi配置列表模型
-model WiFiConfigList {
-    @doc("The list of WiFi configurations")
-    items: WiFiConfig[];
-
-    @doc("The total number of WiFi configurations")
-    total: uint32;
 }
 
 // 定义WiFi连接请求模型

@@ -1,35 +1,27 @@
-// 导入邮件模型，因为邮件组包含多个邮件
+// 导入TypeSpec核心库，用于HTTP协议支持
+import "@typespec/http";
+// 导入OpenAPI库，用于生成OpenAPI文档
+import "@typespec/openapi";
+
+// 导入邮件模型
 import "./email.tsp";
 
-// 为模型添加文档说明
-@doc("A group of emails")
+// 使用TypeSpec.Http和TypeSpec.OpenAPI命名空间
+using TypeSpec.Http;
+using TypeSpec.OpenAPI;
+
 // 定义邮件组模型
 model EmailGroup {
-    @doc("The unique identifier for the group")
-    // @visibility装饰器用于控制字段在不同操作中的可见性
+    @doc("The unique identifier of the group")
     @visibility(Lifecycle.Read)
-    id: string;
+    id: uint32;
 
     @doc("The name of the group")
+    @minLength(1)
+    @maxLength(32)
     name: string;
 
-    // 邮件组包含多个邮件，使用数组类型
+    @doc("The members of the group")
+    @maxItems(100)
     members: Email[];
-}
-
-// 为模型添加文档说明
-@doc("A list of email groups")
-// 定义邮件组列表模型
-model EmailGroupList {
-    // 数组类型，包含多个EmailGroup对象
-    items: EmailGroup[];
-
-    @doc("The total number of email groups")
-    total: uint32;
-
-    @doc("The offset to fetch the list, 0 means no offset")
-    offset: uint32;
-
-    @doc("The limit to fetch the list, 0 means no limit")
-    limit: uint32;
 }

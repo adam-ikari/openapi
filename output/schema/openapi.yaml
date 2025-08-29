@@ -13,31 +13,45 @@ paths:
       operationId: EmailsGroupApi_list
       description: List email groups
       parameters:
-        - name: offset
-          in: query
-          required: true
-          description: The offset of the list, 0 means no offset, default is 0
-          schema:
-            type: integer
-            format: uint32
-            default: 0
-          explode: false
-        - name: limit
-          in: query
-          required: true
-          description: The limit of the list, 0 means no limit, default is 10
-          schema:
-            type: integer
-            format: uint32
-            default: 10
-          explode: false
+        - $ref: '#/components/parameters/PaginationParams.offset'
+        - $ref: '#/components/parameters/PaginationParams.limit'
       responses:
         '200':
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EmailGroupList'
+                type: object
+                required:
+                  - items
+                  - total
+                  - offset
+                  - limit
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EmailGroup'
+                    description: 数据列表
+                    title: 数据列表
+                  total:
+                    type: integer
+                    format: uint32
+                    description: 数据总数量
+                    title: 数据总数量
+                  offset:
+                    type: integer
+                    format: uint32
+                    description: 偏移量，从0开始
+                    title: 偏移量
+                  limit:
+                    type: integer
+                    format: uint32
+                    description: 每页数量，0表示不限制
+                    title: 每页数量
+                description: |-
+                  通用分页响应模型
+                  所有列表接口的返回类型都应该继承自该模型
         default:
           description: An unexpected error response.
           content:
@@ -164,31 +178,45 @@ paths:
       operationId: EmailsApi_list
       description: List emails
       parameters:
-        - name: offset
-          in: query
-          required: true
-          description: The offset of the list, 0 means no offset, default is 0
-          schema:
-            type: integer
-            format: uint32
-            default: 0
-          explode: false
-        - name: limit
-          in: query
-          required: true
-          description: The limit of the list, 0 means no limit, default is 10
-          schema:
-            type: integer
-            format: uint32
-            default: 10
-          explode: false
+        - $ref: '#/components/parameters/PaginationParams.offset'
+        - $ref: '#/components/parameters/PaginationParams.limit'
       responses:
         '200':
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EmailList'
+                type: object
+                required:
+                  - items
+                  - total
+                  - offset
+                  - limit
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Email'
+                    description: 数据列表
+                    title: 数据列表
+                  total:
+                    type: integer
+                    format: uint32
+                    description: 数据总数量
+                    title: 数据总数量
+                  offset:
+                    type: integer
+                    format: uint32
+                    description: 偏移量，从0开始
+                    title: 偏移量
+                  limit:
+                    type: integer
+                    format: uint32
+                    description: 每页数量，0表示不限制
+                    title: 每页数量
+                description: |-
+                  通用分页响应模型
+                  所有列表接口的返回类型都应该继承自该模型
         default:
           description: An unexpected error response.
           content:
@@ -201,7 +229,7 @@ paths:
         - BearerAuth: []
     post:
       operationId: EmailsApi_create
-      description: Create a email
+      description: Create a emails
       parameters: []
       responses:
         '200':
@@ -229,12 +257,12 @@ paths:
   /api/v2/emails/{id}:
     get:
       operationId: EmailsApi_read
-      description: Read email
+      description: Read emails
       parameters:
         - name: id
           in: path
           required: true
-          description: The id of the Email to read
+          description: The id of the email to read
           schema:
             type: string
       responses:
@@ -256,12 +284,12 @@ paths:
         - BearerAuth: []
     put:
       operationId: EmailsApi_update
-      description: Update a email
+      description: Update a emails
       parameters:
         - name: id
           in: path
           required: true
-          description: The id of the Email to update
+          description: The id of the email to update
           schema:
             type: string
       responses:
@@ -289,12 +317,12 @@ paths:
         - BearerAuth: []
     delete:
       operationId: EmailsApi_delete
-      description: Delete a email
+      description: Delete a emails
       parameters:
         - name: id
           in: path
           required: true
-          description: The id of the Email to delete
+          description: The id of the email to delete
           schema:
             type: string
       responses:
@@ -315,31 +343,45 @@ paths:
       operationId: UsersApi_list
       description: List users
       parameters:
-        - name: offset
-          in: query
-          required: false
-          description: The offset of the list, 0 means no offset, default is 0
-          schema:
-            type: integer
-            format: uint32
-            default: 0
-          explode: false
-        - name: limit
-          in: query
-          required: false
-          description: The limit of the list, 0 means no limit, default is 10
-          schema:
-            type: integer
-            format: uint32
-            default: 10
-          explode: false
+        - $ref: '#/components/parameters/PaginationParams.offset'
+        - $ref: '#/components/parameters/PaginationParams.limit'
       responses:
         '200':
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserList'
+                type: object
+                required:
+                  - items
+                  - total
+                  - offset
+                  - limit
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+                    description: 数据列表
+                    title: 数据列表
+                  total:
+                    type: integer
+                    format: uint32
+                    description: 数据总数量
+                    title: 数据总数量
+                  offset:
+                    type: integer
+                    format: uint32
+                    description: 偏移量，从0开始
+                    title: 偏移量
+                  limit:
+                    type: integer
+                    format: uint32
+                    description: 每页数量，0表示不限制
+                    title: 每页数量
+                description: |-
+                  通用分页响应模型
+                  所有列表接口的返回类型都应该继承自该模型
         default:
           description: An unexpected error response.
           content:
@@ -466,31 +508,45 @@ paths:
       operationId: WiFiApi_listConfigs
       description: List WiFi configurations
       parameters:
-        - name: offset
-          in: query
-          required: true
-          description: The offset of the list, 0 means no offset, default is 0
-          schema:
-            type: integer
-            format: uint32
-            default: 0
-          explode: false
-        - name: limit
-          in: query
-          required: true
-          description: The limit of the list, 0 means no limit, default is 10
-          schema:
-            type: integer
-            format: uint32
-            default: 10
-          explode: false
+        - $ref: '#/components/parameters/PaginationParams.offset'
+        - $ref: '#/components/parameters/PaginationParams.limit'
       responses:
         '200':
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/WiFiConfigList'
+                type: object
+                required:
+                  - items
+                  - total
+                  - offset
+                  - limit
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/WiFiConfig'
+                    description: 数据列表
+                    title: 数据列表
+                  total:
+                    type: integer
+                    format: uint32
+                    description: 数据总数量
+                    title: 数据总数量
+                  offset:
+                    type: integer
+                    format: uint32
+                    description: 偏移量，从0开始
+                    title: 偏移量
+                  limit:
+                    type: integer
+                    format: uint32
+                    description: 每页数量，0表示不限制
+                    title: 每页数量
+                description: |-
+                  通用分页响应模型
+                  所有列表接口的返回类型都应该继承自该模型
         default:
           description: An unexpected error response.
           content:
@@ -660,13 +716,45 @@ paths:
             type: boolean
             default: false
           explode: false
+        - $ref: '#/components/parameters/PaginationParams.offset'
+        - $ref: '#/components/parameters/PaginationParams.limit'
       responses:
         '200':
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/WiFiNetworkList'
+                type: object
+                required:
+                  - items
+                  - total
+                  - offset
+                  - limit
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/WiFiNetwork'
+                    description: 数据列表
+                    title: 数据列表
+                  total:
+                    type: integer
+                    format: uint32
+                    description: 数据总数量
+                    title: 数据总数量
+                  offset:
+                    type: integer
+                    format: uint32
+                    description: 偏移量，从0开始
+                    title: 偏移量
+                  limit:
+                    type: integer
+                    format: uint32
+                    description: 每页数量，0表示不限制
+                    title: 每页数量
+                description: |-
+                  通用分页响应模型
+                  所有列表接口的返回类型都应该继承自该模型
         default:
           description: An unexpected error response.
           content:
@@ -784,6 +872,29 @@ paths:
       security:
         - BearerAuth: []
 components:
+  parameters:
+    PaginationParams.limit:
+      name: limit
+      in: query
+      required: false
+      description: 每页数量，0表示不限制，默认为10
+      schema:
+        type: integer
+        format: uint32
+        title: 每页数量
+        default: 10
+      explode: false
+    PaginationParams.offset:
+      name: offset
+      in: query
+      required: false
+      description: 偏移量，从0开始，默认为0
+      schema:
+        type: integer
+        format: uint32
+        title: 偏移量
+        default: 0
+      explode: false
   schemas:
     Email:
       type: object
@@ -945,17 +1056,21 @@ components:
         - members
       properties:
         id:
-          type: string
-          description: The unique identifier for the group
+          type: integer
+          format: uint32
+          description: The unique identifier of the group
           readOnly: true
         name:
           type: string
+          minLength: 1
+          maxLength: 32
           description: The name of the group
         members:
           type: array
           items:
             $ref: '#/components/schemas/Email'
-      description: A group of emails
+          maxItems: 100
+          description: The members of the group
     EmailGroupCreateOrUpdate:
       type: object
       required:
@@ -964,62 +1079,15 @@ components:
       properties:
         name:
           type: string
+          minLength: 1
+          maxLength: 32
           description: The name of the group
         members:
           type: array
           items:
             $ref: '#/components/schemas/EmailCreateOrUpdateItem'
-      description: A group of emails
-    EmailGroupList:
-      type: object
-      required:
-        - items
-        - total
-        - offset
-        - limit
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailGroup'
-        total:
-          type: integer
-          format: uint32
-          description: The total number of email groups
-        offset:
-          type: integer
-          format: uint32
-          description: The offset to fetch the list, 0 means no offset
-        limit:
-          type: integer
-          format: uint32
-          description: The limit to fetch the list, 0 means no limit
-      description: A list of email groups
-    EmailList:
-      type: object
-      required:
-        - items
-        - total
-        - offset
-        - limit
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Email'
-          description: The list of emails
-        total:
-          type: integer
-          format: uint32
-          description: The total number of emails
-        offset:
-          type: integer
-          format: uint32
-          description: The offset to fetch the list, 0 means no offset
-        limit:
-          type: integer
-          format: uint32
-          description: The limit to fetch the list, 0 means no limit
+          maxItems: 100
+          description: The members of the group
     Error:
       type: object
       required:
@@ -1220,31 +1288,6 @@ components:
           type: integer
           format: int32
           description: The timestamp when the user was updated
-    UserList:
-      type: object
-      required:
-        - items
-        - total
-        - offset
-        - limit
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
-          description: The list of users
-        total:
-          type: integer
-          format: uint32
-          description: The total number of users
-        offset:
-          type: integer
-          format: uint32
-          description: The offset to fetch the list, 0 means no offset
-        limit:
-          type: integer
-          format: uint32
-          description: The limit to fetch the list, 0 means no limit
     WiFiBand:
       type: string
       enum:
@@ -1322,21 +1365,6 @@ components:
           format: int32
           description: The timestamp when the configuration was last updated
           readOnly: true
-    WiFiConfigList:
-      type: object
-      required:
-        - items
-        - total
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/WiFiConfig'
-          description: The list of WiFi configurations
-        total:
-          type: integer
-          format: uint32
-          description: The total number of WiFi configurations
     WiFiConnectRequest:
       type: object
       required:
@@ -1428,21 +1456,6 @@ components:
           format: int32
           description: The timestamp when the network was last seen
           readOnly: true
-    WiFiNetworkList:
-      type: object
-      required:
-        - items
-        - total
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/WiFiNetwork'
-          description: The list of available WiFi networks
-        total:
-          type: integer
-          format: uint32
-          description: The total number of WiFi networks found
     WiFiSecurityType:
       type: string
       enum:

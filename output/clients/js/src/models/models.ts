@@ -1,18 +1,21 @@
 // Licensed under the MIT License.
 
-/** model interface UserList */
-export interface UserList {
-  /** The list of users */
+/**
+ * 通用分页响应模型
+ * 所有列表接口的返回类型都应该继承自该模型
+ */
+export interface PagedResultUser {
+  /** 数据列表 */
   items: User[];
-  /** The total number of users */
+  /** 数据总数量 */
   total: number;
-  /** The offset to fetch the list, 0 means no offset */
+  /** 偏移量，从0开始 */
   offset: number;
-  /** The limit to fetch the list, 0 means no limit */
+  /** 每页数量，0表示不限制 */
   limit: number;
 }
 
-export function userListDeserializer(item: any): UserList {
+export function pagedResultUserDeserializer(item: any): PagedResultUser {
   return {
     items: userArrayDeserializer(item["items"]),
     total: item["total"],
@@ -143,19 +146,22 @@ export function errorDeserializer(item: any): ErrorModel {
 /** Status Code */
 export type StatusCode = 100000 | 100001;
 
-/** model interface EmailList */
-export interface EmailList {
-  /** The list of emails */
+/**
+ * 通用分页响应模型
+ * 所有列表接口的返回类型都应该继承自该模型
+ */
+export interface PagedResultEmail {
+  /** 数据列表 */
   items: Email[];
-  /** The total number of emails */
+  /** 数据总数量 */
   total: number;
-  /** The offset to fetch the list, 0 means no offset */
+  /** 偏移量，从0开始 */
   offset: number;
-  /** The limit to fetch the list, 0 means no limit */
+  /** 每页数量，0表示不限制 */
   limit: number;
 }
 
-export function emailListDeserializer(item: any): EmailList {
+export function pagedResultEmailDeserializer(item: any): PagedResultEmail {
   return {
     items: emailArrayDeserializer(item["items"]),
     total: item["total"],
@@ -176,18 +182,24 @@ export function emailArrayDeserializer(result: Array<Email>): any[] {
   });
 }
 
-/** A list of email groups */
-export interface EmailGroupList {
+/**
+ * 通用分页响应模型
+ * 所有列表接口的返回类型都应该继承自该模型
+ */
+export interface PagedResultEmailGroup {
+  /** 数据列表 */
   items: EmailGroup[];
-  /** The total number of email groups */
+  /** 数据总数量 */
   total: number;
-  /** The offset to fetch the list, 0 means no offset */
+  /** 偏移量，从0开始 */
   offset: number;
-  /** The limit to fetch the list, 0 means no limit */
+  /** 每页数量，0表示不限制 */
   limit: number;
 }
 
-export function emailGroupListDeserializer(item: any): EmailGroupList {
+export function pagedResultEmailGroupDeserializer(
+  item: any,
+): PagedResultEmailGroup {
   return {
     items: emailGroupArrayDeserializer(item["items"]),
     total: item["total"],
@@ -208,12 +220,13 @@ export function emailGroupArrayDeserializer(result: Array<EmailGroup>): any[] {
   });
 }
 
-/** A group of emails */
+/** model interface EmailGroup */
 export interface EmailGroup {
-  /** The unique identifier for the group */
-  readonly id: string;
+  /** The unique identifier of the group */
+  readonly id: number;
   /** The name of the group */
   name: string;
+  /** The members of the group */
   members: Email[];
 }
 
@@ -229,18 +242,29 @@ export function emailGroupDeserializer(item: any): EmailGroup {
   };
 }
 
-/** model interface WiFiNetworkList */
-export interface WiFiNetworkList {
-  /** The list of available WiFi networks */
+/**
+ * 通用分页响应模型
+ * 所有列表接口的返回类型都应该继承自该模型
+ */
+export interface PagedResultWiFiNetwork {
+  /** 数据列表 */
   items: WiFiNetwork[];
-  /** The total number of WiFi networks found */
+  /** 数据总数量 */
   total: number;
+  /** 偏移量，从0开始 */
+  offset: number;
+  /** 每页数量，0表示不限制 */
+  limit: number;
 }
 
-export function wiFiNetworkListDeserializer(item: any): WiFiNetworkList {
+export function pagedResultWiFiNetworkDeserializer(
+  item: any,
+): PagedResultWiFiNetwork {
   return {
     items: wiFiNetworkArrayDeserializer(item["items"]),
     total: item["total"],
+    offset: item["offset"],
+    limit: item["limit"],
   };
 }
 
@@ -299,18 +323,29 @@ export type WiFiSecurityType = "none" | "wep" | "wpa" | "wpa2" | "wpa3";
 /** WiFi frequency band enum values */
 export type WiFiBand = "mixed" | "2_4GHz" | "5GHz" | "6GHz";
 
-/** model interface WiFiConfigList */
-export interface WiFiConfigList {
-  /** The list of WiFi configurations */
+/**
+ * 通用分页响应模型
+ * 所有列表接口的返回类型都应该继承自该模型
+ */
+export interface PagedResultWiFiConfig {
+  /** 数据列表 */
   items: WiFiConfig[];
-  /** The total number of WiFi configurations */
+  /** 数据总数量 */
   total: number;
+  /** 偏移量，从0开始 */
+  offset: number;
+  /** 每页数量，0表示不限制 */
+  limit: number;
 }
 
-export function wiFiConfigListDeserializer(item: any): WiFiConfigList {
+export function pagedResultWiFiConfigDeserializer(
+  item: any,
+): PagedResultWiFiConfig {
   return {
     items: wiFiConfigArrayDeserializer(item["items"]),
     total: item["total"],
+    offset: item["offset"],
+    limit: item["limit"],
   };
 }
 

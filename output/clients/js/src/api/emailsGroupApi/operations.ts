@@ -6,8 +6,8 @@ import {
   emailSerializer,
   emailDeserializer,
   errorDeserializer,
-  EmailGroupList,
-  emailGroupListDeserializer,
+  PagedResultEmailGroup,
+  pagedResultEmailGroupDeserializer,
   EmailGroup,
   emailGroupSerializer,
   emailGroupDeserializer,
@@ -217,15 +217,13 @@ export async function read(
 
 export function _listSend(
   context: Client,
-  offset: number,
-  limit: number,
   options: EmailsGroupApiListOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   const path = expandUrlTemplate(
     "/api/v2/email-groups{?offset,limit}",
     {
-      offset: offset,
-      limit: limit,
+      offset: options?.offset,
+      limit: options?.limit,
     },
     {
       allowReserved: options?.requestOptions?.skipUrlEncoding,
@@ -244,7 +242,7 @@ export function _listSend(
 
 export async function _listDeserialize(
   result: PathUncheckedResponse,
-): Promise<EmailGroupList> {
+): Promise<PagedResultEmailGroup> {
   const expectedStatuses = ["200"];
   if (!expectedStatuses.includes(result.status)) {
     const error = createRestError(result);
@@ -252,16 +250,14 @@ export async function _listDeserialize(
     throw error;
   }
 
-  return emailGroupListDeserializer(result.body);
+  return pagedResultEmailGroupDeserializer(result.body);
 }
 
 /** List email groups */
 export async function list(
   context: Client,
-  offset: number,
-  limit: number,
   options: EmailsGroupApiListOptionalParams = { requestOptions: {} },
-): Promise<EmailGroupList> {
-  const result = await _listSend(context, offset, limit, options);
+): Promise<PagedResultEmailGroup> {
+  const result = await _listSend(context, options);
   return _listDeserialize(result);
 }

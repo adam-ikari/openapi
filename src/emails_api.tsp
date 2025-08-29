@@ -7,11 +7,13 @@ import "@typespec/openapi";
 import "./models/email.tsp";
 // 导入错误处理模型
 import "./models/error.tsp";
+// 导入通用分页模型
+import "./common/pagination.tsp";
 
 // 使用TypeSpec.Http命名空间，简化后续装饰器的使用
 using TypeSpec.Http;
 
-// 定义命名空间，与主服务保持一致
+// 定义命名空间，将相关API组织在一起
 namespace OpenApiV2;
 
 // 为API接口设置路由前缀
@@ -22,57 +24,49 @@ namespace OpenApiV2;
 @useAuth(BearerAuth)
 // 定义EmailsApi接口，包含邮件相关的操作
 interface EmailsApi {
-    /** List emails */
-    // @get装饰器表示这是一个HTTP GET请求，用于获取邮件列表
-    @get
-    list(
-        @doc("The offset of the list, 0 means no offset, default is 0")
-        // @query装饰器表示这是一个查询参数，用于分页
-        @query
-        offset: uint32 = 0,
+  /** List emails */
+  // @get装饰器表示这是一个HTTP GET请求
+  @get
+  list(
+    // 使用通用分页查询参数
+    ...PaginationParams
+  ): PagedResult<Email> | Error;
 
-        @doc("The limit of the list, 0 means no limit, default is 10")
-        @query
-        limit: uint32 = 10,
-        // 返回类型可以是EmailList或Error，使用|表示联合类型
-    ): EmailList | Error;
+  /** Read emails */
+  // HTTP GET请求，用于读取单个邮件信息
+  @get
+  read(
+    @doc("The id of the email to read")
+    // @path装饰器表示这是一个路径参数，会替换路由中的{id}占位符
+    @path
+    id: string,
+  ): Email | Error;
 
-    /** Read email */
-    // HTTP GET请求，用于读取单个邮件信息
-    @get
-    read(
-        @doc("The id of the Email to read")
-        // @path装饰器表示这是一个路径参数
-        @path
-        id: string,
-    ): Email | Error;
+  /** Create a emails */
+  // @post装饰器表示这是一个HTTP POST请求，用于创建资源
+  @post
+  // @body装饰器表示参数将作为请求体发送
+  create(@body body: Email): Email | Error;
 
-    /** Create a email */
-    // @post装饰器表示这是一个HTTP POST请求，用于创建邮件
-    @post
-    create(
-        // @body装饰器表示参数将作为请求体发送
-        @body body: Email,
-    ): Email | Error;
+  /** Update a emails */
+  // @put装饰器表示这是一个HTTP PUT请求，用于完整更新资源
+  @put
+  update(
+    @doc("The id of the email to update")
+    @path
+    id: string,
 
-    /** Update a email */
-    // @put装饰器表示这是一个HTTP PUT请求，用于完整更新邮件
-    @put
-    update(
-        @doc("The id of the Email to update")
-        @path
-        id: string,
+    // 更新操作的请求体
+    @body body: Email,
+  ): Email | Error;
 
-        @body body: Email,
-    ): Email | Error;
-
-    /** Delete a email */
-    // @delete装饰器表示这是一个HTTP DELETE请求，用于删除邮件
-    @delete
-    delete(
-        @doc("The id of the Email to delete")
-        @path
-        id: string,
-        // 删除操作通常不需要返回内容，所以返回void或Error
-    ): void | Error;
+  /** Delete a emails */
+  // @delete装饰器表示这是一个HTTP DELETE请求，用于删除资源
+  @delete
+  delete(
+    @doc("The id of the email to delete")
+    @path
+    id: string,
+    // 删除操作通常不需要返回内容，所以返回void或Error
+  ): void | Error;
 }

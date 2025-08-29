@@ -7,12 +7,13 @@ import "@typespec/openapi";
 import "./models/email_group.tsp";
 // 导入错误处理模型
 import "./models/error.tsp";
+// 导入通用分页模型
+import "./common/pagination.tsp";
 
-// 使用TypeSpec.Http和TypeSpec.OpenAPI命名空间
+// 使用TypeSpec.Http命名空间，简化后续装饰器的使用
 using TypeSpec.Http;
-using TypeSpec.OpenAPI;
 
-// 定义命名空间，与主服务保持一致
+// 定义命名空间，将相关API组织在一起
 namespace OpenApiV2;
 
 // 为API接口设置路由前缀
@@ -24,19 +25,12 @@ namespace OpenApiV2;
 // 定义EmailsGroupApi接口，包含邮件组相关的操作
 interface EmailsGroupApi {
     /** List email groups */
-    // @get装饰器表示这是一个HTTP GET请求，用于获取邮件组列表
+    // @get装饰器表示这是一个HTTP GET请求
     @get
     list(
-        @doc("The offset of the list, 0 means no offset, default is 0")
-        // @query装饰器表示这是一个查询参数，用于分页
-        @query
-        offset: uint32 = 0,
-
-        @doc("The limit of the list, 0 means no limit, default is 10")
-        @query
-        limit: uint32 = 10,
-        // 返回类型可以是EmailGroupList或Error，使用|表示联合类型
-    ): EmailGroupList | Error;
+        // 使用通用分页查询参数
+        ...PaginationParams
+    ): PagedResult<EmailGroup> | Error;
 
     /** Read a email group */
     // HTTP GET请求，用于读取单个邮件组信息

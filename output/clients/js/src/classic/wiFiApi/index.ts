@@ -26,9 +26,9 @@ import {
   WiFiApiScanNetworksOptionalParams,
 } from "../../api/wiFiApi/options.js";
 import {
-  WiFiNetworkList,
+  PagedResultWiFiNetwork,
   WiFiNetwork,
-  WiFiConfigList,
+  PagedResultWiFiConfig,
   WiFiConfig,
   WiFiConnectionStatus,
 } from "../../models/models.js";
@@ -79,10 +79,8 @@ export interface WiFiApiOperations {
   ) => Promise<WiFiConfig>;
   /** List WiFi configurations */
   listConfigs: (
-    offset: number,
-    limit: number,
     options?: WiFiApiListConfigsOptionalParams,
-  ) => Promise<WiFiConfigList>;
+  ) => Promise<PagedResultWiFiConfig>;
   /** Get details of a specific WiFi network */
   getNetwork: (
     id: string,
@@ -92,7 +90,7 @@ export interface WiFiApiOperations {
   scanNetworks: (
     force: boolean,
     options?: WiFiApiScanNetworksOptionalParams,
-  ) => Promise<WiFiNetworkList>;
+  ) => Promise<PagedResultWiFiNetwork>;
 }
 
 function _getWiFiApi(context: OpenApiV2Context) {
@@ -118,11 +116,8 @@ function _getWiFiApi(context: OpenApiV2Context) {
     ) => createConfig(context, body, options),
     getConfig: (id: string, options?: WiFiApiGetConfigOptionalParams) =>
       getConfig(context, id, options),
-    listConfigs: (
-      offset: number,
-      limit: number,
-      options?: WiFiApiListConfigsOptionalParams,
-    ) => listConfigs(context, offset, limit, options),
+    listConfigs: (options?: WiFiApiListConfigsOptionalParams) =>
+      listConfigs(context, options),
     getNetwork: (id: string, options?: WiFiApiGetNetworkOptionalParams) =>
       getNetwork(context, id, options),
     scanNetworks: (
