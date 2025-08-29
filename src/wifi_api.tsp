@@ -20,13 +20,13 @@ namespace OpenApiV2;
 @route("/wifi")
 // Add tags to API for categorization in generated documentation
 @tag("WiFi")
-// Set API to require Bearer Token authentication
-@useAuth(BearerAuth)
 // Define WiFiApi interface containing WiFi related operations
 interface WiFiApi {
   /** List WiFi networks */
   // @get decorator indicates this is an HTTP GET request
   @get
+  // Set API to require Bearer Token authentication
+  @useAuth(BearerAuth)
   @route("/networks")
   listNetworks(
     // Use common pagination query parameters
@@ -36,6 +36,8 @@ interface WiFiApi {
   /** Read WiFi network */
   // HTTP GET request to read single WiFi network information
   @get
+  // Set API to require Bearer Token authentication
+  @useAuth(BearerAuth)
   @route("/networks/{id}")
   readNetwork(
     @doc("The id of the WiFi network to read")
@@ -47,6 +49,8 @@ interface WiFiApi {
   /** List WiFi configurations */
   // HTTP GET request to list WiFi configurations
   @get
+  // Set API to require Bearer Token authentication
+  @useAuth(BearerAuth)
   @route("/configs")
   listConfigs(
     // Use common pagination query parameters
@@ -56,6 +60,8 @@ interface WiFiApi {
   /** Read WiFi configuration */
   // HTTP GET request to read single WiFi configuration
   @get
+  // Set API to require Bearer Token authentication
+  @useAuth(BearerAuth)
   @route("/configs/{id}")
   readConfig(
     @doc("The id of the WiFi configuration to read")
@@ -67,6 +73,8 @@ interface WiFiApi {
   /** Create WiFi configuration */
   // @post decorator indicates this is an HTTP POST request for creating WiFi configuration
   @post
+  // Set API to require Bearer Token authentication
+  @useAuth(BearerAuth)
   @route("/configs")
   // @body decorator indicates parameter will be sent as request body
   createConfig(@body body: WiFiConfig): WiFiConfig | Error;
@@ -74,6 +82,8 @@ interface WiFiApi {
   /** Update WiFi configuration */
   // HTTP PUT request for updating WiFi configuration
   @put
+  // Set API to require Bearer Token authentication
+  @useAuth(BearerAuth)
   @route("/configs/{id}")
   updateConfig(
     @doc("The id of the WiFi configuration to update")
@@ -87,6 +97,8 @@ interface WiFiApi {
   /** Delete WiFi configuration */
   // @delete decorator indicates this is an HTTP DELETE request for deleting WiFi configuration
   @delete
+  // Set API to require Bearer Token authentication
+  @useAuth(BearerAuth)
   @route("/configs/{id}")
   deleteConfig(
     @doc("The id of the WiFi configuration to delete")
@@ -98,6 +110,8 @@ interface WiFiApi {
   /** Connect to WiFi network */
   // HTTP POST request to connect to WiFi network
   @post
+  // Set API to require Bearer Token authentication
+  @useAuth(BearerAuth)
   @route("/networks/{id}/connect")
   connect(
     @doc("The id of the WiFi network to connect")
@@ -111,6 +125,8 @@ interface WiFiApi {
   /** Disconnect from WiFi network */
   // HTTP POST request to disconnect from WiFi network
   @post
+  // Set API to require Bearer Token authentication
+  @useAuth(BearerAuth)
   @route("/networks/{id}/disconnect")
   disconnect(
     @doc("The id of the WiFi network to disconnect")

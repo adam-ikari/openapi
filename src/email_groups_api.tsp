@@ -20,13 +20,13 @@ namespace OpenApiV2;
 @route("/email-groups")
 // Add tags to API for categorization in generated documentation
 @tag("EmailGroups")
-// Set API to require Bearer Token authentication
-@useAuth(BearerAuth)
 // Define EmailsGroupApi interface containing email group related operations
 interface EmailsGroupApi {
     /** List email groups */
     // @get decorator indicates this is an HTTP GET request
     @get
+    // Set API to require Bearer Token authentication
+    @useAuth(BearerAuth)
     list(
         // Use common pagination query parameters
         ...PaginationParams
@@ -35,6 +35,8 @@ interface EmailsGroupApi {
     /** Read a email group */
     // HTTP GET request to read single email group information
     @get
+    // Set API to require Bearer Token authentication
+    @useAuth(BearerAuth)
     read(
         @doc("The id of the Email Group to read")
         // @path decorator indicates this is a path parameter
@@ -45,6 +47,8 @@ interface EmailsGroupApi {
     /** Create a email group */
     // @post decorator indicates this is an HTTP POST request for creating email group
     @post
+    // Set API to require Bearer Token authentication
+    @useAuth(BearerAuth)
     create(
         // Note: There might be an error here, should use EmailGroup instead of Email
         @body body: Email,
@@ -53,6 +57,8 @@ interface EmailsGroupApi {
     /** Update a email group */
     // HTTP PUT request for updating email group information
     @put
+    // Set API to require Bearer Token authentication
+    @useAuth(BearerAuth)
     update(
         @doc("The id of the Email Group to update")
         // @path decorator indicates this is a path parameter
@@ -65,6 +71,8 @@ interface EmailsGroupApi {
     /** Delete a email group */
     // @delete decorator indicates this is an HTTP DELETE request for deleting email group
     @delete
+    // Set API to require Bearer Token authentication
+    @useAuth(BearerAuth)
     delete(
         @doc("The id of the Email Group to delete")
         // @path decorator indicates this is a path parameter

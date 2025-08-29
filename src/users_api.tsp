@@ -20,13 +20,13 @@ namespace OpenApiV2;
 @route("/users")
 // Add tags to API for categorization in generated documentation
 @tag("Users")
-// Set API to require Bearer Token authentication
-@useAuth(BearerAuth)
 // Define UsersApi interface containing user related operations
 interface UsersApi {
   /** List users */
   // @get decorator indicates this is an HTTP GET request
   @get
+  // Set API to require Bearer Token authentication
+  @useAuth(BearerAuth)
   list(
     // Use common pagination query parameters
     ...PaginationParams
@@ -35,6 +35,8 @@ interface UsersApi {
   /** Read users */
   // HTTP GET request to read single user information
   @get
+  // Set API to require Bearer Token authentication
+  @useAuth(BearerAuth)
   read(
     @doc("The id of the user to read")
     // @path decorator indicates this is a path parameter, will replace {id} placeholder in route
@@ -45,12 +47,16 @@ interface UsersApi {
   /** Create a users */
   // @post decorator indicates this is an HTTP POST request for creating resource
   @post
+  // Set API to require Bearer Token authentication
+  @useAuth(BearerAuth)
   // @body decorator indicates parameter will be sent as request body
   create(@body body: User): User | Error;
 
   /** Update a users */
   // HTTP PUT request for updating user information
   @put
+  // Set API to require Bearer Token authentication
+  @useAuth(BearerAuth)
   update(
     @doc("The id of the user to update")
     // @path decorator indicates this is a path parameter
@@ -63,6 +69,8 @@ interface UsersApi {
   /** Delete a users */
   // @delete decorator indicates this is an HTTP DELETE request for deleting user
   @delete
+  // Set API to require Bearer Token authentication
+  @useAuth(BearerAuth)
   delete(
     @doc("The id of the user to delete")
     // @path decorator indicates this is a path parameter

@@ -20,13 +20,13 @@ namespace OpenApiV2;
 @route("/emails")
 // Add tags to API for categorization in generated documentation
 @tag("Emails")
-// Set API to require Bearer Token authentication
-@useAuth(BearerAuth)
 // Define EmailsApi interface containing email related operations
 interface EmailsApi {
   /** List emails */
   // @get decorator indicates this is an HTTP GET request
   @get
+  // Set API to require Bearer Token authentication
+  @useAuth(BearerAuth)
   list(
     // Use common pagination query parameters
     ...PaginationParams
@@ -35,6 +35,8 @@ interface EmailsApi {
   /** Read emails */
   // HTTP GET request to read single email information
   @get
+  // Set API to require Bearer Token authentication
+  @useAuth(BearerAuth)
   read(
     @doc("The id of the email to read")
     // @path decorator indicates this is a path parameter, will replace {id} placeholder in route
@@ -45,12 +47,16 @@ interface EmailsApi {
   /** Create a emails */
   // @post decorator indicates this is an HTTP POST request for creating resource
   @post
+  // Set API to require Bearer Token authentication
+  @useAuth(BearerAuth)
   // @body decorator indicates parameter will be sent as request body
   create(@body body: Email): Email | Error;
 
   /** Update a emails */
   // HTTP PUT request for updating email information
   @put
+  // Set API to require Bearer Token authentication
+  @useAuth(BearerAuth)
   update(
     @doc("The id of the email to update")
     // @path decorator indicates this is a path parameter
@@ -63,6 +69,8 @@ interface EmailsApi {
   /** Delete a emails */
   // @delete decorator indicates this is an HTTP DELETE request for deleting email
   @delete
+  // Set API to require Bearer Token authentication
+  @useAuth(BearerAuth)
   delete(
     @doc("The id of the email to delete")
     // @path decorator indicates this is a path parameter
