@@ -1,17 +1,17 @@
 // Licensed under the MIT License.
 
 /**
- * 通用分页响应模型
- * 所有列表接口的返回类型都应该继承自该模型
+ * Generic pagination response model
+ * All list interface return types should inherit from this model
  */
 export interface PagedResultUser {
-  /** 数据列表 */
+  /** Data list */
   items: User[];
-  /** 数据总数量 */
+  /** Total data count */
   total: number;
-  /** 偏移量，从0开始 */
+  /** Offset, starting from 0 */
   offset: number;
-  /** 每页数量，0表示不限制 */
+  /** Number per page, 0 means no limit */
   limit: number;
 }
 
@@ -147,17 +147,17 @@ export function errorDeserializer(item: any): ErrorModel {
 export type StatusCode = 100000 | 100001;
 
 /**
- * 通用分页响应模型
- * 所有列表接口的返回类型都应该继承自该模型
+ * Generic pagination response model
+ * All list interface return types should inherit from this model
  */
 export interface PagedResultEmail {
-  /** 数据列表 */
+  /** Data list */
   items: Email[];
-  /** 数据总数量 */
+  /** Total data count */
   total: number;
-  /** 偏移量，从0开始 */
+  /** Offset, starting from 0 */
   offset: number;
-  /** 每页数量，0表示不限制 */
+  /** Number per page, 0 means no limit */
   limit: number;
 }
 
@@ -183,17 +183,17 @@ export function emailArrayDeserializer(result: Array<Email>): any[] {
 }
 
 /**
- * 通用分页响应模型
- * 所有列表接口的返回类型都应该继承自该模型
+ * Generic pagination response model
+ * All list interface return types should inherit from this model
  */
 export interface PagedResultEmailGroup {
-  /** 数据列表 */
+  /** Data list */
   items: EmailGroup[];
-  /** 数据总数量 */
+  /** Total data count */
   total: number;
-  /** 偏移量，从0开始 */
+  /** Offset, starting from 0 */
   offset: number;
-  /** 每页数量，0表示不限制 */
+  /** Number per page, 0 means no limit */
   limit: number;
 }
 
@@ -243,17 +243,17 @@ export function emailGroupDeserializer(item: any): EmailGroup {
 }
 
 /**
- * 通用分页响应模型
- * 所有列表接口的返回类型都应该继承自该模型
+ * Generic pagination response model
+ * All list interface return types should inherit from this model
  */
 export interface PagedResultWiFiNetwork {
-  /** 数据列表 */
+  /** Data list */
   items: WiFiNetwork[];
-  /** 数据总数量 */
+  /** Total data count */
   total: number;
-  /** 偏移量，从0开始 */
+  /** Offset, starting from 0 */
   offset: number;
-  /** 每页数量，0表示不限制 */
+  /** Number per page, 0 means no limit */
   limit: number;
 }
 
@@ -324,17 +324,17 @@ export type WiFiSecurityType = "none" | "wep" | "wpa" | "wpa2" | "wpa3";
 export type WiFiBand = "mixed" | "2_4GHz" | "5GHz" | "6GHz";
 
 /**
- * 通用分页响应模型
- * 所有列表接口的返回类型都应该继承自该模型
+ * Generic pagination response model
+ * All list interface return types should inherit from this model
  */
 export interface PagedResultWiFiConfig {
-  /** 数据列表 */
+  /** Data list */
   items: WiFiConfig[];
-  /** 数据总数量 */
+  /** Total data count */
   total: number;
-  /** 偏移量，从0开始 */
+  /** Offset, starting from 0 */
   offset: number;
-  /** 每页数量，0表示不限制 */
+  /** Number per page, 0 means no limit */
   limit: number;
 }
 
@@ -428,56 +428,5 @@ export function wiFiConnectRequestSerializer(item: WiFiConnectRequest): any {
   return {
     password: item["password"],
     saveConfiguration: item["saveConfiguration"],
-  };
-}
-
-/** model interface _ConnectNetworkResponse */
-export interface _ConnectNetworkResponse {
-  success: boolean;
-  message: string;
-  status: WiFiConnectionStatus;
-}
-
-export function _connectNetworkResponseDeserializer(
-  item: any,
-): _ConnectNetworkResponse {
-  return {
-    success: item["success"],
-    message: item["message"],
-    status: item["status"],
-  };
-}
-
-/** model interface _DisconnectResponse */
-export interface _DisconnectResponse {
-  success: boolean;
-  message: string;
-  status: WiFiConnectionStatus;
-}
-
-export function _disconnectResponseDeserializer(
-  item: any,
-): _DisconnectResponse {
-  return {
-    success: item["success"],
-    message: item["message"],
-    status: item["status"],
-  };
-}
-
-/** model interface _GetStatusResponse */
-export interface _GetStatusResponse {
-  status: WiFiConnectionStatus;
-  connectedNetwork?: WiFiNetwork;
-  message: string;
-}
-
-export function _getStatusResponseDeserializer(item: any): _GetStatusResponse {
-  return {
-    status: item["status"],
-    connectedNetwork: !item["connectedNetwork"]
-      ? item["connectedNetwork"]
-      : wiFiNetworkDeserializer(item["connectedNetwork"]),
-    message: item["message"],
   };
 }

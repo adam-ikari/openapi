@@ -1,13 +1,13 @@
-// 导入TypeSpec核心库，用于HTTP协议支持
+// Import TypeSpec core library for HTTP protocol support
 import "@typespec/http";
-// 导入OpenAPI库，用于生成OpenAPI文档
+// Import OpenAPI library for generating OpenAPI documentation
 import "@typespec/openapi";
 
-// 使用TypeSpec.Http和TypeSpec.OpenAPI命名空间
+// Using TypeSpec.Http and TypeSpec.OpenAPI namespaces
 using TypeSpec.Http;
 using TypeSpec.OpenAPI;
 
-// 为枚举类型添加文档说明
+// Add documentation for the enum type
 @doc("Email authentication type enum values")
 // 使用@extension装饰器添加OpenAPI扩展属性，这里是为Azure SDK生成服务
 @extension(
@@ -39,7 +39,7 @@ using TypeSpec.OpenAPI;
 )
 // 添加另一个扩展属性，用于指定枚举变量名
 @extension("x-enum-varnames", #["password", "otp", "totp", "oauth2"])
-// 定义枚举类型，表示邮件认证方式
+// Define enum type representing email authentication methods
 enum EmailAuthType {
     password: "password",
     otp: "otp",
@@ -47,12 +47,12 @@ enum EmailAuthType {
     oauth2: "oauth2",
 }
 
-// 定义Email模型
+// Define Email model
 model Email {
-    // 为字段添加文档说明
+    // Add documentation for the field
     @doc("The id of the email")
-    // @visibility装饰器用于控制字段在不同操作中的可见性
-    // Lifecycle.Read表示该字段仅在读取操作中可见
+    // The @visibility decorator controls field visibility in different operations
+    // Lifecycle.Read indicates this field is only visible in read operations
     @visibility(Lifecycle.Read)
     id: uint32;
 
@@ -77,7 +77,7 @@ model Email {
     password?: string;
 
     @doc("The timestamp when the email was created")
-    // 使用unix时间戳类型
+    // Using unix timestamp type
     createdAt: unixTimestamp32;
 
     @doc("The timestamp when the email was updated")

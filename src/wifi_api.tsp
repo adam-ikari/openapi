@@ -1,142 +1,121 @@
-// 导入TypeSpec核心库，用于HTTP协议支持
+// Import TypeSpec core library for HTTP protocol support
 import "@typespec/http";
-// 导入OpenAPI库，用于生成OpenAPI文档
+// Import OpenAPI library for generating OpenAPI documentation
 import "@typespec/openapi";
 
-// 导入WiFi相关的模型定义
+// Import WiFi related model definitions
 import "./models/wifi.tsp";
-// 导入错误处理模型
+// Import error handling model
 import "./models/error.tsp";
-// 导入通用分页模型
+// Import common pagination model
 import "./common/pagination.tsp";
 
-// 使用TypeSpec.Http命名空间，简化后续装饰器的使用
+// Use TypeSpec.Http namespace to simplify subsequent decorator usage
 using TypeSpec.Http;
 
-// 定义命名空间，将相关API组织在一起
+// Define namespace to organize related APIs
 namespace OpenApiV2;
 
-// 为API接口设置路由前缀
+// Set route prefix for API interface
 @route("/wifi")
-// 为API添加标签，用于在生成的文档中分类显示
+// Add tags to API for categorization in generated documentation
 @tag("WiFi")
-// 设置API需要Bearer Token认证
+// Set API to require Bearer Token authentication
 @useAuth(BearerAuth)
-// 定义WiFiApi接口，包含WiFi相关的操作
+// Define WiFiApi interface containing WiFi related operations
 interface WiFiApi {
-  /** Scan for available WiFi networks */
-  // @get装饰器表示这是一个HTTP GET请求
+  /** List WiFi networks */
+  // @get decorator indicates this is an HTTP GET request
   @get
   @route("/networks")
-  scanNetworks(
-    @doc("Whether to force a rescan instead of using cached results")
-    @query
-    force: boolean = false,
-    // 使用通用分页查询参数
+  listNetworks(
+    // Use common pagination query parameters
     ...PaginationParams
   ): PagedResult<WiFiNetwork> | Error;
 
-  /** Get details of a specific WiFi network */
-  // HTTP GET请求，用于获取特定WiFi网络信息
+  /** Read WiFi network */
+  // HTTP GET request to read single WiFi network information
   @get
   @route("/networks/{id}")
-  getNetwork(
-    @doc("The id of the WiFi network to get")
-    // @path装饰器表示这是一个路径参数，会替换路由中的{id}占位符
+  readNetwork(
+    @doc("The id of the WiFi network to read")
+    // @path decorator indicates this is a path parameter
     @path
     id: string,
   ): WiFiNetwork | Error;
 
   /** List WiFi configurations */
-  // HTTP GET请求，用于列出WiFi配置
+  // HTTP GET request to list WiFi configurations
   @get
   @route("/configs")
   listConfigs(
-    // 使用通用分页查询参数
+    // Use common pagination query parameters
     ...PaginationParams
   ): PagedResult<WiFiConfig> | Error;
 
-  /** Get a specific WiFi configuration */
-  // HTTP GET请求，用于获取特定WiFi配置
+  /** Read WiFi configuration */
+  // HTTP GET request to read single WiFi configuration
   @get
   @route("/configs/{id}")
-  getConfig(
-    @doc("The id of the WiFi configuration to get")
+  readConfig(
+    @doc("The id of the WiFi configuration to read")
+    // @path decorator indicates this is a path parameter
     @path
     id: string,
   ): WiFiConfig | Error;
 
-  /** Create a WiFi configuration */
-  // @post装饰器表示这是一个HTTP POST请求，用于创建资源
+  /** Create WiFi configuration */
+  // @post decorator indicates this is an HTTP POST request for creating WiFi configuration
   @post
   @route("/configs")
-  createConfig(
-    @doc("The WiFi configuration to create")
-    @body body: WiFiConfig
-  ): WiFiConfig | Error;
+  // @body decorator indicates parameter will be sent as request body
+  createConfig(@body body: WiFiConfig): WiFiConfig | Error;
 
-  /** Update a WiFi configuration */
-  // @put装饰器表示这是一个HTTP PUT请求，用于完整更新资源
+  /** Update WiFi configuration */
+  // HTTP PUT request for updating WiFi configuration
   @put
   @route("/configs/{id}")
   updateConfig(
     @doc("The id of the WiFi configuration to update")
+    // @path decorator indicates this is a path parameter
     @path
     id: string,
-
-    @doc("The WiFi configuration update data")
+    // @body decorator indicates the parameter will be sent as request body
     @body body: WiFiConfig,
   ): WiFiConfig | Error;
 
-  /** Delete a WiFi configuration */
-  // @delete装饰器表示这是一个HTTP DELETE请求，用于删除资源
+  /** Delete WiFi configuration */
+  // @delete decorator indicates this is an HTTP DELETE request for deleting WiFi configuration
   @delete
   @route("/configs/{id}")
   deleteConfig(
     @doc("The id of the WiFi configuration to delete")
+    // @path decorator indicates this is a path parameter
     @path
     id: string,
-  ): void | Error;
+  ): WiFiConfig | Error;
 
-  /** Connect to a WiFi network */
-  // @post装饰器表示这是一个HTTP POST请求，用于执行连接操作
+  /** Connect to WiFi network */
+  // HTTP POST request to connect to WiFi network
   @post
   @route("/networks/{id}/connect")
-  connectNetwork(
-    @doc("The id of the WiFi network to connect to")
+  connect(
+    @doc("The id of the WiFi network to connect")
+    // @path decorator indicates this is a path parameter
     @path
     id: string,
-    
-    @doc("Connection parameters")
-    @body body?: WiFiConnectRequest
-  ): {
-    // 连接结果
-    success: boolean;
-    message: string;
-    status: WiFiConnectionStatus;
-  } | Error;
+    // @body decorator indicates the parameter will be sent as request body
+    @body body: WiFiConnectRequest,
+  ): boolean | Error;
 
-  /** Disconnect from current WiFi network */
-  // @post装饰器表示这是一个HTTP POST请求，用于断开连接
+  /** Disconnect from WiFi network */
+  // HTTP POST request to disconnect from WiFi network
   @post
-  @route("/disconnect")
+  @route("/networks/{id}/disconnect")
   disconnect(
-  ): {
-    // 断开连接结果
-    success: boolean;
-    message: string;
-    status: WiFiConnectionStatus;
-  } | Error;
-  
-  /** Get current WiFi connection status */
-  // @get装饰器表示这是一个HTTP GET请求，用于获取当前连接状态
-  @get
-  @route("/status")
-  getStatus(
-  ): {
-    // 当前连接状态
-    status: WiFiConnectionStatus;
-    connectedNetwork?: WiFiNetwork;
-    message: string;
-  } | Error;
+    @doc("The id of the WiFi network to disconnect")
+    // @path decorator indicates this is a path parameter
+    @path
+    id: string,
+  ): boolean | Error;
 }

@@ -25,7 +25,7 @@ export interface UsersApiOperations {
    *         Please add @clientName("clientName") or @clientName("<JS-Specific-Name>", "javascript")
    *         to the operation to override the generated name.
    */
-  delete: (id: string, options?: UsersApiDeleteOptionalParams) => Promise<void>;
+  delete: (id: string, options?: UsersApiDeleteOptionalParams) => Promise<User>;
   /** Update a users */
   update: (
     id: string,

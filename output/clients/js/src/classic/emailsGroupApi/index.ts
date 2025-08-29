@@ -32,13 +32,13 @@ export interface EmailsGroupApiOperations {
   delete: (
     id: string,
     options?: EmailsGroupApiDeleteOptionalParams,
-  ) => Promise<void>;
+  ) => Promise<EmailGroup>;
   /** Update a email group */
   update: (
     id: string,
     body: EmailGroup,
     options?: EmailsGroupApiUpdateOptionalParams,
-  ) => Promise<Email>;
+  ) => Promise<EmailGroup>;
   /** Create a email group */
   create: (
     body: Email,

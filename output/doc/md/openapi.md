@@ -96,10 +96,10 @@ List users
 
 <h3 id="usersapi_list-parameters">Parameters</h3>
 
-| Name   | In    | Type            | Required | Description                     |
-| ------ | ----- | --------------- | -------- | ------------------------------- |
-| offset | query | integer(uint32) | false    | 偏移量，从0开始，默认为0        |
-| limit  | query | integer(uint32) | false    | 每页数量，0表示不限制，默认为10 |
+| Name   | In    | Type            | Required | Description                                      |
+| ------ | ----- | --------------- | -------- | ------------------------------------------------ |
+| offset | query | integer(uint32) | false    | Offset, starting from 0, default is 0            |
+| limit  | query | integer(uint32) | false    | Number per page, 0 means no limit, default is 10 |
 
 > Example responses
 
@@ -142,12 +142,12 @@ List users
 
 Status Code **200**
 
-_通用分页响应模型
-所有列表接口的返回类型都应该继承自该模型_
+_Generic pagination response model
+All list interface return types should inherit from this model_
 
 | Name          | Type                                  | Required | Restrictions | Description                              |
 | ------------- | ------------------------------------- | -------- | ------------ | ---------------------------------------- |
-| » items       | [[User](#schemauser)]                 | true     | none         | 数据列表                                 |
+| » items       | [[User](#schemauser)]                 | true     | none         | Data list                                |
 | »» id         | integer(uint32)                       | true     | read-only    | The unique identifier of the user        |
 | »» name       | string                                | true     | none         | The name of the user                     |
 | »» age        | integer(uint8)                        | true     | none         | The age of the user, min 1, max 120      |
@@ -161,9 +161,9 @@ _通用分页响应模型
 | »» avatar     | string(uri)                           | false    | none         | The avatar of the user                   |
 | »» createdAt  | integer(int32)                        | true     | none         | The timestamp when the user was created  |
 | »» updatedAt  | integer(int32)                        | true     | none         | The timestamp when the user was updated  |
-| » total       | integer(uint32)                       | true     | none         | 数据总数量                               |
-| » offset      | integer(uint32)                       | true     | none         | 偏移量，从0开始                          |
-| » limit       | integer(uint32)                       | true     | none         | 每页数量，0表示不限制                    |
+| » total       | integer(uint32)                       | true     | none         | Total data count                         |
+| » offset      | integer(uint32)                       | true     | none         | Offset, starting from 0                  |
+| » limit       | integer(uint32)                       | true     | none         | Number per page, 0 means no limit        |
 
 #### Enumerated Values
 
@@ -674,21 +674,33 @@ Delete a users
 
 > Example responses
 
-> default Response
+> 200 Response
 
 ```json
 {
-  "code": 100000,
-  "msg": "string"
+  "id": 0,
+  "name": "string",
+  "age": 1,
+  "gender": "secret",
+  "email": {
+    "id": 0,
+    "email": "user@example.com",
+    "authType": "password",
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "avatar": "https://example.com/avatar.png",
+  "createdAt": 0,
+  "updatedAt": 0
 }
 ```
 
 <h3 id="usersapi_delete-responses">Responses</h3>
 
-| Status  | Meaning                                                         | Description                                                                  | Schema                |
-| ------- | --------------------------------------------------------------- | ---------------------------------------------------------------------------- | --------------------- |
-| 204     | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | There is no content to send for this request, but the headers may be useful. | None                  |
-| default | Default                                                         | An unexpected error response.                                                | [Error](#schemaerror) |
+| Status  | Meaning                                                 | Description                   | Schema                |
+| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [User](#schemauser)   |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -769,10 +781,10 @@ List emails
 
 <h3 id="emailsapi_list-parameters">Parameters</h3>
 
-| Name   | In    | Type            | Required | Description                     |
-| ------ | ----- | --------------- | -------- | ------------------------------- |
-| offset | query | integer(uint32) | false    | 偏移量，从0开始，默认为0        |
-| limit  | query | integer(uint32) | false    | 每页数量，0表示不限制，默认为10 |
+| Name   | In    | Type            | Required | Description                                      |
+| ------ | ----- | --------------- | -------- | ------------------------------------------------ |
+| offset | query | integer(uint32) | false    | Offset, starting from 0, default is 0            |
+| limit  | query | integer(uint32) | false    | Number per page, 0 means no limit, default is 10 |
 
 > Example responses
 
@@ -806,20 +818,20 @@ List emails
 
 Status Code **200**
 
-_通用分页响应模型
-所有列表接口的返回类型都应该继承自该模型_
+_Generic pagination response model
+All list interface return types should inherit from this model_
 
 | Name         | Type                                  | Required | Restrictions | Description                              |
 | ------------ | ------------------------------------- | -------- | ------------ | ---------------------------------------- |
-| » items      | [[Email](#schemaemail)]               | true     | none         | 数据列表                                 |
+| » items      | [[Email](#schemaemail)]               | true     | none         | Data list                                |
 | »» id        | integer(uint32)                       | true     | read-only    | The id of the email                      |
 | »» email     | string                                | true     | none         | The email address                        |
 | »» authType  | [EmailAuthType](#schemaemailauthtype) | true     | none         | The authentication type                  |
 | »» createdAt | integer(int32)                        | true     | none         | The timestamp when the email was created |
 | »» updatedAt | integer(int32)                        | true     | none         | The timestamp when the email was updated |
-| » total      | integer(uint32)                       | true     | none         | 数据总数量                               |
-| » offset     | integer(uint32)                       | true     | none         | 偏移量，从0开始                          |
-| » limit      | integer(uint32)                       | true     | none         | 每页数量，0表示不限制                    |
+| » total      | integer(uint32)                       | true     | none         | Total data count                         |
+| » offset     | integer(uint32)                       | true     | none         | Offset, starting from 0                  |
+| » limit      | integer(uint32)                       | true     | none         | Number per page, 0 means no limit        |
 
 #### Enumerated Values
 
@@ -1264,21 +1276,24 @@ Delete a emails
 
 > Example responses
 
-> default Response
+> 200 Response
 
 ```json
 {
-  "code": 100000,
-  "msg": "string"
+  "id": 0,
+  "email": "user@example.com",
+  "authType": "password",
+  "createdAt": 0,
+  "updatedAt": 0
 }
 ```
 
 <h3 id="emailsapi_delete-responses">Responses</h3>
 
-| Status  | Meaning                                                         | Description                                                                  | Schema                |
-| ------- | --------------------------------------------------------------- | ---------------------------------------------------------------------------- | --------------------- |
-| 204     | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | There is no content to send for this request, but the headers may be useful. | None                  |
-| default | Default                                                         | An unexpected error response.                                                | [Error](#schemaerror) |
+| Status  | Meaning                                                 | Description                   | Schema                |
+| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [Email](#schemaemail) |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -1359,10 +1374,10 @@ List email groups
 
 <h3 id="emailsgroupapi_list-parameters">Parameters</h3>
 
-| Name   | In    | Type            | Required | Description                     |
-| ------ | ----- | --------------- | -------- | ------------------------------- |
-| offset | query | integer(uint32) | false    | 偏移量，从0开始，默认为0        |
-| limit  | query | integer(uint32) | false    | 每页数量，0表示不限制，默认为10 |
+| Name   | In    | Type            | Required | Description                                      |
+| ------ | ----- | --------------- | -------- | ------------------------------------------------ |
+| offset | query | integer(uint32) | false    | Offset, starting from 0, default is 0            |
+| limit  | query | integer(uint32) | false    | Number per page, 0 means no limit, default is 10 |
 
 > Example responses
 
@@ -1402,12 +1417,12 @@ List email groups
 
 Status Code **200**
 
-_通用分页响应模型
-所有列表接口的返回类型都应该继承自该模型_
+_Generic pagination response model
+All list interface return types should inherit from this model_
 
 | Name          | Type                                  | Required | Restrictions | Description                              |
 | ------------- | ------------------------------------- | -------- | ------------ | ---------------------------------------- |
-| » items       | [[EmailGroup](#schemaemailgroup)]     | true     | none         | 数据列表                                 |
+| » items       | [[EmailGroup](#schemaemailgroup)]     | true     | none         | Data list                                |
 | »» id         | integer(uint32)                       | true     | read-only    | The unique identifier of the group       |
 | »» name       | string                                | true     | none         | The name of the group                    |
 | »» members    | [[Email](#schemaemail)]               | true     | none         | The members of the group                 |
@@ -1416,9 +1431,9 @@ _通用分页响应模型
 | »»» authType  | [EmailAuthType](#schemaemailauthtype) | true     | none         | The authentication type                  |
 | »»» createdAt | integer(int32)                        | true     | none         | The timestamp when the email was created |
 | »»» updatedAt | integer(int32)                        | true     | none         | The timestamp when the email was updated |
-| » total       | integer(uint32)                       | true     | none         | 数据总数量                               |
-| » offset      | integer(uint32)                       | true     | none         | 偏移量，从0开始                          |
-| » limit       | integer(uint32)                       | true     | none         | 每页数量，0表示不限制                    |
+| » total       | integer(uint32)                       | true     | none         | Total data count                         |
+| » offset      | integer(uint32)                       | true     | none         | Offset, starting from 0                  |
+| » limit       | integer(uint32)                       | true     | none         | Number per page, 0 means no limit        |
 
 #### Enumerated Values
 
@@ -1782,19 +1797,25 @@ Update a email group
 ```json
 {
   "id": 0,
-  "email": "user@example.com",
-  "authType": "password",
-  "createdAt": 0,
-  "updatedAt": 0
+  "name": "string",
+  "members": [
+    {
+      "id": 0,
+      "email": "user@example.com",
+      "authType": "password",
+      "createdAt": 0,
+      "updatedAt": 0
+    }
+  ]
 }
 ```
 
 <h3 id="emailsgroupapi_update-responses">Responses</h3>
 
-| Status  | Meaning                                                 | Description                   | Schema                |
-| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
-| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [Email](#schemaemail) |
-| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
+| Status  | Meaning                                                 | Description                   | Schema                          |
+| ------- | ------------------------------------------------------- | ----------------------------- | ------------------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [EmailGroup](#schemaemailgroup) |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror)           |
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -1879,21 +1900,30 @@ Delete a email group
 
 > Example responses
 
-> default Response
+> 200 Response
 
 ```json
 {
-  "code": 100000,
-  "msg": "string"
+  "id": 0,
+  "name": "string",
+  "members": [
+    {
+      "id": 0,
+      "email": "user@example.com",
+      "authType": "password",
+      "createdAt": 0,
+      "updatedAt": 0
+    }
+  ]
 }
 ```
 
 <h3 id="emailsgroupapi_delete-responses">Responses</h3>
 
-| Status  | Meaning                                                         | Description                                                                  | Schema                |
-| ------- | --------------------------------------------------------------- | ---------------------------------------------------------------------------- | --------------------- |
-| 204     | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | There is no content to send for this request, but the headers may be useful. | None                  |
-| default | Default                                                         | An unexpected error response.                                                | [Error](#schemaerror) |
+| Status  | Meaning                                                 | Description                   | Schema                          |
+| ------- | ------------------------------------------------------- | ----------------------------- | ------------------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [EmailGroup](#schemaemailgroup) |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror)           |
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -1974,10 +2004,10 @@ List WiFi configurations
 
 <h3 id="wifiapi_listconfigs-parameters">Parameters</h3>
 
-| Name   | In    | Type            | Required | Description                     |
-| ------ | ----- | --------------- | -------- | ------------------------------- |
-| offset | query | integer(uint32) | false    | 偏移量，从0开始，默认为0        |
-| limit  | query | integer(uint32) | false    | 每页数量，0表示不限制，默认为10 |
+| Name   | In    | Type            | Required | Description                                      |
+| ------ | ----- | --------------- | -------- | ------------------------------------------------ |
+| offset | query | integer(uint32) | false    | Offset, starting from 0, default is 0            |
+| limit  | query | integer(uint32) | false    | Number per page, 0 means no limit, default is 10 |
 
 > Example responses
 
@@ -2015,12 +2045,12 @@ List WiFi configurations
 
 Status Code **200**
 
-_通用分页响应模型
-所有列表接口的返回类型都应该继承自该模型_
+_Generic pagination response model
+All list interface return types should inherit from this model_
 
 | Name           | Type                                                | Required | Restrictions | Description                                                                                        |
 | -------------- | --------------------------------------------------- | -------- | ------------ | -------------------------------------------------------------------------------------------------- |
-| » items        | [[WiFiConfig](#schemawificonfig)]                   | true     | none         | 数据列表                                                                                           |
+| » items        | [[WiFiConfig](#schemawificonfig)]                   | true     | none         | Data list                                                                                          |
 | »» id          | string                                              | true     | read-only    | The unique identifier of the WiFi configuration                                                    |
 | »» ssid        | string                                              | true     | none         | The SSID of the WiFi network to connect to                                                         |
 | »» security    | [WiFiSecurityType](#schemawifisecuritytype)         | true     | none         | The security type of the WiFi network                                                              |
@@ -2030,9 +2060,9 @@ _通用分页响应模型
 | »» status      | [WiFiConnectionStatus](#schemawificonnectionstatus) | true     | none         | The current connection status of this configuration                                                |
 | »» createdAt   | integer(int32)                                      | true     | read-only    | The timestamp when the configuration was created                                                   |
 | »» updatedAt   | integer(int32)                                      | true     | read-only    | The timestamp when the configuration was last updated                                              |
-| » total        | integer(uint32)                                     | true     | none         | 数据总数量                                                                                         |
-| » offset       | integer(uint32)                                     | true     | none         | 偏移量，从0开始                                                                                    |
-| » limit        | integer(uint32)                                     | true     | none         | 每页数量，0表示不限制                                                                              |
+| » total        | integer(uint32)                                     | true     | none         | Total data count                                                                                   |
+| » offset       | integer(uint32)                                     | true     | none         | Offset, starting from 0                                                                            |
+| » limit        | integer(uint32)                                     | true     | none         | Number per page, 0 means no limit                                                                  |
 
 #### Enumerated Values
 
@@ -2133,7 +2163,7 @@ System.out.println(response.toString());
 
 `POST /api/v2/wifi/configs`
 
-Create a WiFi configuration
+Create WiFi configuration
 
 > Body parameter
 
@@ -2150,9 +2180,9 @@ Create a WiFi configuration
 
 <h3 id="wifiapi_createconfig-parameters">Parameters</h3>
 
-| Name | In   | Type                            | Required | Description                      |
-| ---- | ---- | ------------------------------- | -------- | -------------------------------- |
-| body | body | [WiFiConfig](#schemawificonfig) | true     | The WiFi configuration to create |
+| Name | In   | Type                            | Required | Description |
+| ---- | ---- | ------------------------------- | -------- | ----------- |
+| body | body | [WiFiConfig](#schemawificonfig) | true     | none        |
 
 > Example responses
 
@@ -2184,9 +2214,9 @@ To perform this operation, you must be authenticated by means of one of the foll
 BearerAuth
 </aside>
 
-## WiFiApi_getConfig
+## WiFiApi_readConfig
 
-<a id="opIdWiFiApi_getConfig"></a>
+<a id="opIdWiFiApi_readConfig"></a>
 
 > Code samples
 
@@ -2252,13 +2282,13 @@ System.out.println(response.toString());
 
 `GET /api/v2/wifi/configs/{id}`
 
-Get a specific WiFi configuration
+Read WiFi configuration
 
-<h3 id="wifiapi_getconfig-parameters">Parameters</h3>
+<h3 id="wifiapi_readconfig-parameters">Parameters</h3>
 
-| Name | In   | Type   | Required | Description                             |
-| ---- | ---- | ------ | -------- | --------------------------------------- |
-| id   | path | string | true     | The id of the WiFi configuration to get |
+| Name | In   | Type   | Required | Description                              |
+| ---- | ---- | ------ | -------- | ---------------------------------------- |
+| id   | path | string | true     | The id of the WiFi configuration to read |
 
 > Example responses
 
@@ -2278,7 +2308,7 @@ Get a specific WiFi configuration
 }
 ```
 
-<h3 id="wifiapi_getconfig-responses">Responses</h3>
+<h3 id="wifiapi_readconfig-responses">Responses</h3>
 
 | Status  | Meaning                                                 | Description                   | Schema                          |
 | ------- | ------------------------------------------------------- | ----------------------------- | ------------------------------- |
@@ -2369,7 +2399,7 @@ System.out.println(response.toString());
 
 `PUT /api/v2/wifi/configs/{id}`
 
-Update a WiFi configuration
+Update WiFi configuration
 
 > Body parameter
 
@@ -2389,7 +2419,7 @@ Update a WiFi configuration
 | Name | In   | Type                            | Required | Description                                |
 | ---- | ---- | ------------------------------- | -------- | ------------------------------------------ |
 | id   | path | string                          | true     | The id of the WiFi configuration to update |
-| body | body | [WiFiConfig](#schemawificonfig) | true     | The WiFi configuration update data         |
+| body | body | [WiFiConfig](#schemawificonfig) | true     | none                                       |
 
 > Example responses
 
@@ -2489,7 +2519,7 @@ System.out.println(response.toString());
 
 `DELETE /api/v2/wifi/configs/{id}`
 
-Delete a WiFi configuration
+Delete WiFi configuration
 
 <h3 id="wifiapi_deleteconfig-parameters">Parameters</h3>
 
@@ -2499,35 +2529,42 @@ Delete a WiFi configuration
 
 > Example responses
 
-> default Response
+> 200 Response
 
 ```json
 {
-  "code": 100000,
-  "msg": "string"
+  "id": "string",
+  "ssid": "string",
+  "security": "none",
+  "password": "pa$$word",
+  "autoConnect": true,
+  "hidden": false,
+  "status": "disconnected",
+  "createdAt": 0,
+  "updatedAt": 0
 }
 ```
 
 <h3 id="wifiapi_deleteconfig-responses">Responses</h3>
 
-| Status  | Meaning                                                         | Description                                                                  | Schema                |
-| ------- | --------------------------------------------------------------- | ---------------------------------------------------------------------------- | --------------------- |
-| 204     | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | There is no content to send for this request, but the headers may be useful. | None                  |
-| default | Default                                                         | An unexpected error response.                                                | [Error](#schemaerror) |
+| Status  | Meaning                                                 | Description                   | Schema                          |
+| ------- | ------------------------------------------------------- | ----------------------------- | ------------------------------- |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | [WiFiConfig](#schemawificonfig) |
+| default | Default                                                 | An unexpected error response. | [Error](#schemaerror)           |
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
 BearerAuth
 </aside>
 
-## WiFiApi_disconnect
+## WiFiApi_listNetworks
 
-<a id="opIdWiFiApi_disconnect"></a>
+<a id="opIdWiFiApi_listNetworks"></a>
 
 > Code samples
 
 ```http
-POST /api/v2/wifi/disconnect HTTP/1.1
+GET /api/v2/wifi/networks HTTP/1.1
 
 Accept: application/json
 
@@ -2540,121 +2577,7 @@ const headers = {
   Accept: "application/json",
 }
 
-fetch("/api/v2/wifi/disconnect", {
-  method: "POST",
-
-  headers: headers,
-})
-  .then(function (res) {
-    return res.json()
-  })
-  .then(function (body) {
-    console.log(body)
-  })
-```
-
-```python
-# python
-
-import requests
-headers = {
-  'Accept': 'application/json'
-}
-
-r = requests.post('/api/v2/wifi/disconnect', headers = headers)
-
-print(r.json())
-
-```
-
-```java
-// Java
-
-URL obj = new URL("/api/v2/wifi/disconnect");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("POST");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-`POST /api/v2/wifi/disconnect`
-
-Disconnect from current WiFi network
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "success": true,
-  "message": "string",
-  "status": "disconnected"
-}
-```
-
-<h3 id="wifiapi_disconnect-responses">Responses</h3>
-
-| Status  | Meaning                                                 | Description                   | Schema                |
-| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
-| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | Inline                |
-| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
-
-<h3 id="wifiapi_disconnect-responseschema">Response Schema</h3>
-
-Status Code **200**
-
-| Name      | Type                                                | Required | Restrictions | Description                        |
-| --------- | --------------------------------------------------- | -------- | ------------ | ---------------------------------- |
-| » success | boolean                                             | true     | none         | none                               |
-| » message | string                                              | true     | none         | none                               |
-| » status  | [WiFiConnectionStatus](#schemawificonnectionstatus) | true     | none         | WiFi connection status enum values |
-
-#### Enumerated Values
-
-| Property | Value         |
-| -------- | ------------- |
-| status   | disconnected  |
-| status   | connecting    |
-| status   | connected     |
-| status   | disconnecting |
-| status   | error         |
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-BearerAuth
-</aside>
-
-## WiFiApi_scanNetworks
-
-<a id="opIdWiFiApi_scanNetworks"></a>
-
-> Code samples
-
-```http
-GET /api/v2/wifi/networks?force=false HTTP/1.1
-
-Accept: application/json
-
-```
-
-```javascript
-// javascript
-
-const headers = {
-  Accept: "application/json",
-}
-
-fetch("/api/v2/wifi/networks?force=false", {
+fetch("/api/v2/wifi/networks", {
   method: "GET",
 
   headers: headers,
@@ -2675,9 +2598,7 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.get('/api/v2/wifi/networks', params={
-  'force': 'false'
-}, headers = headers)
+r = requests.get('/api/v2/wifi/networks', headers = headers)
 
 print(r.json())
 
@@ -2686,7 +2607,7 @@ print(r.json())
 ```java
 // Java
 
-URL obj = new URL("/api/v2/wifi/networks?force=false");
+URL obj = new URL("/api/v2/wifi/networks");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -2704,15 +2625,14 @@ System.out.println(response.toString());
 
 `GET /api/v2/wifi/networks`
 
-Scan for available WiFi networks
+List WiFi networks
 
-<h3 id="wifiapi_scannetworks-parameters">Parameters</h3>
+<h3 id="wifiapi_listnetworks-parameters">Parameters</h3>
 
-| Name   | In    | Type            | Required | Description                                               |
-| ------ | ----- | --------------- | -------- | --------------------------------------------------------- |
-| force  | query | boolean         | true     | Whether to force a rescan instead of using cached results |
-| offset | query | integer(uint32) | false    | 偏移量，从0开始，默认为0                                  |
-| limit  | query | integer(uint32) | false    | 每页数量，0表示不限制，默认为10                           |
+| Name   | In    | Type            | Required | Description                                      |
+| ------ | ----- | --------------- | -------- | ------------------------------------------------ |
+| offset | query | integer(uint32) | false    | Offset, starting from 0, default is 0            |
+| limit  | query | integer(uint32) | false    | Number per page, 0 means no limit, default is 10 |
 
 > Example responses
 
@@ -2741,23 +2661,23 @@ Scan for available WiFi networks
 }
 ```
 
-<h3 id="wifiapi_scannetworks-responses">Responses</h3>
+<h3 id="wifiapi_listnetworks-responses">Responses</h3>
 
 | Status  | Meaning                                                 | Description                   | Schema                |
 | ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
 | 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | Inline                |
 | default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
 
-<h3 id="wifiapi_scannetworks-responseschema">Response Schema</h3>
+<h3 id="wifiapi_listnetworks-responseschema">Response Schema</h3>
 
 Status Code **200**
 
-_通用分页响应模型
-所有列表接口的返回类型都应该继承自该模型_
+_Generic pagination response model
+All list interface return types should inherit from this model_
 
 | Name              | Type                                        | Required | Restrictions | Description                                         |
 | ----------------- | ------------------------------------------- | -------- | ------------ | --------------------------------------------------- |
-| » items           | [[WiFiNetwork](#schemawifinetwork)]         | true     | none         | 数据列表                                            |
+| » items           | [[WiFiNetwork](#schemawifinetwork)]         | true     | none         | Data list                                           |
 | »» id             | string                                      | true     | read-only    | The unique identifier of the WiFi network           |
 | »» ssid           | string                                      | true     | none         | The SSID of the WiFi network                        |
 | »» bssid          | string                                      | true     | none         | The BSSID of the WiFi network                       |
@@ -2769,9 +2689,9 @@ _通用分页响应模型
 | »» isConnected    | boolean                                     | true     | none         | Whether this network is the currently connected one |
 | »» isSaved        | boolean                                     | true     | none         | Whether this network has a saved configuration      |
 | »» lastSeen       | integer(int32)                              | true     | read-only    | The timestamp when the network was last seen        |
-| » total           | integer(uint32)                             | true     | none         | 数据总数量                                          |
-| » offset          | integer(uint32)                             | true     | none         | 偏移量，从0开始                                     |
-| » limit           | integer(uint32)                             | true     | none         | 每页数量，0表示不限制                               |
+| » total           | integer(uint32)                             | true     | none         | Total data count                                    |
+| » offset          | integer(uint32)                             | true     | none         | Offset, starting from 0                             |
+| » limit           | integer(uint32)                             | true     | none         | Number per page, 0 means no limit                   |
 
 #### Enumerated Values
 
@@ -2792,9 +2712,9 @@ To perform this operation, you must be authenticated by means of one of the foll
 BearerAuth
 </aside>
 
-## WiFiApi_getNetwork
+## WiFiApi_readNetwork
 
-<a id="opIdWiFiApi_getNetwork"></a>
+<a id="opIdWiFiApi_readNetwork"></a>
 
 > Code samples
 
@@ -2860,13 +2780,13 @@ System.out.println(response.toString());
 
 `GET /api/v2/wifi/networks/{id}`
 
-Get details of a specific WiFi network
+Read WiFi network
 
-<h3 id="wifiapi_getnetwork-parameters">Parameters</h3>
+<h3 id="wifiapi_readnetwork-parameters">Parameters</h3>
 
-| Name | In   | Type   | Required | Description                       |
-| ---- | ---- | ------ | -------- | --------------------------------- |
-| id   | path | string | true     | The id of the WiFi network to get |
+| Name | In   | Type   | Required | Description                        |
+| ---- | ---- | ------ | -------- | ---------------------------------- |
+| id   | path | string | true     | The id of the WiFi network to read |
 
 > Example responses
 
@@ -2888,7 +2808,7 @@ Get details of a specific WiFi network
 }
 ```
 
-<h3 id="wifiapi_getnetwork-responses">Responses</h3>
+<h3 id="wifiapi_readnetwork-responses">Responses</h3>
 
 | Status  | Meaning                                                 | Description                   | Schema                            |
 | ------- | ------------------------------------------------------- | ----------------------------- | --------------------------------- |
@@ -2900,9 +2820,9 @@ To perform this operation, you must be authenticated by means of one of the foll
 BearerAuth
 </aside>
 
-## WiFiApi_connectNetwork
+## WiFiApi_connect
 
-<a id="opIdWiFiApi_connectNetwork"></a>
+<a id="opIdWiFiApi_connect"></a>
 
 > Code samples
 
@@ -2910,7 +2830,7 @@ BearerAuth
 POST /api/v2/wifi/networks/{id}/connect HTTP/1.1
 
 Content-Type: application/json
-Accept: application/json
+Accept: text/plain
 
 ```
 
@@ -2922,7 +2842,7 @@ const inputBody = '{
 }';
 const headers = {
   'Content-Type':'application/json',
-  'Accept':'application/json'
+  'Accept':'text/plain'
 };
 
 fetch('/api/v2/wifi/networks/{id}/connect',
@@ -2945,7 +2865,7 @@ fetch('/api/v2/wifi/networks/{id}/connect',
 import requests
 headers = {
   'Content-Type': 'application/json',
-  'Accept': 'application/json'
+  'Accept': 'text/plain'
 }
 
 r = requests.post('/api/v2/wifi/networks/{id}/connect', headers = headers)
@@ -2975,7 +2895,7 @@ System.out.println(response.toString());
 
 `POST /api/v2/wifi/networks/{id}/connect`
 
-Connect to a WiFi network
+Connect to WiFi network
 
 > Body parameter
 
@@ -2986,67 +2906,52 @@ Connect to a WiFi network
 }
 ```
 
-<h3 id="wifiapi_connectnetwork-parameters">Parameters</h3>
+<h3 id="wifiapi_connect-parameters">Parameters</h3>
 
-| Name | In   | Type                                            | Required | Description                              |
-| ---- | ---- | ----------------------------------------------- | -------- | ---------------------------------------- |
-| id   | path | string                                          | true     | The id of the WiFi network to connect to |
-| body | body | [WiFiConnectRequest](#schemawificonnectrequest) | false    | Connection parameters                    |
+| Name | In   | Type                                            | Required | Description                           |
+| ---- | ---- | ----------------------------------------------- | -------- | ------------------------------------- |
+| id   | path | string                                          | true     | The id of the WiFi network to connect |
+| body | body | [WiFiConnectRequest](#schemawificonnectrequest) | true     | none                                  |
 
 > Example responses
 
 > 200 Response
 
+```
+true
+```
+
+> default Response
+
 ```json
 {
-  "success": true,
-  "message": "string",
-  "status": "disconnected"
+  "code": 100000,
+  "msg": "string"
 }
 ```
 
-<h3 id="wifiapi_connectnetwork-responses">Responses</h3>
+<h3 id="wifiapi_connect-responses">Responses</h3>
 
 | Status  | Meaning                                                 | Description                   | Schema                |
 | ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
-| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | Inline                |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | boolean               |
 | default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
-
-<h3 id="wifiapi_connectnetwork-responseschema">Response Schema</h3>
-
-Status Code **200**
-
-| Name      | Type                                                | Required | Restrictions | Description                        |
-| --------- | --------------------------------------------------- | -------- | ------------ | ---------------------------------- |
-| » success | boolean                                             | true     | none         | none                               |
-| » message | string                                              | true     | none         | none                               |
-| » status  | [WiFiConnectionStatus](#schemawificonnectionstatus) | true     | none         | WiFi connection status enum values |
-
-#### Enumerated Values
-
-| Property | Value         |
-| -------- | ------------- |
-| status   | disconnected  |
-| status   | connecting    |
-| status   | connected     |
-| status   | disconnecting |
-| status   | error         |
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
 BearerAuth
 </aside>
 
-## WiFiApi_getStatus
+## WiFiApi_disconnect
 
-<a id="opIdWiFiApi_getStatus"></a>
+<a id="opIdWiFiApi_disconnect"></a>
 
 > Code samples
 
 ```http
-GET /api/v2/wifi/status HTTP/1.1
+POST /api/v2/wifi/networks/{id}/disconnect HTTP/1.1
 
-Accept: application/json
+Accept: text/plain
 
 ```
 
@@ -3054,11 +2959,11 @@ Accept: application/json
 // javascript
 
 const headers = {
-  Accept: "application/json",
+  Accept: "text/plain",
 }
 
-fetch("/api/v2/wifi/status", {
-  method: "GET",
+fetch("/api/v2/wifi/networks/{id}/disconnect", {
+  method: "POST",
 
   headers: headers,
 })
@@ -3075,10 +2980,10 @@ fetch("/api/v2/wifi/status", {
 
 import requests
 headers = {
-  'Accept': 'application/json'
+  'Accept': 'text/plain'
 }
 
-r = requests.get('/api/v2/wifi/status', headers = headers)
+r = requests.post('/api/v2/wifi/networks/{id}/disconnect', headers = headers)
 
 print(r.json())
 
@@ -3087,9 +2992,9 @@ print(r.json())
 ```java
 // Java
 
-URL obj = new URL("/api/v2/wifi/status");
+URL obj = new URL("/api/v2/wifi/networks/{id}/disconnect");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
+con.setRequestMethod("POST");
 int responseCode = con.getResponseCode();
 BufferedReader in = new BufferedReader(
     new InputStreamReader(con.getInputStream()));
@@ -3103,80 +3008,39 @@ System.out.println(response.toString());
 
 ```
 
-`GET /api/v2/wifi/status`
+`POST /api/v2/wifi/networks/{id}/disconnect`
 
-Get current WiFi connection status
+Disconnect from WiFi network
+
+<h3 id="wifiapi_disconnect-parameters">Parameters</h3>
+
+| Name | In   | Type   | Required | Description                              |
+| ---- | ---- | ------ | -------- | ---------------------------------------- |
+| id   | path | string | true     | The id of the WiFi network to disconnect |
 
 > Example responses
 
 > 200 Response
 
+```
+true
+```
+
+> default Response
+
 ```json
 {
-  "status": "disconnected",
-  "connectedNetwork": {
-    "id": "string",
-    "ssid": "string",
-    "bssid": "string",
-    "security": "none",
-    "signalStrength": 0,
-    "band": "mixed",
-    "channel": 0,
-    "hidden": true,
-    "isConnected": true,
-    "isSaved": true,
-    "lastSeen": 0
-  },
-  "message": "string"
+  "code": 100000,
+  "msg": "string"
 }
 ```
 
-<h3 id="wifiapi_getstatus-responses">Responses</h3>
+<h3 id="wifiapi_disconnect-responses">Responses</h3>
 
 | Status  | Meaning                                                 | Description                   | Schema                |
 | ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
-| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | Inline                |
+| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | boolean               |
 | default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
-
-<h3 id="wifiapi_getstatus-responseschema">Response Schema</h3>
-
-Status Code **200**
-
-| Name               | Type                                                | Required | Restrictions | Description                                         |
-| ------------------ | --------------------------------------------------- | -------- | ------------ | --------------------------------------------------- |
-| » status           | [WiFiConnectionStatus](#schemawificonnectionstatus) | true     | none         | WiFi connection status enum values                  |
-| » connectedNetwork | [WiFiNetwork](#schemawifinetwork)                   | false    | none         | none                                                |
-| »» id              | string                                              | true     | read-only    | The unique identifier of the WiFi network           |
-| »» ssid            | string                                              | true     | none         | The SSID of the WiFi network                        |
-| »» bssid           | string                                              | true     | none         | The BSSID of the WiFi network                       |
-| »» security        | [WiFiSecurityType](#schemawifisecuritytype)         | true     | none         | The security type of the WiFi network               |
-| »» signalStrength  | integer(int32)                                      | true     | none         | The signal strength in dBm                          |
-| »» band            | [WiFiBand](#schemawifiband)                         | true     | none         | The WiFi frequency band                             |
-| »» channel         | integer(uint32)                                     | true     | none         | The WiFi channel                                    |
-| »» hidden          | boolean                                             | true     | none         | Whether the network is hidden                       |
-| »» isConnected     | boolean                                             | true     | none         | Whether this network is the currently connected one |
-| »» isSaved         | boolean                                             | true     | none         | Whether this network has a saved configuration      |
-| »» lastSeen        | integer(int32)                                      | true     | read-only    | The timestamp when the network was last seen        |
-| » message          | string                                              | true     | none         | none                                                |
-
-#### Enumerated Values
-
-| Property | Value         |
-| -------- | ------------- |
-| status   | disconnected  |
-| status   | connecting    |
-| status   | connected     |
-| status   | disconnecting |
-| status   | error         |
-| security | none          |
-| security | wep           |
-| security | wpa           |
-| security | wpa2          |
-| security | wpa3          |
-| band     | mixed         |
-| band     | 2_4GHz        |
-| band     | 5GHz          |
-| band     | 6GHz          |
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:

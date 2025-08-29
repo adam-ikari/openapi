@@ -44,16 +44,15 @@ export {
   UsersApiListOptionalParams,
 } from "./api/usersApi/index.js";
 export {
-  WiFiApiGetStatusOptionalParams,
   WiFiApiDisconnectOptionalParams,
-  WiFiApiConnectNetworkOptionalParams,
+  WiFiApiConnectOptionalParams,
   WiFiApiDeleteConfigOptionalParams,
   WiFiApiUpdateConfigOptionalParams,
   WiFiApiCreateConfigOptionalParams,
-  WiFiApiGetConfigOptionalParams,
+  WiFiApiReadConfigOptionalParams,
   WiFiApiListConfigsOptionalParams,
-  WiFiApiGetNetworkOptionalParams,
-  WiFiApiScanNetworksOptionalParams,
+  WiFiApiReadNetworkOptionalParams,
+  WiFiApiListNetworksOptionalParams,
 } from "./api/wiFiApi/index.js";
 export {
   EmailsApiOperations,

@@ -2,107 +2,93 @@
 
 import { OpenApiV2Context } from "../../api/openApiV2Context.js";
 import {
-  getStatus,
   disconnect,
-  connectNetwork,
+  connect,
   deleteConfig,
   updateConfig,
   createConfig,
-  getConfig,
+  readConfig,
   listConfigs,
-  getNetwork,
-  scanNetworks,
+  readNetwork,
+  listNetworks,
 } from "../../api/wiFiApi/operations.js";
 import {
-  WiFiApiGetStatusOptionalParams,
   WiFiApiDisconnectOptionalParams,
-  WiFiApiConnectNetworkOptionalParams,
+  WiFiApiConnectOptionalParams,
   WiFiApiDeleteConfigOptionalParams,
   WiFiApiUpdateConfigOptionalParams,
   WiFiApiCreateConfigOptionalParams,
-  WiFiApiGetConfigOptionalParams,
+  WiFiApiReadConfigOptionalParams,
   WiFiApiListConfigsOptionalParams,
-  WiFiApiGetNetworkOptionalParams,
-  WiFiApiScanNetworksOptionalParams,
+  WiFiApiReadNetworkOptionalParams,
+  WiFiApiListNetworksOptionalParams,
 } from "../../api/wiFiApi/options.js";
 import {
   PagedResultWiFiNetwork,
   WiFiNetwork,
   PagedResultWiFiConfig,
   WiFiConfig,
-  WiFiConnectionStatus,
+  WiFiConnectRequest,
 } from "../../models/models.js";
 
 /** Interface representing a WiFiApi operations. */
 export interface WiFiApiOperations {
-  /** Get current WiFi connection status */
-  getStatus: (options?: WiFiApiGetStatusOptionalParams) => Promise<{
-    status: WiFiConnectionStatus;
-    connectedNetwork?: WiFiNetwork;
-    message: string;
-  }>;
-  /** Disconnect from current WiFi network */
-  disconnect: (options?: WiFiApiDisconnectOptionalParams) => Promise<{
-    success: boolean;
-    message: string;
-    status: WiFiConnectionStatus;
-  }>;
-  /** Connect to a WiFi network */
-  connectNetwork: (
+  /** Disconnect from WiFi network */
+  disconnect: (
     id: string,
-    options?: WiFiApiConnectNetworkOptionalParams,
-  ) => Promise<{
-    success: boolean;
-    message: string;
-    status: WiFiConnectionStatus;
-  }>;
-  /** Delete a WiFi configuration */
+    options?: WiFiApiDisconnectOptionalParams,
+  ) => Promise<boolean>;
+  /** Connect to WiFi network */
+  connect: (
+    id: string,
+    body: WiFiConnectRequest,
+    options?: WiFiApiConnectOptionalParams,
+  ) => Promise<boolean>;
+  /** Delete WiFi configuration */
   deleteConfig: (
     id: string,
     options?: WiFiApiDeleteConfigOptionalParams,
-  ) => Promise<void>;
-  /** Update a WiFi configuration */
+  ) => Promise<WiFiConfig>;
+  /** Update WiFi configuration */
   updateConfig: (
     id: string,
     body: WiFiConfig,
     options?: WiFiApiUpdateConfigOptionalParams,
   ) => Promise<WiFiConfig>;
-  /** Create a WiFi configuration */
+  /** Create WiFi configuration */
   createConfig: (
     body: WiFiConfig,
     options?: WiFiApiCreateConfigOptionalParams,
   ) => Promise<WiFiConfig>;
-  /** Get a specific WiFi configuration */
-  getConfig: (
+  /** Read WiFi configuration */
+  readConfig: (
     id: string,
-    options?: WiFiApiGetConfigOptionalParams,
+    options?: WiFiApiReadConfigOptionalParams,
   ) => Promise<WiFiConfig>;
   /** List WiFi configurations */
   listConfigs: (
     options?: WiFiApiListConfigsOptionalParams,
   ) => Promise<PagedResultWiFiConfig>;
-  /** Get details of a specific WiFi network */
-  getNetwork: (
+  /** Read WiFi network */
+  readNetwork: (
     id: string,
-    options?: WiFiApiGetNetworkOptionalParams,
+    options?: WiFiApiReadNetworkOptionalParams,
   ) => Promise<WiFiNetwork>;
-  /** Scan for available WiFi networks */
-  scanNetworks: (
-    force: boolean,
-    options?: WiFiApiScanNetworksOptionalParams,
+  /** List WiFi networks */
+  listNetworks: (
+    options?: WiFiApiListNetworksOptionalParams,
   ) => Promise<PagedResultWiFiNetwork>;
 }
 
 function _getWiFiApi(context: OpenApiV2Context) {
   return {
-    getStatus: (options?: WiFiApiGetStatusOptionalParams) =>
-      getStatus(context, options),
-    disconnect: (options?: WiFiApiDisconnectOptionalParams) =>
-      disconnect(context, options),
-    connectNetwork: (
+    disconnect: (id: string, options?: WiFiApiDisconnectOptionalParams) =>
+      disconnect(context, id, options),
+    connect: (
       id: string,
-      options?: WiFiApiConnectNetworkOptionalParams,
-    ) => connectNetwork(context, id, options),
+      body: WiFiConnectRequest,
+      options?: WiFiApiConnectOptionalParams,
+    ) => connect(context, id, body, options),
     deleteConfig: (id: string, options?: WiFiApiDeleteConfigOptionalParams) =>
       deleteConfig(context, id, options),
     updateConfig: (
@@ -114,16 +100,14 @@ function _getWiFiApi(context: OpenApiV2Context) {
       body: WiFiConfig,
       options?: WiFiApiCreateConfigOptionalParams,
     ) => createConfig(context, body, options),
-    getConfig: (id: string, options?: WiFiApiGetConfigOptionalParams) =>
-      getConfig(context, id, options),
+    readConfig: (id: string, options?: WiFiApiReadConfigOptionalParams) =>
+      readConfig(context, id, options),
     listConfigs: (options?: WiFiApiListConfigsOptionalParams) =>
       listConfigs(context, options),
-    getNetwork: (id: string, options?: WiFiApiGetNetworkOptionalParams) =>
-      getNetwork(context, id, options),
-    scanNetworks: (
-      force: boolean,
-      options?: WiFiApiScanNetworksOptionalParams,
-    ) => scanNetworks(context, force, options),
+    readNetwork: (id: string, options?: WiFiApiReadNetworkOptionalParams) =>
+      readNetwork(context, id, options),
+    listNetworks: (options?: WiFiApiListNetworksOptionalParams) =>
+      listNetworks(context, options),
   };
 }
 

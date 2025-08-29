@@ -1,72 +1,72 @@
-// 导入TypeSpec核心库，用于HTTP协议支持
+// Import TypeSpec core library for HTTP protocol support
 import "@typespec/http";
-// 导入OpenAPI库，用于生成OpenAPI文档
+// Import OpenAPI library for generating OpenAPI documentation
 import "@typespec/openapi";
 
-// 导入邮件相关的模型定义
+// Import email related model definitions
 import "./models/email.tsp";
-// 导入错误处理模型
+// Import error handling model
 import "./models/error.tsp";
-// 导入通用分页模型
+// Import common pagination model
 import "./common/pagination.tsp";
 
-// 使用TypeSpec.Http命名空间，简化后续装饰器的使用
+// Use TypeSpec.Http namespace to simplify subsequent decorator usage
 using TypeSpec.Http;
 
-// 定义命名空间，将相关API组织在一起
+// Define namespace to organize related APIs
 namespace OpenApiV2;
 
-// 为API接口设置路由前缀
+// Set route prefix for API interface
 @route("/emails")
-// 为API添加标签，用于在生成的文档中分类显示
+// Add tags to API for categorization in generated documentation
 @tag("Emails")
-// 设置API需要Bearer Token认证
+// Set API to require Bearer Token authentication
 @useAuth(BearerAuth)
-// 定义EmailsApi接口，包含邮件相关的操作
+// Define EmailsApi interface containing email related operations
 interface EmailsApi {
   /** List emails */
-  // @get装饰器表示这是一个HTTP GET请求
+  // @get decorator indicates this is an HTTP GET request
   @get
   list(
-    // 使用通用分页查询参数
+    // Use common pagination query parameters
     ...PaginationParams
   ): PagedResult<Email> | Error;
 
   /** Read emails */
-  // HTTP GET请求，用于读取单个邮件信息
+  // HTTP GET request to read single email information
   @get
   read(
     @doc("The id of the email to read")
-    // @path装饰器表示这是一个路径参数，会替换路由中的{id}占位符
+    // @path decorator indicates this is a path parameter, will replace {id} placeholder in route
     @path
     id: string,
   ): Email | Error;
 
   /** Create a emails */
-  // @post装饰器表示这是一个HTTP POST请求，用于创建资源
+  // @post decorator indicates this is an HTTP POST request for creating resource
   @post
-  // @body装饰器表示参数将作为请求体发送
+  // @body decorator indicates parameter will be sent as request body
   create(@body body: Email): Email | Error;
 
   /** Update a emails */
-  // @put装饰器表示这是一个HTTP PUT请求，用于完整更新资源
+  // HTTP PUT request for updating email information
   @put
   update(
     @doc("The id of the email to update")
+    // @path decorator indicates this is a path parameter
     @path
     id: string,
-
-    // 更新操作的请求体
+    // @body decorator indicates the parameter will be sent as request body
     @body body: Email,
   ): Email | Error;
 
   /** Delete a emails */
-  // @delete装饰器表示这是一个HTTP DELETE请求，用于删除资源
+  // @delete decorator indicates this is an HTTP DELETE request for deleting email
   @delete
   delete(
     @doc("The id of the email to delete")
+    // @path decorator indicates this is a path parameter
     @path
     id: string,
-    // 删除操作通常不需要返回内容，所以返回void或Error
-  ): void | Error;
+  ): Email | Error;
 }

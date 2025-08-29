@@ -1,46 +1,46 @@
-// 导入TypeSpec核心库，用于HTTP协议支持
+// Import TypeSpec core library for HTTP protocol support
 import "@typespec/http";
-// 导入OpenAPI库，用于生成OpenAPI文档
+// Import OpenAPI library for generating OpenAPI documentation
 import "@typespec/openapi";
 
-// 使用TypeSpec.Http和TypeSpec.OpenAPI命名空间
+// Use TypeSpec.Http and TypeSpec.OpenAPI namespaces
 using TypeSpec.Http;
 using TypeSpec.OpenAPI;
 
 /**
- * 通用分页响应模型
- * 所有列表接口的返回类型都应该继承自该模型
+ * Generic pagination response model
+ * All list interface return types should inherit from this model
  */
 model PagedResult<T> {
-  @doc("数据列表")
-  @summary("数据列表")
+  @doc("Data list")
+  @summary("Data list")
   items: T[];
 
-  @doc("数据总数量")
-  @summary("数据总数量")
+  @doc("Total data count")
+  @summary("Total data count")
   total: uint32;
 
-  @doc("偏移量，从0开始")
-  @summary("偏移量")
+  @doc("Offset, starting from 0")
+  @summary("Offset")
   offset: uint32;
 
-  @doc("每页数量，0表示不限制")
-  @summary("每页数量")
+  @doc("Number per page, 0 means no limit")
+  @summary("Number per page")
   limit: uint32;
 }
 
 /**
- * 分页查询参数模型
- * 用于所有列表接口的查询参数
+ * Pagination query parameters model
+ * Used for query parameters of all list interfaces
  */
 model PaginationParams {
-  @doc("偏移量，从0开始，默认为0")
-  @summary("偏移量")
+  @doc("Offset, starting from 0, default is 0")
+  @summary("Offset")
   @query
   offset?: uint32 = 0;
 
-  @doc("每页数量，0表示不限制，默认为10")
-  @summary("每页数量")
+  @doc("Number per page, 0 means no limit, default is 10")
+  @summary("Number per page")
   @query
   limit?: uint32 = 10;
 }

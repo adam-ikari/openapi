@@ -1,13 +1,13 @@
-// 导入TypeSpec核心库，用于HTTP协议支持
+// Import TypeSpec core library for HTTP protocol support
 import "@typespec/http";
-// 导入OpenAPI库，用于生成OpenAPI文档
+// Import OpenAPI library for generating OpenAPI documentation
 import "@typespec/openapi";
 
-// 使用TypeSpec.Http和TypeSpec.OpenAPI命名空间
+// Using TypeSpec.Http and TypeSpec.OpenAPI namespaces
 using TypeSpec.Http;
 using TypeSpec.OpenAPI;
 
-// 定义WiFi安全类型枚举
+// Define WiFi security type enum
 @doc("WiFi security type enum values")
 @extension(
     "x-ms-enum",
@@ -28,7 +28,7 @@ enum WiFiSecurityType {
     wpa3: "wpa3",
 }
 
-// 定义WiFi频段枚举
+// Define WiFi frequency band enum
 @doc("WiFi frequency band enum values")
 @extension(
     "x-ms-enum",
@@ -61,7 +61,7 @@ enum WiFiBand {
     `6GHz`: "6GHz",
 }
 
-// 定义WiFi网络状态枚举
+// Define WiFi connection status enum
 @doc("WiFi connection status enum values")
 @extension(
     "x-ms-enum",
@@ -98,7 +98,7 @@ enum WiFiConnectionStatus {
     error: "error",
 }
 
-// 定义WiFi网络模型 - 表示扫描到的WiFi网络
+// Define WiFi network model - represents a scanned WiFi network
 model WiFiNetwork {
     @doc("The unique identifier of the WiFi network")
     @visibility(Lifecycle.Read)
@@ -136,7 +136,7 @@ model WiFiNetwork {
     lastSeen: unixTimestamp32;
 }
 
-// 定义WiFi配置模型 - 表示用户保存的WiFi配置
+// Define WiFi configuration model - represents a saved WiFi configuration by the user
 model WiFiConfig {
     @doc("The unique identifier of the WiFi configuration")
     @visibility(Lifecycle.Read)
@@ -170,7 +170,7 @@ model WiFiConfig {
     updatedAt: unixTimestamp32;
 }
 
-// 定义WiFi连接请求模型
+// Define WiFi connection request model
 model WiFiConnectRequest {
     @doc("The password for the WiFi network (required for secured networks)")
     @secret
