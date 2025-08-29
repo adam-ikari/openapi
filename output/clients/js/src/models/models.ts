@@ -10,13 +10,13 @@ import {
  * 所有列表接口的返回类型都应该继承自该模型
  */
 export interface PagedResultUser {
-  /** 数据列表 */
+  /** Items */
   items: User[];
-  /** 数据总数量 */
+  /** totol count */
   total: number;
-  /** 偏移量，从0开始 */
+  /** offset, default 0 */
   offset: number;
-  /** 每页数量，0表示不限制 */
+  /** limit, default 10 */
   limit: number;
 }
 
@@ -156,13 +156,13 @@ export type StatusCode = 100000 | 100001;
  * 所有列表接口的返回类型都应该继承自该模型
  */
 export interface PagedResultEmail {
-  /** 数据列表 */
+  /** Items */
   items: Email[];
-  /** 数据总数量 */
+  /** totol count */
   total: number;
-  /** 偏移量，从0开始 */
+  /** offset, default 0 */
   offset: number;
-  /** 每页数量，0表示不限制 */
+  /** limit, default 10 */
   limit: number;
 }
 
@@ -192,13 +192,13 @@ export function emailArrayDeserializer(result: Array<Email>): any[] {
  * 所有列表接口的返回类型都应该继承自该模型
  */
 export interface PagedResultEmailGroup {
-  /** 数据列表 */
+  /** Items */
   items: EmailGroup[];
-  /** 数据总数量 */
+  /** totol count */
   total: number;
-  /** 偏移量，从0开始 */
+  /** offset, default 0 */
   offset: number;
-  /** 每页数量，0表示不限制 */
+  /** limit, default 10 */
   limit: number;
 }
 
@@ -252,13 +252,13 @@ export function emailGroupDeserializer(item: any): EmailGroup {
  * 所有列表接口的返回类型都应该继承自该模型
  */
 export interface PagedResultWiFiNetwork {
-  /** 数据列表 */
+  /** Items */
   items: WiFiNetwork[];
-  /** 数据总数量 */
+  /** totol count */
   total: number;
-  /** 偏移量，从0开始 */
+  /** offset, default 0 */
   offset: number;
-  /** 每页数量，0表示不限制 */
+  /** limit, default 10 */
   limit: number;
 }
 
@@ -333,13 +333,13 @@ export type WiFiBand = "mixed" | "2_4GHz" | "5GHz" | "6GHz";
  * 所有列表接口的返回类型都应该继承自该模型
  */
 export interface PagedResultWiFiConfig {
-  /** 数据列表 */
+  /** Items */
   items: WiFiConfig[];
-  /** 数据总数量 */
+  /** totol count */
   total: number;
-  /** 偏移量，从0开始 */
+  /** offset, default 0 */
   offset: number;
-  /** 每页数量，0表示不限制 */
+  /** limit, default 10 */
   limit: number;
 }
 
@@ -538,13 +538,13 @@ export function _uploadCertificateResponseDeserializer(
  * 所有列表接口的返回类型都应该继承自该模型
  */
 export interface PagedResultCertificateInfo {
-  /** 数据列表 */
+  /** Items */
   items: CertificateInfo[];
-  /** 数据总数量 */
+  /** totol count */
   total: number;
-  /** 偏移量，从0开始 */
+  /** offset, default 0 */
   offset: number;
-  /** 每页数量，0表示不限制 */
+  /** limit, default 10 */
   limit: number;
 }
 

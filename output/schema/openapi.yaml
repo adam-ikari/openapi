@@ -89,23 +89,19 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/CertificateInfo'
-                    description: 数据列表
-                    title: 数据列表
+                    description: Items
                   total:
                     type: integer
                     format: uint32
-                    description: 数据总数量
-                    title: 数据总数量
+                    description: totol count
                   offset:
                     type: integer
                     format: uint32
-                    description: 偏移量，从0开始
-                    title: 偏移量
+                    description: offset, default 0
                   limit:
                     type: integer
                     format: uint32
-                    description: 每页数量，0表示不限制
-                    title: 每页数量
+                    description: limit, default 10
                 description: |-
                   通用分页响应模型
                   所有列表接口的返回类型都应该继承自该模型
@@ -208,23 +204,19 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/EmailGroup'
-                    description: 数据列表
-                    title: 数据列表
+                    description: Items
                   total:
                     type: integer
                     format: uint32
-                    description: 数据总数量
-                    title: 数据总数量
+                    description: totol count
                   offset:
                     type: integer
                     format: uint32
-                    description: 偏移量，从0开始
-                    title: 偏移量
+                    description: offset, default 0
                   limit:
                     type: integer
                     format: uint32
-                    description: 每页数量，0表示不限制
-                    title: 每页数量
+                    description: limit, default 10
                 description: |-
                   通用分页响应模型
                   所有列表接口的返回类型都应该继承自该模型
@@ -373,23 +365,19 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/Email'
-                    description: 数据列表
-                    title: 数据列表
+                    description: Items
                   total:
                     type: integer
                     format: uint32
-                    description: 数据总数量
-                    title: 数据总数量
+                    description: totol count
                   offset:
                     type: integer
                     format: uint32
-                    description: 偏移量，从0开始
-                    title: 偏移量
+                    description: offset, default 0
                   limit:
                     type: integer
                     format: uint32
-                    description: 每页数量，0表示不限制
-                    title: 每页数量
+                    description: limit, default 10
                 description: |-
                   通用分页响应模型
                   所有列表接口的返回类型都应该继承自该模型
@@ -538,23 +526,19 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/User'
-                    description: 数据列表
-                    title: 数据列表
+                    description: Items
                   total:
                     type: integer
                     format: uint32
-                    description: 数据总数量
-                    title: 数据总数量
+                    description: totol count
                   offset:
                     type: integer
                     format: uint32
-                    description: 偏移量，从0开始
-                    title: 偏移量
+                    description: offset, default 0
                   limit:
                     type: integer
                     format: uint32
-                    description: 每页数量，0表示不限制
-                    title: 每页数量
+                    description: limit, default 10
                 description: |-
                   通用分页响应模型
                   所有列表接口的返回类型都应该继承自该模型
@@ -703,23 +687,19 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/WiFiConfig'
-                    description: 数据列表
-                    title: 数据列表
+                    description: Items
                   total:
                     type: integer
                     format: uint32
-                    description: 数据总数量
-                    title: 数据总数量
+                    description: totol count
                   offset:
                     type: integer
                     format: uint32
-                    description: 偏移量，从0开始
-                    title: 偏移量
+                    description: offset, default 0
                   limit:
                     type: integer
                     format: uint32
-                    description: 每页数量，0表示不限制
-                    title: 每页数量
+                    description: limit, default 10
                 description: |-
                   通用分页响应模型
                   所有列表接口的返回类型都应该继承自该模型
@@ -911,23 +891,19 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/WiFiNetwork'
-                    description: 数据列表
-                    title: 数据列表
+                    description: Items
                   total:
                     type: integer
                     format: uint32
-                    description: 数据总数量
-                    title: 数据总数量
+                    description: totol count
                   offset:
                     type: integer
                     format: uint32
-                    description: 偏移量，从0开始
-                    title: 偏移量
+                    description: offset, default 0
                   limit:
                     type: integer
                     format: uint32
-                    description: 每页数量，0表示不限制
-                    title: 每页数量
+                    description: limit, default 10
                 description: |-
                   通用分页响应模型
                   所有列表接口的返回类型都应该继承自该模型
@@ -1053,22 +1029,20 @@ components:
       name: limit
       in: query
       required: false
-      description: 每页数量，0表示不限制，默认为10
+      description: limit, default 10
       schema:
         type: integer
         format: uint32
-        title: 每页数量
         default: 10
       explode: false
     PaginationParams.offset:
       name: offset
       in: query
       required: false
-      description: 偏移量，从0开始，默认为0
+      description: offset, default 0
       schema:
         type: integer
         format: uint32
-        title: 偏移量
         default: 0
       explode: false
   schemas:

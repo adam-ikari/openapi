@@ -10,8 +10,9 @@ import "./models/error.tsp";
 // 导入通用分页模型
 import "./common/pagination.tsp";
 
-// 使用TypeSpec.Http命名空间，简化后续装饰器的使用
+// 使用TypeSpec.Http和TypeSpec.OpenAPI命名空间
 using TypeSpec.Http;
+using TypeSpec.OpenAPI;
 
 // 定义命名空间，将相关API组织在一起
 namespace OpenApiV2;

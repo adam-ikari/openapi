@@ -94,10 +94,10 @@ List users
 
 <h3 id="usersapi_list-parameters">Parameters</h3>
 
-| Name   | In    | Type            | Required | Description                     |
-| ------ | ----- | --------------- | -------- | ------------------------------- |
-| offset | query | integer(uint32) | false    | 偏移量，从0开始，默认为0        |
-| limit  | query | integer(uint32) | false    | 每页数量，0表示不限制，默认为10 |
+| Name   | In    | Type            | Required | Description       |
+| ------ | ----- | --------------- | -------- | ----------------- |
+| offset | query | integer(uint32) | false    | offset, default 0 |
+| limit  | query | integer(uint32) | false    | limit, default 10 |
 
 > Example responses
 
@@ -145,7 +145,7 @@ _通用分页响应模型
 
 | Name          | Type                                  | Required | Restrictions | Description                              |
 | ------------- | ------------------------------------- | -------- | ------------ | ---------------------------------------- |
-| » items       | [[User](#schemauser)]                 | true     | none         | 数据列表                                 |
+| » items       | [[User](#schemauser)]                 | true     | none         | Items                                    |
 | »» id         | integer(uint32)                       | true     | read-only    | The unique identifier of the user        |
 | »» name       | string                                | true     | none         | The name of the user                     |
 | »» age        | integer(uint8)                        | true     | none         | The age of the user, min 1, max 120      |
@@ -159,9 +159,9 @@ _通用分页响应模型
 | »» avatar     | string(uri)                           | false    | none         | The avatar of the user                   |
 | »» createdAt  | integer(int32)                        | true     | none         | The timestamp when the user was created  |
 | »» updatedAt  | integer(int32)                        | true     | none         | The timestamp when the user was updated  |
-| » total       | integer(uint32)                       | true     | none         | 数据总数量                               |
-| » offset      | integer(uint32)                       | true     | none         | 偏移量，从0开始                          |
-| » limit       | integer(uint32)                       | true     | none         | 每页数量，0表示不限制                    |
+| » total       | integer(uint32)                       | true     | none         | totol count                              |
+| » offset      | integer(uint32)                       | true     | none         | offset, default 0                        |
+| » limit       | integer(uint32)                       | true     | none         | limit, default 10                        |
 
 #### Enumerated Values
 
@@ -767,10 +767,10 @@ List emails
 
 <h3 id="emailsapi_list-parameters">Parameters</h3>
 
-| Name   | In    | Type            | Required | Description                     |
-| ------ | ----- | --------------- | -------- | ------------------------------- |
-| offset | query | integer(uint32) | false    | 偏移量，从0开始，默认为0        |
-| limit  | query | integer(uint32) | false    | 每页数量，0表示不限制，默认为10 |
+| Name   | In    | Type            | Required | Description       |
+| ------ | ----- | --------------- | -------- | ----------------- |
+| offset | query | integer(uint32) | false    | offset, default 0 |
+| limit  | query | integer(uint32) | false    | limit, default 10 |
 
 > Example responses
 
@@ -809,15 +809,15 @@ _通用分页响应模型
 
 | Name         | Type                                  | Required | Restrictions | Description                              |
 | ------------ | ------------------------------------- | -------- | ------------ | ---------------------------------------- |
-| » items      | [[Email](#schemaemail)]               | true     | none         | 数据列表                                 |
+| » items      | [[Email](#schemaemail)]               | true     | none         | Items                                    |
 | »» id        | integer(uint32)                       | true     | read-only    | The id of the email                      |
 | »» email     | string                                | true     | none         | The email address                        |
 | »» authType  | [EmailAuthType](#schemaemailauthtype) | true     | none         | The authentication type                  |
 | »» createdAt | integer(int32)                        | true     | none         | The timestamp when the email was created |
 | »» updatedAt | integer(int32)                        | true     | none         | The timestamp when the email was updated |
-| » total      | integer(uint32)                       | true     | none         | 数据总数量                               |
-| » offset     | integer(uint32)                       | true     | none         | 偏移量，从0开始                          |
-| » limit      | integer(uint32)                       | true     | none         | 每页数量，0表示不限制                    |
+| » total      | integer(uint32)                       | true     | none         | totol count                              |
+| » offset     | integer(uint32)                       | true     | none         | offset, default 0                        |
+| » limit      | integer(uint32)                       | true     | none         | limit, default 10                        |
 
 #### Enumerated Values
 
@@ -1357,10 +1357,10 @@ List email groups
 
 <h3 id="emailsgroupapi_list-parameters">Parameters</h3>
 
-| Name   | In    | Type            | Required | Description                     |
-| ------ | ----- | --------------- | -------- | ------------------------------- |
-| offset | query | integer(uint32) | false    | 偏移量，从0开始，默认为0        |
-| limit  | query | integer(uint32) | false    | 每页数量，0表示不限制，默认为10 |
+| Name   | In    | Type            | Required | Description       |
+| ------ | ----- | --------------- | -------- | ----------------- |
+| offset | query | integer(uint32) | false    | offset, default 0 |
+| limit  | query | integer(uint32) | false    | limit, default 10 |
 
 > Example responses
 
@@ -1405,7 +1405,7 @@ _通用分页响应模型
 
 | Name          | Type                                  | Required | Restrictions | Description                              |
 | ------------- | ------------------------------------- | -------- | ------------ | ---------------------------------------- |
-| » items       | [[EmailGroup](#schemaemailgroup)]     | true     | none         | 数据列表                                 |
+| » items       | [[EmailGroup](#schemaemailgroup)]     | true     | none         | Items                                    |
 | »» id         | integer(uint32)                       | true     | read-only    | The unique identifier of the group       |
 | »» name       | string                                | true     | none         | The name of the group                    |
 | »» members    | [[Email](#schemaemail)]               | true     | none         | The members of the group                 |
@@ -1414,9 +1414,9 @@ _通用分页响应模型
 | »»» authType  | [EmailAuthType](#schemaemailauthtype) | true     | none         | The authentication type                  |
 | »»» createdAt | integer(int32)                        | true     | none         | The timestamp when the email was created |
 | »»» updatedAt | integer(int32)                        | true     | none         | The timestamp when the email was updated |
-| » total       | integer(uint32)                       | true     | none         | 数据总数量                               |
-| » offset      | integer(uint32)                       | true     | none         | 偏移量，从0开始                          |
-| » limit       | integer(uint32)                       | true     | none         | 每页数量，0表示不限制                    |
+| » total       | integer(uint32)                       | true     | none         | totol count                              |
+| » offset      | integer(uint32)                       | true     | none         | offset, default 0                        |
+| » limit       | integer(uint32)                       | true     | none         | limit, default 10                        |
 
 #### Enumerated Values
 
@@ -1972,10 +1972,10 @@ List WiFi configurations
 
 <h3 id="wifiapi_listconfigs-parameters">Parameters</h3>
 
-| Name   | In    | Type            | Required | Description                     |
-| ------ | ----- | --------------- | -------- | ------------------------------- |
-| offset | query | integer(uint32) | false    | 偏移量，从0开始，默认为0        |
-| limit  | query | integer(uint32) | false    | 每页数量，0表示不限制，默认为10 |
+| Name   | In    | Type            | Required | Description       |
+| ------ | ----- | --------------- | -------- | ----------------- |
+| offset | query | integer(uint32) | false    | offset, default 0 |
+| limit  | query | integer(uint32) | false    | limit, default 10 |
 
 > Example responses
 
@@ -2018,7 +2018,7 @@ _通用分页响应模型
 
 | Name           | Type                                                | Required | Restrictions | Description                                                                                        |
 | -------------- | --------------------------------------------------- | -------- | ------------ | -------------------------------------------------------------------------------------------------- |
-| » items        | [[WiFiConfig](#schemawificonfig)]                   | true     | none         | 数据列表                                                                                           |
+| » items        | [[WiFiConfig](#schemawificonfig)]                   | true     | none         | Items                                                                                              |
 | »» id          | string                                              | true     | read-only    | The unique identifier of the WiFi configuration                                                    |
 | »» ssid        | string                                              | true     | none         | The SSID of the WiFi network to connect to                                                         |
 | »» security    | [WiFiSecurityType](#schemawifisecuritytype)         | true     | none         | The security type of the WiFi network                                                              |
@@ -2028,9 +2028,9 @@ _通用分页响应模型
 | »» status      | [WiFiConnectionStatus](#schemawificonnectionstatus) | true     | none         | The current connection status of this configuration                                                |
 | »» createdAt   | integer(int32)                                      | true     | read-only    | The timestamp when the configuration was created                                                   |
 | »» updatedAt   | integer(int32)                                      | true     | read-only    | The timestamp when the configuration was last updated                                              |
-| » total        | integer(uint32)                                     | true     | none         | 数据总数量                                                                                         |
-| » offset       | integer(uint32)                                     | true     | none         | 偏移量，从0开始                                                                                    |
-| » limit        | integer(uint32)                                     | true     | none         | 每页数量，0表示不限制                                                                              |
+| » total        | integer(uint32)                                     | true     | none         | totol count                                                                                        |
+| » offset       | integer(uint32)                                     | true     | none         | offset, default 0                                                                                  |
+| » limit        | integer(uint32)                                     | true     | none         | limit, default 10                                                                                  |
 
 #### Enumerated Values
 
@@ -2709,8 +2709,8 @@ Scan for available WiFi networks
 | Name   | In    | Type            | Required | Description                                               |
 | ------ | ----- | --------------- | -------- | --------------------------------------------------------- |
 | force  | query | boolean         | true     | Whether to force a rescan instead of using cached results |
-| offset | query | integer(uint32) | false    | 偏移量，从0开始，默认为0                                  |
-| limit  | query | integer(uint32) | false    | 每页数量，0表示不限制，默认为10                           |
+| offset | query | integer(uint32) | false    | offset, default 0                                         |
+| limit  | query | integer(uint32) | false    | limit, default 10                                         |
 
 > Example responses
 
@@ -2755,7 +2755,7 @@ _通用分页响应模型
 
 | Name              | Type                                        | Required | Restrictions | Description                                         |
 | ----------------- | ------------------------------------------- | -------- | ------------ | --------------------------------------------------- |
-| » items           | [[WiFiNetwork](#schemawifinetwork)]         | true     | none         | 数据列表                                            |
+| » items           | [[WiFiNetwork](#schemawifinetwork)]         | true     | none         | Items                                               |
 | »» id             | string                                      | true     | read-only    | The unique identifier of the WiFi network           |
 | »» ssid           | string                                      | true     | none         | The SSID of the WiFi network                        |
 | »» bssid          | string                                      | true     | none         | The BSSID of the WiFi network                       |
@@ -2767,9 +2767,9 @@ _通用分页响应模型
 | »» isConnected    | boolean                                     | true     | none         | Whether this network is the currently connected one |
 | »» isSaved        | boolean                                     | true     | none         | Whether this network has a saved configuration      |
 | »» lastSeen       | integer(int32)                              | true     | read-only    | The timestamp when the network was last seen        |
-| » total           | integer(uint32)                             | true     | none         | 数据总数量                                          |
-| » offset          | integer(uint32)                             | true     | none         | 偏移量，从0开始                                     |
-| » limit           | integer(uint32)                             | true     | none         | 每页数量，0表示不限制                               |
+| » total           | integer(uint32)                             | true     | none         | totol count                                         |
+| » offset          | integer(uint32)                             | true     | none         | offset, default 0                                   |
+| » limit           | integer(uint32)                             | true     | none         | limit, default 10                                   |
 
 #### Enumerated Values
 
@@ -3384,10 +3384,10 @@ List certificates
 
 <h3 id="certificateapi_listcertificates-parameters">Parameters</h3>
 
-| Name   | In    | Type            | Required | Description                     |
-| ------ | ----- | --------------- | -------- | ------------------------------- |
-| offset | query | integer(uint32) | false    | 偏移量，从0开始，默认为0        |
-| limit  | query | integer(uint32) | false    | 每页数量，0表示不限制，默认为10 |
+| Name   | In    | Type            | Required | Description       |
+| ------ | ----- | --------------- | -------- | ----------------- |
+| offset | query | integer(uint32) | false    | offset, default 0 |
+| limit  | query | integer(uint32) | false    | limit, default 10 |
 
 > Example responses
 
@@ -3427,16 +3427,16 @@ _通用分页响应模型
 
 | Name           | Type                                        | Required | Restrictions | Description                               |
 | -------------- | ------------------------------------------- | -------- | ------------ | ----------------------------------------- |
-| » items        | [[CertificateInfo](#schemacertificateinfo)] | true     | none         | 数据列表                                  |
+| » items        | [[CertificateInfo](#schemacertificateinfo)] | true     | none         | Items                                     |
 | »» id          | string                                      | true     | none         | The ID of the certificate                 |
 | »» name        | string                                      | false    | none         | The name of the certificate               |
 | »» description | string                                      | false    | none         | The description of the certificate        |
 | »» size        | integer(uint32)                             | true     | none         | The size of the certificate file in bytes |
 | »» uploadTime  | string(date-time)                           | true     | none         | The upload timestamp                      |
 | »» md5         | string                                      | true     | none         | The MD5 hash of the certificate file      |
-| » total        | integer(uint32)                             | true     | none         | 数据总数量                                |
-| » offset       | integer(uint32)                             | true     | none         | 偏移量，从0开始                           |
-| » limit        | integer(uint32)                             | true     | none         | 每页数量，0表示不限制                     |
+| » total        | integer(uint32)                             | true     | none         | totol count                               |
+| » offset       | integer(uint32)                             | true     | none         | offset, default 0                         |
+| » limit        | integer(uint32)                             | true     | none         | limit, default 10                         |
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:

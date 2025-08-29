@@ -22,7 +22,7 @@ using TypeSpec.OpenAPI;
             },
             #{ name: "male", value: "male", description: "male gender" },
             #{ name: "female", value: "female", description: "female gender" }
-        ],
+        ]
     }
 )
 // 添加另一个扩展属性，用于指定枚举变量名

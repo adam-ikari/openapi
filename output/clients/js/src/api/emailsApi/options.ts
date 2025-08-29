@@ -16,8 +16,8 @@ export interface EmailsApiReadOptionalParams extends OperationOptions {}
 
 /** Optional parameters. */
 export interface EmailsApiListOptionalParams extends OperationOptions {
-  /** 偏移量，从0开始，默认为0 */
+  /** offset, default 0 */
   offset?: number;
-  /** 每页数量，0表示不限制，默认为10 */
+  /** limit, default 10 */
   limit?: number;
 }

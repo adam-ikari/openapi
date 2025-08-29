@@ -29,9 +29,9 @@ export interface WiFiApiGetConfigOptionalParams extends OperationOptions {}
 
 /** Optional parameters. */
 export interface WiFiApiListConfigsOptionalParams extends OperationOptions {
-  /** 偏移量，从0开始，默认为0 */
+  /** offset, default 0 */
   offset?: number;
-  /** 每页数量，0表示不限制，默认为10 */
+  /** limit, default 10 */
   limit?: number;
 }
 
@@ -40,8 +40,8 @@ export interface WiFiApiGetNetworkOptionalParams extends OperationOptions {}
 
 /** Optional parameters. */
 export interface WiFiApiScanNetworksOptionalParams extends OperationOptions {
-  /** 偏移量，从0开始，默认为0 */
+  /** offset, default 0 */
   offset?: number;
-  /** 每页数量，0表示不限制，默认为10 */
+  /** limit, default 10 */
   limit?: number;
 }
