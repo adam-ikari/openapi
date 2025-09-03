@@ -2,9 +2,20 @@
 
 [English](README.md) | [简体中文](README_CN.md)
 
-This project demonstrates a modern approach to API development using TypeSpec to define and generate OpenAPI v3.1 specifications along with JavaScript/TypeScript client SDKs for a sample API with Users, Emails, and Email Groups resources.
+## Project Overview
+
+This project demonstrates a modern approach to API development using TypeSpec to define and generate OpenAPI v3.1 specifications along with JavaScript/TypeScript client SDKs for a sample API with Users, Emails, Email Groups, Certificates, and WiFi resources.
 
 The project serves as both a reference implementation for TypeSpec-based API development and a practical toolchain for generating consistent API specifications, documentation, and client libraries from a single source of truth.
+
+## Technology Stack
+
+- **TypeSpec**: Modern language for describing cloud services and APIs
+- **OpenAPI 3.1**: Industry-standard specification for RESTful APIs
+- **JavaScript/TypeScript**: Generated client SDKs for easy API integration
+- **Redocly**: Tool for generating interactive API documentation
+- **Node.js**: Runtime environment for building and running the toolchain
+- **Yarn/NPM**: Package managers for handling dependencies
 
 ## Key Advantages
 
@@ -54,13 +65,25 @@ This toolchain is ideal for:
 ## Project Structure
 
 ```
-src/                  # TypeSpec source files
-output/
-  clients/js/         # Generated JavaScript/TypeScript client SDK
-  schema/             # Generated OpenAPI schema (YAML)
-  doc/                # Generated documentation (HTML and Markdown)
-templates/            # Custom templates for documentation generation
-scripts/              # Build scripts
+.
+├── src/                  # TypeSpec source files
+│   ├── models/           # Data model definitions
+│   ├── common/           # Common type definitions
+│   ├── index.tsp         # Main entry point
+│   ├── users_api.tsp     # Users API operations
+│   ├── emails_api.tsp    # Emails API operations
+│   ├── email_groups_api.tsp # Email Groups API operations
+│   ├── certificates_api.tsp # Certificates API operations
+│   ├── wifi_api.tsp      # WiFi API operations
+├── output/               # Generated output files
+│   ├── schema/           # OpenAPI specification (YAML)
+│   ├── clients/js/       # JavaScript/TypeScript client SDK
+│   └── doc/              # Generated documentation (HTML and Markdown)
+├── templates/            # Custom documentation templates
+├── scripts/              # Build scripts
+├── package.json          # Project configuration and scripts
+├── tspconfig.yaml        # TypeSpec configuration
+└── prism.config.js       # API mock configuration
 ```
 
 ## API Resources
@@ -69,6 +92,8 @@ The API includes the following resources:
 - Users - Manage user accounts
 - Emails - Handle email messages
 - Email Groups - Manage email group subscriptions
+- Certificates - Manage certificates
+- WiFi - Manage WiFi configurations
 
 Each resource provides full CRUD (Create, Read, Update, Delete) operations.
 
@@ -77,7 +102,12 @@ Each resource provides full CRUD (Create, Read, Update, Delete) operations.
 - Node.js (v16 or higher)
 - Yarn or npm
 
-## Usage
+## Build Instructions
+
+### Prerequisites
+
+- Node.js (v16 or higher)
+- Yarn or npm
 
 ### Install Dependencies
 
@@ -147,6 +177,8 @@ The TypeSpec definitions are organized as follows:
 - `src/users_api.tsp` - Users API operations
 - `src/emails_api.tsp` - Emails API operations
 - `src/email_groups_api.tsp` - Email Groups API operations
+- `src/certificates_api.tsp` - Certificates API operations
+- `src/wifi_api.tsp` - WiFi API operations
 - `src/models/` - Data models used in the APIs
 
 Each API file defines a complete set of CRUD operations for its respective resource, with proper HTTP methods, routes, and authentication.
@@ -171,3 +203,12 @@ The documentation includes:
 - Request and response schemas
 - Code examples in multiple languages
 - Authentication information
+
+## Development Guidelines
+
+- API definitions are written in TypeSpec and located in the `src/` directory
+- Data models are defined in the `src/models/` directory
+- Each API resource has its own dedicated TypeSpec file
+- TypeSpec compiler and emitters are configured using `tspconfig.yaml`
+- Documentation and client SDKs are automatically generated from a single TypeSpec source
+- Follow the existing code patterns and conventions when adding new APIs or models
