@@ -2,9 +2,20 @@
 
 [English](README.md) | [简体中文](README_CN.md)
 
-本项目演示了使用 TypeSpec 定义和生成 OpenAPI v3.1 规范以及 JavaScript/TypeScript 客户端 SDK 的现代 API 开发方法，适用于包含用户、邮件和邮件组资源的示例 API。
+## 项目概述
+
+本项目演示了使用 TypeSpec 定义和生成 OpenAPI v3.1 规范以及 JavaScript/TypeScript 客户端 SDK 的现代 API 开发方法，适用于包含用户、邮件、邮件组、证书和 WiFi 资源的示例 API。
 
 该项目既是基于 TypeSpec 的 API 开发参考实现，也是从单一事实来源生成一致的 API 规范、文档和客户端库的实用工具链。
+
+## 技术栈
+
+- **TypeSpec**：用于描述云服务和 API 的现代语言
+- **OpenAPI 3.1**：行业标准的 RESTful API 规范
+- **JavaScript/TypeScript**：生成的客户端 SDK，便于 API 集成
+- **Redocly**：用于生成交互式 API 文档的工具
+- **Node.js**：用于构建和运行工具链的运行时环境
+- **Yarn/NPM**：用于处理依赖关系的包管理器
 
 ## 关键优势
 
@@ -54,13 +65,25 @@
 ## 项目结构
 
 ```
-src/                  # TypeSpec 源文件
-output/
-  clients/js/         # 生成的 JavaScript/TypeScript 客户端 SDK
-  schema/             # 生成的 OpenAPI 规范 (YAML)
-  doc/                # 生成的文档 (HTML 和 Markdown)
-templates/            # 文档生成的自定义模板
-scripts/              # 构建脚本
+.
+├── src/                  # TypeSpec 源文件
+│   ├── models/           # 数据模型定义
+│   ├── common/           # 通用类型定义
+│   ├── index.tsp         # 主入口文件
+│   ├── users_api.tsp     # 用户 API 操作
+│   ├── emails_api.tsp    # 邮件 API 操作
+│   ├── email_groups_api.tsp # 邮件组 API 操作
+│   ├── certificates_api.tsp # 证书 API 操作
+│   ├── wifi_api.tsp      # WiFi API 操作
+├── output/               # 生成的输出文件
+│   ├── schema/           # OpenAPI 规范 (YAML)
+│   ├── clients/js/       # JavaScript/TypeScript 客户端 SDK
+│   └── doc/              # 生成的文档 (HTML 和 Markdown)
+├── templates/            # 自定义文档模板
+├── scripts/              # 构建脚本
+├── package.json          # 项目配置和脚本
+├── tspconfig.yaml        # TypeSpec 配置
+└── prism.config.js       # API 模拟配置
 ```
 
 ## API 资源
@@ -69,6 +92,8 @@ API 包含以下资源：
 - 用户 - 管理用户账户
 - 邮件 - 处理邮件消息
 - 邮件组 - 管理邮件组订阅
+- 证书 - 管理证书
+- WiFi - 管理 WiFi 配置
 
 每个资源都提供完整的 CRUD（创建、读取、更新、删除）操作。
 
@@ -77,7 +102,12 @@ API 包含以下资源：
 - Node.js (v16 或更高版本)
 - Yarn 或 npm
 
-## 使用方法
+## 构建指令
+
+### 先决条件
+
+- Node.js (v16 或更高版本)
+- Yarn 或 npm
 
 ### 安装依赖
 
@@ -147,6 +177,8 @@ TypeSpec 定义按如下方式组织：
 - `src/users_api.tsp` - 用户 API 操作
 - `src/emails_api.tsp` - 邮件 API 操作
 - `src/email_groups_api.tsp` - 邮件组 API 操作
+- `src/certificates_api.tsp` - 证书 API 操作
+- `src/wifi_api.tsp` - WiFi API 操作
 - `src/models/` - API 中使用的数据模型
 
 每个 API 文件都为其相应资源定义了一套完整的 CRUD 操作，包括适当的 HTTP 方法、路由和身份验证。
@@ -171,3 +203,12 @@ TypeSpec 定义按如下方式组织：
 - 请求和响应模式
 - 多种语言的代码示例
 - 身份验证信息
+
+## 开发约定
+
+- API 定义使用 TypeSpec 编写，位于 `src/` 目录
+- 数据模型定义在 `src/models/` 目录中
+- 每个 API 资源都有独立的 TypeSpec 文件
+- 使用 `tspconfig.yaml` 配置 TypeSpec 编译器和发射器
+- 文档和客户端 SDK 从单一的 TypeSpec 源自动生成
+- 添加新 API 或模型时，请遵循现有的代码模式和约定
