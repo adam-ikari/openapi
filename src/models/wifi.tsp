@@ -75,7 +75,7 @@ enum WiFiConnectionStatus {
 model WiFiNetwork {
     @doc("The unique identifier of the WiFi network")
     @visibility(Lifecycle.Read)
-    id: string;
+    id: uint32;
 
     @doc("The SSID of the WiFi network")
     ssid: string;
@@ -113,7 +113,7 @@ model WiFiNetwork {
 model WiFiConfig {
     @doc("The unique identifier of the WiFi configuration")
     @visibility(Lifecycle.Read)
-    id: string;
+    id: uint32;
 
     @doc("The SSID of the WiFi network to connect to")
     ssid: string;

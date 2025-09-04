@@ -10,7 +10,7 @@ import "@typespec/openapi";
 @doc("Certificate information")
 model CertificateInfo {
   @doc("The ID of the certificate")
-  id: string;
+  id: uint32;
 
   @doc("The name of the certificate")
   name?: string;

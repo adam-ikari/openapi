@@ -134,7 +134,7 @@ export async function disconnect(
 
 export function _connectNetworkSend(
   context: Client,
-  id: string,
+  id: number,
   options: WiFiApiConnectNetworkOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   const path = expandUrlTemplate(
@@ -181,7 +181,7 @@ export async function _connectNetworkDeserialize(
 /** Connect to a WiFi network */
 export async function connectNetwork(
   context: Client,
-  id: string,
+  id: number,
   options: WiFiApiConnectNetworkOptionalParams = { requestOptions: {} },
 ): Promise<{
   success: boolean;
@@ -194,7 +194,7 @@ export async function connectNetwork(
 
 export function _deleteConfigSend(
   context: Client,
-  id: string,
+  id: number,
   options: WiFiApiDeleteConfigOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   const path = expandUrlTemplate(
@@ -227,7 +227,7 @@ export async function _deleteConfigDeserialize(
 /** Delete a WiFi configuration */
 export async function deleteConfig(
   context: Client,
-  id: string,
+  id: number,
   options: WiFiApiDeleteConfigOptionalParams = { requestOptions: {} },
 ): Promise<void> {
   const result = await _deleteConfigSend(context, id, options);
@@ -236,7 +236,7 @@ export async function deleteConfig(
 
 export function _updateConfigSend(
   context: Client,
-  id: string,
+  id: number,
   body: WiFiConfig,
   options: WiFiApiUpdateConfigOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
@@ -278,7 +278,7 @@ export async function _updateConfigDeserialize(
 /** Update a WiFi configuration */
 export async function updateConfig(
   context: Client,
-  id: string,
+  id: number,
   body: WiFiConfig,
   options: WiFiApiUpdateConfigOptionalParams = { requestOptions: {} },
 ): Promise<WiFiConfig> {
@@ -329,7 +329,7 @@ export async function createConfig(
 
 export function _getConfigSend(
   context: Client,
-  id: string,
+  id: number,
   options: WiFiApiGetConfigOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   const path = expandUrlTemplate(
@@ -368,7 +368,7 @@ export async function _getConfigDeserialize(
 /** Get a specific WiFi configuration */
 export async function getConfig(
   context: Client,
-  id: string,
+  id: number,
   options: WiFiApiGetConfigOptionalParams = { requestOptions: {} },
 ): Promise<WiFiConfig> {
   const result = await _getConfigSend(context, id, options);
@@ -427,7 +427,7 @@ export function listConfigs(
 
 export function _getNetworkSend(
   context: Client,
-  id: string,
+  id: number,
   options: WiFiApiGetNetworkOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   const path = expandUrlTemplate(
@@ -466,7 +466,7 @@ export async function _getNetworkDeserialize(
 /** Get details of a specific WiFi network */
 export async function getNetwork(
   context: Client,
-  id: string,
+  id: number,
   options: WiFiApiGetNetworkOptionalParams = { requestOptions: {} },
 ): Promise<WiFiNetwork> {
   const result = await _getNetworkSend(context, id, options);

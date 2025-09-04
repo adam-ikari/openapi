@@ -31,7 +31,7 @@ import {
 
 export function _deleteCertificateSend(
   context: Client,
-  id: string,
+  id: number,
   options: CertificateApiDeleteCertificateOptionalParams = {
     requestOptions: {},
   },
@@ -75,7 +75,7 @@ export async function _deleteCertificateDeserialize(
 /** Delete a certificate */
 export async function deleteCertificate(
   context: Client,
-  id: string,
+  id: number,
   options: CertificateApiDeleteCertificateOptionalParams = {
     requestOptions: {},
   },
@@ -89,7 +89,7 @@ export async function deleteCertificate(
 
 export function _getCertificateSend(
   context: Client,
-  id: string,
+  id: number,
   options: CertificateApiGetCertificateOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   const path = expandUrlTemplate(
@@ -128,7 +128,7 @@ export async function _getCertificateDeserialize(
 /** Get a specific certificate */
 export async function getCertificate(
   context: Client,
-  id: string,
+  id: number,
   options: CertificateApiGetCertificateOptionalParams = { requestOptions: {} },
 ): Promise<CertificateInfo> {
   const result = await _getCertificateSend(context, id, options);

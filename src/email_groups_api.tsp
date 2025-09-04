@@ -40,7 +40,7 @@ interface EmailsGroupApi {
         @doc("The id of the Email Group to read")
         // @path装饰器表示这是一个路径参数
         @path
-        id: string,
+        id: uint32,
     ): EmailGroup | Error;
 
     /** Create a email group */
@@ -57,7 +57,7 @@ interface EmailsGroupApi {
     update(
         @doc("The id of the Email Group to update")
         @path
-        id: string,
+        id: uint32,
 
         @body body: EmailGroup,
     ): Email | Error;
@@ -68,7 +68,7 @@ interface EmailsGroupApi {
     delete(
         @doc("The id of the Email Group to delete")
         @path
-        id: string,
+        id: uint32,
         // 删除操作通常不需要返回内容，所以返回void或Error
     ): void | Error;
 }

@@ -48,7 +48,7 @@ export interface WiFiApiOperations {
   }>;
   /** Connect to a WiFi network */
   connectNetwork: (
-    id: string,
+    id: number,
     options?: WiFiApiConnectNetworkOptionalParams,
   ) => Promise<{
     success: boolean;
@@ -57,12 +57,12 @@ export interface WiFiApiOperations {
   }>;
   /** Delete a WiFi configuration */
   deleteConfig: (
-    id: string,
+    id: number,
     options?: WiFiApiDeleteConfigOptionalParams,
   ) => Promise<void>;
   /** Update a WiFi configuration */
   updateConfig: (
-    id: string,
+    id: number,
     body: WiFiConfig,
     options?: WiFiApiUpdateConfigOptionalParams,
   ) => Promise<WiFiConfig>;
@@ -73,7 +73,7 @@ export interface WiFiApiOperations {
   ) => Promise<WiFiConfig>;
   /** Get a specific WiFi configuration */
   getConfig: (
-    id: string,
+    id: number,
     options?: WiFiApiGetConfigOptionalParams,
   ) => Promise<WiFiConfig>;
   /** List WiFi configurations */
@@ -82,7 +82,7 @@ export interface WiFiApiOperations {
   ) => PagedAsyncIterableIterator<WiFiConfig>;
   /** Get details of a specific WiFi network */
   getNetwork: (
-    id: string,
+    id: number,
     options?: WiFiApiGetNetworkOptionalParams,
   ) => Promise<WiFiNetwork>;
   /** Scan for available WiFi networks */
@@ -99,13 +99,13 @@ function _getWiFiApi(context: OpenApiV2Context) {
     disconnect: (options?: WiFiApiDisconnectOptionalParams) =>
       disconnect(context, options),
     connectNetwork: (
-      id: string,
+      id: number,
       options?: WiFiApiConnectNetworkOptionalParams,
     ) => connectNetwork(context, id, options),
-    deleteConfig: (id: string, options?: WiFiApiDeleteConfigOptionalParams) =>
+    deleteConfig: (id: number, options?: WiFiApiDeleteConfigOptionalParams) =>
       deleteConfig(context, id, options),
     updateConfig: (
-      id: string,
+      id: number,
       body: WiFiConfig,
       options?: WiFiApiUpdateConfigOptionalParams,
     ) => updateConfig(context, id, body, options),
@@ -113,11 +113,11 @@ function _getWiFiApi(context: OpenApiV2Context) {
       body: WiFiConfig,
       options?: WiFiApiCreateConfigOptionalParams,
     ) => createConfig(context, body, options),
-    getConfig: (id: string, options?: WiFiApiGetConfigOptionalParams) =>
+    getConfig: (id: number, options?: WiFiApiGetConfigOptionalParams) =>
       getConfig(context, id, options),
     listConfigs: (options?: WiFiApiListConfigsOptionalParams) =>
       listConfigs(context, options),
-    getNetwork: (id: string, options?: WiFiApiGetNetworkOptionalParams) =>
+    getNetwork: (id: number, options?: WiFiApiGetNetworkOptionalParams) =>
       getNetwork(context, id, options),
     scanNetworks: (
       force: boolean,

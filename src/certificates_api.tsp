@@ -71,7 +71,7 @@ interface CertificateApi {
   getCertificate(
     @doc("The id of the certificate to get")
     @path
-    id: string,
+    id: uint32,
   ): CertificateInfo | Error;
 
   /** Delete a certificate */
@@ -83,7 +83,7 @@ interface CertificateApi {
   deleteCertificate(
     @doc("The id of the certificate to delete")
     @path
-    id: string,
+    id: uint32,
   ): {
     /** Whether the deletion was successful */
     success: boolean;

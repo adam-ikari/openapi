@@ -20,7 +20,7 @@ import { PagedAsyncIterableIterator } from "../../static-helpers/pagingHelpers.j
 export interface CertificateApiOperations {
   /** Delete a certificate */
   deleteCertificate: (
-    id: string,
+    id: number,
     options?: CertificateApiDeleteCertificateOptionalParams,
   ) => Promise<{
     success: boolean;
@@ -28,7 +28,7 @@ export interface CertificateApiOperations {
   }>;
   /** Get a specific certificate */
   getCertificate: (
-    id: string,
+    id: number,
     options?: CertificateApiGetCertificateOptionalParams,
   ) => Promise<CertificateInfo>;
   /** List certificates */
@@ -53,11 +53,11 @@ export interface CertificateApiOperations {
 function _getCertificateApi(context: OpenApiV2Context) {
   return {
     deleteCertificate: (
-      id: string,
+      id: number,
       options?: CertificateApiDeleteCertificateOptionalParams,
     ) => deleteCertificate(context, id, options),
     getCertificate: (
-      id: string,
+      id: number,
       options?: CertificateApiGetCertificateOptionalParams,
     ) => getCertificate(context, id, options),
     listCertificates: (

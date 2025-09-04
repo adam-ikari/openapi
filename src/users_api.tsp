@@ -41,7 +41,7 @@ interface UsersApi {
     @doc("The id of the user to read")
     // @path装饰器表示这是一个路径参数，会替换路由中的{id}占位符
     @path
-    id: string,
+    id: uint32,
   ): User | Error;
 
   /** Create a users */
@@ -56,7 +56,7 @@ interface UsersApi {
   update(
     @doc("The id of the user to update")
     @path
-    id: string,
+    id: uint32,
 
     // 更新操作的请求体
     @body body: User,
@@ -68,7 +68,7 @@ interface UsersApi {
   delete(
     @doc("The id of the user to delete")
     @path
-    id: string,
+    id: uint32,
     // 删除操作通常不需要返回内容，所以返回void或Error
   ): void | Error;
 }

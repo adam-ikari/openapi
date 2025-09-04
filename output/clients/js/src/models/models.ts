@@ -272,7 +272,7 @@ export function wiFiNetworkArrayDeserializer(
 /** model interface WiFiNetwork */
 export interface WiFiNetwork {
   /** The unique identifier of the WiFi network */
-  readonly id: string;
+  readonly id: number;
   /** The SSID of the WiFi network */
   ssid: string;
   /** The BSSID of the WiFi network */
@@ -354,7 +354,7 @@ export function wiFiConfigArrayDeserializer(result: Array<WiFiConfig>): any[] {
 /** model interface WiFiConfig */
 export interface WiFiConfig {
   /** The unique identifier of the WiFi configuration */
-  readonly id: string;
+  readonly id: number;
   /** The SSID of the WiFi network to connect to */
   ssid: string;
   /** The security type of the WiFi network */
@@ -552,7 +552,7 @@ export function certificateInfoArrayDeserializer(
 /** Certificate information */
 export interface CertificateInfo {
   /** The ID of the certificate */
-  id: string;
+  id: number;
   /** The name of the certificate */
   name?: string;
   /** The description of the certificate */

@@ -27,12 +27,12 @@ export interface EmailsApiOperations {
    *         to the operation to override the generated name.
    */
   delete: (
-    id: string,
+    id: number,
     options?: EmailsApiDeleteOptionalParams,
   ) => Promise<void>;
   /** Update a emails */
   update: (
-    id: string,
+    id: number,
     body: Email,
     options?: EmailsApiUpdateOptionalParams,
   ) => Promise<Email>;
@@ -42,7 +42,7 @@ export interface EmailsApiOperations {
     options?: EmailsApiCreateOptionalParams,
   ) => Promise<Email>;
   /** Read emails */
-  read: (id: string, options?: EmailsApiReadOptionalParams) => Promise<Email>;
+  read: (id: number, options?: EmailsApiReadOptionalParams) => Promise<Email>;
   /** List emails */
   list: (
     options?: EmailsApiListOptionalParams,
@@ -51,16 +51,16 @@ export interface EmailsApiOperations {
 
 function _getEmailsApi(context: OpenApiV2Context) {
   return {
-    delete: (id: string, options?: EmailsApiDeleteOptionalParams) =>
+    delete: (id: number, options?: EmailsApiDeleteOptionalParams) =>
       $delete(context, id, options),
     update: (
-      id: string,
+      id: number,
       body: Email,
       options?: EmailsApiUpdateOptionalParams,
     ) => update(context, id, body, options),
     create: (body: Email, options?: EmailsApiCreateOptionalParams) =>
       create(context, body, options),
-    read: (id: string, options?: EmailsApiReadOptionalParams) =>
+    read: (id: number, options?: EmailsApiReadOptionalParams) =>
       read(context, id, options),
     list: (options?: EmailsApiListOptionalParams) => list(context, options),
   };

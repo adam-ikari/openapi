@@ -27,12 +27,12 @@ export interface EmailsGroupApiOperations {
    *         to the operation to override the generated name.
    */
   delete: (
-    id: string,
+    id: number,
     options?: EmailsGroupApiDeleteOptionalParams,
   ) => Promise<void>;
   /** Update a email group */
   update: (
-    id: string,
+    id: number,
     body: EmailGroup,
     options?: EmailsGroupApiUpdateOptionalParams,
   ) => Promise<Email>;
@@ -43,7 +43,7 @@ export interface EmailsGroupApiOperations {
   ) => Promise<Email>;
   /** Read a email group */
   read: (
-    id: string,
+    id: number,
     options?: EmailsGroupApiReadOptionalParams,
   ) => Promise<EmailGroup>;
   /** List email groups */
@@ -54,16 +54,16 @@ export interface EmailsGroupApiOperations {
 
 function _getEmailsGroupApi(context: OpenApiV2Context) {
   return {
-    delete: (id: string, options?: EmailsGroupApiDeleteOptionalParams) =>
+    delete: (id: number, options?: EmailsGroupApiDeleteOptionalParams) =>
       $delete(context, id, options),
     update: (
-      id: string,
+      id: number,
       body: EmailGroup,
       options?: EmailsGroupApiUpdateOptionalParams,
     ) => update(context, id, body, options),
     create: (body: Email, options?: EmailsGroupApiCreateOptionalParams) =>
       create(context, body, options),
-    read: (id: string, options?: EmailsGroupApiReadOptionalParams) =>
+    read: (id: number, options?: EmailsGroupApiReadOptionalParams) =>
       read(context, id, options),
     list: (options?: EmailsGroupApiListOptionalParams) =>
       list(context, options),

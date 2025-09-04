@@ -45,7 +45,7 @@ interface WiFiApi {
     @doc("The id of the WiFi network to get")
     // @path装饰器表示这是一个路径参数，会替换路由中的{id}占位符
     @path
-    id: string,
+    id: uint32,
   ): WiFiNetwork | Error;
 
   /** List WiFi configurations */
@@ -64,7 +64,7 @@ interface WiFiApi {
   getConfig(
     @doc("The id of the WiFi configuration to get")
     @path
-    id: string,
+    id: uint32,
   ): WiFiConfig | Error;
 
   /** Create a WiFi configuration */
@@ -83,7 +83,7 @@ interface WiFiApi {
   updateConfig(
     @doc("The id of the WiFi configuration to update")
     @path
-    id: string,
+    id: uint32,
 
     @doc("The WiFi configuration update data")
     @body body: WiFiConfig,
@@ -96,7 +96,7 @@ interface WiFiApi {
   deleteConfig(
     @doc("The id of the WiFi configuration to delete")
     @path
-    id: string,
+    id: uint32,
   ): void | Error;
 
   /** Connect to a WiFi network */
@@ -106,7 +106,7 @@ interface WiFiApi {
   connectNetwork(
     @doc("The id of the WiFi network to connect to")
     @path
-    id: string,
+    id: uint32,
     
     @doc("Connection parameters")
     @body body?: WiFiConnectRequest

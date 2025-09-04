@@ -399,9 +399,9 @@ Read users
 
 <h3 id="usersapi_read-parameters">Parameters</h3>
 
-| Name | In   | Type   | Required | Description                |
-| ---- | ---- | ------ | -------- | -------------------------- |
-| id   | path | string | true     | The id of the user to read |
+| Name | In   | Type            | Required | Description                |
+| ---- | ---- | --------------- | -------- | -------------------------- |
+| id   | path | integer(uint32) | true     | The id of the user to read |
 
 > Example responses
 
@@ -552,7 +552,7 @@ Update a users
 
 | Name | In   | Type                                            | Required | Description                  |
 | ---- | ---- | ----------------------------------------------- | -------- | ---------------------------- |
-| id   | path | string                                          | true     | The id of the user to update |
+| id   | path | integer(uint32)                                 | true     | The id of the user to update |
 | body | body | [UserCreateOrUpdate](#schemausercreateorupdate) | true     | none                         |
 
 > Example responses
@@ -662,9 +662,9 @@ Delete a users
 
 <h3 id="usersapi_delete-parameters">Parameters</h3>
 
-| Name | In   | Type   | Required | Description                  |
-| ---- | ---- | ------ | -------- | ---------------------------- |
-| id   | path | string | true     | The id of the user to delete |
+| Name | In   | Type            | Required | Description                  |
+| ---- | ---- | --------------- | -------- | ---------------------------- |
+| id   | path | integer(uint32) | true     | The id of the user to delete |
 
 > Example responses
 
@@ -1021,9 +1021,9 @@ Read emails
 
 <h3 id="emailsapi_read-parameters">Parameters</h3>
 
-| Name | In   | Type   | Required | Description                 |
-| ---- | ---- | ------ | -------- | --------------------------- |
-| id   | path | string | true     | The id of the email to read |
+| Name | In   | Type            | Required | Description                 |
+| ---- | ---- | --------------- | -------- | --------------------------- |
+| id   | path | integer(uint32) | true     | The id of the email to read |
 
 > Example responses
 
@@ -1147,7 +1147,7 @@ Update a emails
 
 | Name | In   | Type                                              | Required | Description                   |
 | ---- | ---- | ------------------------------------------------- | -------- | ----------------------------- |
-| id   | path | string                                            | true     | The id of the email to update |
+| id   | path | integer(uint32)                                   | true     | The id of the email to update |
 | body | body | [EmailCreateOrUpdate](#schemaemailcreateorupdate) | true     | none                          |
 
 > Example responses
@@ -1248,9 +1248,9 @@ Delete a emails
 
 <h3 id="emailsapi_delete-parameters">Parameters</h3>
 
-| Name | In   | Type   | Required | Description                   |
-| ---- | ---- | ------ | -------- | ----------------------------- |
-| id   | path | string | true     | The id of the email to delete |
+| Name | In   | Type            | Required | Description                   |
+| ---- | ---- | --------------- | -------- | ----------------------------- |
+| id   | path | integer(uint32) | true     | The id of the email to delete |
 
 > Example responses
 
@@ -1616,9 +1616,9 @@ Read a email group
 
 <h3 id="emailsgroupapi_read-parameters">Parameters</h3>
 
-| Name | In   | Type   | Required | Description                       |
-| ---- | ---- | ------ | -------- | --------------------------------- |
-| id   | path | string | true     | The id of the Email Group to read |
+| Name | In   | Type            | Required | Description                       |
+| ---- | ---- | --------------- | -------- | --------------------------------- |
+| id   | path | integer(uint32) | true     | The id of the Email Group to read |
 
 > Example responses
 
@@ -1758,7 +1758,7 @@ Update a email group
 
 | Name | In   | Type                                                        | Required | Description                         |
 | ---- | ---- | ----------------------------------------------------------- | -------- | ----------------------------------- |
-| id   | path | string                                                      | true     | The id of the Email Group to update |
+| id   | path | integer(uint32)                                             | true     | The id of the Email Group to update |
 | body | body | [EmailGroupCreateOrUpdate](#schemaemailgroupcreateorupdate) | true     | none                                |
 
 > Example responses
@@ -1859,9 +1859,9 @@ Delete a email group
 
 <h3 id="emailsgroupapi_delete-parameters">Parameters</h3>
 
-| Name | In   | Type   | Required | Description                         |
-| ---- | ---- | ------ | -------- | ----------------------------------- |
-| id   | path | string | true     | The id of the Email Group to delete |
+| Name | In   | Type            | Required | Description                         |
+| ---- | ---- | --------------- | -------- | ----------------------------------- |
+| id   | path | integer(uint32) | true     | The id of the Email Group to delete |
 
 > Example responses
 
@@ -1973,7 +1973,7 @@ List WiFi configurations
 {
   "items": [
     {
-      "id": "string",
+      "id": 0,
       "ssid": "string",
       "security": "none",
       "password": "pa$$word",
@@ -2003,7 +2003,7 @@ Status Code **200**
 | Name           | Type                                                | Required | Restrictions | Description                                                                                        |
 | -------------- | --------------------------------------------------- | -------- | ------------ | -------------------------------------------------------------------------------------------------- |
 | » items        | [[WiFiConfig](#schemawificonfig)]                   | true     | none         | Items                                                                                              |
-| »» id          | string                                              | true     | read-only    | The unique identifier of the WiFi configuration                                                    |
+| »» id          | integer(uint32)                                     | true     | read-only    | The unique identifier of the WiFi configuration                                                    |
 | »» ssid        | string                                              | true     | none         | The SSID of the WiFi network to connect to                                                         |
 | »» security    | [WiFiSecurityType](#schemawifisecuritytype)         | true     | none         | The security type of the WiFi network                                                              |
 | »» password    | string(password)                                    | false    | none         | The password for the WiFi network (required for secured networks). encrypted depends security type |
@@ -2142,7 +2142,7 @@ Create a WiFi configuration
 
 ```json
 {
-  "id": "string",
+  "id": 0,
   "ssid": "string",
   "security": "none",
   "password": "pa$$word",
@@ -2238,9 +2238,9 @@ Get a specific WiFi configuration
 
 <h3 id="wifiapi_getconfig-parameters">Parameters</h3>
 
-| Name | In   | Type   | Required | Description                             |
-| ---- | ---- | ------ | -------- | --------------------------------------- |
-| id   | path | string | true     | The id of the WiFi configuration to get |
+| Name | In   | Type            | Required | Description                             |
+| ---- | ---- | --------------- | -------- | --------------------------------------- |
+| id   | path | integer(uint32) | true     | The id of the WiFi configuration to get |
 
 > Example responses
 
@@ -2248,7 +2248,7 @@ Get a specific WiFi configuration
 
 ```json
 {
-  "id": "string",
+  "id": 0,
   "ssid": "string",
   "security": "none",
   "password": "pa$$word",
@@ -2370,7 +2370,7 @@ Update a WiFi configuration
 
 | Name | In   | Type                            | Required | Description                                |
 | ---- | ---- | ------------------------------- | -------- | ------------------------------------------ |
-| id   | path | string                          | true     | The id of the WiFi configuration to update |
+| id   | path | integer(uint32)                 | true     | The id of the WiFi configuration to update |
 | body | body | [WiFiConfig](#schemawificonfig) | true     | The WiFi configuration update data         |
 
 > Example responses
@@ -2379,7 +2379,7 @@ Update a WiFi configuration
 
 ```json
 {
-  "id": "string",
+  "id": 0,
   "ssid": "string",
   "security": "none",
   "password": "pa$$word",
@@ -2475,9 +2475,9 @@ Delete a WiFi configuration
 
 <h3 id="wifiapi_deleteconfig-parameters">Parameters</h3>
 
-| Name | In   | Type   | Required | Description                                |
-| ---- | ---- | ------ | -------- | ------------------------------------------ |
-| id   | path | string | true     | The id of the WiFi configuration to delete |
+| Name | In   | Type            | Required | Description                                |
+| ---- | ---- | --------------- | -------- | ------------------------------------------ |
+| id   | path | integer(uint32) | true     | The id of the WiFi configuration to delete |
 
 > Example responses
 
@@ -2704,7 +2704,7 @@ Scan for available WiFi networks
 {
   "items": [
     {
-      "id": "string",
+      "id": 0,
       "ssid": "string",
       "bssid": "string",
       "security": "none",
@@ -2736,7 +2736,7 @@ Status Code **200**
 | Name              | Type                                        | Required | Restrictions | Description                                         |
 | ----------------- | ------------------------------------------- | -------- | ------------ | --------------------------------------------------- |
 | » items           | [[WiFiNetwork](#schemawifinetwork)]         | true     | none         | Items                                               |
-| »» id             | string                                      | true     | read-only    | The unique identifier of the WiFi network           |
+| »» id             | integer(uint32)                             | true     | read-only    | The unique identifier of the WiFi network           |
 | »» ssid           | string                                      | true     | none         | The SSID of the WiFi network                        |
 | »» bssid          | string                                      | true     | none         | The BSSID of the WiFi network                       |
 | »» security       | [WiFiSecurityType](#schemawifisecuritytype) | true     | none         | The security type of the WiFi network               |
@@ -2842,9 +2842,9 @@ Get details of a specific WiFi network
 
 <h3 id="wifiapi_getnetwork-parameters">Parameters</h3>
 
-| Name | In   | Type   | Required | Description                       |
-| ---- | ---- | ------ | -------- | --------------------------------- |
-| id   | path | string | true     | The id of the WiFi network to get |
+| Name | In   | Type            | Required | Description                       |
+| ---- | ---- | --------------- | -------- | --------------------------------- |
+| id   | path | integer(uint32) | true     | The id of the WiFi network to get |
 
 > Example responses
 
@@ -2852,7 +2852,7 @@ Get details of a specific WiFi network
 
 ```json
 {
-  "id": "string",
+  "id": 0,
   "ssid": "string",
   "bssid": "string",
   "security": "none",
@@ -2968,7 +2968,7 @@ Connect to a WiFi network
 
 | Name | In   | Type                                            | Required | Description                              |
 | ---- | ---- | ----------------------------------------------- | -------- | ---------------------------------------- |
-| id   | path | string                                          | true     | The id of the WiFi network to connect to |
+| id   | path | integer(uint32)                                 | true     | The id of the WiFi network to connect to |
 | body | body | [WiFiConnectRequest](#schemawificonnectrequest) | false    | Connection parameters                    |
 
 > Example responses
@@ -3093,7 +3093,7 @@ Get current WiFi connection status
 {
   "status": "disconnected",
   "connectedNetwork": {
-    "id": "string",
+    "id": 0,
     "ssid": "string",
     "bssid": "string",
     "security": "none",
@@ -3124,7 +3124,7 @@ Status Code **200**
 | ------------------ | --------------------------------------------------- | -------- | ------------ | --------------------------------------------------- |
 | » status           | [WiFiConnectionStatus](#schemawificonnectionstatus) | true     | none         | WiFi connection status                              |
 | » connectedNetwork | [WiFiNetwork](#schemawifinetwork)                   | false    | none         | none                                                |
-| »» id              | string                                              | true     | read-only    | The unique identifier of the WiFi network           |
+| »» id              | integer(uint32)                                     | true     | read-only    | The unique identifier of the WiFi network           |
 | »» ssid            | string                                              | true     | none         | The SSID of the WiFi network                        |
 | »» bssid           | string                                              | true     | none         | The BSSID of the WiFi network                       |
 | »» security        | [WiFiSecurityType](#schemawifisecuritytype)         | true     | none         | The security type of the WiFi network               |
@@ -3377,7 +3377,7 @@ List certificates
 {
   "items": [
     {
-      "id": "string",
+      "id": 0,
       "name": "string",
       "description": "string",
       "size": 0,
@@ -3404,7 +3404,7 @@ Status Code **200**
 | Name           | Type                                        | Required | Restrictions | Description                               |
 | -------------- | ------------------------------------------- | -------- | ------------ | ----------------------------------------- |
 | » items        | [[CertificateInfo](#schemacertificateinfo)] | true     | none         | Items                                     |
-| »» id          | string                                      | true     | none         | The ID of the certificate                 |
+| »» id          | integer(uint32)                             | true     | none         | The ID of the certificate                 |
 | »» name        | string                                      | false    | none         | The name of the certificate               |
 | »» description | string                                      | false    | none         | The description of the certificate        |
 | »» size        | integer(uint32)                             | true     | none         | The size of the certificate file in bytes |
@@ -3491,9 +3491,9 @@ Get a specific certificate
 
 <h3 id="certificateapi_getcertificate-parameters">Parameters</h3>
 
-| Name | In   | Type   | Required | Description                      |
-| ---- | ---- | ------ | -------- | -------------------------------- |
-| id   | path | string | true     | The id of the certificate to get |
+| Name | In   | Type            | Required | Description                      |
+| ---- | ---- | --------------- | -------- | -------------------------------- |
+| id   | path | integer(uint32) | true     | The id of the certificate to get |
 
 > Example responses
 
@@ -3501,7 +3501,7 @@ Get a specific certificate
 
 ```json
 {
-  "id": "string",
+  "id": 0,
   "name": "string",
   "description": "string",
   "size": 0,
@@ -3594,9 +3594,9 @@ Delete a certificate
 
 <h3 id="certificateapi_deletecertificate-parameters">Parameters</h3>
 
-| Name | In   | Type   | Required | Description                         |
-| ---- | ---- | ------ | -------- | ----------------------------------- |
-| id   | path | string | true     | The id of the certificate to delete |
+| Name | In   | Type            | Required | Description                         |
+| ---- | ---- | --------------- | -------- | ----------------------------------- |
+| id   | path | integer(uint32) | true     | The id of the certificate to delete |
 
 > Example responses
 
@@ -3640,7 +3640,7 @@ BearerAuth
 <a id="tocscertificateinfo"></a>
 
 ```yaml
-id: string
+id: 0
 name: string
 description: string
 size: 0
@@ -3654,7 +3654,7 @@ Certificate information
 
 | Name        | Type              | Required | Restrictions | Description                               |
 | ----------- | ----------------- | -------- | ------------ | ----------------------------------------- |
-| id          | string            | true     | none         | The ID of the certificate                 |
+| id          | integer(uint32)   | true     | none         | The ID of the certificate                 |
 | name        | string            | false    | none         | The name of the certificate               |
 | description | string            | false    | none         | The description of the certificate        |
 | size        | integer(uint32)   | true     | none         | The size of the certificate file in bytes |
@@ -4055,7 +4055,7 @@ WiFi frequency band enum values
 <a id="tocswificonfig"></a>
 
 ```yaml
-id: string
+id: 0
 ssid: string
 security: none
 password: pa$$word
@@ -4070,7 +4070,7 @@ updatedAt: 2019-08-24T14:15:22Z
 
 | Name        | Type                                                | Required | Restrictions | Description                                                                                        |
 | ----------- | --------------------------------------------------- | -------- | ------------ | -------------------------------------------------------------------------------------------------- |
-| id          | string                                              | true     | read-only    | The unique identifier of the WiFi configuration                                                    |
+| id          | integer(uint32)                                     | true     | read-only    | The unique identifier of the WiFi configuration                                                    |
 | ssid        | string                                              | true     | none         | The SSID of the WiFi network to connect to                                                         |
 | security    | [WiFiSecurityType](#schemawifisecuritytype)         | true     | none         | The security type of the WiFi network                                                              |
 | password    | string(password)                                    | false    | none         | The password for the WiFi network (required for secured networks). encrypted depends security type |
@@ -4136,7 +4136,7 @@ WiFi connection status
 <a id="tocswifinetwork"></a>
 
 ```yaml
-id: string
+id: 0
 ssid: string
 bssid: string
 security: none
@@ -4153,7 +4153,7 @@ lastSeen: 2019-08-24T14:15:22Z
 
 | Name           | Type                                        | Required | Restrictions | Description                                         |
 | -------------- | ------------------------------------------- | -------- | ------------ | --------------------------------------------------- |
-| id             | string                                      | true     | read-only    | The unique identifier of the WiFi network           |
+| id             | integer(uint32)                             | true     | read-only    | The unique identifier of the WiFi network           |
 | ssid           | string                                      | true     | none         | The SSID of the WiFi network                        |
 | bssid          | string                                      | true     | none         | The BSSID of the WiFi network                       |
 | security       | [WiFiSecurityType](#schemawifisecuritytype) | true     | none         | The security type of the WiFi network               |

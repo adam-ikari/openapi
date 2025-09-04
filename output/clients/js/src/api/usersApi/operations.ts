@@ -30,7 +30,7 @@ import {
 
 export function _$deleteSend(
   context: Client,
-  id: string,
+  id: number,
   options: UsersApiDeleteOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   const path = expandUrlTemplate(
@@ -68,7 +68,7 @@ export async function _$deleteDeserialize(
  */
 export async function $delete(
   context: Client,
-  id: string,
+  id: number,
   options: UsersApiDeleteOptionalParams = { requestOptions: {} },
 ): Promise<void> {
   const result = await _$deleteSend(context, id, options);
@@ -77,7 +77,7 @@ export async function $delete(
 
 export function _updateSend(
   context: Client,
-  id: string,
+  id: number,
   body: User,
   options: UsersApiUpdateOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
@@ -119,7 +119,7 @@ export async function _updateDeserialize(
 /** Update a users */
 export async function update(
   context: Client,
-  id: string,
+  id: number,
   body: User,
   options: UsersApiUpdateOptionalParams = { requestOptions: {} },
 ): Promise<User> {
@@ -170,7 +170,7 @@ export async function create(
 
 export function _readSend(
   context: Client,
-  id: string,
+  id: number,
   options: UsersApiReadOptionalParams = { requestOptions: {} },
 ): StreamableMethod {
   const path = expandUrlTemplate(
@@ -209,7 +209,7 @@ export async function _readDeserialize(
 /** Read users */
 export async function read(
   context: Client,
-  id: string,
+  id: number,
   options: UsersApiReadOptionalParams = { requestOptions: {} },
 ): Promise<User> {
   const result = await _readSend(context, id, options);

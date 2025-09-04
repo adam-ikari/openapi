@@ -99,8 +99,34 @@ function generateFakeData(schema, schemas) {
 // 为每个模型生成多个假数据
 function generateMultipleFakeData(schema, schemas, count) {
   const fakeDataArray = [];
+  // 用于跟踪当前模型已生成的ID，确保每个模型内的ID唯一性
+  const generatedIds = new Set();
+  
   for (let i = 0; i < count; i++) {
-    fakeDataArray.push(generateFakeData(schema, schemas));
+    const data = generateFakeData(schema, schemas);
+    
+    // 如果数据对象有id字段，确保其在当前模型内唯一
+    if (data && typeof data === 'object' && data.id !== undefined) {
+      let newId = data.id;
+      // 如果是整数ID，生成唯一的整数ID
+      if (Number.isInteger(data.id)) {
+        while (generatedIds.has(newId)) {
+          newId = faker.number.int({ min: 1, max: 1000000 });
+        }
+        generatedIds.add(newId);
+        data.id = newId;
+      }
+      // 如果是字符串ID，生成唯一的字符串ID
+      else if (typeof data.id === 'string') {
+        while (generatedIds.has(newId)) {
+          newId = faker.string.uuid();
+        }
+        generatedIds.add(newId);
+        data.id = newId;
+      }
+    }
+    
+    fakeDataArray.push(data);
   }
   return fakeDataArray;
 }

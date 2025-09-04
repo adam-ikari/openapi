@@ -116,7 +116,8 @@ paths:
           required: true
           description: The id of the certificate to get
           schema:
-            type: string
+            type: integer
+            format: uint32
       responses:
         '200':
           description: The request has succeeded.
@@ -143,7 +144,8 @@ paths:
           required: true
           description: The id of the certificate to delete
           schema:
-            type: string
+            type: integer
+            format: uint32
       responses:
         '200':
           description: The request has succeeded.
@@ -249,7 +251,8 @@ paths:
           required: true
           description: The id of the Email Group to read
           schema:
-            type: string
+            type: integer
+            format: uint32
       responses:
         '200':
           description: The request has succeeded.
@@ -276,7 +279,8 @@ paths:
           required: true
           description: The id of the Email Group to update
           schema:
-            type: string
+            type: integer
+            format: uint32
       responses:
         '200':
           description: The request has succeeded.
@@ -309,7 +313,8 @@ paths:
           required: true
           description: The id of the Email Group to delete
           schema:
-            type: string
+            type: integer
+            format: uint32
       responses:
         '204':
           description: 'There is no content to send for this request, but the headers may be useful. '
@@ -401,7 +406,8 @@ paths:
           required: true
           description: The id of the email to read
           schema:
-            type: string
+            type: integer
+            format: uint32
       responses:
         '200':
           description: The request has succeeded.
@@ -428,7 +434,8 @@ paths:
           required: true
           description: The id of the email to update
           schema:
-            type: string
+            type: integer
+            format: uint32
       responses:
         '200':
           description: The request has succeeded.
@@ -461,7 +468,8 @@ paths:
           required: true
           description: The id of the email to delete
           schema:
-            type: string
+            type: integer
+            format: uint32
       responses:
         '204':
           description: 'There is no content to send for this request, but the headers may be useful. '
@@ -553,7 +561,8 @@ paths:
           required: true
           description: The id of the user to read
           schema:
-            type: string
+            type: integer
+            format: uint32
       responses:
         '200':
           description: The request has succeeded.
@@ -580,7 +589,8 @@ paths:
           required: true
           description: The id of the user to update
           schema:
-            type: string
+            type: integer
+            format: uint32
       responses:
         '200':
           description: The request has succeeded.
@@ -613,7 +623,8 @@ paths:
           required: true
           description: The id of the user to delete
           schema:
-            type: string
+            type: integer
+            format: uint32
       responses:
         '204':
           description: 'There is no content to send for this request, but the headers may be useful. '
@@ -706,7 +717,8 @@ paths:
           required: true
           description: The id of the WiFi configuration to get
           schema:
-            type: string
+            type: integer
+            format: uint32
       responses:
         '200':
           description: The request has succeeded.
@@ -733,7 +745,8 @@ paths:
           required: true
           description: The id of the WiFi configuration to update
           schema:
-            type: string
+            type: integer
+            format: uint32
       responses:
         '200':
           description: The request has succeeded.
@@ -767,7 +780,8 @@ paths:
           required: true
           description: The id of the WiFi configuration to delete
           schema:
-            type: string
+            type: integer
+            format: uint32
       responses:
         '204':
           description: 'There is no content to send for this request, but the headers may be useful. '
@@ -873,7 +887,8 @@ paths:
           required: true
           description: The id of the WiFi network to get
           schema:
-            type: string
+            type: integer
+            format: uint32
       responses:
         '200':
           description: The request has succeeded.
@@ -901,7 +916,8 @@ paths:
           required: true
           description: The id of the WiFi network to connect to
           schema:
-            type: string
+            type: integer
+            format: uint32
       responses:
         '200':
           description: The request has succeeded.
@@ -1001,7 +1017,8 @@ components:
         - md5
       properties:
         id:
-          type: string
+          type: integer
+          format: uint32
           description: The ID of the certificate
         name:
           type: string
@@ -1453,7 +1470,8 @@ components:
         - updatedAt
       properties:
         id:
-          type: string
+          type: integer
+          format: uint32
           description: The unique identifier of the WiFi configuration
           readOnly: true
         ssid:
@@ -1528,7 +1546,8 @@ components:
         - lastSeen
       properties:
         id:
-          type: string
+          type: integer
+          format: uint32
           description: The unique identifier of the WiFi network
           readOnly: true
         ssid:
