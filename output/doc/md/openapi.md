@@ -94,10 +94,10 @@ List users
 
 <h3 id="usersapi_list-parameters">Parameters</h3>
 
-| Name   | In    | Type           | Required | Description        |
-| ------ | ----- | -------------- | -------- | ------------------ |
-| offset | query | integer(int32) | false    | offset, default 0  |
-| limit  | query | integer(int32) | false    | limit, default 100 |
+| Name   | In    | Type            | Required | Description        |
+| ------ | ----- | --------------- | -------- | ------------------ |
+| offset | query | integer(uint32) | false    | offset, default 0  |
+| limit  | query | integer(uint32) | false    | limit, default 100 |
 
 > Example responses
 
@@ -763,10 +763,10 @@ List emails
 
 <h3 id="emailsapi_list-parameters">Parameters</h3>
 
-| Name   | In    | Type           | Required | Description        |
-| ------ | ----- | -------------- | -------- | ------------------ |
-| offset | query | integer(int32) | false    | offset, default 0  |
-| limit  | query | integer(int32) | false    | limit, default 100 |
+| Name   | In    | Type            | Required | Description        |
+| ------ | ----- | --------------- | -------- | ------------------ |
+| offset | query | integer(uint32) | false    | offset, default 0  |
+| limit  | query | integer(uint32) | false    | limit, default 100 |
 
 > Example responses
 
@@ -1349,10 +1349,10 @@ List email groups
 
 <h3 id="emailsgroupapi_list-parameters">Parameters</h3>
 
-| Name   | In    | Type           | Required | Description        |
-| ------ | ----- | -------------- | -------- | ------------------ |
-| offset | query | integer(int32) | false    | offset, default 0  |
-| limit  | query | integer(int32) | false    | limit, default 100 |
+| Name   | In    | Type            | Required | Description        |
+| ------ | ----- | --------------- | -------- | ------------------ |
+| offset | query | integer(uint32) | false    | offset, default 0  |
+| limit  | query | integer(uint32) | false    | limit, default 100 |
 
 > Example responses
 
@@ -1960,10 +1960,10 @@ List WiFi configurations
 
 <h3 id="wifiapi_listconfigs-parameters">Parameters</h3>
 
-| Name   | In    | Type           | Required | Description        |
-| ------ | ----- | -------------- | -------- | ------------------ |
-| offset | query | integer(int32) | false    | offset, default 0  |
-| limit  | query | integer(int32) | false    | limit, default 100 |
+| Name   | In    | Type            | Required | Description        |
+| ------ | ----- | --------------- | -------- | ------------------ |
+| offset | query | integer(uint32) | false    | offset, default 0  |
+| limit  | query | integer(uint32) | false    | limit, default 100 |
 
 > Example responses
 
@@ -2690,11 +2690,11 @@ Scan for available WiFi networks
 
 <h3 id="wifiapi_scannetworks-parameters">Parameters</h3>
 
-| Name   | In    | Type           | Required | Description                                               |
-| ------ | ----- | -------------- | -------- | --------------------------------------------------------- |
-| force  | query | boolean        | true     | Whether to force a rescan instead of using cached results |
-| offset | query | integer(int32) | false    | offset, default 0                                         |
-| limit  | query | integer(int32) | false    | limit, default 100                                        |
+| Name   | In    | Type            | Required | Description                                               |
+| ------ | ----- | --------------- | -------- | --------------------------------------------------------- |
+| force  | query | boolean         | true     | Whether to force a rescan instead of using cached results |
+| offset | query | integer(uint32) | false    | offset, default 0                                         |
+| limit  | query | integer(uint32) | false    | limit, default 100                                        |
 
 > Example responses
 
@@ -3364,10 +3364,10 @@ List certificates
 
 <h3 id="certificateapi_listcertificates-parameters">Parameters</h3>
 
-| Name   | In    | Type           | Required | Description        |
-| ------ | ----- | -------------- | -------- | ------------------ |
-| offset | query | integer(int32) | false    | offset, default 0  |
-| limit  | query | integer(int32) | false    | limit, default 100 |
+| Name   | In    | Type            | Required | Description        |
+| ------ | ----- | --------------- | -------- | ------------------ |
+| offset | query | integer(uint32) | false    | offset, default 0  |
+| limit  | query | integer(uint32) | false    | limit, default 100 |
 
 > Example responses
 

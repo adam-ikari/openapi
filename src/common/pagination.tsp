@@ -11,12 +11,12 @@ model PaginationParams {
   @doc("offset, default 0")
   @offset
   @query
-  offset?: int32 = 0;
+  offset?: uint32 = 0;
 
   @doc("limit, default 100")
   @pageSize
   @query
-  limit?: int32 = 100;
+  limit?: uint32 = 100;
 }
 
 model PagedResult<T> {

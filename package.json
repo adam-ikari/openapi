@@ -7,8 +7,8 @@
     "build:tsp": "tsp compile src/index.tsp --output-dir output",
     "build:doc": "node scripts/build_doc.js",
     "build:html": "redocly build-docs output/schema/openapi.yaml --output=output/doc/html/openapi.html",
-    "mock": "prism mock output/schema/openapi.yaml",
-    "mock:watch": "prism mock output/schema/openapi.yaml --watch"
+    "mock": "prism mock -d output/schema/openapi.yaml",
+    "mock:watch": "prism mock -d output/schema/openapi.yaml --watch"
   },
   "peerDependencies": {
     "@azure-tools/typespec-ts": "latest",

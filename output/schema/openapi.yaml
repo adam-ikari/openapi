@@ -978,7 +978,7 @@ components:
       description: limit, default 100
       schema:
         type: integer
-        format: int32
+        format: uint32
         default: 100
       explode: false
     PaginationParams.offset:
@@ -988,7 +988,7 @@ components:
       description: offset, default 0
       schema:
         type: integer
-        format: int32
+        format: uint32
         default: 0
       explode: false
   schemas:
