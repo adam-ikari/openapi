@@ -3,10 +3,11 @@
 import fs from 'fs';
 import yaml from 'js-yaml';
 import { faker } from '@faker-js/faker';
+import path from 'path';
 
 // 读取OpenAPI文件
 const OPENAPI_PATH = 'output/schema/openapi.yaml';
-const OUTPUT_PATH = 'output/fake_data.json';
+const OUTPUT_PATH = 'fake/data.json';
 const DATA_COUNT = 100; // 每个模型生成100个数据
 const openApiDoc = yaml.load(fs.readFileSync(OPENAPI_PATH, 'utf8'));
 
@@ -148,6 +149,7 @@ function main() {
   try {
     const fakeData = processSchemas();
     // 保存到文件
+    fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
     fs.writeFileSync(OUTPUT_PATH, JSON.stringify(fakeData, null, 2));
     console.log(`Fake data saved to ${OUTPUT_PATH}`);
   } catch (error) {
