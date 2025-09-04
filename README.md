@@ -158,6 +158,21 @@ Generate HTML documentation:
 yarn build:html
 ```
 
+### Start Mock Server
+
+You can start a mock server using Prism that simulates the API based on the OpenAPI specification:
+
+```bash
+npm run mock
+```
+
+This will start a mock server on `http://127.0.0.1:4010` that responds to all API endpoints defined in the specification.
+
+To start the mock server in watch mode (automatically reloads when the OpenAPI spec changes):
+```bash
+npm run mock:watch
+```
+
 ## Generated Output
 
 After building, the following outputs are generated in the `output/` directory:

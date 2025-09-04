@@ -6,7 +6,9 @@
     "build": "npm run build:tsp && npm run build:doc && npm run build:html",
     "build:tsp": "tsp compile src/index.tsp --output-dir output",
     "build:doc": "node scripts/build_doc.js",
-    "build:html": "redocly build-docs output/schema/openapi.yaml --output=output/doc/html/openapi.html"
+    "build:html": "redocly build-docs output/schema/openapi.yaml --output=output/doc/html/openapi.html",
+    "mock": "prism mock output/schema/openapi.yaml",
+    "mock:watch": "prism mock output/schema/openapi.yaml --watch"
   },
   "peerDependencies": {
     "@azure-tools/typespec-ts": "latest",
@@ -22,6 +24,7 @@
     "@azure-tools/typespec-client-generator-core": "^0.59.1",
     "@azure-tools/typespec-ts": "latest",
     "@redocly/cli": "^2.0.8",
+    "@stoplight/prism-cli": "^5.14.2",
     "@typespec/compiler": "^1.3.0",
     "@typespec/http": "latest",
     "@typespec/http-server-js": "latest",

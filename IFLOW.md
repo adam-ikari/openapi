@@ -82,6 +82,21 @@ yarn build:html
 npm run build:html
 ```
 
+### 启动 Mock 服务器
+
+您可以使用 Prism 启动一个基于 OpenAPI 规范模拟 API 的 mock 服务器：
+
+```bash
+npm run mock
+```
+
+这将在 `http://127.0.0.1:4010` 上启动一个 mock 服务器，该服务器会响应规范中定义的所有 API 端点。
+
+要在监视模式下启动 mock 服务器（在 OpenAPI 规范更改时自动重新加载）：
+```bash
+npm run mock:watch
+```
+
 ## 生成的输出
 
 构建完成后，会在 `output/` 目录中生成以下内容：
