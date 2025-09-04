@@ -37,6 +37,9 @@ function generateFakeData(schema, schemas) {
           fakeData[key] = faker.internet.email();
         } else if (value.format === 'uri') {
           fakeData[key] = faker.internet.url();
+        } else if (key === 'name') {
+          // 为name字段生成更真实的名字
+          fakeData[key] = faker.person.fullName();
         } else if (value.pattern) {
           // 根据pattern生成符合要求的数据
           if (value.pattern.includes('email')) {
