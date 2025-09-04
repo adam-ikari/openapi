@@ -18,6 +18,6 @@ export interface EmailsApiReadOptionalParams extends OperationOptions {}
 export interface EmailsApiListOptionalParams extends OperationOptions {
   /** offset, default 0 */
   offset?: number;
-  /** limit, default 10 */
+  /** limit, default 100 */
   limit?: number;
 }

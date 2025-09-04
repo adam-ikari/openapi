@@ -6,9 +6,13 @@ import {
   emailSerializer,
   emailDeserializer,
   errorDeserializer,
-  PagedResultEmail,
-  pagedResultEmailDeserializer,
+  _PagedResultEmail,
+  _pagedResultEmailDeserializer,
 } from "../../models/models.js";
+import {
+  PagedAsyncIterableIterator,
+  buildPagedAsyncIterator,
+} from "../../static-helpers/pagingHelpers.js";
 import { expandUrlTemplate } from "../../static-helpers/urlTemplate.js";
 import {
   EmailsApiDeleteOptionalParams,
@@ -239,22 +243,25 @@ export function _listSend(
 
 export async function _listDeserialize(
   result: PathUncheckedResponse,
-): Promise<PagedResultEmail> {
+): Promise<_PagedResultEmail> {
   const expectedStatuses = ["200"];
   if (!expectedStatuses.includes(result.status)) {
-    const error = createRestError(result);
-    error.details = errorDeserializer(result.body);
-    throw error;
+    throw createRestError(result);
   }
 
-  return pagedResultEmailDeserializer(result.body);
+  return _pagedResultEmailDeserializer(result.body);
 }
 
 /** List emails */
-export async function list(
+export function list(
   context: Client,
   options: EmailsApiListOptionalParams = { requestOptions: {} },
-): Promise<PagedResultEmail> {
-  const result = await _listSend(context, options);
-  return _listDeserialize(result);
+): PagedAsyncIterableIterator<Email> {
+  return buildPagedAsyncIterator(
+    context,
+    () => _listSend(context, options),
+    _listDeserialize,
+    ["200"],
+    { itemName: "items" },
+  );
 }

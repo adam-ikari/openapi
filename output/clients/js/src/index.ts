@@ -1,28 +1,27 @@
 // Licensed under the MIT License.
 
 import { FileContents } from "./static-helpers/multipartHelpers.js";
+import {
+  PageSettings,
+  ContinuablePage,
+  PagedAsyncIterableIterator,
+} from "./static-helpers/pagingHelpers.js";
 
 export { OpenApiV2Client } from "./openApiV2Client.js";
 export {
-  PagedResultUser,
   User,
   Gender,
   Email,
   EmailAuthType,
   ErrorModel,
   StatusCode,
-  PagedResultEmail,
-  PagedResultEmailGroup,
   EmailGroup,
-  PagedResultWiFiNetwork,
   WiFiNetwork,
   WiFiSecurityType,
   WiFiBand,
-  PagedResultWiFiConfig,
   WiFiConfig,
   WiFiConnectionStatus,
   WiFiConnectRequest,
-  PagedResultCertificateInfo,
   CertificateInfo,
 } from "./models/index.js";
 export { OpenApiV2ClientOptionalParams } from "./api/index.js";
@@ -72,4 +71,5 @@ export {
   UsersApiOperations,
   WiFiApiOperations,
 } from "./classic/index.js";
+export { PageSettings, ContinuablePage, PagedAsyncIterableIterator };
 export { FileContents };

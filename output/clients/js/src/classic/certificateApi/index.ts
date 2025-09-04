@@ -13,10 +13,8 @@ import {
   CertificateApiListCertificatesOptionalParams,
   CertificateApiUploadCertificateOptionalParams,
 } from "../../api/certificateApi/options.js";
-import {
-  PagedResultCertificateInfo,
-  CertificateInfo,
-} from "../../models/models.js";
+import { CertificateInfo } from "../../models/models.js";
+import { PagedAsyncIterableIterator } from "../../static-helpers/pagingHelpers.js";
 
 /** Interface representing a CertificateApi operations. */
 export interface CertificateApiOperations {
@@ -36,7 +34,7 @@ export interface CertificateApiOperations {
   /** List certificates */
   listCertificates: (
     options?: CertificateApiListCertificatesOptionalParams,
-  ) => Promise<PagedResultCertificateInfo>;
+  ) => PagedAsyncIterableIterator<CertificateInfo>;
   /** Upload a certificate file for WiFi authentication */
   uploadCertificate: (
     body: {

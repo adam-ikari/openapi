@@ -5,22 +5,19 @@ import {
   createFilePartDescriptor,
 } from "../static-helpers/multipartHelpers.js";
 
-/**
- * 通用分页响应模型
- * 所有列表接口的返回类型都应该继承自该模型
- */
-export interface PagedResultUser {
+/** model interface _PagedResultUser */
+export interface _PagedResultUser {
   /** Items */
   items: User[];
-  /** totol count */
+  /** Total count of items */
   total: number;
-  /** offset, default 0 */
+  /** Offset, default 0 */
   offset: number;
-  /** limit, default 10 */
+  /** Limit, default 100 */
   limit: number;
 }
 
-export function pagedResultUserDeserializer(item: any): PagedResultUser {
+export function _pagedResultUserDeserializer(item: any): _PagedResultUser {
   return {
     items: userArrayDeserializer(item["items"]),
     total: item["total"],
@@ -151,22 +148,19 @@ export function errorDeserializer(item: any): ErrorModel {
 /** Status Code */
 export type StatusCode = 100000 | 100001;
 
-/**
- * 通用分页响应模型
- * 所有列表接口的返回类型都应该继承自该模型
- */
-export interface PagedResultEmail {
+/** model interface _PagedResultEmail */
+export interface _PagedResultEmail {
   /** Items */
   items: Email[];
-  /** totol count */
+  /** Total count of items */
   total: number;
-  /** offset, default 0 */
+  /** Offset, default 0 */
   offset: number;
-  /** limit, default 10 */
+  /** Limit, default 100 */
   limit: number;
 }
 
-export function pagedResultEmailDeserializer(item: any): PagedResultEmail {
+export function _pagedResultEmailDeserializer(item: any): _PagedResultEmail {
   return {
     items: emailArrayDeserializer(item["items"]),
     total: item["total"],
@@ -187,24 +181,21 @@ export function emailArrayDeserializer(result: Array<Email>): any[] {
   });
 }
 
-/**
- * 通用分页响应模型
- * 所有列表接口的返回类型都应该继承自该模型
- */
-export interface PagedResultEmailGroup {
+/** model interface _PagedResultEmailGroup */
+export interface _PagedResultEmailGroup {
   /** Items */
   items: EmailGroup[];
-  /** totol count */
+  /** Total count of items */
   total: number;
-  /** offset, default 0 */
+  /** Offset, default 0 */
   offset: number;
-  /** limit, default 10 */
+  /** Limit, default 100 */
   limit: number;
 }
 
-export function pagedResultEmailGroupDeserializer(
+export function _pagedResultEmailGroupDeserializer(
   item: any,
-): PagedResultEmailGroup {
+): _PagedResultEmailGroup {
   return {
     items: emailGroupArrayDeserializer(item["items"]),
     total: item["total"],
@@ -247,24 +238,21 @@ export function emailGroupDeserializer(item: any): EmailGroup {
   };
 }
 
-/**
- * 通用分页响应模型
- * 所有列表接口的返回类型都应该继承自该模型
- */
-export interface PagedResultWiFiNetwork {
+/** model interface _PagedResultWiFiNetwork */
+export interface _PagedResultWiFiNetwork {
   /** Items */
   items: WiFiNetwork[];
-  /** totol count */
+  /** Total count of items */
   total: number;
-  /** offset, default 0 */
+  /** Offset, default 0 */
   offset: number;
-  /** limit, default 10 */
+  /** Limit, default 100 */
   limit: number;
 }
 
-export function pagedResultWiFiNetworkDeserializer(
+export function _pagedResultWiFiNetworkDeserializer(
   item: any,
-): PagedResultWiFiNetwork {
+): _PagedResultWiFiNetwork {
   return {
     items: wiFiNetworkArrayDeserializer(item["items"]),
     total: item["total"],
@@ -328,24 +316,21 @@ export type WiFiSecurityType = "none" | "wep" | "wpa" | "wpa2" | "wpa3";
 /** WiFi frequency band enum values */
 export type WiFiBand = "mixed" | "2_4GHz" | "5GHz" | "6GHz";
 
-/**
- * 通用分页响应模型
- * 所有列表接口的返回类型都应该继承自该模型
- */
-export interface PagedResultWiFiConfig {
+/** model interface _PagedResultWiFiConfig */
+export interface _PagedResultWiFiConfig {
   /** Items */
   items: WiFiConfig[];
-  /** totol count */
+  /** Total count of items */
   total: number;
-  /** offset, default 0 */
+  /** Offset, default 0 */
   offset: number;
-  /** limit, default 10 */
+  /** Limit, default 100 */
   limit: number;
 }
 
-export function pagedResultWiFiConfigDeserializer(
+export function _pagedResultWiFiConfigDeserializer(
   item: any,
-): PagedResultWiFiConfig {
+): _PagedResultWiFiConfig {
   return {
     items: wiFiConfigArrayDeserializer(item["items"]),
     total: item["total"],
@@ -533,24 +518,21 @@ export function _uploadCertificateResponseDeserializer(
   };
 }
 
-/**
- * 通用分页响应模型
- * 所有列表接口的返回类型都应该继承自该模型
- */
-export interface PagedResultCertificateInfo {
+/** model interface _PagedResultCertificateInfo */
+export interface _PagedResultCertificateInfo {
   /** Items */
   items: CertificateInfo[];
-  /** totol count */
+  /** Total count of items */
   total: number;
-  /** offset, default 0 */
+  /** Offset, default 0 */
   offset: number;
-  /** limit, default 10 */
+  /** Limit, default 100 */
   limit: number;
 }
 
-export function pagedResultCertificateInfoDeserializer(
+export function _pagedResultCertificateInfoDeserializer(
   item: any,
-): PagedResultCertificateInfo {
+): _PagedResultCertificateInfo {
   return {
     items: certificateInfoArrayDeserializer(item["items"]),
     total: item["total"],

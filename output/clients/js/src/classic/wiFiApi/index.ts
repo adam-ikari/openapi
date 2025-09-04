@@ -26,12 +26,11 @@ import {
   WiFiApiScanNetworksOptionalParams,
 } from "../../api/wiFiApi/options.js";
 import {
-  PagedResultWiFiNetwork,
   WiFiNetwork,
-  PagedResultWiFiConfig,
   WiFiConfig,
   WiFiConnectionStatus,
 } from "../../models/models.js";
+import { PagedAsyncIterableIterator } from "../../static-helpers/pagingHelpers.js";
 
 /** Interface representing a WiFiApi operations. */
 export interface WiFiApiOperations {
@@ -80,7 +79,7 @@ export interface WiFiApiOperations {
   /** List WiFi configurations */
   listConfigs: (
     options?: WiFiApiListConfigsOptionalParams,
-  ) => Promise<PagedResultWiFiConfig>;
+  ) => PagedAsyncIterableIterator<WiFiConfig>;
   /** Get details of a specific WiFi network */
   getNetwork: (
     id: string,
@@ -90,7 +89,7 @@ export interface WiFiApiOperations {
   scanNetworks: (
     force: boolean,
     options?: WiFiApiScanNetworksOptionalParams,
-  ) => Promise<PagedResultWiFiNetwork>;
+  ) => PagedAsyncIterableIterator<WiFiNetwork>;
 }
 
 function _getWiFiApi(context: OpenApiV2Context) {

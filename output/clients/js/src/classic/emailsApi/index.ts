@@ -15,7 +15,8 @@ import {
   EmailsApiReadOptionalParams,
   EmailsApiListOptionalParams,
 } from "../../api/emailsApi/options.js";
-import { Email, PagedResultEmail } from "../../models/models.js";
+import { Email } from "../../models/models.js";
+import { PagedAsyncIterableIterator } from "../../static-helpers/pagingHelpers.js";
 
 /** Interface representing a EmailsApi operations. */
 export interface EmailsApiOperations {
@@ -43,7 +44,9 @@ export interface EmailsApiOperations {
   /** Read emails */
   read: (id: string, options?: EmailsApiReadOptionalParams) => Promise<Email>;
   /** List emails */
-  list: (options?: EmailsApiListOptionalParams) => Promise<PagedResultEmail>;
+  list: (
+    options?: EmailsApiListOptionalParams,
+  ) => PagedAsyncIterableIterator<Email>;
 }
 
 function _getEmailsApi(context: OpenApiV2Context) {

@@ -18,6 +18,6 @@ export interface UsersApiReadOptionalParams extends OperationOptions {}
 export interface UsersApiListOptionalParams extends OperationOptions {
   /** offset, default 0 */
   offset?: number;
-  /** limit, default 10 */
+  /** limit, default 100 */
   limit?: number;
 }

@@ -94,10 +94,10 @@ List users
 
 <h3 id="usersapi_list-parameters">Parameters</h3>
 
-| Name   | In    | Type            | Required | Description       |
-| ------ | ----- | --------------- | -------- | ----------------- |
-| offset | query | integer(uint32) | false    | offset, default 0 |
-| limit  | query | integer(uint32) | false    | limit, default 10 |
+| Name   | In    | Type           | Required | Description        |
+| ------ | ----- | -------------- | -------- | ------------------ |
+| offset | query | integer(int32) | false    | offset, default 0  |
+| limit  | query | integer(int32) | false    | limit, default 100 |
 
 > Example responses
 
@@ -131,17 +131,13 @@ List users
 
 <h3 id="usersapi_list-responses">Responses</h3>
 
-| Status  | Meaning                                                 | Description                   | Schema                |
-| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
-| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | Inline                |
-| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
+| Status | Meaning                                                 | Description                | Schema |
+| ------ | ------------------------------------------------------- | -------------------------- | ------ |
+| 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded. | Inline |
 
 <h3 id="usersapi_list-responseschema">Response Schema</h3>
 
 Status Code **200**
-
-_通用分页响应模型
-所有列表接口的返回类型都应该继承自该模型_
 
 | Name          | Type                                  | Required | Restrictions | Description                              |
 | ------------- | ------------------------------------- | -------- | ------------ | ---------------------------------------- |
@@ -159,9 +155,9 @@ _通用分页响应模型
 | »» avatar     | string(uri)                           | false    | none         | The avatar of the user                   |
 | »» createdAt  | integer(int32)                        | true     | none         | The timestamp when the user was created  |
 | »» updatedAt  | integer(int32)                        | true     | none         | The timestamp when the user was updated  |
-| » total       | integer(uint32)                       | true     | none         | totol count                              |
-| » offset      | integer(uint32)                       | true     | none         | offset, default 0                        |
-| » limit       | integer(uint32)                       | true     | none         | limit, default 10                        |
+| » total       | integer(uint32)                       | true     | none         | Total count of items                     |
+| » offset      | integer(uint32)                       | true     | none         | Offset, default 0                        |
+| » limit       | integer(uint32)                       | true     | none         | Limit, default 100                       |
 
 #### Enumerated Values
 
@@ -767,10 +763,10 @@ List emails
 
 <h3 id="emailsapi_list-parameters">Parameters</h3>
 
-| Name   | In    | Type            | Required | Description       |
-| ------ | ----- | --------------- | -------- | ----------------- |
-| offset | query | integer(uint32) | false    | offset, default 0 |
-| limit  | query | integer(uint32) | false    | limit, default 10 |
+| Name   | In    | Type           | Required | Description        |
+| ------ | ----- | -------------- | -------- | ------------------ |
+| offset | query | integer(int32) | false    | offset, default 0  |
+| limit  | query | integer(int32) | false    | limit, default 100 |
 
 > Example responses
 
@@ -795,17 +791,13 @@ List emails
 
 <h3 id="emailsapi_list-responses">Responses</h3>
 
-| Status  | Meaning                                                 | Description                   | Schema                |
-| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
-| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | Inline                |
-| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
+| Status | Meaning                                                 | Description                | Schema |
+| ------ | ------------------------------------------------------- | -------------------------- | ------ |
+| 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded. | Inline |
 
 <h3 id="emailsapi_list-responseschema">Response Schema</h3>
 
 Status Code **200**
-
-_通用分页响应模型
-所有列表接口的返回类型都应该继承自该模型_
 
 | Name         | Type                                  | Required | Restrictions | Description                              |
 | ------------ | ------------------------------------- | -------- | ------------ | ---------------------------------------- |
@@ -815,9 +807,9 @@ _通用分页响应模型
 | »» authType  | [EmailAuthType](#schemaemailauthtype) | true     | none         | The authentication type                  |
 | »» createdAt | integer(int32)                        | true     | none         | The timestamp when the email was created |
 | »» updatedAt | integer(int32)                        | true     | none         | The timestamp when the email was updated |
-| » total      | integer(uint32)                       | true     | none         | totol count                              |
-| » offset     | integer(uint32)                       | true     | none         | offset, default 0                        |
-| » limit      | integer(uint32)                       | true     | none         | limit, default 10                        |
+| » total      | integer(uint32)                       | true     | none         | Total count of items                     |
+| » offset     | integer(uint32)                       | true     | none         | Offset, default 0                        |
+| » limit      | integer(uint32)                       | true     | none         | Limit, default 100                       |
 
 #### Enumerated Values
 
@@ -1357,10 +1349,10 @@ List email groups
 
 <h3 id="emailsgroupapi_list-parameters">Parameters</h3>
 
-| Name   | In    | Type            | Required | Description       |
-| ------ | ----- | --------------- | -------- | ----------------- |
-| offset | query | integer(uint32) | false    | offset, default 0 |
-| limit  | query | integer(uint32) | false    | limit, default 10 |
+| Name   | In    | Type           | Required | Description        |
+| ------ | ----- | -------------- | -------- | ------------------ |
+| offset | query | integer(int32) | false    | offset, default 0  |
+| limit  | query | integer(int32) | false    | limit, default 100 |
 
 > Example responses
 
@@ -1391,17 +1383,13 @@ List email groups
 
 <h3 id="emailsgroupapi_list-responses">Responses</h3>
 
-| Status  | Meaning                                                 | Description                   | Schema                |
-| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
-| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | Inline                |
-| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
+| Status | Meaning                                                 | Description                | Schema |
+| ------ | ------------------------------------------------------- | -------------------------- | ------ |
+| 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded. | Inline |
 
 <h3 id="emailsgroupapi_list-responseschema">Response Schema</h3>
 
 Status Code **200**
-
-_通用分页响应模型
-所有列表接口的返回类型都应该继承自该模型_
 
 | Name          | Type                                  | Required | Restrictions | Description                              |
 | ------------- | ------------------------------------- | -------- | ------------ | ---------------------------------------- |
@@ -1414,9 +1402,9 @@ _通用分页响应模型
 | »»» authType  | [EmailAuthType](#schemaemailauthtype) | true     | none         | The authentication type                  |
 | »»» createdAt | integer(int32)                        | true     | none         | The timestamp when the email was created |
 | »»» updatedAt | integer(int32)                        | true     | none         | The timestamp when the email was updated |
-| » total       | integer(uint32)                       | true     | none         | totol count                              |
-| » offset      | integer(uint32)                       | true     | none         | offset, default 0                        |
-| » limit       | integer(uint32)                       | true     | none         | limit, default 10                        |
+| » total       | integer(uint32)                       | true     | none         | Total count of items                     |
+| » offset      | integer(uint32)                       | true     | none         | Offset, default 0                        |
+| » limit       | integer(uint32)                       | true     | none         | Limit, default 100                       |
 
 #### Enumerated Values
 
@@ -1972,10 +1960,10 @@ List WiFi configurations
 
 <h3 id="wifiapi_listconfigs-parameters">Parameters</h3>
 
-| Name   | In    | Type            | Required | Description       |
-| ------ | ----- | --------------- | -------- | ----------------- |
-| offset | query | integer(uint32) | false    | offset, default 0 |
-| limit  | query | integer(uint32) | false    | limit, default 10 |
+| Name   | In    | Type           | Required | Description        |
+| ------ | ----- | -------------- | -------- | ------------------ |
+| offset | query | integer(int32) | false    | offset, default 0  |
+| limit  | query | integer(int32) | false    | limit, default 100 |
 
 > Example responses
 
@@ -2004,17 +1992,13 @@ List WiFi configurations
 
 <h3 id="wifiapi_listconfigs-responses">Responses</h3>
 
-| Status  | Meaning                                                 | Description                   | Schema                |
-| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
-| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | Inline                |
-| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
+| Status | Meaning                                                 | Description                | Schema |
+| ------ | ------------------------------------------------------- | -------------------------- | ------ |
+| 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded. | Inline |
 
 <h3 id="wifiapi_listconfigs-responseschema">Response Schema</h3>
 
 Status Code **200**
-
-_通用分页响应模型
-所有列表接口的返回类型都应该继承自该模型_
 
 | Name           | Type                                                | Required | Restrictions | Description                                                                                        |
 | -------------- | --------------------------------------------------- | -------- | ------------ | -------------------------------------------------------------------------------------------------- |
@@ -2028,9 +2012,9 @@ _通用分页响应模型
 | »» status      | [WiFiConnectionStatus](#schemawificonnectionstatus) | true     | none         | The current connection status of this configuration                                                |
 | »» createdAt   | integer(int32)                                      | true     | read-only    | The timestamp when the configuration was created                                                   |
 | »» updatedAt   | integer(int32)                                      | true     | read-only    | The timestamp when the configuration was last updated                                              |
-| » total        | integer(uint32)                                     | true     | none         | totol count                                                                                        |
-| » offset       | integer(uint32)                                     | true     | none         | offset, default 0                                                                                  |
-| » limit        | integer(uint32)                                     | true     | none         | limit, default 10                                                                                  |
+| » total        | integer(uint32)                                     | true     | none         | Total count of items                                                                               |
+| » offset       | integer(uint32)                                     | true     | none         | Offset, default 0                                                                                  |
+| » limit        | integer(uint32)                                     | true     | none         | Limit, default 100                                                                                 |
 
 #### Enumerated Values
 
@@ -2706,11 +2690,11 @@ Scan for available WiFi networks
 
 <h3 id="wifiapi_scannetworks-parameters">Parameters</h3>
 
-| Name   | In    | Type            | Required | Description                                               |
-| ------ | ----- | --------------- | -------- | --------------------------------------------------------- |
-| force  | query | boolean         | true     | Whether to force a rescan instead of using cached results |
-| offset | query | integer(uint32) | false    | offset, default 0                                         |
-| limit  | query | integer(uint32) | false    | limit, default 10                                         |
+| Name   | In    | Type           | Required | Description                                               |
+| ------ | ----- | -------------- | -------- | --------------------------------------------------------- |
+| force  | query | boolean        | true     | Whether to force a rescan instead of using cached results |
+| offset | query | integer(int32) | false    | offset, default 0                                         |
+| limit  | query | integer(int32) | false    | limit, default 100                                        |
 
 > Example responses
 
@@ -2741,17 +2725,13 @@ Scan for available WiFi networks
 
 <h3 id="wifiapi_scannetworks-responses">Responses</h3>
 
-| Status  | Meaning                                                 | Description                   | Schema                |
-| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
-| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | Inline                |
-| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
+| Status | Meaning                                                 | Description                | Schema |
+| ------ | ------------------------------------------------------- | -------------------------- | ------ |
+| 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded. | Inline |
 
 <h3 id="wifiapi_scannetworks-responseschema">Response Schema</h3>
 
 Status Code **200**
-
-_通用分页响应模型
-所有列表接口的返回类型都应该继承自该模型_
 
 | Name              | Type                                        | Required | Restrictions | Description                                         |
 | ----------------- | ------------------------------------------- | -------- | ------------ | --------------------------------------------------- |
@@ -2767,9 +2747,9 @@ _通用分页响应模型
 | »» isConnected    | boolean                                     | true     | none         | Whether this network is the currently connected one |
 | »» isSaved        | boolean                                     | true     | none         | Whether this network has a saved configuration      |
 | »» lastSeen       | integer(int32)                              | true     | read-only    | The timestamp when the network was last seen        |
-| » total           | integer(uint32)                             | true     | none         | totol count                                         |
-| » offset          | integer(uint32)                             | true     | none         | offset, default 0                                   |
-| » limit           | integer(uint32)                             | true     | none         | limit, default 10                                   |
+| » total           | integer(uint32)                             | true     | none         | Total count of items                                |
+| » offset          | integer(uint32)                             | true     | none         | Offset, default 0                                   |
+| » limit           | integer(uint32)                             | true     | none         | Limit, default 100                                  |
 
 #### Enumerated Values
 
@@ -3384,10 +3364,10 @@ List certificates
 
 <h3 id="certificateapi_listcertificates-parameters">Parameters</h3>
 
-| Name   | In    | Type            | Required | Description       |
-| ------ | ----- | --------------- | -------- | ----------------- |
-| offset | query | integer(uint32) | false    | offset, default 0 |
-| limit  | query | integer(uint32) | false    | limit, default 10 |
+| Name   | In    | Type           | Required | Description        |
+| ------ | ----- | -------------- | -------- | ------------------ |
+| offset | query | integer(int32) | false    | offset, default 0  |
+| limit  | query | integer(int32) | false    | limit, default 100 |
 
 > Example responses
 
@@ -3413,17 +3393,13 @@ List certificates
 
 <h3 id="certificateapi_listcertificates-responses">Responses</h3>
 
-| Status  | Meaning                                                 | Description                   | Schema                |
-| ------- | ------------------------------------------------------- | ----------------------------- | --------------------- |
-| 200     | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded.    | Inline                |
-| default | Default                                                 | An unexpected error response. | [Error](#schemaerror) |
+| Status | Meaning                                                 | Description                | Schema |
+| ------ | ------------------------------------------------------- | -------------------------- | ------ |
+| 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request has succeeded. | Inline |
 
 <h3 id="certificateapi_listcertificates-responseschema">Response Schema</h3>
 
 Status Code **200**
-
-_通用分页响应模型
-所有列表接口的返回类型都应该继承自该模型_
 
 | Name           | Type                                        | Required | Restrictions | Description                               |
 | -------------- | ------------------------------------------- | -------- | ------------ | ----------------------------------------- |
@@ -3434,9 +3410,9 @@ _通用分页响应模型
 | »» size        | integer(uint32)                             | true     | none         | The size of the certificate file in bytes |
 | »» uploadTime  | string(date-time)                           | true     | none         | The upload timestamp                      |
 | »» md5         | string                                      | true     | none         | The MD5 hash of the certificate file      |
-| » total        | integer(uint32)                             | true     | none         | totol count                               |
-| » offset       | integer(uint32)                             | true     | none         | offset, default 0                         |
-| » limit        | integer(uint32)                             | true     | none         | limit, default 10                         |
+| » total        | integer(uint32)                             | true     | none         | Total count of items                      |
+| » offset       | integer(uint32)                             | true     | none         | Offset, default 0                         |
+| » limit        | integer(uint32)                             | true     | none         | Limit, default 100                        |
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:

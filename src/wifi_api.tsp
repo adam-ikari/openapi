@@ -7,8 +7,9 @@ import "@typespec/openapi";
 import "./models/wifi.tsp";
 // 导入错误处理模型
 import "./models/error.tsp";
-// 导入通用分页模型
+
 import "./common/pagination.tsp";
+
 
 // 使用TypeSpec.Http命名空间，简化后续装饰器的使用
 using TypeSpec.Http;
@@ -28,13 +29,13 @@ interface WiFiApi {
   // @get装饰器表示这是一个HTTP GET请求
   @get
   @route("/networks")
+  @list
   scanNetworks(
     @doc("Whether to force a rescan instead of using cached results")
     @query
     force: boolean = false,
-    // 使用通用分页查询参数
     ...PaginationParams
-  ): PagedResult<WiFiNetwork> | Error;
+  ): PagedResult<WiFiNetwork>;
 
   /** Get details of a specific WiFi network */
   // HTTP GET请求，用于获取特定WiFi网络信息
@@ -51,10 +52,10 @@ interface WiFiApi {
   // HTTP GET请求，用于列出WiFi配置
   @get
   @route("/configs")
+  @list
   listConfigs(
-    // 使用通用分页查询参数
     ...PaginationParams
-  ): PagedResult<WiFiConfig> | Error;
+  ): PagedResult<WiFiConfig>;
 
   /** Get a specific WiFi configuration */
   // HTTP GET请求，用于获取特定WiFi配置

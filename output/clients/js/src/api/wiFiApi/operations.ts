@@ -3,12 +3,12 @@
 import { OpenApiV2Context as Client } from "../index.js";
 import {
   errorDeserializer,
-  PagedResultWiFiNetwork,
-  pagedResultWiFiNetworkDeserializer,
+  _PagedResultWiFiNetwork,
+  _pagedResultWiFiNetworkDeserializer,
   WiFiNetwork,
   wiFiNetworkDeserializer,
-  PagedResultWiFiConfig,
-  pagedResultWiFiConfigDeserializer,
+  _PagedResultWiFiConfig,
+  _pagedResultWiFiConfigDeserializer,
   WiFiConfig,
   wiFiConfigSerializer,
   wiFiConfigDeserializer,
@@ -18,6 +18,10 @@ import {
   _disconnectResponseDeserializer,
   _getStatusResponseDeserializer,
 } from "../../models/models.js";
+import {
+  PagedAsyncIterableIterator,
+  buildPagedAsyncIterator,
+} from "../../static-helpers/pagingHelpers.js";
 import { expandUrlTemplate } from "../../static-helpers/urlTemplate.js";
 import {
   WiFiApiGetStatusOptionalParams,
@@ -398,24 +402,27 @@ export function _listConfigsSend(
 
 export async function _listConfigsDeserialize(
   result: PathUncheckedResponse,
-): Promise<PagedResultWiFiConfig> {
+): Promise<_PagedResultWiFiConfig> {
   const expectedStatuses = ["200"];
   if (!expectedStatuses.includes(result.status)) {
-    const error = createRestError(result);
-    error.details = errorDeserializer(result.body);
-    throw error;
+    throw createRestError(result);
   }
 
-  return pagedResultWiFiConfigDeserializer(result.body);
+  return _pagedResultWiFiConfigDeserializer(result.body);
 }
 
 /** List WiFi configurations */
-export async function listConfigs(
+export function listConfigs(
   context: Client,
   options: WiFiApiListConfigsOptionalParams = { requestOptions: {} },
-): Promise<PagedResultWiFiConfig> {
-  const result = await _listConfigsSend(context, options);
-  return _listConfigsDeserialize(result);
+): PagedAsyncIterableIterator<WiFiConfig> {
+  return buildPagedAsyncIterator(
+    context,
+    () => _listConfigsSend(context, options),
+    _listConfigsDeserialize,
+    ["200"],
+    { itemName: "items" },
+  );
 }
 
 export function _getNetworkSend(
@@ -495,23 +502,26 @@ export function _scanNetworksSend(
 
 export async function _scanNetworksDeserialize(
   result: PathUncheckedResponse,
-): Promise<PagedResultWiFiNetwork> {
+): Promise<_PagedResultWiFiNetwork> {
   const expectedStatuses = ["200"];
   if (!expectedStatuses.includes(result.status)) {
-    const error = createRestError(result);
-    error.details = errorDeserializer(result.body);
-    throw error;
+    throw createRestError(result);
   }
 
-  return pagedResultWiFiNetworkDeserializer(result.body);
+  return _pagedResultWiFiNetworkDeserializer(result.body);
 }
 
 /** Scan for available WiFi networks */
-export async function scanNetworks(
+export function scanNetworks(
   context: Client,
   force: boolean,
   options: WiFiApiScanNetworksOptionalParams = { requestOptions: {} },
-): Promise<PagedResultWiFiNetwork> {
-  const result = await _scanNetworksSend(context, force, options);
-  return _scanNetworksDeserialize(result);
+): PagedAsyncIterableIterator<WiFiNetwork> {
+  return buildPagedAsyncIterator(
+    context,
+    () => _scanNetworksSend(context, force, options),
+    _scanNetworksDeserialize,
+    ["200"],
+    { itemName: "items" },
+  );
 }

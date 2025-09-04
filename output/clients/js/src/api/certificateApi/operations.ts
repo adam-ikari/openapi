@@ -5,12 +5,16 @@ import {
   errorDeserializer,
   _uploadCertificateRequestSerializer,
   _uploadCertificateResponseDeserializer,
-  PagedResultCertificateInfo,
-  pagedResultCertificateInfoDeserializer,
+  _PagedResultCertificateInfo,
+  _pagedResultCertificateInfoDeserializer,
   CertificateInfo,
   certificateInfoDeserializer,
   _deleteCertificateResponseDeserializer,
 } from "../../models/models.js";
+import {
+  PagedAsyncIterableIterator,
+  buildPagedAsyncIterator,
+} from "../../static-helpers/pagingHelpers.js";
 import { expandUrlTemplate } from "../../static-helpers/urlTemplate.js";
 import {
   CertificateApiDeleteCertificateOptionalParams,
@@ -160,26 +164,29 @@ export function _listCertificatesSend(
 
 export async function _listCertificatesDeserialize(
   result: PathUncheckedResponse,
-): Promise<PagedResultCertificateInfo> {
+): Promise<_PagedResultCertificateInfo> {
   const expectedStatuses = ["200"];
   if (!expectedStatuses.includes(result.status)) {
-    const error = createRestError(result);
-    error.details = errorDeserializer(result.body);
-    throw error;
+    throw createRestError(result);
   }
 
-  return pagedResultCertificateInfoDeserializer(result.body);
+  return _pagedResultCertificateInfoDeserializer(result.body);
 }
 
 /** List certificates */
-export async function listCertificates(
+export function listCertificates(
   context: Client,
   options: CertificateApiListCertificatesOptionalParams = {
     requestOptions: {},
   },
-): Promise<PagedResultCertificateInfo> {
-  const result = await _listCertificatesSend(context, options);
-  return _listCertificatesDeserialize(result);
+): PagedAsyncIterableIterator<CertificateInfo> {
+  return buildPagedAsyncIterator(
+    context,
+    () => _listCertificatesSend(context, options),
+    _listCertificatesDeserialize,
+    ["200"],
+    { itemName: "items" },
+  );
 }
 
 export function _uploadCertificateSend(

@@ -3,12 +3,13 @@ import "@typespec/http";
 // 导入OpenAPI库，用于生成OpenAPI文档
 import "@typespec/openapi";
 
-// 导入邮件组相关的模型定义
+// 导入证书相关的模型定义
 import "./models/certificate.tsp";
 // 导入错误处理模型
 import "./models/error.tsp";
-// 导入通用分页模型
+
 import "./common/pagination.tsp";
+
 
 // 使用TypeSpec.Http命名空间，简化后续装饰器的使用
 using TypeSpec.Http;
@@ -56,10 +57,10 @@ interface CertificateApi {
   @route("/certificates")
   // 设置API需要Bearer Token认证
   @useAuth(BearerAuth)
+  @list
   listCertificates(
-    // 使用通用分页查询参数
     ...PaginationParams
-  ): PagedResult<CertificateInfo> | Error;
+  ): PagedResult<CertificateInfo>;
 
   /** Get a specific certificate */
   // @get装饰器表示这是一个HTTP GET请求，用于获取特定证书

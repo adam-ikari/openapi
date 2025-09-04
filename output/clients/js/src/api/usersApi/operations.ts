@@ -2,13 +2,17 @@
 
 import { OpenApiV2Context as Client } from "../index.js";
 import {
-  PagedResultUser,
-  pagedResultUserDeserializer,
+  _PagedResultUser,
+  _pagedResultUserDeserializer,
   User,
   userSerializer,
   userDeserializer,
   errorDeserializer,
 } from "../../models/models.js";
+import {
+  PagedAsyncIterableIterator,
+  buildPagedAsyncIterator,
+} from "../../static-helpers/pagingHelpers.js";
 import { expandUrlTemplate } from "../../static-helpers/urlTemplate.js";
 import {
   UsersApiDeleteOptionalParams,
@@ -239,22 +243,25 @@ export function _listSend(
 
 export async function _listDeserialize(
   result: PathUncheckedResponse,
-): Promise<PagedResultUser> {
+): Promise<_PagedResultUser> {
   const expectedStatuses = ["200"];
   if (!expectedStatuses.includes(result.status)) {
-    const error = createRestError(result);
-    error.details = errorDeserializer(result.body);
-    throw error;
+    throw createRestError(result);
   }
 
-  return pagedResultUserDeserializer(result.body);
+  return _pagedResultUserDeserializer(result.body);
 }
 
 /** List users */
-export async function list(
+export function list(
   context: Client,
   options: UsersApiListOptionalParams = { requestOptions: {} },
-): Promise<PagedResultUser> {
-  const result = await _listSend(context, options);
-  return _listDeserialize(result);
+): PagedAsyncIterableIterator<User> {
+  return buildPagedAsyncIterator(
+    context,
+    () => _listSend(context, options),
+    _listDeserialize,
+    ["200"],
+    { itemName: "items" },
+  );
 }

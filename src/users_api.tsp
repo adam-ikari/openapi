@@ -7,8 +7,9 @@ import "@typespec/openapi";
 import "./models/user.tsp";
 // 导入错误处理模型
 import "./models/error.tsp";
-// 导入通用分页模型
+
 import "./common/pagination.tsp";
+
 
 // 使用TypeSpec.Http和TypeSpec.OpenAPI命名空间
 using TypeSpec.Http;
@@ -28,10 +29,10 @@ interface UsersApi {
   /** List users */
   // @get装饰器表示这是一个HTTP GET请求
   @get
+  @list
   list(
-    // 使用通用分页查询参数
     ...PaginationParams
-  ): PagedResult<User> | Error;
+  ): PagedResult<User>;
 
   /** Read users */
   // HTTP GET请求，用于读取单个用户信息

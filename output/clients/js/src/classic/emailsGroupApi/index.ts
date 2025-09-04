@@ -15,11 +15,8 @@ import {
   EmailsGroupApiReadOptionalParams,
   EmailsGroupApiListOptionalParams,
 } from "../../api/emailsGroupApi/options.js";
-import {
-  Email,
-  PagedResultEmailGroup,
-  EmailGroup,
-} from "../../models/models.js";
+import { Email, EmailGroup } from "../../models/models.js";
+import { PagedAsyncIterableIterator } from "../../static-helpers/pagingHelpers.js";
 
 /** Interface representing a EmailsGroupApi operations. */
 export interface EmailsGroupApiOperations {
@@ -52,7 +49,7 @@ export interface EmailsGroupApiOperations {
   /** List email groups */
   list: (
     options?: EmailsGroupApiListOptionalParams,
-  ) => Promise<PagedResultEmailGroup>;
+  ) => PagedAsyncIterableIterator<EmailGroup>;
 }
 
 function _getEmailsGroupApi(context: OpenApiV2Context) {

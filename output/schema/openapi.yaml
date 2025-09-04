@@ -93,24 +93,15 @@ paths:
                   total:
                     type: integer
                     format: uint32
-                    description: totol count
+                    description: Total count of items
                   offset:
                     type: integer
                     format: uint32
-                    description: offset, default 0
+                    description: Offset, default 0
                   limit:
                     type: integer
                     format: uint32
-                    description: limit, default 10
-                description: |-
-                  通用分页响应模型
-                  所有列表接口的返回类型都应该继承自该模型
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
+                    description: Limit, default 100
       tags:
         - CertificateApi
       security:
@@ -208,24 +199,15 @@ paths:
                   total:
                     type: integer
                     format: uint32
-                    description: totol count
+                    description: Total count of items
                   offset:
                     type: integer
                     format: uint32
-                    description: offset, default 0
+                    description: Offset, default 0
                   limit:
                     type: integer
                     format: uint32
-                    description: limit, default 10
-                description: |-
-                  通用分页响应模型
-                  所有列表接口的返回类型都应该继承自该模型
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
+                    description: Limit, default 100
       tags:
         - EmailGroups
       security:
@@ -369,24 +351,15 @@ paths:
                   total:
                     type: integer
                     format: uint32
-                    description: totol count
+                    description: Total count of items
                   offset:
                     type: integer
                     format: uint32
-                    description: offset, default 0
+                    description: Offset, default 0
                   limit:
                     type: integer
                     format: uint32
-                    description: limit, default 10
-                description: |-
-                  通用分页响应模型
-                  所有列表接口的返回类型都应该继承自该模型
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
+                    description: Limit, default 100
       tags:
         - Emails
       security:
@@ -530,24 +503,15 @@ paths:
                   total:
                     type: integer
                     format: uint32
-                    description: totol count
+                    description: Total count of items
                   offset:
                     type: integer
                     format: uint32
-                    description: offset, default 0
+                    description: Offset, default 0
                   limit:
                     type: integer
                     format: uint32
-                    description: limit, default 10
-                description: |-
-                  通用分页响应模型
-                  所有列表接口的返回类型都应该继承自该模型
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
+                    description: Limit, default 100
       tags:
         - Users
       security:
@@ -691,24 +655,15 @@ paths:
                   total:
                     type: integer
                     format: uint32
-                    description: totol count
+                    description: Total count of items
                   offset:
                     type: integer
                     format: uint32
-                    description: offset, default 0
+                    description: Offset, default 0
                   limit:
                     type: integer
                     format: uint32
-                    description: limit, default 10
-                description: |-
-                  通用分页响应模型
-                  所有列表接口的返回类型都应该继承自该模型
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
+                    description: Limit, default 100
       tags:
         - WiFi
       security:
@@ -895,24 +850,15 @@ paths:
                   total:
                     type: integer
                     format: uint32
-                    description: totol count
+                    description: Total count of items
                   offset:
                     type: integer
                     format: uint32
-                    description: offset, default 0
+                    description: Offset, default 0
                   limit:
                     type: integer
                     format: uint32
-                    description: limit, default 10
-                description: |-
-                  通用分页响应模型
-                  所有列表接口的返回类型都应该继承自该模型
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
+                    description: Limit, default 100
       tags:
         - WiFi
       security:
@@ -1029,11 +975,11 @@ components:
       name: limit
       in: query
       required: false
-      description: limit, default 10
+      description: limit, default 100
       schema:
         type: integer
-        format: uint32
-        default: 10
+        format: int32
+        default: 100
       explode: false
     PaginationParams.offset:
       name: offset
@@ -1042,7 +988,7 @@ components:
       description: offset, default 0
       schema:
         type: integer
-        format: uint32
+        format: int32
         default: 0
       explode: false
   schemas:

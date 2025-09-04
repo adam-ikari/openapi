@@ -7,8 +7,9 @@ import "@typespec/openapi";
 import "./models/email_group.tsp";
 // 导入错误处理模型
 import "./models/error.tsp";
-// 导入通用分页模型
+
 import "./common/pagination.tsp";
+
 
 // 使用TypeSpec.Http命名空间，简化后续装饰器的使用
 using TypeSpec.Http;
@@ -27,10 +28,10 @@ interface EmailsGroupApi {
     /** List email groups */
     // @get装饰器表示这是一个HTTP GET请求
     @get
-    list(
-        // 使用通用分页查询参数
-        ...PaginationParams
-    ): PagedResult<EmailGroup> | Error;
+    @list
+  list(
+    ...PaginationParams
+  ): PagedResult<EmailGroup>;
 
     /** Read a email group */
     // HTTP GET请求，用于读取单个邮件组信息
