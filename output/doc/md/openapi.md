@@ -115,12 +115,12 @@ List users
         "id": 0,
         "email": "user@example.com",
         "authType": "password",
-        "createdAt": 0,
-        "updatedAt": 0
+        "createdAt": "2019-08-24T14:15:22Z",
+        "updatedAt": "2019-08-24T14:15:22Z"
       },
       "avatar": "https://example.com/avatar.png",
-      "createdAt": 0,
-      "updatedAt": 0
+      "createdAt": "2019-08-24T14:15:22Z",
+      "updatedAt": "2019-08-24T14:15:22Z"
     }
   ],
   "total": 0,
@@ -150,11 +150,11 @@ Status Code **200**
 | »»» id        | integer(uint32)                       | true     | read-only    | The id of the email                      |
 | »»» email     | string                                | true     | none         | The email address                        |
 | »»» authType  | [EmailAuthType](#schemaemailauthtype) | true     | none         | The authentication type                  |
-| »»» createdAt | integer(int32)                        | true     | none         | The timestamp when the email was created |
-| »»» updatedAt | integer(int32)                        | true     | none         | The timestamp when the email was updated |
+| »»» createdAt | string(date-time)                     | true     | none         | The timestamp when the email was created |
+| »»» updatedAt | string(date-time)                     | true     | none         | The timestamp when the email was updated |
 | »» avatar     | string(uri)                           | false    | none         | The avatar of the user                   |
-| »» createdAt  | integer(int32)                        | true     | none         | The timestamp when the user was created  |
-| »» updatedAt  | integer(int32)                        | true     | none         | The timestamp when the user was updated  |
+| »» createdAt  | string(date-time)                     | true     | none         | The timestamp when the user was created  |
+| »» updatedAt  | string(date-time)                     | true     | none         | The timestamp when the user was updated  |
 | » total       | integer(uint32)                       | true     | none         | Total count of items                     |
 | » offset      | integer(uint32)                       | true     | none         | Offset, default 0                        |
 | » limit       | integer(uint32)                       | true     | none         | Limit, default 100                       |
@@ -200,13 +200,13 @@ const inputBody = '{
     "email": "user@example.com",
     "authType": "password",
     "password": "pa$$word",
-    "createdAt": 0,
-    "updatedAt": 0
+    "createdAt": "2019-08-24T14:15:22Z",
+    "updatedAt": "2019-08-24T14:15:22Z"
   },
   "avatar": "https://example.com/avatar.png",
   "password": "pa$$word",
-  "createdAt": 0,
-  "updatedAt": 0
+  "createdAt": "2019-08-24T14:15:22Z",
+  "updatedAt": "2019-08-24T14:15:22Z"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -276,13 +276,13 @@ Create a users
     "email": "user@example.com",
     "authType": "password",
     "password": "pa$$word",
-    "createdAt": 0,
-    "updatedAt": 0
+    "createdAt": "2019-08-24T14:15:22Z",
+    "updatedAt": "2019-08-24T14:15:22Z"
   },
   "avatar": "https://example.com/avatar.png",
   "password": "pa$$word",
-  "createdAt": 0,
-  "updatedAt": 0
+  "createdAt": "2019-08-24T14:15:22Z",
+  "updatedAt": "2019-08-24T14:15:22Z"
 }
 ```
 
@@ -306,12 +306,12 @@ Create a users
     "id": 0,
     "email": "user@example.com",
     "authType": "password",
-    "createdAt": 0,
-    "updatedAt": 0
+    "createdAt": "2019-08-24T14:15:22Z",
+    "updatedAt": "2019-08-24T14:15:22Z"
   },
   "avatar": "https://example.com/avatar.png",
-  "createdAt": 0,
-  "updatedAt": 0
+  "createdAt": "2019-08-24T14:15:22Z",
+  "updatedAt": "2019-08-24T14:15:22Z"
 }
 ```
 
@@ -417,12 +417,12 @@ Read users
     "id": 0,
     "email": "user@example.com",
     "authType": "password",
-    "createdAt": 0,
-    "updatedAt": 0
+    "createdAt": "2019-08-24T14:15:22Z",
+    "updatedAt": "2019-08-24T14:15:22Z"
   },
   "avatar": "https://example.com/avatar.png",
-  "createdAt": 0,
-  "updatedAt": 0
+  "createdAt": "2019-08-24T14:15:22Z",
+  "updatedAt": "2019-08-24T14:15:22Z"
 }
 ```
 
@@ -462,13 +462,13 @@ const inputBody = '{
     "email": "user@example.com",
     "authType": "password",
     "password": "pa$$word",
-    "createdAt": 0,
-    "updatedAt": 0
+    "createdAt": "2019-08-24T14:15:22Z",
+    "updatedAt": "2019-08-24T14:15:22Z"
   },
   "avatar": "https://example.com/avatar.png",
   "password": "pa$$word",
-  "createdAt": 0,
-  "updatedAt": 0
+  "createdAt": "2019-08-24T14:15:22Z",
+  "updatedAt": "2019-08-24T14:15:22Z"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -538,13 +538,13 @@ Update a users
     "email": "user@example.com",
     "authType": "password",
     "password": "pa$$word",
-    "createdAt": 0,
-    "updatedAt": 0
+    "createdAt": "2019-08-24T14:15:22Z",
+    "updatedAt": "2019-08-24T14:15:22Z"
   },
   "avatar": "https://example.com/avatar.png",
   "password": "pa$$word",
-  "createdAt": 0,
-  "updatedAt": 0
+  "createdAt": "2019-08-24T14:15:22Z",
+  "updatedAt": "2019-08-24T14:15:22Z"
 }
 ```
 
@@ -569,12 +569,12 @@ Update a users
     "id": 0,
     "email": "user@example.com",
     "authType": "password",
-    "createdAt": 0,
-    "updatedAt": 0
+    "createdAt": "2019-08-24T14:15:22Z",
+    "updatedAt": "2019-08-24T14:15:22Z"
   },
   "avatar": "https://example.com/avatar.png",
-  "createdAt": 0,
-  "updatedAt": 0
+  "createdAt": "2019-08-24T14:15:22Z",
+  "updatedAt": "2019-08-24T14:15:22Z"
 }
 ```
 
@@ -779,8 +779,8 @@ List emails
       "id": 0,
       "email": "user@example.com",
       "authType": "password",
-      "createdAt": 0,
-      "updatedAt": 0
+      "createdAt": "2019-08-24T14:15:22Z",
+      "updatedAt": "2019-08-24T14:15:22Z"
     }
   ],
   "total": 0,
@@ -805,8 +805,8 @@ Status Code **200**
 | »» id        | integer(uint32)                       | true     | read-only    | The id of the email                      |
 | »» email     | string                                | true     | none         | The email address                        |
 | »» authType  | [EmailAuthType](#schemaemailauthtype) | true     | none         | The authentication type                  |
-| »» createdAt | integer(int32)                        | true     | none         | The timestamp when the email was created |
-| »» updatedAt | integer(int32)                        | true     | none         | The timestamp when the email was updated |
+| »» createdAt | string(date-time)                     | true     | none         | The timestamp when the email was created |
+| »» updatedAt | string(date-time)                     | true     | none         | The timestamp when the email was updated |
 | » total      | integer(uint32)                       | true     | none         | Total count of items                     |
 | » offset     | integer(uint32)                       | true     | none         | Offset, default 0                        |
 | » limit      | integer(uint32)                       | true     | none         | Limit, default 100                       |
@@ -845,8 +845,8 @@ const inputBody = '{
   "email": "user@example.com",
   "authType": "password",
   "password": "pa$$word",
-  "createdAt": 0,
-  "updatedAt": 0
+  "createdAt": "2019-08-24T14:15:22Z",
+  "updatedAt": "2019-08-24T14:15:22Z"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -912,8 +912,8 @@ Create a emails
   "email": "user@example.com",
   "authType": "password",
   "password": "pa$$word",
-  "createdAt": 0,
-  "updatedAt": 0
+  "createdAt": "2019-08-24T14:15:22Z",
+  "updatedAt": "2019-08-24T14:15:22Z"
 }
 ```
 
@@ -932,8 +932,8 @@ Create a emails
   "id": 0,
   "email": "user@example.com",
   "authType": "password",
-  "createdAt": 0,
-  "updatedAt": 0
+  "createdAt": "2019-08-24T14:15:22Z",
+  "updatedAt": "2019-08-24T14:15:22Z"
 }
 ```
 
@@ -1034,8 +1034,8 @@ Read emails
   "id": 0,
   "email": "user@example.com",
   "authType": "password",
-  "createdAt": 0,
-  "updatedAt": 0
+  "createdAt": "2019-08-24T14:15:22Z",
+  "updatedAt": "2019-08-24T14:15:22Z"
 }
 ```
 
@@ -1071,8 +1071,8 @@ const inputBody = '{
   "email": "user@example.com",
   "authType": "password",
   "password": "pa$$word",
-  "createdAt": 0,
-  "updatedAt": 0
+  "createdAt": "2019-08-24T14:15:22Z",
+  "updatedAt": "2019-08-24T14:15:22Z"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -1138,8 +1138,8 @@ Update a emails
   "email": "user@example.com",
   "authType": "password",
   "password": "pa$$word",
-  "createdAt": 0,
-  "updatedAt": 0
+  "createdAt": "2019-08-24T14:15:22Z",
+  "updatedAt": "2019-08-24T14:15:22Z"
 }
 ```
 
@@ -1159,8 +1159,8 @@ Update a emails
   "id": 0,
   "email": "user@example.com",
   "authType": "password",
-  "createdAt": 0,
-  "updatedAt": 0
+  "createdAt": "2019-08-24T14:15:22Z",
+  "updatedAt": "2019-08-24T14:15:22Z"
 }
 ```
 
@@ -1369,8 +1369,8 @@ List email groups
           "id": 0,
           "email": "user@example.com",
           "authType": "password",
-          "createdAt": 0,
-          "updatedAt": 0
+          "createdAt": "2019-08-24T14:15:22Z",
+          "updatedAt": "2019-08-24T14:15:22Z"
         }
       ]
     }
@@ -1400,8 +1400,8 @@ Status Code **200**
 | »»» id        | integer(uint32)                       | true     | read-only    | The id of the email                      |
 | »»» email     | string                                | true     | none         | The email address                        |
 | »»» authType  | [EmailAuthType](#schemaemailauthtype) | true     | none         | The authentication type                  |
-| »»» createdAt | integer(int32)                        | true     | none         | The timestamp when the email was created |
-| »»» updatedAt | integer(int32)                        | true     | none         | The timestamp when the email was updated |
+| »»» createdAt | string(date-time)                     | true     | none         | The timestamp when the email was created |
+| »»» updatedAt | string(date-time)                     | true     | none         | The timestamp when the email was updated |
 | » total       | integer(uint32)                       | true     | none         | Total count of items                     |
 | » offset      | integer(uint32)                       | true     | none         | Offset, default 0                        |
 | » limit       | integer(uint32)                       | true     | none         | Limit, default 100                       |
@@ -1440,8 +1440,8 @@ const inputBody = '{
   "email": "user@example.com",
   "authType": "password",
   "password": "pa$$word",
-  "createdAt": 0,
-  "updatedAt": 0
+  "createdAt": "2019-08-24T14:15:22Z",
+  "updatedAt": "2019-08-24T14:15:22Z"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -1507,8 +1507,8 @@ Create a email group
   "email": "user@example.com",
   "authType": "password",
   "password": "pa$$word",
-  "createdAt": 0,
-  "updatedAt": 0
+  "createdAt": "2019-08-24T14:15:22Z",
+  "updatedAt": "2019-08-24T14:15:22Z"
 }
 ```
 
@@ -1527,8 +1527,8 @@ Create a email group
   "id": 0,
   "email": "user@example.com",
   "authType": "password",
-  "createdAt": 0,
-  "updatedAt": 0
+  "createdAt": "2019-08-24T14:15:22Z",
+  "updatedAt": "2019-08-24T14:15:22Z"
 }
 ```
 
@@ -1633,8 +1633,8 @@ Read a email group
       "id": 0,
       "email": "user@example.com",
       "authType": "password",
-      "createdAt": 0,
-      "updatedAt": 0
+      "createdAt": "2019-08-24T14:15:22Z",
+      "updatedAt": "2019-08-24T14:15:22Z"
     }
   ]
 }
@@ -1675,8 +1675,8 @@ const inputBody = '{
       "email": "user@example.com",
       "authType": "password",
       "password": "pa$$word",
-      "createdAt": 0,
-      "updatedAt": 0
+      "createdAt": "2019-08-24T14:15:22Z",
+      "updatedAt": "2019-08-24T14:15:22Z"
     }
   ]
 }';
@@ -1747,8 +1747,8 @@ Update a email group
       "email": "user@example.com",
       "authType": "password",
       "password": "pa$$word",
-      "createdAt": 0,
-      "updatedAt": 0
+      "createdAt": "2019-08-24T14:15:22Z",
+      "updatedAt": "2019-08-24T14:15:22Z"
     }
   ]
 }
@@ -1770,8 +1770,8 @@ Update a email group
   "id": 0,
   "email": "user@example.com",
   "authType": "password",
-  "createdAt": 0,
-  "updatedAt": 0
+  "createdAt": "2019-08-24T14:15:22Z",
+  "updatedAt": "2019-08-24T14:15:22Z"
 }
 ```
 
@@ -1980,8 +1980,8 @@ List WiFi configurations
       "autoConnect": true,
       "hidden": false,
       "status": "disconnected",
-      "createdAt": 0,
-      "updatedAt": 0
+      "createdAt": "2019-08-24T14:15:22Z",
+      "updatedAt": "2019-08-24T14:15:22Z"
     }
   ],
   "total": 0,
@@ -2010,8 +2010,8 @@ Status Code **200**
 | »» autoConnect | boolean                                             | true     | none         | Whether to connect automatically                                                                   |
 | »» hidden      | boolean                                             | true     | none         | Whether this is a hidden network                                                                   |
 | »» status      | [WiFiConnectionStatus](#schemawificonnectionstatus) | true     | none         | The current connection status of this configuration                                                |
-| »» createdAt   | integer(int32)                                      | true     | read-only    | The timestamp when the configuration was created                                                   |
-| »» updatedAt   | integer(int32)                                      | true     | read-only    | The timestamp when the configuration was last updated                                              |
+| »» createdAt   | string(date-time)                                   | true     | read-only    | The timestamp when the configuration was created                                                   |
+| »» updatedAt   | string(date-time)                                   | true     | read-only    | The timestamp when the configuration was last updated                                              |
 | » total        | integer(uint32)                                     | true     | none         | Total count of items                                                                               |
 | » offset       | integer(uint32)                                     | true     | none         | Offset, default 0                                                                                  |
 | » limit        | integer(uint32)                                     | true     | none         | Limit, default 100                                                                                 |
@@ -2149,8 +2149,8 @@ Create a WiFi configuration
   "autoConnect": true,
   "hidden": false,
   "status": "disconnected",
-  "createdAt": 0,
-  "updatedAt": 0
+  "createdAt": "2019-08-24T14:15:22Z",
+  "updatedAt": "2019-08-24T14:15:22Z"
 }
 ```
 
@@ -2255,8 +2255,8 @@ Get a specific WiFi configuration
   "autoConnect": true,
   "hidden": false,
   "status": "disconnected",
-  "createdAt": 0,
-  "updatedAt": 0
+  "createdAt": "2019-08-24T14:15:22Z",
+  "updatedAt": "2019-08-24T14:15:22Z"
 }
 ```
 
@@ -2386,8 +2386,8 @@ Update a WiFi configuration
   "autoConnect": true,
   "hidden": false,
   "status": "disconnected",
-  "createdAt": 0,
-  "updatedAt": 0
+  "createdAt": "2019-08-24T14:15:22Z",
+  "updatedAt": "2019-08-24T14:15:22Z"
 }
 ```
 
@@ -2714,7 +2714,7 @@ Scan for available WiFi networks
       "hidden": true,
       "isConnected": true,
       "isSaved": true,
-      "lastSeen": 0
+      "lastSeen": "2019-08-24T14:15:22Z"
     }
   ],
   "total": 0,
@@ -2746,7 +2746,7 @@ Status Code **200**
 | »» hidden         | boolean                                     | true     | none         | Whether the network is hidden                       |
 | »» isConnected    | boolean                                     | true     | none         | Whether this network is the currently connected one |
 | »» isSaved        | boolean                                     | true     | none         | Whether this network has a saved configuration      |
-| »» lastSeen       | integer(int32)                              | true     | read-only    | The timestamp when the network was last seen        |
+| »» lastSeen       | string(date-time)                           | true     | read-only    | The timestamp when the network was last seen        |
 | » total           | integer(uint32)                             | true     | none         | Total count of items                                |
 | » offset          | integer(uint32)                             | true     | none         | Offset, default 0                                   |
 | » limit           | integer(uint32)                             | true     | none         | Limit, default 100                                  |
@@ -2862,7 +2862,7 @@ Get details of a specific WiFi network
   "hidden": true,
   "isConnected": true,
   "isSaved": true,
-  "lastSeen": 0
+  "lastSeen": "2019-08-24T14:15:22Z"
 }
 ```
 
@@ -3103,7 +3103,7 @@ Get current WiFi connection status
     "hidden": true,
     "isConnected": true,
     "isSaved": true,
-    "lastSeen": 0
+    "lastSeen": "2019-08-24T14:15:22Z"
   },
   "message": "string"
 }
@@ -3134,7 +3134,7 @@ Status Code **200**
 | »» hidden          | boolean                                             | true     | none         | Whether the network is hidden                       |
 | »» isConnected     | boolean                                             | true     | none         | Whether this network is the currently connected one |
 | »» isSaved         | boolean                                             | true     | none         | Whether this network has a saved configuration      |
-| »» lastSeen        | integer(int32)                                      | true     | read-only    | The timestamp when the network was last seen        |
+| »» lastSeen        | string(date-time)                                   | true     | read-only    | The timestamp when the network was last seen        |
 | » message          | string                                              | true     | none         | none                                                |
 
 #### Enumerated Values
@@ -3672,8 +3672,8 @@ Certificate information
 id: 0
 email: user@example.com
 authType: password
-createdAt: 0
-updatedAt: 0
+createdAt: 2019-08-24T14:15:22Z
+updatedAt: 2019-08-24T14:15:22Z
 ```
 
 ### Properties
@@ -3683,8 +3683,8 @@ updatedAt: 0
 | id        | integer(uint32)                       | true     | read-only    | The id of the email                      |
 | email     | string                                | true     | none         | The email address                        |
 | authType  | [EmailAuthType](#schemaemailauthtype) | true     | none         | The authentication type                  |
-| createdAt | integer(int32)                        | true     | none         | The timestamp when the email was created |
-| updatedAt | integer(int32)                        | true     | none         | The timestamp when the email was updated |
+| createdAt | string(date-time)                     | true     | none         | The timestamp when the email was created |
+| updatedAt | string(date-time)                     | true     | none         | The timestamp when the email was updated |
 
 <h2 id="tocS_EmailAuthType">EmailAuthType</h2>
 <!-- backwards compatibility -->
@@ -3725,8 +3725,8 @@ Email authentication type enum values
 email: user@example.com
 authType: password
 password: pa$$word
-createdAt: 0
-updatedAt: 0
+createdAt: 2019-08-24T14:15:22Z
+updatedAt: 2019-08-24T14:15:22Z
 ```
 
 ### Properties
@@ -3736,8 +3736,8 @@ updatedAt: 0
 | email     | string                                | true     | none         | The email address                        |
 | authType  | [EmailAuthType](#schemaemailauthtype) | true     | none         | The authentication type                  |
 | password  | string(password)                      | false    | none         | The password                             |
-| createdAt | integer(int32)                        | true     | none         | The timestamp when the email was created |
-| updatedAt | integer(int32)                        | true     | none         | The timestamp when the email was updated |
+| createdAt | string(date-time)                     | true     | none         | The timestamp when the email was created |
+| updatedAt | string(date-time)                     | true     | none         | The timestamp when the email was updated |
 
 <h2 id="tocS_EmailCreateOrUpdate">EmailCreateOrUpdate</h2>
 <!-- backwards compatibility -->
@@ -3750,8 +3750,8 @@ updatedAt: 0
 email: user@example.com
 authType: password
 password: pa$$word
-createdAt: 0
-updatedAt: 0
+createdAt: 2019-08-24T14:15:22Z
+updatedAt: 2019-08-24T14:15:22Z
 ```
 
 ### Properties
@@ -3761,8 +3761,8 @@ updatedAt: 0
 | email     | string                                | true     | none         | The email address                        |
 | authType  | [EmailAuthType](#schemaemailauthtype) | true     | none         | The authentication type                  |
 | password  | string(password)                      | false    | none         | The password                             |
-| createdAt | integer(int32)                        | true     | none         | The timestamp when the email was created |
-| updatedAt | integer(int32)                        | true     | none         | The timestamp when the email was updated |
+| createdAt | string(date-time)                     | true     | none         | The timestamp when the email was created |
+| updatedAt | string(date-time)                     | true     | none         | The timestamp when the email was updated |
 
 <h2 id="tocS_EmailCreateOrUpdateItem">EmailCreateOrUpdateItem</h2>
 <!-- backwards compatibility -->
@@ -3775,8 +3775,8 @@ updatedAt: 0
 email: user@example.com
 authType: password
 password: pa$$word
-createdAt: 0
-updatedAt: 0
+createdAt: 2019-08-24T14:15:22Z
+updatedAt: 2019-08-24T14:15:22Z
 ```
 
 ### Properties
@@ -3786,8 +3786,8 @@ updatedAt: 0
 | email     | string                                | true     | none         | The email address                        |
 | authType  | [EmailAuthType](#schemaemailauthtype) | true     | none         | The authentication type                  |
 | password  | string(password)                      | false    | none         | The password                             |
-| createdAt | integer(int32)                        | true     | none         | The timestamp when the email was created |
-| updatedAt | integer(int32)                        | true     | none         | The timestamp when the email was updated |
+| createdAt | string(date-time)                     | true     | none         | The timestamp when the email was created |
+| updatedAt | string(date-time)                     | true     | none         | The timestamp when the email was updated |
 
 <h2 id="tocS_EmailGroup">EmailGroup</h2>
 <!-- backwards compatibility -->
@@ -3803,8 +3803,8 @@ members:
   - id: 0
     email: user@example.com
     authType: password
-    createdAt: 0
-    updatedAt: 0
+    createdAt: 2019-08-24T14:15:22Z
+    updatedAt: 2019-08-24T14:15:22Z
 ```
 
 ### Properties
@@ -3828,8 +3828,8 @@ members:
   - email: user@example.com
     authType: password
     password: pa$$word
-    createdAt: 0
-    updatedAt: 0
+    createdAt: 2019-08-24T14:15:22Z
+    updatedAt: 2019-08-24T14:15:22Z
 ```
 
 ### Properties
@@ -3927,11 +3927,11 @@ email:
   id: 0
   email: user@example.com
   authType: password
-  createdAt: 0
-  updatedAt: 0
+  createdAt: 2019-08-24T14:15:22Z
+  updatedAt: 2019-08-24T14:15:22Z
 avatar: https://example.com/avatar.png
-createdAt: 0
-updatedAt: 0
+createdAt: 2019-08-24T14:15:22Z
+updatedAt: 2019-08-24T14:15:22Z
 ```
 
 ### Properties
@@ -3944,8 +3944,8 @@ updatedAt: 0
 | gender    | [Gender](#schemagender) | true     | none         | The gender of the user                  |
 | email     | [Email](#schemaemail)   | true     | none         | The email of the user                   |
 | avatar    | string(uri)             | false    | none         | The avatar of the user                  |
-| createdAt | integer(int32)          | true     | none         | The timestamp when the user was created |
-| updatedAt | integer(int32)          | true     | none         | The timestamp when the user was updated |
+| createdAt | string(date-time)       | true     | none         | The timestamp when the user was created |
+| updatedAt | string(date-time)       | true     | none         | The timestamp when the user was updated |
 
 <h2 id="tocS_UserCreate">UserCreate</h2>
 <!-- backwards compatibility -->
@@ -3962,12 +3962,12 @@ email:
   email: user@example.com
   authType: password
   password: pa$$word
-  createdAt: 0
-  updatedAt: 0
+  createdAt: 2019-08-24T14:15:22Z
+  updatedAt: 2019-08-24T14:15:22Z
 avatar: https://example.com/avatar.png
 password: pa$$word
-createdAt: 0
-updatedAt: 0
+createdAt: 2019-08-24T14:15:22Z
+updatedAt: 2019-08-24T14:15:22Z
 ```
 
 ### Properties
@@ -3980,8 +3980,8 @@ updatedAt: 0
 | email     | [EmailCreate](#schemaemailcreate) | true     | none         | The email of the user                   |
 | avatar    | string(uri)                       | false    | none         | The avatar of the user                  |
 | password  | string(password)                  | true     | none         | The password of the user                |
-| createdAt | integer(int32)                    | true     | none         | The timestamp when the user was created |
-| updatedAt | integer(int32)                    | true     | none         | The timestamp when the user was updated |
+| createdAt | string(date-time)                 | true     | none         | The timestamp when the user was created |
+| updatedAt | string(date-time)                 | true     | none         | The timestamp when the user was updated |
 
 <h2 id="tocS_UserCreateOrUpdate">UserCreateOrUpdate</h2>
 <!-- backwards compatibility -->
@@ -3998,12 +3998,12 @@ email:
   email: user@example.com
   authType: password
   password: pa$$word
-  createdAt: 0
-  updatedAt: 0
+  createdAt: 2019-08-24T14:15:22Z
+  updatedAt: 2019-08-24T14:15:22Z
 avatar: https://example.com/avatar.png
 password: pa$$word
-createdAt: 0
-updatedAt: 0
+createdAt: 2019-08-24T14:15:22Z
+updatedAt: 2019-08-24T14:15:22Z
 ```
 
 ### Properties
@@ -4016,8 +4016,8 @@ updatedAt: 0
 | email     | [EmailCreateOrUpdate](#schemaemailcreateorupdate) | true     | none         | The email of the user                   |
 | avatar    | string(uri)                                       | false    | none         | The avatar of the user                  |
 | password  | string(password)                                  | true     | none         | The password of the user                |
-| createdAt | integer(int32)                                    | true     | none         | The timestamp when the user was created |
-| updatedAt | integer(int32)                                    | true     | none         | The timestamp when the user was updated |
+| createdAt | string(date-time)                                 | true     | none         | The timestamp when the user was created |
+| updatedAt | string(date-time)                                 | true     | none         | The timestamp when the user was updated |
 
 <h2 id="tocS_WiFiBand">WiFiBand</h2>
 <!-- backwards compatibility -->
@@ -4062,8 +4062,8 @@ password: pa$$word
 autoConnect: true
 hidden: false
 status: disconnected
-createdAt: 0
-updatedAt: 0
+createdAt: 2019-08-24T14:15:22Z
+updatedAt: 2019-08-24T14:15:22Z
 ```
 
 ### Properties
@@ -4077,8 +4077,8 @@ updatedAt: 0
 | autoConnect | boolean                                             | true     | none         | Whether to connect automatically                                                                   |
 | hidden      | boolean                                             | true     | none         | Whether this is a hidden network                                                                   |
 | status      | [WiFiConnectionStatus](#schemawificonnectionstatus) | true     | none         | The current connection status of this configuration                                                |
-| createdAt   | integer(int32)                                      | true     | read-only    | The timestamp when the configuration was created                                                   |
-| updatedAt   | integer(int32)                                      | true     | read-only    | The timestamp when the configuration was last updated                                              |
+| createdAt   | string(date-time)                                   | true     | read-only    | The timestamp when the configuration was created                                                   |
+| updatedAt   | string(date-time)                                   | true     | read-only    | The timestamp when the configuration was last updated                                              |
 
 <h2 id="tocS_WiFiConnectRequest">WiFiConnectRequest</h2>
 <!-- backwards compatibility -->
@@ -4146,7 +4146,7 @@ channel: 0
 hidden: true
 isConnected: true
 isSaved: true
-lastSeen: 0
+lastSeen: 2019-08-24T14:15:22Z
 ```
 
 ### Properties
@@ -4163,7 +4163,7 @@ lastSeen: 0
 | hidden         | boolean                                     | true     | none         | Whether the network is hidden                       |
 | isConnected    | boolean                                     | true     | none         | Whether this network is the currently connected one |
 | isSaved        | boolean                                     | true     | none         | Whether this network has a saved configuration      |
-| lastSeen       | integer(int32)                              | true     | read-only    | The timestamp when the network was last seen        |
+| lastSeen       | string(date-time)                           | true     | read-only    | The timestamp when the network was last seen        |
 
 <h2 id="tocS_WiFiSecurityType">WiFiSecurityType</h2>
 <!-- backwards compatibility -->

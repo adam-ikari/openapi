@@ -80,9 +80,8 @@ model User {
     password: string;
 
     @doc("The timestamp when the user was created")
-    // 使用unix时间戳类型
-    createdAt: unixTimestamp32;
+    createdAt: utcDateTime;
 
     @doc("The timestamp when the user was updated")
-    updatedAt: unixTimestamp32;
+    updatedAt: utcDateTime;
 }

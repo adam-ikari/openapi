@@ -106,7 +106,7 @@ model WiFiNetwork {
 
     @doc("The timestamp when the network was last seen")
     @visibility(Lifecycle.Read)
-    lastSeen: unixTimestamp32;
+    lastSeen: utcDateTime;
 }
 
 // 定义WiFi配置模型 - 表示用户保存的WiFi配置
@@ -136,11 +136,11 @@ model WiFiConfig {
 
     @doc("The timestamp when the configuration was created")
     @visibility(Lifecycle.Read)
-    createdAt: unixTimestamp32;
+    createdAt: utcDateTime;
 
     @doc("The timestamp when the configuration was last updated")
     @visibility(Lifecycle.Read)
-    updatedAt: unixTimestamp32;
+    updatedAt: utcDateTime;
 }
 
 // 定义WiFi连接请求模型

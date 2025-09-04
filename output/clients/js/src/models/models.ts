@@ -55,9 +55,9 @@ export interface User {
   /** The password of the user */
   password: string;
   /** The timestamp when the user was created */
-  createdAt: any;
+  createdAt: Date;
   /** The timestamp when the user was updated */
-  updatedAt: any;
+  updatedAt: Date;
 }
 
 export function userSerializer(item: User): any {
@@ -68,8 +68,8 @@ export function userSerializer(item: User): any {
     email: emailSerializer(item["email"]),
     avatar: item["avatar"],
     password: item["password"],
-    createdAt: item["createdAt"],
-    updatedAt: item["updatedAt"],
+    createdAt: item["createdAt"].toISOString(),
+    updatedAt: item["updatedAt"].toISOString(),
   };
 }
 
@@ -82,8 +82,8 @@ export function userDeserializer(item: any): User {
     email: emailDeserializer(item["email"]),
     avatar: item["avatar"],
     password: item["password"],
-    createdAt: item["createdAt"],
-    updatedAt: item["updatedAt"],
+    createdAt: new Date(item["createdAt"]),
+    updatedAt: new Date(item["updatedAt"]),
   };
 }
 
@@ -101,9 +101,9 @@ export interface Email {
   /** The password */
   password?: string;
   /** The timestamp when the email was created */
-  createdAt: any;
+  createdAt: Date;
   /** The timestamp when the email was updated */
-  updatedAt: any;
+  updatedAt: Date;
 }
 
 export function emailSerializer(item: Email): any {
@@ -111,8 +111,8 @@ export function emailSerializer(item: Email): any {
     email: item["email"],
     authType: item["authType"],
     password: item["password"],
-    createdAt: item["createdAt"],
-    updatedAt: item["updatedAt"],
+    createdAt: item["createdAt"].toISOString(),
+    updatedAt: item["updatedAt"].toISOString(),
   };
 }
 
@@ -122,8 +122,8 @@ export function emailDeserializer(item: any): Email {
     email: item["email"],
     authType: item["authType"],
     password: item["password"],
-    createdAt: item["createdAt"],
-    updatedAt: item["updatedAt"],
+    createdAt: new Date(item["createdAt"]),
+    updatedAt: new Date(item["updatedAt"]),
   };
 }
 
@@ -292,7 +292,7 @@ export interface WiFiNetwork {
   /** Whether this network has a saved configuration */
   isSaved: boolean;
   /** The timestamp when the network was last seen */
-  readonly lastSeen: any;
+  readonly lastSeen: Date;
 }
 
 export function wiFiNetworkDeserializer(item: any): WiFiNetwork {
@@ -307,7 +307,7 @@ export function wiFiNetworkDeserializer(item: any): WiFiNetwork {
     hidden: item["hidden"],
     isConnected: item["isConnected"],
     isSaved: item["isSaved"],
-    lastSeen: item["lastSeen"],
+    lastSeen: new Date(item["lastSeen"]),
   };
 }
 
@@ -368,9 +368,9 @@ export interface WiFiConfig {
   /** The current connection status of this configuration */
   status: WiFiConnectionStatus;
   /** The timestamp when the configuration was created */
-  readonly createdAt: any;
+  readonly createdAt: Date;
   /** The timestamp when the configuration was last updated */
-  readonly updatedAt: any;
+  readonly updatedAt: Date;
 }
 
 export function wiFiConfigSerializer(item: WiFiConfig): any {
@@ -393,8 +393,8 @@ export function wiFiConfigDeserializer(item: any): WiFiConfig {
     autoConnect: item["autoConnect"],
     hidden: item["hidden"],
     status: item["status"],
-    createdAt: item["createdAt"],
-    updatedAt: item["updatedAt"],
+    createdAt: new Date(item["createdAt"]),
+    updatedAt: new Date(item["updatedAt"]),
   };
 }
 

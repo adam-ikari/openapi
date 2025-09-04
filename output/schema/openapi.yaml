@@ -1046,12 +1046,12 @@ components:
             - $ref: '#/components/schemas/EmailAuthType'
           description: The authentication type
         createdAt:
-          type: integer
-          format: int32
+          type: string
+          format: date-time
           description: The timestamp when the email was created
         updatedAt:
-          type: integer
-          format: int32
+          type: string
+          format: date-time
           description: The timestamp when the email was updated
     EmailAuthType:
       type: string
@@ -1104,12 +1104,12 @@ components:
           format: password
           description: The password
         createdAt:
-          type: integer
-          format: int32
+          type: string
+          format: date-time
           description: The timestamp when the email was created
         updatedAt:
-          type: integer
-          format: int32
+          type: string
+          format: date-time
           description: The timestamp when the email was updated
     EmailCreateOrUpdate:
       type: object
@@ -1135,12 +1135,12 @@ components:
           format: password
           description: The password
         createdAt:
-          type: integer
-          format: int32
+          type: string
+          format: date-time
           description: The timestamp when the email was created
         updatedAt:
-          type: integer
-          format: int32
+          type: string
+          format: date-time
           description: The timestamp when the email was updated
     EmailCreateOrUpdateItem:
       type: object
@@ -1166,12 +1166,12 @@ components:
           format: password
           description: The password
         createdAt:
-          type: integer
-          format: int32
+          type: string
+          format: date-time
           description: The timestamp when the email was created
         updatedAt:
-          type: integer
-          format: int32
+          type: string
+          format: date-time
           description: The timestamp when the email was updated
     EmailGroup:
       type: object
@@ -1308,12 +1308,12 @@ components:
           examples:
             - https://example.com/avatar.png
         createdAt:
-          type: integer
-          format: int32
+          type: string
+          format: date-time
           description: The timestamp when the user was created
         updatedAt:
-          type: integer
-          format: int32
+          type: string
+          format: date-time
           description: The timestamp when the user was updated
     UserCreate:
       type: object
@@ -1357,12 +1357,12 @@ components:
           format: password
           description: The password of the user
         createdAt:
-          type: integer
-          format: int32
+          type: string
+          format: date-time
           description: The timestamp when the user was created
         updatedAt:
-          type: integer
-          format: int32
+          type: string
+          format: date-time
           description: The timestamp when the user was updated
     UserCreateOrUpdate:
       type: object
@@ -1406,12 +1406,12 @@ components:
           format: password
           description: The password of the user
         createdAt:
-          type: integer
-          format: int32
+          type: string
+          format: date-time
           description: The timestamp when the user was created
         updatedAt:
-          type: integer
-          format: int32
+          type: string
+          format: date-time
           description: The timestamp when the user was updated
     WiFiBand:
       type: string
@@ -1481,13 +1481,13 @@ components:
           description: The current connection status of this configuration
           default: disconnected
         createdAt:
-          type: integer
-          format: int32
+          type: string
+          format: date-time
           description: The timestamp when the configuration was created
           readOnly: true
         updatedAt:
-          type: integer
-          format: int32
+          type: string
+          format: date-time
           description: The timestamp when the configuration was last updated
           readOnly: true
     WiFiConnectRequest:
@@ -1563,8 +1563,8 @@ components:
           type: boolean
           description: Whether this network has a saved configuration
         lastSeen:
-          type: integer
-          format: int32
+          type: string
+          format: date-time
           description: The timestamp when the network was last seen
           readOnly: true
     WiFiSecurityType:

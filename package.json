@@ -8,7 +8,8 @@
     "build:doc": "node scripts/build_doc.js",
     "build:html": "redocly build-docs output/schema/openapi.yaml --output=output/doc/html/openapi.html",
     "mock": "prism mock -d output/schema/openapi.yaml",
-    "mock:watch": "prism mock -d output/schema/openapi.yaml --watch"
+    "mock:watch": "prism mock -d output/schema/openapi.yaml --watch",
+    "fake": "node scripts/fake_data.js"
   },
   "peerDependencies": {
     "@azure-tools/typespec-ts": "latest",
@@ -23,6 +24,7 @@
     "@azure-tools/typespec-azure-core": "^0.59.0",
     "@azure-tools/typespec-client-generator-core": "^0.59.1",
     "@azure-tools/typespec-ts": "latest",
+    "@faker-js/faker": "^10.0.0",
     "@redocly/cli": "^2.0.8",
     "@stoplight/prism-cli": "^5.14.2",
     "@typespec/compiler": "^1.3.0",
@@ -34,6 +36,7 @@
     "@typespec/streams": "^0.73.0",
     "@typespec/versioning": "^0.73.0",
     "@typespec/xml": "^0.73.0",
+    "faker": "^5.5.3",
     "widdershins": "^4.0.1"
   },
   "private": true

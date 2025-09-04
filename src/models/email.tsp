@@ -77,9 +77,8 @@ model Email {
     password?: string;
 
     @doc("The timestamp when the email was created")
-    // 使用unix时间戳类型
-    createdAt: unixTimestamp32;
+    createdAt: utcDateTime;
 
     @doc("The timestamp when the email was updated")
-    updatedAt: unixTimestamp32;
+    updatedAt: utcDateTime;
 }
