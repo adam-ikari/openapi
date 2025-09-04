@@ -1,6 +1,6 @@
 # 项目概述
 
-本项目演示了使用 TypeSpec 定义和生成 OpenAPI v3.1 规范以及 JavaScript/TypeScript 客户端 SDK 的现代 API 开发方法。它为包含用户、电子邮件和邮件组资源的示例 API 提供了一套完整的工具链，用于生成一致的 API 规范、文档和客户端库。
+本项目演示了使用 TypeSpec 定义和生成 OpenAPI v3.1 规范以及 JavaScript/TypeScript 客户端 SDK 的现代 API 开发方法。它为包含用户、电子邮件、邮件组、WiFi 和证书资源的示例 API 提供了一套完整的工具链，用于生成一致的 API 规范、文档和客户端库。
 
 ## 技术栈
 
@@ -31,8 +31,7 @@
 ├── templates/            # 自定义文档模板
 ├── scripts/              # 构建脚本
 ├── package.json          # 项目配置和脚本
-├── tspconfig.yaml        # TypeSpec 配置
-└── prism.config.js       # API 模拟配置
+└── tspconfig.yaml        # TypeSpec 配置
 ```
 
 ## 构建和运行
@@ -97,5 +96,17 @@ npm run build:html
 - API 定义使用 TypeSpec 编写，位于 `src/` 目录
 - 数据模型定义在 `src/models/` 目录中
 - 每个 API 资源都有独立的 TypeSpec 文件
+- 使用 TypeSpec 内置的分页装饰器实现分页功能
+- 公共分页参数和响应模型定义在 `src/common/pagination.tsp` 文件中
 - 使用 `tspconfig.yaml` 配置 TypeSpec 编译器和发射器
 - 文档和客户端 SDK 从单一的 TypeSpec 源自动生成
+
+## 分页实现
+
+项目使用 TypeSpec 内置的分页装饰器来实现分页功能：
+
+- `@list` 装饰器标记分页操作
+- `@offset` 和 `@pageSize` 装饰器标记分页参数
+- `@pageItems` 装饰器标记分页数据项
+- 公共 `PaginationParams` 模型定义分页查询参数
+- 公共 `PagedResult<T>` 模型定义分页响应格式，包含数据项和分页元数据

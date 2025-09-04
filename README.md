@@ -81,9 +81,7 @@ This toolchain is ideal for:
 │   └── doc/              # Generated documentation (HTML and Markdown)
 ├── templates/            # Custom documentation templates
 ├── scripts/              # Build scripts
-├── package.json          # Project configuration and scripts
-├── tspconfig.yaml        # TypeSpec configuration
-└── prism.config.js       # API mock configuration
+└── package.json          # Project configuration and scripts
 ```
 
 ## API Resources
@@ -183,6 +181,16 @@ The TypeSpec definitions are organized as follows:
 
 Each API file defines a complete set of CRUD operations for its respective resource, with proper HTTP methods, routes, and authentication.
 
+## Pagination Implementation
+
+The project uses TypeSpec's built-in pagination decorators to implement pagination:
+
+- `@list` decorator marks pagination operations
+- `@offset` and `@pageSize` decorators mark pagination parameters
+- `@pageItems` decorator marks pagination data items
+- Common `PaginationParams` model defines pagination query parameters
+- Common `PagedResult<T>` model defines pagination response format, including data items and pagination metadata
+
 ## Client SDK
 
 The generated JavaScript/TypeScript client SDK provides a convenient way to interact with the API. It includes:
@@ -209,6 +217,7 @@ The documentation includes:
 - API definitions are written in TypeSpec and located in the `src/` directory
 - Data models are defined in the `src/models/` directory
 - Each API resource has its own dedicated TypeSpec file
-- TypeSpec compiler and emitters are configured using `tspconfig.yaml`
+- TypeSpec's built-in pagination decorators are used to implement pagination
+- Common pagination parameters and response models are defined in the `src/common/pagination.tsp` file
 - Documentation and client SDKs are automatically generated from a single TypeSpec source
 - Follow the existing code patterns and conventions when adding new APIs or models
