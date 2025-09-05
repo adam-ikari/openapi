@@ -6,10 +6,7 @@
     "build": "npm run build:tsp && npm run build:doc && npm run build:html",
     "build:tsp": "tsp compile src/index.tsp --output-dir output",
     "build:doc": "node scripts/build_doc.js",
-    "build:html": "redocly build-docs output/schema/openapi.yaml --output=output/doc/html/openapi.html",
-    "mock": "prism mock -d output/schema/openapi.yaml",
-    "mock:watch": "prism mock -d output/schema/openapi.yaml --watch",
-    "fake": "node scripts/fake_data.js"
+    "build:html": "redocly build-docs output/schema/openapi.yaml --output=output/doc/html/openapi.html"
   },
   "peerDependencies": {
     "@azure-tools/typespec-ts": "latest",
@@ -36,7 +33,6 @@
     "@typespec/streams": "^0.73.0",
     "@typespec/versioning": "^0.73.0",
     "@typespec/xml": "^0.73.0",
-    "faker": "^5.5.3",
     "widdershins": "^4.0.1"
   },
   "private": true
