@@ -19,21 +19,14 @@
     "@typespec/rest": "latest"
   },
   "devDependencies": {
-    "@azure-tools/typespec-azure-core": "^0.59.0",
-    "@azure-tools/typespec-client-generator-core": "^0.59.1",
     "@azure-tools/typespec-ts": "latest",
-    "@faker-js/faker": "^10.0.0",
     "@redocly/cli": "^2.0.8",
-    "@stoplight/prism-cli": "^5.14.2",
     "@typespec/compiler": "^1.3.0",
     "@typespec/http": "latest",
     "@typespec/http-server-js": "latest",
     "@typespec/openapi": "latest",
     "@typespec/openapi3": "latest",
     "@typespec/rest": "latest",
-    "@typespec/streams": "^0.73.0",
-    "@typespec/versioning": "^0.73.0",
-    "@typespec/xml": "^0.73.0",
     "widdershins": "^4.0.1"
   },
   "private": true

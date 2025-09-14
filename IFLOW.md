@@ -144,20 +144,7 @@ yarn build:doc
 yarn build:html
 ```
 
-### 启动 Mock 服务器
 
-您可以使用 Prism 启动一个基于 OpenAPI 规范模拟 API 的 mock 服务器：
-
-```bash
-npm run mock
-```
-
-这将在 `http://127.0.0.1:4010` 上启动一个 mock 服务器，该服务器会响应规范中定义的所有 API 端点。
-
-要在监视模式下启动 mock 服务器（在 OpenAPI 规范更改时自动重新加载）：
-```bash
-npm run mock:watch
-```
 
 ## 依赖信息
 
@@ -173,21 +160,14 @@ npm run mock:watch
 
 ### 开发依赖 (devDependencies)
 
-- `@azure-tools/typespec-azure-core`: ^0.59.0
-- `@azure-tools/typespec-client-generator-core`: ^0.59.1
 - `@azure-tools/typespec-ts`: latest
-- `@faker-js/faker`: ^10.0.0
 - `@redocly/cli`: ^2.0.8
-- `@stoplight/prism-cli`: ^5.14.2
 - `@typespec/compiler`: ^1.3.0
 - `@typespec/http`: latest
 - `@typespec/http-server-js`: latest
 - `@typespec/openapi`: latest
 - `@typespec/openapi3`: latest
 - `@typespec/rest`: latest
-- `@typespec/streams`: ^0.73.0
-- `@typespec/versioning`: ^0.73.0
-- `@typespec/xml`: ^0.73.0
 - `widdershins`: ^4.0.1
 
 ## 开发实践
@@ -207,11 +187,13 @@ npm run mock:watch
 - 遵循 TypeSpec 最佳实践进行 API 设计
 - 保持 API 接口的一致性和清晰性
 
+### TypeSpec 学习资源
+
+项目提供了两份 TypeSpec 学习文档，帮助开发者快速上手和深入理解：
+- `doc/typespec_tutorial.md` - TypeSpec 语法教程与最佳实践指南
+- `doc/typespec_quickstart.md` - TypeSpec 快速上手指南
+
 ## 新功能和工具
-
-### Mock 服务器
-
-项目集成了 Prism mock 服务器，可以基于 OpenAPI 规范模拟 API 行为，便于前端开发和测试。
 
 ### 多格式文档生成
 
