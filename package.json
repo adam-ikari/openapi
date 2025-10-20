@@ -6,8 +6,7 @@
     "build": "npm run build:tsp && npm run build:doc && npm run build:html",
     "build:tsp": "tsp compile src/index.tsp --output-dir output",
     "build:doc": "node scripts/build_doc.js",
-    "build:html": "redocly build-docs output/schema/openapi.yaml --output=output/doc/html/openapi.html",
-    "pkg-deps": "node scripts/package_deps.js"
+    "build:html": "redocly build-docs output/schema/openapi.yaml --output=output/doc/html/openapi.html"
   },
   "peerDependencies": {
     "@azure-tools/typespec-ts": "latest",
