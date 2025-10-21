@@ -2,16 +2,56 @@
 
 ## 目录
 
-1. [TypeSpec 简介](#typespec-简介)
-2. [基础语法](#基础语法)
-3. [模型定义](#模型定义)
-4. [API 接口定义](#api-接口定义)
-5. [装饰器详解](#装饰器详解)
-6. [分页实现](#分页实现)
-7. [最佳实践](#最佳实践)
-8. [项目约定](#项目约定)
-9. [代码生成与集成](#代码生成与集成)
-10. [调试与测试](#调试与测试)
+- [TypeSpec 语法教程与最佳实践指南](#typespec-语法教程与最佳实践指南)
+  - [目录](#目录)
+  - [TypeSpec 简介](#typespec-简介)
+    - [主要优势](#主要优势)
+  - [基础语法](#基础语法)
+    - [命名空间](#命名空间)
+    - [导入语句](#导入语句)
+    - [使用语句](#使用语句)
+  - [模型定义](#模型定义)
+    - [基本模型](#基本模型)
+    - [枚举类型](#枚举类型)
+    - [可选字段](#可选字段)
+    - [泛型模型](#泛型模型)
+  - [API 接口定义](#api-接口定义)
+    - [基本接口](#基本接口)
+    - [HTTP 方法装饰器](#http-方法装饰器)
+    - [路由设置](#路由设置)
+  - [装饰器详解](#装饰器详解)
+    - [文档装饰器](#文档装饰器)
+    - [验证装饰器](#验证装饰器)
+    - [参数装饰器](#参数装饰器)
+    - [可见性装饰器](#可见性装饰器)
+    - [安全装饰器](#安全装饰器)
+  - [分页实现](#分页实现)
+    - [分页参数模型](#分页参数模型)
+    - [分页结果模型](#分页结果模型)
+    - [在接口中使用分页](#在接口中使用分页)
+  - [最佳实践](#最佳实践)
+    - [1. 模型组织](#1-模型组织)
+    - [2. 接口设计](#2-接口设计)
+    - [3. 文档编写](#3-文档编写)
+    - [4. 验证规则](#4-验证规则)
+    - [5. 错误处理](#5-错误处理)
+    - [6. 版本控制](#6-版本控制)
+  - [项目约定](#项目约定)
+    - [文件结构](#文件结构)
+    - [命名约定](#命名约定)
+    - [装饰器使用](#装饰器使用)
+    - [分页约定](#分页约定)
+  - [规范与文档生成](#规范与文档生成)
+    - [生成 OpenAPI 规范](#生成-openapi-规范)
+    - [文档生成](#文档生成)
+  - [TypeSpec 与 OpenAPI 映射](#typespec-与-openapi-映射)
+    - [数据类型映射](#数据类型映射)
+    - [装饰器与 OpenAPI 扩展](#装饰器与-openapi-扩展)
+    - [HTTP 操作映射](#http-操作映射)
+  - [实际项目示例](#实际项目示例)
+    - [证书 API 示例](#证书-api-示例)
+    - [完整工作流程](#完整工作流程)
+    - [项目配置文件](#项目配置文件)
 
 ## TypeSpec 简介
 
@@ -327,7 +367,7 @@ src/
 
 通过遵循这些约定和最佳实践，可以确保 API 设计的一致性和可维护性。
 
-## 代码生成与集成
+## 规范与文档生成
 
 ### 生成 OpenAPI 规范
 
@@ -354,3 +394,165 @@ npm run build:html
 
 - Markdown 文档：`output/doc/md/openapi.md`
 - HTML 文档：`output/doc/html/openapi.html`
+
+## TypeSpec 与 OpenAPI 映射
+
+### 数据类型映射
+
+TypeSpec 类型与 OpenAPI 类型的对应关系：
+
+| TypeSpec 类型 | OpenAPI 类型       | 说明              |
+| ------------- | ------------------ | ----------------- |
+| `string`      | string             | 基础字符串类型    |
+| `int32`       | integer            | 32位整数          |
+| `int64`       | integer            | 64位整数          |
+| `float32`     | number             | 32位浮点数        |
+| `float64`     | number             | 64位浮点数        |
+| `boolean`     | boolean            | 布尔类型          |
+| `utcDateTime` | string (date-time) | ISO 8601 日期时间 |
+| `plainDate`   | string (date)      | ISO 8601 日期     |
+| `url`         | string (uri)       | URL 字符串        |
+| `bytes`       | string (byte)      | Base64 编码字节   |
+
+### 装饰器与 OpenAPI 扩展
+
+TypeSpec 装饰器如何映射到 OpenAPI 规范：
+
+```typespec
+// TypeSpec 定义
+@doc("用户信息")
+@maxLength(100)
+name: string;
+```
+
+对应的 OpenAPI YAML：
+
+```yaml
+name:
+  type: string
+  description: 用户信息
+  maxLength: 100
+```
+
+### HTTP 操作映射
+
+TypeSpec 接口方法映射到 OpenAPI 路径操作：
+
+```typespec
+@route("/users")
+interface UsersApi {
+  @get
+  @route("/{id}")
+  getUser(@path id: string): User;
+}
+```
+
+对应的 OpenAPI YAML：
+
+```yaml
+paths:
+  /users/{id}:
+    get:
+      operationId: getUser
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+```
+
+## 实际项目示例
+
+### 证书 API 示例
+
+查看项目中的 `certificates_api.tsp` 文件，了解实际的 TypeSpec 实现：
+
+```typespec
+import "@typespec/http";
+import "./models/certificate.tsp";
+
+using TypeSpec.Http;
+
+@route("/certificates")
+@tag("Certificates")
+@useAuth(BearerAuth)
+interface CertificatesApi {
+  @get
+  @list
+  listCertificates(
+    ...PaginationParams
+  ): PagedResult<Certificate>;
+
+  @get
+  @route("/{id}")
+  getCertificate(
+    @path
+    @doc("Certificate ID")
+    id: string
+  ): Certificate;
+
+  @post
+  createCertificate(
+    @body
+    @doc("Certificate to create")
+    certificate: CertificateInput
+  ): Certificate;
+
+  @put
+  @route("/{id}")
+  updateCertificate(
+    @path
+    @doc("Certificate ID")
+    id: string,
+    @body
+    @doc("Certificate update data")
+    certificate: CertificateInput
+  ): Certificate;
+
+  @delete
+  @route("/{id}")
+  deleteCertificate(
+    @path
+    @doc("Certificate ID")
+    id: string
+  ): void;
+}
+```
+
+### 完整工作流程
+
+1. **定义模型**：在 `src/models/` 目录中定义数据模型
+2. **定义接口**：在 `src/` 目录中创建 API 接口文件
+3. **添加装饰器**：为接口和字段添加适当的装饰器
+4. **编译生成**：运行 `npm run build` 生成所有输出文件
+
+### 项目配置文件
+
+项目的 `tspconfig.yaml` 配置文件：
+
+```yaml
+parameters:
+  service-name: "OpenApiV2"
+  service-version: "2.0.0"
+
+emit:
+  - "@typespec/openapi3"
+  - "@azure-tools/typespec-ts"
+
+options:
+  "@typespec/openapi3":
+    output-file: "openapi.yaml"
+
+  "@azure-tools/typespec-ts":
+    flavor: "core"
+    package-name: "openapi-v2-client"
+    emitter-output-dir: "../output/clients/js"
+```
