@@ -87,6 +87,7 @@
 ## API 资源
 
 API 包含以下资源：
+
 - 用户 - 管理用户账户
 - 邮件 - 处理邮件消息
 - 邮件组 - 管理邮件组订阅
@@ -98,14 +99,8 @@ API 包含以下资源：
 ## 先决条件
 
 - Node.js (v16 或更高版本)
-- Yarn 或 npm
 
 ## 构建指令
-
-### 先决条件
-
-- Node.js (v16 或更高版本)
-- Yarn 或 npm
 
 ### 安装依赖
 
@@ -122,6 +117,7 @@ npm install
 ### 构建项目
 
 构建过程将：
+
 1. 编译 TypeSpec 文件以生成 OpenAPI 规范
 2. 生成 Markdown 和 HTML 格式的文档
 3. 创建 JavaScript/TypeScript 客户端 SDK
@@ -137,6 +133,7 @@ npm run build
 ```
 
 此命令执行以下步骤：
+
 - `build:tsp`：编译 TypeSpec 文件以生成 OpenAPI 规范
 - `build:doc`：从 OpenAPI 规范生成 Markdown 文档
 - `build:html`：使用 Redocly 生成 HTML 文档
@@ -144,16 +141,19 @@ npm run build
 ### 构建单个组件
 
 仅编译 TypeSpec 文件：
+
 ```bash
 yarn build:tsp
 ```
 
 生成文档：
+
 ```bash
 yarn build:doc
 ```
 
 生成 HTML 文档：
+
 ```bash
 yarn build:html
 ```
@@ -169,6 +169,7 @@ npm run mock
 这将在 `http://127.0.0.1:4010` 上启动一个 mock 服务器，该服务器会响应规范中定义的所有 API 端点。
 
 要在监视模式下启动 mock 服务器（在 OpenAPI 规范更改时自动重新加载）：
+
 ```bash
 npm run mock:watch
 ```
@@ -218,10 +219,12 @@ TypeSpec 定义按如下方式组织：
 ## 文档
 
 文档是从 OpenAPI 规范自动生成的：
+
 - Markdown 格式，用于与开发者门户集成
 - 使用 Redocly 的 HTML 格式，用于交互式 API 文档
 
 文档包括：
+
 - 带有 HTTP 方法的 API 端点
 - 请求和响应模式
 - 多种语言的代码示例
